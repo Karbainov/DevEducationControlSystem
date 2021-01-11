@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Material_Tag]
+(
+	ID INT CONSTRAINT PK_Material_Tag PRIMARY KEY IDENTITY NOT NULL,
+	MaterialID int NOT NULL,
+	TagID int NOT NULL,
+)

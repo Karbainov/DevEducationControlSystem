@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Privileges]
+(
+	ID INT CONSTRAINT PK_Privileges PRIMARY KEY IDENTITY NOT NULL,
+	Name nvarchar(30) NOT NULL UNIQUE
+)

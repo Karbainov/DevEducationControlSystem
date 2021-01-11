@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Homework_Tag]
+(
+	ID INT CONSTRAINT PK_Homework_Tag PRIMARY KEY IDENTITY NOT NULL,
+	HomeworkID int NOT NULL,
+	TagID int NOT NULL,
+)
