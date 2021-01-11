@@ -80,6 +80,6 @@
     <Build Include="Tables\Comment.sql" />
     <Build Include="Tables\Material.sql" />
     <Build Include="Tables\Resources.sql" />
-    <Build Include="Tables\Payment.sql" />
+    <Build Include="Tables\Course.sql" />
   </ItemGroup>
 </Project>
