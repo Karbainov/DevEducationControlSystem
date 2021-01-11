@@ -76,10 +76,25 @@
     <Build Include="Tables\Theme.sql" />
     <Build Include="Tables\Course_Material.sql" />
     <Build Include="Tables\Course_Theme.sql" />
-    <Build Include="Tables\Answer_Status.sql" />
+    <Build Include="Tables\AnswerStatus.sql" />
     <Build Include="Tables\Comment.sql" />
     <Build Include="Tables\Material.sql" />
     <Build Include="Tables\Resources.sql" />
     <Build Include="Tables\Course.sql" />
+    <Build Include="Tables\User.sql" />
+    <Build Include="Tables\User_Group.sql" />
+    <Build Include="Tables\User_Role.sql" />
+    <Build Include="Tables\UserStatus.sql" />
+    <Build Include="Tables\Attendance.sql" />
+    <Build Include="Tables\City.sql" />
+    <Build Include="Tables\Feedback.sql" />
+    <Build Include="Tables\Group.sql" />
+    <Build Include="Tables\Group_Homework.sql" />
+    <Build Include="Tables\Group_Materials.sql" />
+    <Build Include="Tables\Lesson.sql" />
+    <Build Include="Tables\Lesson_Theme.sql" />
+    <Build Include="Tables\Payment.sql" />
+    <Build Include="Tables\Role.sql" />
+    <Build Include="Tables\Role_Privileges.sql" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[AnswerStatus]
+(
+	ID INT CONSTRAINT PK_AnswerStatus PRIMARY KEY IDENTITY NOT NULL,
+	Name nvarchar(100) NOT NULL UNIQUE,
+)

@@ -10,6 +10,6 @@
 	StatusID int NOT NULL,
 	CONSTRAINT [FK_Answer_User] FOREIGN KEY ([UserID]) REFERENCES [User]([ID]),
     CONSTRAINT [FK_Answer_HomeWork] FOREIGN KEY ([HomeWorkID]) REFERENCES [HomeWork]([ID]),
-    CONSTRAINT [FK_Answer_Lesson] FOREIGN KEY ([StatusID]) REFERENCES [Status]([ID]),
+    CONSTRAINT [FK_Answer_AnswerStatus] FOREIGN KEY ([StatusID]) REFERENCES [AnswerStatus]([ID]),
 
 )

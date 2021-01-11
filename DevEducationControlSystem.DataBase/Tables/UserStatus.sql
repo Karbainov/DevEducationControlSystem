@@ -1,0 +1,5 @@
+﻿CREATE TABLE [UserStatus] 
+(
+	ID INT CONSTRAINT PK_UserStatus PRIMARY KEY IDENTITY NOT NULL,
+	Name nvarchar(100) NOT NULL UNIQUE,
+)

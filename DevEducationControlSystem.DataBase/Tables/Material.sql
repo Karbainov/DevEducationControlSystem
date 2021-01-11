@@ -5,4 +5,5 @@
 	Name nvarchar(100) NOT NULL,
 	Message nvarchar(1000),
 	IsDeleted bit NOT NULL,
+	CONSTRAINT FK_Material_User FOREIGN KEY (UserID) REFERENCES [USER](ID)
 )
