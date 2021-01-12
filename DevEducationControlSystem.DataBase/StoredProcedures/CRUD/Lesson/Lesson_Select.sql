@@ -1,1 +1,4 @@
-﻿
+﻿CREATE PROCEDURE Lesson_SelectById
+AS
+	SELECT * FROM Lesson
+GO
