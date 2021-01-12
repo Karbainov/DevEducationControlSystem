@@ -1,0 +1,8 @@
+﻿CREATE TABLE [User_Group] 
+(
+	ID INT CONSTRAINT PK_User_Group PRIMARY KEY IDENTITY NOT NULL,
+	UserID int NOT NULL,
+	GroupID int NOT NULL,
+  CONSTRAINT [FK_User_Group_User] FOREIGN KEY ([UserID]) REFERENCES [User]([ID]),
+  CONSTRAINT [FK_User_Group_Group] FOREIGN KEY ([GroupID]) REFERENCES [Group]([ID])
+)

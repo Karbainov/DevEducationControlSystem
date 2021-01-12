@@ -1,0 +1,6 @@
+﻿CREATE TABLE [City] 
+(
+	ID INT CONSTRAINT PK_City PRIMARY KEY IDENTITY NOT NULL,
+	GroupID int NOT NULL,
+	Name nvarchar(100) NOT NULL
+)

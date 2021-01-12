@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[GroupStatus]
+(
+	ID INT CONSTRAINT PK_GroupStatus_ID PRIMARY KEY IDENTITY NOT NULL,
+	Name nvarchar(100) NOT NULL UNIQUE,
+)
