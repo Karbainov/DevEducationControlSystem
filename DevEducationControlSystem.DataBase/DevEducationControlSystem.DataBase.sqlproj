@@ -60,6 +60,7 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
+    <Folder Include="StoredProcedures\CRUD\Feedback" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -96,5 +97,10 @@
     <Build Include="Tables\Payment.sql" />
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
+    <Build Include="StoredProcedures\CRUD\Feedback\Feedback_Create.sql" />
+    <Build Include="StoredProcedures\CRUD\Feedback\Feedback_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Feedback\Feedback_ReadById.sql" />
+    <Build Include="StoredProcedures\CRUD\Feedback\Feedback_ReadAll.sql" />
+    <Build Include="StoredProcedures\CRUD\Feedback\Feedback_Update.sql" />
   </ItemGroup>
 </Project>
