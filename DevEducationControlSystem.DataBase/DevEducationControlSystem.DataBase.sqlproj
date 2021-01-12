@@ -61,6 +61,7 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
+    <Folder Include="StoredProcedures\CRUD\City" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -101,5 +102,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Add.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Update.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Delete.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Select.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_SelectById.sql" />
   </ItemGroup>
 </Project>
