@@ -61,6 +61,7 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
+    <Folder Include="StoredProcedures\CRUD\User_Group" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -98,6 +99,11 @@
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
+    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Create.sql" />
+    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_ReadById.sql" />
+    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_ReadAll.sql" />
+    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
