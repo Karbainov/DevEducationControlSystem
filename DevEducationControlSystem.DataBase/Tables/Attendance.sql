@@ -1,9 +1,11 @@
-﻿CREATE TABLE [Attendance] 
-(
-	ID INT CONSTRAINT PK_Attendance PRIMARY KEY IDENTITY NOT NULL,
+﻿CREATE TABLE [Attendance] (
+	ID int NOT NULL,
 	UserID int NOT NULL,
 	LessonID int NOT NULL,
 	IsPresent bit NOT NULL,
-	CONSTRAINT [FK_Attendance_User] FOREIGN KEY ([UserID]) REFERENCES [User]([ID]),
-	CONSTRAINT [FK_Attendance_Lesson] FOREIGN KEY ([LessonID]) REFERENCES [Lesson]([ID])
+  CONSTRAINT [PK_ATTENDANCE] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
 )

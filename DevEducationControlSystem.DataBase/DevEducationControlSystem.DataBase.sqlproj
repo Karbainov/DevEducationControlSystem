@@ -60,6 +60,7 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
+    <Folder Include="Foreign Keys" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -96,5 +97,9 @@
     <Build Include="Tables\Payment.sql" />
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
+    <Build Include="Tables\Theme_Tag.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Foreign Keys\ForeignKeys.sql" />
   </ItemGroup>
 </Project>

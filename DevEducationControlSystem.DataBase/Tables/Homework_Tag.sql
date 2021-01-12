@@ -1,8 +1,10 @@
-﻿CREATE TABLE [dbo].[Homework_Tag]
-(
-	ID INT CONSTRAINT PK_Homework_Tag PRIMARY KEY IDENTITY NOT NULL,
+﻿CREATE TABLE [Homework_Tag] (
+	ID int NOT NULL,
 	HomeworkID int NOT NULL,
 	TagID int NOT NULL,
-	CONSTRAINT [FK_Homework_Tag_Homework] FOREIGN KEY ([HomeworkID]) REFERENCES [Homework]([ID]),
-    CONSTRAINT [FK_Homework_Tag_Course] FOREIGN KEY ([TagID]) REFERENCES [Tag]([ID]),
+  CONSTRAINT [PK_HOMEWORK_TAG] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
 )
