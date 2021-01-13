@@ -1,4 +1,4 @@
-CREATE PROCEDURE Homework_Course_Create 
+CREATE PROCEDURE dbo.Homework_Course_Create 
 	@CourseId int, 
 	@HomeworkId int 
 AS 
