@@ -1,6 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[Role_SelectById]
-	@param1 int = 0,
-	@param2 int
+	@Id int 
 AS
-	SELECT @param1, @param2
-RETURN 0
+	SELECT * FROM Role WHERE ID=@Id

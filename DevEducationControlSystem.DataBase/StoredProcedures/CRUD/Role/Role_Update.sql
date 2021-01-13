@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[Role_Update]
-	@param1 int = 0,
-	@param2 int
+	@Id int ,
+	@Name nvarchar(30)
 AS
-	SELECT @param1, @param2
-RETURN 0
+	UPDATE Role 
+	SET Name=@Name WHERE ID=@Id
