@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Course_Theme_Create
+﻿CREATE PROCEDURE [dbo].[Course_Theme_Add]
 	@CourseId int,
 	@ThemeId int
 AS
