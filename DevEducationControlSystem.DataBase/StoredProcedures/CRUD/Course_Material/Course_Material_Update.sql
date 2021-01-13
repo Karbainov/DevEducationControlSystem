@@ -1,9 +1,9 @@
-﻿CREATE PROCEDURE Course_Material_Update
+﻿CREATE PROCEDURE [dbo].[Course_Material_Update]
 	@Id int,
 	@CourseId int,
 	@MaterialId int
 AS
-	UPDATE Course_Material
+	UPDATE [dbo].[Course_Material]
 	SET
 		CourseId = @CourseId,
 		MaterialID = @MaterialId
