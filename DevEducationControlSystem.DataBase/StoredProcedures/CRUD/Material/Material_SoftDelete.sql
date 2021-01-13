@@ -2,6 +2,6 @@
 @IsDeleted bit,
 @Id int
 as
-update Material
+update dbo.Material
 set IsDeleted = @IsDeleted
 where ID = @Id

@@ -1,3 +1,3 @@
 ﻿CREATE procedure [dbo].[Material_Select]
 as
-select * from Material
+select * from dbo.Material

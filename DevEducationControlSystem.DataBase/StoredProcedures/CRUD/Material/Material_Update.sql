@@ -5,6 +5,6 @@
 @IsDeleted bit,
 @Id int
 as
-update Material
+update dbo.Material
 set UserID = @UserId, Name = @Name, Message = @Message, IsDeleted = @IsDeleted
 where ID = @Id
