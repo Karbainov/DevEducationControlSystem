@@ -3,7 +3,7 @@
 	@CourseId int,
 	@ThemeId int
 AS
-	UPDATE Course_Theme
+	UPDATE [dbo].[Course_Theme]
 	SET
 		CourseId = @CourseId,
 		ThemeID = @ThemeId

@@ -2,4 +2,4 @@
 	@CourseId int,
 	@ThemeId int
 AS
-INSERT Course_Theme VALUES (@CourseId, @ThemeId)
+INSERT [dbo].[Course_Theme] VALUES (@CourseId, @ThemeId)
