@@ -1,0 +1,3 @@
+﻿CREATE PROCEDURE Theme_Select
+AS  
+	SELECT * FROM [Theme]
