@@ -103,6 +103,7 @@
     <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_ReadById.sql" />
     <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_ReadAll.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
