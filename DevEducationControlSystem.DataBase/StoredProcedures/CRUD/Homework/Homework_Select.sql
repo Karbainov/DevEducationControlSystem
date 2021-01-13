@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Homework_Theme_Select]
+﻿CREATE PROCEDURE [dbo].[Homework_Select]
 	AS
-	SELECT	*	FROM dbo.Homework_Theme
+	SELECT	*	FROM dbo.Homework
 

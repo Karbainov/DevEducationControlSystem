@@ -1,5 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Homework_Theme_SelectById]
-@ID INT
+﻿CREATE PROCEDURE [dbo].[Homework_Theme_Select]
 AS
 select * from dbo.Homework_Theme
-where dbo.Homework_Theme.ID = @ID
+
