@@ -1,8 +1,8 @@
-CREATE PROCEDURE Privileges_Update  
+CREATE PROCEDURE [dbo].[Privileges_Update]  
 	@Id int,  
 	@name nvanchar(30)
 AS  
-	UPDATE Privileges 
+	UPDATE [dbo].[Privileges] 
 	SET  
 		name = @name
 WHERE  

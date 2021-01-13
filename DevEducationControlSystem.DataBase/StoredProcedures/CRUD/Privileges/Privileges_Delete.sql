@@ -1,4 +1,4 @@
-CREATE PROCEDURE Privileges_Delete  
+CREATE PROCEDURE [dbo].[Privileges_Delete]  
 	@Id int  
 AS  
-	DELETE FROM Privileges WHERE ID = @Id
+	DELETE FROM [dbo].[Privileges] WHERE ID = @Id
