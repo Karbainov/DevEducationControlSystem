@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Course_Material_Create
+﻿CREATE PROCEDURE [dbo].[Course_Material_Add]
 	@CourseId int,
 	@MaterialId int
 AS
