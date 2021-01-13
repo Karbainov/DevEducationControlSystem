@@ -2,6 +2,6 @@
 @Name nvarchar(100),
 @Id int
 as
-update GroupStatus
+update dbo.GroupStatus
 set Name = @Name
 where ID = @Id
