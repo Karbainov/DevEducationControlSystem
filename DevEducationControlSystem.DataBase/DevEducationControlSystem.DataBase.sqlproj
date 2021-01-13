@@ -101,9 +101,9 @@
     <Build Include="Tables\Theme_Tag.sql" />
     <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Delete.sql" />
-    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_ReadById.sql" />
     <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_SelectById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
