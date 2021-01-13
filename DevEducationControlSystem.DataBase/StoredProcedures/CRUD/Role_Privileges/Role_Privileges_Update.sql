@@ -1,9 +1,9 @@
-CREATE PROCEDURE Role_Privileges_Update 
+CREATE PROCEDURE [dbo].[Role_Privileges_Update] 
 	@Id int, 
 	@RoleId int, 
 	@PrivilegesId int 
 AS 
-	UPDATE Role_Privileges
+	UPDATE [dbo].[Role_Privileges]
 	SET 
 		RoleID = @RoleId, 
 		PrivilegesID = @PrivelegesId 
