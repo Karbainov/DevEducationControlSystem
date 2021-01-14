@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Feedback_Delete 
+﻿CREATE PROCEDURE [dbo] . [Feedback_Delete]
 	@Id int 
 AS 
-	DELETE FROM Feedback WHERE ID=@Id
+	DELETE FROM [dbo] . [Feedback] WHERE ID=@Id
