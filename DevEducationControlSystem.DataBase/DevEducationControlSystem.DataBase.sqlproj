@@ -61,6 +61,7 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
+    <Folder Include="StoredProcedures\CRUD\Material" />
     <Folder Include="StoredProcedures\CRUD\GroupStatus" />
     <Folder Include="StoredProcedures\CRUD\Course_Material" />
     <Folder Include="StoredProcedures\CRUD\Course_Theme" />
@@ -103,6 +104,12 @@
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_SoftDelete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Update.sql" />
     <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_Add.sql" />
     <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_Select.sql" />
