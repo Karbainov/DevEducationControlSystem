@@ -61,7 +61,8 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
-    <Folder Include="StoredProcedures\CRUD\User_Role" />
+    <Folder Include="StoredProcedures\CRUD\User_Role" />    
+	<Folder Include="StoredProcedures\CRUD\UserStatus" />
 	<Folder Include="StoredProcedures\CRUD\Role_Privileges" />
 	<Folder Include="StoredProcedures\CRUD\Privileges" />
     <Folder Include="StoredProcedures\CRUD\User_Group" />
@@ -120,6 +121,11 @@
     <Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_Select.sql" />
     <Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_Update.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\UserStatus_Add.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\UserStatus_Delete.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\UserStatus_Select.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\User_Status_SelectById.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\User_Status_Update.sql" />
 	<Build Include="StoredProcedures\CRUD\Privileges\Privileges_Add.sql" />
 	<Build Include="StoredProcedures\CRUD\Privileges\Privileges_Delete.sql" />
 	<Build Include="StoredProcedures\CRUD\Privileges\Privileges_SelectById.sql" />
