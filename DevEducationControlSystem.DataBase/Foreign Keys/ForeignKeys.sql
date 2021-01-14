@@ -246,7 +246,7 @@ GO
 ALTER TABLE [Homework] WITH CHECK ADD CONSTRAINT [Homework_fk0] FOREIGN KEY ([ResourceID]) REFERENCES [Resource]([ID])
 GO
 
-ALTER TABLE [Homework_Theme] WITH CHECK ADD CONSTRAINT [Homework_Theme_fk0] FOREIGN KEY ([HomeworkD]) REFERENCES [Homework]([ID])
+ALTER TABLE [Homework_Theme] WITH CHECK ADD CONSTRAINT [Homework_Theme_fk0] FOREIGN KEY ([HomeworkID]) REFERENCES [Homework]([ID])
 ON UPDATE CASCADE
 GO
 ALTER TABLE [Homework_Theme] CHECK CONSTRAINT [Homework_Theme_fk0]
