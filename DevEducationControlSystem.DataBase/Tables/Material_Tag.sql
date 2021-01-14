@@ -1,8 +1,10 @@
-﻿CREATE TABLE [dbo].[Material_Tag]
-(
-	ID INT CONSTRAINT PK_Material_Tag PRIMARY KEY IDENTITY NOT NULL,
+﻿CREATE TABLE [Material_Tag] (
+	ID int NOT NULL,
 	MaterialID int NOT NULL,
 	TagID int NOT NULL,
-	CONSTRAINT [FK_Material_Material] FOREIGN KEY ([MaterialID]) REFERENCES [Material]([ID]),
-    CONSTRAINT [FK_Material_Tag_Tag] FOREIGN KEY ([TagID]) REFERENCES [Tag]([ID]),
+  CONSTRAINT [PK_MATERIAL_TAG] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
 )

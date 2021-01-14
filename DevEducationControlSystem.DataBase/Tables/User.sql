@@ -1,6 +1,5 @@
-﻿CREATE TABLE [User] 
-(
-	ID INT CONSTRAINT PK_User PRIMARY KEY IDENTITY NOT NULL,
+﻿CREATE TABLE [User] (
+	ID int NOT NULL,
 	StatusID int NOT NULL,
 	FirstName nvarchar(30),
 	LastName nvarchar(30),
@@ -11,5 +10,9 @@
 	Phone nvarchar(12),
 	ContractNumber nvarchar(15),
 	ProfileImage nvarchar(1000),
-	CONSTRAINT [FK_User_UserStatus] FOREIGN KEY ([StatusID]) REFERENCES [UserStatus]([ID])
+  CONSTRAINT [PK_USER] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
 )

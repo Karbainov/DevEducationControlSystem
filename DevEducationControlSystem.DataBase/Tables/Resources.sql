@@ -1,6 +1,10 @@
-﻿CREATE TABLE [dbo].[Resources]
-(
-	ID INT CONSTRAINT PK_Resources PRIMARY KEY IDENTITY NOT NULL,
+﻿CREATE TABLE [Resource] (
+	ID int NOT NULL,
 	Links nvarchar(1000),
 	Images nvarchar(1000),
+  CONSTRAINT [PK_RESOURCE] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
 )

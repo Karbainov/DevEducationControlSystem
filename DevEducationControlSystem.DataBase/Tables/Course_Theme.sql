@@ -1,8 +1,10 @@
-﻿CREATE TABLE [dbo].[Course_Theme]
-(
-	ID INT CONSTRAINT PK_Course_Theme PRIMARY KEY IDENTITY NOT NULL,
+﻿CREATE TABLE [Course_Theme] (
+	ID int NOT NULL,
 	CourseId int NOT NULL,
 	ThemeID int NOT NULL,
-	CONSTRAINT [FK_Course_Theme_Course] FOREIGN KEY ([CourseID]) REFERENCES [Course]([ID]),
-    CONSTRAINT [FK_Course_Theme_Theme] FOREIGN KEY ([ThemeID]) REFERENCES [Theme]([ID]),
+  CONSTRAINT [PK_COURSE_THEME] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
 )
