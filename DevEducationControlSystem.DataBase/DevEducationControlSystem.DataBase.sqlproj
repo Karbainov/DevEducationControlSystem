@@ -60,6 +60,7 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
+    <Folder Include="StoredProcedures\CRUD\Attendance" />
     <Folder Include="StoredProcedures\CRUD\Feedback" />
     <Folder Include="Foreign Keys" />
     <Folder Include="StoredProcedures\CRUD\User_Role" />
@@ -111,6 +112,11 @@
     <Build Include="Tables\Payment.sql" />
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
+    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Update.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
     <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Add.sql" />
     <Build Include="StoredProcedures\CRUD\GroupStatus\Role_Privileges_Add.sql" />
