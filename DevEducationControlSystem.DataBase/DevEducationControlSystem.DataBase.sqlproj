@@ -61,6 +61,7 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
+	<Folder Include="StoredProcedures\CRUD\Privileges" />
     <Folder Include="StoredProcedures\CRUD\User_Group" />
     <Folder Include="StoredProcedures\CRUD\Material" />
     <Folder Include="StoredProcedures\CRUD\GroupStatus" />
