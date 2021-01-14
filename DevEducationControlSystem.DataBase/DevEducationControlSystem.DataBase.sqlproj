@@ -65,7 +65,8 @@
 	<Folder Include="StoredProcedures\CRUD\UserStatus" />
 	<Folder Include="StoredProcedures\CRUD\Role_Privileges" />
 	<Folder Include="StoredProcedures\CRUD\Privileges" />
-    <Folder Include="StoredProcedures\CRUD\User_Group" />
+    <Folder Include="StoredProcedures\CRUD\User_Group" />    
+	<Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="StoredProcedures\CRUD\Material" />
     <Folder Include="StoredProcedures\CRUD\GroupStatus" />
     <Folder Include="StoredProcedures\CRUD\Course_Material" />
@@ -171,6 +172,11 @@
     <Build Include="StoredProcedures\CRUD\Role\Role_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Role\Role_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\Role\Role_Update.sql" />
+	<Build Include="StoredProcedures\CRUD\Role\User_Add.sql" />
+	<Build Include="StoredProcedures\CRUD\Role\User_Delete.sql" />
+	<Build Include="StoredProcedures\CRUD\Role\User_Select.sql" />
+	<Build Include="StoredProcedures\CRUD\Role\User_SelectById.sql" />
+	<Build Include="StoredProcedures\CRUD\Role\User_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
