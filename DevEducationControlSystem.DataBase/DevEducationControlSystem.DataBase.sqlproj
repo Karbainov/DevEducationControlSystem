@@ -61,6 +61,7 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
+	<Folder Include="StoredProcedures\CRUD\User_Role" />
     <Folder Include="StoredProcedures\CRUD\User_Group" />
     <Folder Include="StoredProcedures\CRUD\Material" />
     <Folder Include="StoredProcedures\CRUD\GroupStatus" />
@@ -68,6 +69,7 @@
     <Folder Include="StoredProcedures\CRUD\Course_Theme" />
     <Folder Include="StoredProcedures\CRUD\Homework" />
     <Folder Include="StoredProcedures\CRUD\Homework_Theme" />
+    <Folder Include="StoredProcedures\CRUD\Role" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -106,6 +108,12 @@
     <Build Include="Tables\Role_Privileges.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
     <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Add.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_Add.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_Delete.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_Select.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_SelectById.sql" />
+	<Build Include="StoredProcedures\CRUD\GroupStatus\User_Role_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Create.sql" />
     <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\User_Group\User_Group_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Select.sql" />
@@ -140,6 +148,11 @@
     <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
