@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE Role_Select
+﻿CREATE PROCEDURE [dbo].[Role_Select]
 AS
-	SELECT * FROM Role 
+	SELECT * FROM [dbo].[Role]

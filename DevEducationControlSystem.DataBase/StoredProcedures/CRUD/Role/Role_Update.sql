@@ -2,5 +2,5 @@
 	@Id int ,
 	@Name nvarchar(30)
 AS
-	UPDATE Role 
+	UPDATE [dbo].[Role] 
 	SET Name=@Name WHERE ID=@Id

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Role_Add
+﻿CREATE PROCEDURE [dbo].[Role_Add]
 	@Name nvarchar(30)
 AS
-	INSERT Role VALUES (@Name)
+	INSERT [dbo].[Role] VALUES (@Name)
