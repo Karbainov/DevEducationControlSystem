@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevEducationControlSystem.DataBase", "DevEducationControlSystem.DataBase\DevEducationControlSystem.DataBase.sqlproj", "{29823E90-BA7A-4814-A096-3AE7018C075E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{D939AD1A-9D9B-441E-A2D6-15573430F731}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

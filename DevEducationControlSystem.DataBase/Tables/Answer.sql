@@ -1,6 +1,5 @@
-﻿CREATE TABLE [dbo].[Answer]
-(
-	ID INT CONSTRAINT PK_Answer PRIMARY KEY IDENTITY NOT NULL,
+﻿CREATE TABLE [Answer] (
+	ID int NOT NULL,
 	UserID int NOT NULL,
 	HomeWorkID int NOT NULL,
 	Data datetime NOT NULL,
@@ -8,8 +7,9 @@
 	Links nvarchar(1000),
 	Images nvarchar(1000),
 	StatusID int NOT NULL,
-	CONSTRAINT [FK_Answer_User] FOREIGN KEY ([UserID]) REFERENCES [User]([ID]),
-    CONSTRAINT [FK_Answer_HomeWork] FOREIGN KEY ([HomeWorkID]) REFERENCES [HomeWork]([ID]),
-    CONSTRAINT [FK_Answer_AnswerStatus] FOREIGN KEY ([StatusID]) REFERENCES [AnswerStatus]([ID]),
+  CONSTRAINT [PK_ANSWER] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
 
 )
