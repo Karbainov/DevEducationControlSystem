@@ -61,7 +61,12 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
-    <Folder Include="StoredProcedures\CRUD\User_Role" />
+    <Folder Include="StoredProcedures\CRUD\Material" />
+    <Folder Include="StoredProcedures\CRUD\GroupStatus" />
+    <Folder Include="StoredProcedures\CRUD\Course_Material" />
+    <Folder Include="StoredProcedures\CRUD\Course_Theme" />
+    <Folder Include="StoredProcedures\CRUD\Homework" />
+    <Folder Include="StoredProcedures\CRUD\Homework_Theme" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -99,13 +104,39 @@
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Role\User_Role_Add.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Role\User_Role_Delete.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Role\User_Role_Select.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Role\User_Role_SelectById.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Role\User_Role_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_SoftDelete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material\Material_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\GroupStatus\GroupStatus_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Material\Course_Material_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Theme\Course_Theme_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Theme\Course_Theme_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Theme\Course_Theme_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Theme\Course_Theme_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Course_Theme\Course_Theme_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework\Homework_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework\Homework_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework\Homework_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework\Homework_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
+    <Build Include="StoredProcedures\CRUD\Homework\Homework_Delete.sql" />
   </ItemGroup>
 </Project>
