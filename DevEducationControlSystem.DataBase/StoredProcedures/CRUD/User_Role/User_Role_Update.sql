@@ -3,7 +3,7 @@
 	@UserId int,
 	@RoleId int
 AS
-	UPDATE User_Role 
+	UPDATE [dbo].[User_Role] 
 	SET UserID=@UserId, 
 	RoleId=@RoleId 
 	WHERE ID=@Id

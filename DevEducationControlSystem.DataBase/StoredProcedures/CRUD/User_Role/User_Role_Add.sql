@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[User_Role_Add]
+	@Id int,
 	@UserId int ,
 	@RoleId int
 AS
-	INSERT User_Role VALUES (@UserId, @RoleId)
+	INSERT [dbo].[User_Role] VALUES (@Id, @UserId, @RoleId)
