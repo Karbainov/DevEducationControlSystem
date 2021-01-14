@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Attendance_Delete 
+﻿CREATE PROCEDURE [dbo].[Attendance_Delete]
 	@Id int 
 AS 
-	DELETE FROM Attendance WHERE ID=@Id
+	DELETE FROM [dbo].[Attendance] WHERE ID=@Id

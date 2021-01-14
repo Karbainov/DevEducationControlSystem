@@ -1,10 +1,10 @@
-﻿CREATE PROCEDURE Attendance_Update 
+﻿CREATE PROCEDURE [dbo].[Attendance_Update]
 	@Id int, 
 	@UserId int, 
 	@LessonId int,
 	@IsPresent bit 
 AS 
-	UPDATE Attendance
+	UPDATE [dbo].[Attendance]
 	SET 
 		UserId = @UserId, 
 		LessonId = @LessonId,
