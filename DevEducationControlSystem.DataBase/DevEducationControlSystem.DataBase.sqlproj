@@ -67,6 +67,7 @@
     <Folder Include="StoredProcedures\CRUD\Course_Theme" />
     <Folder Include="StoredProcedures\CRUD\Homework" />
     <Folder Include="StoredProcedures\CRUD\Homework_Theme" />
+    <Folder Include="StoredProcedures\CRUD\Role" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -134,6 +135,11 @@
     <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Homework_Theme\Homework_Theme_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Role\Role_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
