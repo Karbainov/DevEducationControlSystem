@@ -61,7 +61,8 @@
     <Folder Include="StoredProcedures\CRUD" />
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
-    <Folder Include="StoredProcedures\CRUD\MaterialTag" />
+    <Folder Include="StoredProcedures\CRUD\Material_Tag" />
+    <Folder Include="StoredProcedures\CRUD\Tag" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -99,9 +100,15 @@
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
-    <Build Include="StoredProcedures\CRUD\MaterialTag\MaterialTagCreate.sql" />
-    <Build Include="StoredProcedures\CRUD\MaterialTag\MaterialTagRead.sql" />
-    <Build Include="StoredProcedures\CRUD\MaterialTag\MaterialTagDelete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
