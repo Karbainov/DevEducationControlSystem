@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Group_Update  
+﻿CREATE PROCEDURE [dbo].[Group_Update]  
 	@Id int,
 	@StatusID int,
 	@CourseID int,
@@ -6,7 +6,7 @@
 	@Name nvarchar(30),
 	@StartDate date
 AS  
-	UPDATE [Group] 
+	UPDATE [dbo].[Group] 
 	SET
 	StatusID = @StatusID,
 	CourseID = @CourseID,

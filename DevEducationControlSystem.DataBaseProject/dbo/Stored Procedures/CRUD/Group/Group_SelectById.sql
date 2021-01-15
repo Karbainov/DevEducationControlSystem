@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Group_SelectById 
+﻿CREATE PROCEDURE [dbo].[Group_SelectById]
 	@Id int 
 AS 
-	SELECT * FROM [Group] WHERE Id = @Id
+	SELECT * FROM [dbo].[Group] WHERE Id = @Id

@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE Group_Select  
+﻿CREATE PROCEDURE [dbo].[Group_Select]  
 AS  
-	SELECT * FROM [Group] 
+	SELECT * FROM [dbo].[Group] 

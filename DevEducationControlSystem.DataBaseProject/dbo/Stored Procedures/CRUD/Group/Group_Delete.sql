@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Group_Delete  
+﻿CREATE PROCEDURE [dbo].[Group_Delete] 
 	@Id int  
 AS  
-	DELETE FROM [Group] WHERE Id = @Id
+	DELETE FROM [dbo].[Group] WHERE Id = @Id
