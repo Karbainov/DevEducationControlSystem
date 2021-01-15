@@ -1,10 +1,11 @@
 ﻿CREATE procedure [dbo].[Material_Update]
+@Id int,
 @UserId int,
 @Name nvarchar(100),
 @Message nvarchar(1000),
 @IsDeleted bit,
-@Id int
+@ResourceId int
 as
 update dbo.Material
-set UserID = @UserId, Name = @Name, Message = @Message, IsDeleted = @IsDeleted
+set UserID = @UserId, Name = @Name, Message = @Message, IsDeleted = @IsDeleted, ResourceId = @ResourceId
 where ID = @Id

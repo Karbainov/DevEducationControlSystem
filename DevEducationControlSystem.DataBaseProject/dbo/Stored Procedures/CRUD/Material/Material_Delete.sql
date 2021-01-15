@@ -2,4 +2,4 @@
 @Id int
 AS
 DELETE from dbo.Material
-WHERE ID = @Id
+WHERE Id = @Id
