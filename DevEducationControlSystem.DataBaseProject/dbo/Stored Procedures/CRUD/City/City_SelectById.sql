@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE City_SelectById 
+﻿CREATE PROCEDURE [dbo].[City_SelectById] 
 	@Id int 
 AS 
-	SELECT * FROM [City] WHERE Id = @Id
+	SELECT * FROM [dbo].[City] WHERE Id = @Id

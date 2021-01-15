@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE City_Select  
+﻿CREATE PROCEDURE [dbo].[City_Select]  
 AS  
-	SELECT * FROM [City] 
+	SELECT * FROM [dbo].[City] 
 	

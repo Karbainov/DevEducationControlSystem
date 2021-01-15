@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE City_Delete  
+﻿CREATE PROCEDURE [dbo].[City_Delete]  
 	@Id int  
 AS  
-	DELETE FROM [City] WHERE Id = @Id
+	DELETE FROM [dbo].[City] WHERE Id = @Id

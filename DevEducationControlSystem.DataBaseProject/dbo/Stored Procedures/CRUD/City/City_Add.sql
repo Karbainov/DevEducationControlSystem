@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE City_Add	
+﻿CREATE PROCEDURE [dbo].[City_Add]	
 	@Name nvarchar(100)
 AS
-INSERT [City] VALUES (@Name)
+INSERT [dbo].[City] VALUES (@Name)
 	
