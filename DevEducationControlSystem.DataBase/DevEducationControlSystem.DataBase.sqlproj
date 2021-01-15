@@ -63,6 +63,8 @@
     <Folder Include="StoredProcedures\CRUD\Attendance" />
     <Folder Include="StoredProcedures\CRUD\Feedback" />
     <Folder Include="Foreign Keys" />
+    <Folder Include="StoredProcedures\CRUD\Material_Tag" />
+    <Folder Include="StoredProcedures\CRUD\Tag" />
     <Folder Include="StoredProcedures\CRUD\User_Role" />
     <Folder Include="StoredProcedures\CRUD\UserStatus" />
     <Folder Include="StoredProcedures\CRUD\Role_Privileges" />
@@ -121,6 +123,16 @@
     <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Update.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Update.sql" />
     <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Role_Privileges\Role_Privileges_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Role_Privileges\Role_Privileges_Delete.sql" />

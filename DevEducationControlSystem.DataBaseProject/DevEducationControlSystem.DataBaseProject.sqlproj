@@ -64,6 +64,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD" />
     <Folder Include="dbo\Stored Procedures\CRUD\Role" />
     <Folder Include="dbo\Stored Procedures\CRUD\User_Role" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Tag" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Material_Tag" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -109,5 +111,15 @@
     <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Update.sql" />
   </ItemGroup>
 </Project>
