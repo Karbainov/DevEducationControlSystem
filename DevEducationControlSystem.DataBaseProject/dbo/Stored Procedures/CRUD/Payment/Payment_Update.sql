@@ -2,8 +2,8 @@
 @UserID int,
 @GroupID int,
 @Period int,
-@Sum int,
 @isPaid bit,
+@Sum int,
 @PayDate date
 as
 update [dbo].[Payment]
