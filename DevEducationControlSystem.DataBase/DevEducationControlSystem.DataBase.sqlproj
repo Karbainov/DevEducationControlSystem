@@ -77,6 +77,7 @@
     <Folder Include="StoredProcedures\CRUD\Homework_Theme" />
     <Folder Include="StoredProcedures\CRUD\Role" />
     <Folder Include="StoredProcedures\CRUD\Group" />
+    <Folder Include="StoredProcedures\CRUD\City" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -197,5 +198,10 @@
     <None Include="StoredProcedures\CRUD\Group\Group_Delete.sql" />
     <None Include="StoredProcedures\CRUD\Group\Group_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Homework\Homework_Delete.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Add.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Update.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Delete.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_Select.sql" />
+    <None Include="StoredProcedures\CRUD\City\City_SelectById.sql" />
   </ItemGroup>
 </Project>
