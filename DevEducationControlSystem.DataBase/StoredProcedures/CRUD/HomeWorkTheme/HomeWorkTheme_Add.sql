@@ -1,6 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[HomeWorkThemeAddProcedure]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+﻿CREATE PROCEDURE [dbo].[Homework_Theme_Add] 
+	@HomeworkId int, 
+	@ThemeId int 
+AS 
+INSERT [dbo].[Homework_Theme] (HomeworkID, ThemeID) VALUES (@HomeworkId, @ThemeId)
