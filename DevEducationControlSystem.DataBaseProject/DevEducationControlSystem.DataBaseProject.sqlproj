@@ -69,6 +69,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Theme_Material" />
     <Folder Include="dbo\Stored Procedures\CRUD\Group" />
     <Folder Include="dbo\Stored Procedures\CRUD\Group_Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\City" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -139,5 +140,10 @@
     <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Select.sql" />
     <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_SelectById.sql" />
     <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Update.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Update.sql" />
   </ItemGroup>
 </Project>
