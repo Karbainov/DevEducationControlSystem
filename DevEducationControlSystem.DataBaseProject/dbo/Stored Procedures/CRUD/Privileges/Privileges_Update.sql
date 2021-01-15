@@ -1,9 +1,9 @@
-CREATE PROCEDURE [dbo].[Privileges_Update]  
+﻿CREATE PROCEDURE [dbo].[Privileges_Update]  
 	@Id int,  
 	@name nvarchar(30)
 AS  
 	UPDATE [dbo].[Privileges] 
 	SET  
-		name = @name
+	name = @name
 WHERE  
 	ID=@Id
