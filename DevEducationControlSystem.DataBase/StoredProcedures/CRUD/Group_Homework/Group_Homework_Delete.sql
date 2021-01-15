@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Group_Homework_Delete
+﻿CREATE PROCEDURE [dbo].[Group_Homework_Delete]
 	@Id int
 AS
 	DELETE FROM Group_Homework WHERE ID=@Id

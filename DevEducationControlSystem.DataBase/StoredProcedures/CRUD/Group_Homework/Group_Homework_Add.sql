@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Group_Homework_Add 
+﻿CREATE PROCEDURE [dbo].[Group_Homework_Add]
 	@GroupID int,
 	@HomeworkID int,
 	@StartDate date,
