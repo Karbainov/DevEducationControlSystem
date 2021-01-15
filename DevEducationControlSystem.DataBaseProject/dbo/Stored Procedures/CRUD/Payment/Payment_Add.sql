@@ -7,6 +7,6 @@
 @PayDate date
 AS
 INSERT into [dbo].[Payment]
-(UserId, GroupId, Period, isPaid, Sum, PayDate)
+(UserId, GroupId, [Period], isPaid, [Sum], PayDate)
 VALUES
 (@UserID, @GroupID, @Period, @isPaid, @Sum, @PayDate)

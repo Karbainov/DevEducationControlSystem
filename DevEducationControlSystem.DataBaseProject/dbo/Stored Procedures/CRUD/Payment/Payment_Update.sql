@@ -7,5 +7,5 @@
 @PayDate date
 as
 update [dbo].[Payment]
-set UserId = @UserID, GroupId = @GroupID, Period = @Period, isPaid = @isPaid, Sum = @Sum, PayDate = @PayDate
+set UserId = @UserID, GroupId = @GroupID, [Period] = @Period, isPaid = @isPaid, [Sum] = @Sum, PayDate = @PayDate
 where Id = @ID
