@@ -76,6 +76,7 @@
     <Folder Include="StoredProcedures\CRUD\Homework" />
     <Folder Include="StoredProcedures\CRUD\Homework_Theme" />
     <Folder Include="StoredProcedures\CRUD\Role" />
+    <Folder Include="StoredProcedures\CRUD\Group" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -191,6 +192,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
+    <None Include="StoredProcedures\CRUD\Group\Group_Add.sql" />
+    <None Include="StoredProcedures\CRUD\Group\Group_Update.sql" />
+    <None Include="StoredProcedures\CRUD\Group\Group_Delete.sql" />
+    <None Include="StoredProcedures\CRUD\Group\Group_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Homework\Homework_Delete.sql" />
   </ItemGroup>
 </Project>
