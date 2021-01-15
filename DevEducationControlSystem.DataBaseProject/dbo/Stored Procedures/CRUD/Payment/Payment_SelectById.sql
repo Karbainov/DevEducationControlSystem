@@ -1,4 +1,4 @@
 ﻿CREATE procedure [dbo].[Payment_SelectById]
-@Id int
+@ID int
 as
-select * from [dbo].[Payment] where ID = @Id
+select * from [dbo].[Payment] where Id = @ID

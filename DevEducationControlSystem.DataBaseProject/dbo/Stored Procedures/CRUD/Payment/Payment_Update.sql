@@ -1,5 +1,5 @@
 ﻿CREATE procedure [dbo].[Payment_Update]
-@UserId int,
+@UserID int,
 @GroupID int,
 @Period int,
 @Sum int,
@@ -7,5 +7,5 @@
 @PayDate date
 as
 update [dbo].[Payment]
-set UserID = @UserId, GroupID = @GroupID, Period = @Period, isPaid = @isPaid, Sum = @Sum, PayDate = @PayDate
-where ID = @Id
+set UserId = @UserID, GroupId = @GroupID, Period = @Period, isPaid = @isPaid, Summ = @Sum, PayDate = @PayDate
+where Id = @ID

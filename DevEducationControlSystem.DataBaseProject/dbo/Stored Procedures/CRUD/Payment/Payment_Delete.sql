@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Payment_Delete]
-@Id int
+@ID int
 AS
 DELETE from [dbo].[Payment]
-WHERE ID = @Id
+WHERE Id = @ID

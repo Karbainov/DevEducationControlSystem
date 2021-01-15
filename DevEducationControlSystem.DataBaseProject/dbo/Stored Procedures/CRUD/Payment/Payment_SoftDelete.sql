@@ -1,7 +1,7 @@
 ﻿CREATE procedure [dbo].[Payment_SoftDelete]
 @IsPaid bit,
-@Id int
+@ID int
 as
 update [dbo].[Payment]
 set IsPaid = @IsPaid
-where ID = @Id
+where Id = @ID
