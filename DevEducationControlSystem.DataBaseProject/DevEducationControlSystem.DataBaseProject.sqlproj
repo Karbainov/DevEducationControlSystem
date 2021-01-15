@@ -67,6 +67,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Material_Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Theme_Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Group" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Group_Material" />
     <Folder Include="dbo\Stored Procedures\CRUD\City" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +130,16 @@
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group\Group_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Update.sql" />
     <None Include="dbo\Stored Procedures\CRUD\City\City_Add.sql" />
     <None Include="dbo\Stored Procedures\CRUD\City\City_Delete.sql" />
     <None Include="dbo\Stored Procedures\CRUD\City\City_Select.sql" />
