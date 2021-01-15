@@ -61,6 +61,9 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Stored Procedures\CRUD" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Role" />
+    <Folder Include="dbo\Stored Procedures\CRUD\User_Role" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -96,6 +99,15 @@
     <Build Include="dbo\Tables\Course_Material.sql" />
     <Build Include="dbo\Tables\Material_Tag.sql" />
     <Build Include="dbo\Tables\Theme_Material.sql" />
-    <Build Include="dbo\Stored Procedures\UdaliMenia.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Update.sql" />
   </ItemGroup>
 </Project>
