@@ -1,10 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[Material_Add]
 @UserId int,
+@ResourceId int,
 @Name nvarchar(100),
-@Message nvarchar(1000),
-@ResourceId int
+@Message nvarchar(1000)
 AS
 INSERT into dbo.Material
-(UserID, Name, Message, IsDeleted, ResourceId)
+(UserID, ResourceId, Name, Message, IsDeleted)
 VALUES
-(@UserId, @Name, @Message, '0', @ResourceId)
+(@UserId, @ResourceId, @Name, @Message, '0')
