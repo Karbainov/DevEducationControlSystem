@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Lesson_Add
+﻿CREATE PROCEDURE [dbo].[Lesson_Add]
 	@GroupID int,
 	@Name nvarchar(30),
 	@LessonDate date,

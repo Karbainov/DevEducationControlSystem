@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Lesson_Delete
+﻿CREATE PROCEDURE [dbo].[Lesson_Delete]
 	@Id int
 AS
 	DELETE FROM Lesson WHERE ID=@Id

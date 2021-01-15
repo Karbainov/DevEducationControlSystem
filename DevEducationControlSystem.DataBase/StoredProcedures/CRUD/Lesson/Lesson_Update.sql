@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Lesson_Update
+﻿CREATE PROCEDURE [dbo].[Lesson_Update]
 	@Id int,
 	@GroupID int,
 	@Name nvarchar(30),
