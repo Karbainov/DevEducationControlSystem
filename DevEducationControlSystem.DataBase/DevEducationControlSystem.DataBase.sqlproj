@@ -109,6 +109,7 @@
     <Build Include="StoredProcedures\CRUD\Tag\Tag_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Tag\Tag_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Tag\Tag_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
