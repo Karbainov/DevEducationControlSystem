@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Group_Material_SelectById 
+﻿CREATE PROCEDURE [dbo].[Group_Material_SelectById] 
 	@Id int 
 AS 
-	SELECT * FROM [Group_Material] WHERE Id = @Id
+	SELECT * FROM [dbo].[Group_Material] WHERE Id = @Id
