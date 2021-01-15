@@ -2,4 +2,4 @@
 @Id int
 as
 select * from dbo.GroupStatus as G
-where G.ID = @Id
+where G.Id = @Id

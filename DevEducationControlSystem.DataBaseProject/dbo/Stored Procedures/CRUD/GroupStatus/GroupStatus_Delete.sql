@@ -2,4 +2,4 @@
 @Id int
 as
 delete dbo.GroupStatus
-where ID = @Id
+where Id = @Id

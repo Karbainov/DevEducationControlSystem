@@ -4,4 +4,4 @@
 as
 update dbo.GroupStatus
 set Name = @Name
-where ID = @Id
+where Id = @Id
