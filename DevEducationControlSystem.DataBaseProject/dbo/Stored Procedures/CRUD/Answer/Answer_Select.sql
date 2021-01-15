@@ -1,0 +1,3 @@
+﻿CREATE PROCEDURE Answer_Select
+AS
+SELECT * FROM Answer
