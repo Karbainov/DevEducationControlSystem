@@ -67,6 +67,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Material_Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Theme_Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\GroupStatus" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -127,5 +128,10 @@
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Update.sql" />
   </ItemGroup>
 </Project>
