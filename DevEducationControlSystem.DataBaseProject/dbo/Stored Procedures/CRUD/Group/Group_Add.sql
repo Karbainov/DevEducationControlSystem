@@ -1,13 +1,11 @@
 ﻿CREATE PROCEDURE Group_Add
-	@Id int,
 	@StatusID int,
 	@CourseID int,
 	@CityID int,
 	@Name nvarchar(100),
 	@StartDate date
 AS
-INSERT [Group] VALUES (@Id,
-	@StatusID,
+INSERT [Group] VALUES (@StatusID,
 	@CourseID,
 	@CityID,
 	@Name,
