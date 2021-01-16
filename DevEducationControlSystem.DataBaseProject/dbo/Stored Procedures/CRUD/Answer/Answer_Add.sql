@@ -1,9 +1,9 @@
-﻿CREATE PROCEDURE Answer_Add
-	@UserID int,
-	@HomeWorkID int,
+﻿CREATE PROCEDURE [dbo].[Answer_Add]
+	@UserId int,
+	@HomeWorkId int,
     @Date Datetime,
     @Message NVARCHAR(1000),
-	@StatusID int
+	@StatusId int
 AS
-INSERT Answer (UserID, [HomeWorkID], [Date], [Message], StatusID)
-VALUES(@UserID, @HomeWorkID, @Date, @Message, @StatusID)
+INSERT [dbo].[Answer] (UserId, [HomeWorkId], [Date], [Message], StatusId)
+VALUES(@UserId, @HomeWorkId, @Date, @Message, @StatusId)

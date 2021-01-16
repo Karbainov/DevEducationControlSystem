@@ -1,9 +1,8 @@
-﻿CREATE PROCEDURE AnswerStatus_Update
-	@ID int,
+﻿CREATE PROCEDURE [dbo].[AnswerStatus_Update]
+	@Id int,
 	@Name NVARCHAR(100)
 AS
-UPDATE AnswerStatus 
+UPDATE [dbo].[AnswerStatus] 
 SET 
 [Name] = @Name
-WHERE AnswerStatus.ID = @ID
-GO
+WHERE [dbo].[AnswerStatus].Id = @Id

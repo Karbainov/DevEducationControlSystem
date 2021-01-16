@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE AnswerStatus_Add
+﻿CREATE PROCEDURE [dbo].[AnswerStatus_Add]
     @Name NVARCHAR(100)
 AS
-INSERT AnswerStatus ([Name])
+INSERT [dbo].[AnswerStatus] ([Name])
 VALUES(@Name)

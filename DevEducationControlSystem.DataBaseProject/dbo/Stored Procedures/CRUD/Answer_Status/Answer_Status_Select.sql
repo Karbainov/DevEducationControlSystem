@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE AnswerStatus_Select
+﻿CREATE PROCEDURE [dbo].[AnswerStatus_Select]
 AS
-SELECT * FROM AnswerStatus
+SELECT * FROM [dbo].[AnswerStatus]

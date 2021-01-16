@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE AnswerStatus_Delete 
-    @ID int
+﻿CREATE PROCEDURE [dbo].[AnswerStatus_Delete]
+    @Id int
     As
-    DELETE AnswerStatus WHERE AnswerStatus.ID = @ID
+    DELETE [dbo].[AnswerStatus] WHERE [dbo].[AnswerStatus].Id = @Id

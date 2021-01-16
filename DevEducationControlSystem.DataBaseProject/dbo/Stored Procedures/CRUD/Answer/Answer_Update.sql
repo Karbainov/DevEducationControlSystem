@@ -1,16 +1,16 @@
-﻿CREATE PROCEDURE Answer_Update
-	@ID int,
-	@UserID int,
-	@HomeWorkID int,
+﻿CREATE PROCEDURE [dbo].[Answer_Update]
+	@Id int,
+	@UserId int,
+	@HomeWorkId int,
     @Date Datetime,
     @Message NVARCHAR(1000),
-	@StatusID int
+	@StatusId int
 AS
-UPDATE Answer 
+UPDATE [dbo].[Answer] 
 SET 
-UserID = @UserID, 
-[HomeWorkID] = @HomeWorkID,
+UserId = @UserId, 
+[HomeWorkId] = @HomeWorkId,
 [Date] = @Date,
 [Message] = @Message,
-StatusID = @StatusID
-WHERE Answer.ID = @ID
+StatusId = @StatusId
+WHERE [dbo].[Answer].Id = @Id

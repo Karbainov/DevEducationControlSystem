@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Answer_SelectByID
-    @ID int
+﻿CREATE PROCEDURE [dbo].[Answer_SelectById]
+    @Id int
     As
-    SELECT * FROM Answer WHERE Answer.ID = @ID
+    SELECT * FROM [dbo].[Answer] WHERE [dbo].[Answer].Id = @Id
