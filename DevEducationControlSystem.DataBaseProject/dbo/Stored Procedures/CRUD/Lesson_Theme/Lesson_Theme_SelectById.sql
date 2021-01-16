@@ -1,4 +1,4 @@
 CREATE procedure [dbo].[Lesson_Theme_SelectById]
-@ID int
+@Id int
 as
-select * from [dbo].[Lesson_Theme] where Id = @ID
+select * from [dbo].[Lesson_Theme] where Id = @Id
