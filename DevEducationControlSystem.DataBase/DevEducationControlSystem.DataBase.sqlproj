@@ -70,6 +70,7 @@
     <Folder Include="StoredProcedures\CRUD\Role_Privileges" />
     <Folder Include="StoredProcedures\CRUD\Privileges" />
     <Folder Include="StoredProcedures\CRUD\User_Group" />
+	  
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="StoredProcedures\CRUD\Material" />
     <Folder Include="StoredProcedures\CRUD\GroupStatus" />
@@ -132,7 +133,11 @@
     <Build Include="StoredProcedures\CRUD\Tag\Tag_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Material_Tag\Material_Tag_Update.sql" />
     <Build Include="StoredProcedures\CRUD\Tag\Tag_Update.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Add.sql" />
+	<Build Include="StoredProcedures\CRUD\User_Group\User_Group_Add.sql" />
+	<Build Include="StoredProcedures\CRUD\User_Group\User_Group_Delete.sql" />
+	<Build Include="StoredProcedures\CRUD\User_Group\User_Group_SelectById.sql" />
+	<Build Include="StoredProcedures\CRUD\User_Group\User_Group_Select.sql" />
+	<Build Include="StoredProcedures\CRUD\User_Group\User_Group_Update.sql" />
     <Build Include="StoredProcedures\CRUD\Role_Privileges\Role_Privileges_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Role_Privileges\Role_Privileges_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Role_Privileges\Role_Privileges_Select.sql" />
@@ -153,10 +158,7 @@
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_Update.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Delete.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_SelectById.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Select.sql" />
-    <Build Include="StoredProcedures\CRUD\User_Group\User_Group_Update.sql" />
+    
     <Build Include="StoredProcedures\CRUD\Material\Material_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Material\Material_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Material\Material_Select.sql" />
