@@ -68,6 +68,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Material_Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Theme_Material" />
     <Folder Include="dbo\Stored Procedures\CRUD\Group" />
+    <Folder Include="dbo\Stored Procedures\CRUD\User" />
+    <Folder Include="dbo\Stored Procedures\CRUD\UserStatus" />
     <Folder Include="dbo\Stored Procedures\CRUD\Group_Material" />
     <Folder Include="dbo\Stored Procedures\CRUD\City" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Theme" />
