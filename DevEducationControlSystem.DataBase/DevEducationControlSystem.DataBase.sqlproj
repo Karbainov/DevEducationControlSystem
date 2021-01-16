@@ -83,7 +83,6 @@
     <Folder Include="StoredProcedures\CRUD\Group_Material" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
     <Build Include="Tables\GroupStatus.sql" />
     <Build Include="Tables\Homework_Course.sql" />
     <Build Include="Tables\Homework_Theme.sql" />
@@ -147,8 +146,8 @@
     <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Add.sql" />
     <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Select.sql" />
-    <Build Include="StoredProcedures\CRUD\UserStatus\User_Status_SelectById.sql" />
-    <Build Include="StoredProcedures\CRUD\UserStatus\User_Status_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Update.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_SelectById.sql" />
