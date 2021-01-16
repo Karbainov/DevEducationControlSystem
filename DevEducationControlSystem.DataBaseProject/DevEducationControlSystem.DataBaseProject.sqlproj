@@ -72,8 +72,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\UserStatus" />
     <Folder Include="dbo\Stored Procedures\CRUD\Group_Material" />
 	<Folder Include="dbo\Stored Procedures\CRUD\User_Group" />
+	<Folder Include="dbo\Stored Procedures\CRUD\Attendanсe" />  
 	<Folder Include="dbo\Stored Procedures\CRUD\Feedback" />
-	<Folder Include="dbo\Stored Procedures\CRUD\Attendanse" />  
     <Folder Include="dbo\Stored Procedures\CRUD\City" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Theme" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Material" />
