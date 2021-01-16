@@ -1,0 +1,3 @@
+﻿CREATE PROCEDURE User_Select
+AS  
+	SELECT * FROM [User]
