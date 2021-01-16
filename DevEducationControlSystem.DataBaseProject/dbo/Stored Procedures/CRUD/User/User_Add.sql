@@ -11,7 +11,6 @@
 	@ProfileImage nvarchar(1000)
 AS
 INSERT [dbo].[User] VALUES (
-	@Id, 
 	@StatusID, 
 	@FirstName, 
 	@LastName, 
