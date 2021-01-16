@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE User_Select
+﻿CREATE PROCEDURE [dbo].[User_Select]
 AS  
 	SELECT * FROM [User]
