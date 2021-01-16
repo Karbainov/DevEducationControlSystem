@@ -73,6 +73,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Group_Material" />
 	<Folder Include="dbo\Stored Procedures\CRUD\User_Group" />
 	<Folder Include="dbo\Stored Procedures\CRUD\Feedback" />
+	<Folder Include="dbo\Stored Procedures\CRUD\Attendanse" />  
     <Folder Include="dbo\Stored Procedures\CRUD\City" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Theme" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Material" />
@@ -117,6 +118,11 @@
     <Build Include="dbo\Tables\Course_Material.sql" />
     <Build Include="dbo\Tables\Material_Tag.sql" />
     <Build Include="dbo\Tables\Theme_Material.sql" />
+	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Add.sql" />
+	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Delete.sql" />
+	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_SelectById.sql" />
+	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Select.sql" />
+	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Delete.sql" />
