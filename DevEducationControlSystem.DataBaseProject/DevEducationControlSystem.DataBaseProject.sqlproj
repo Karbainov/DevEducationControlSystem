@@ -72,6 +72,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\City" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Theme" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Privileges\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Role_Privileges\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -157,5 +159,15 @@
     <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Update.sql" />
   </ItemGroup>
 </Project>
