@@ -147,8 +147,8 @@
     <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Add.sql" />
     <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Select.sql" />
-    <Build Include="StoredProcedures\CRUD\UserStatus\User_Status_SelectById.sql" />
-    <Build Include="StoredProcedures\CRUD\UserStatus\User_Status_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\UserStatus\UserStatus_Update.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_Add.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Privileges\Privileges_SelectById.sql" />
