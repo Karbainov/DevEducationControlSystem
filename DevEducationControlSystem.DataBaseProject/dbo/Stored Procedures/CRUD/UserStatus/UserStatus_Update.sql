@@ -2,7 +2,7 @@
 	@Id int,
 	@Name nvarchar(100)
 AS
-UPDATE UserStatus 
+UPDATE [dbo].[UserStatus]
 	SET 
 	Name = @Name
 WHERE ID = @Id
