@@ -83,7 +83,6 @@
     <Folder Include="StoredProcedures\CRUD\Group_Material" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
     <Build Include="Tables\GroupStatus.sql" />
     <Build Include="Tables\Homework_Course.sql" />
     <Build Include="Tables\Homework_Theme.sql" />
