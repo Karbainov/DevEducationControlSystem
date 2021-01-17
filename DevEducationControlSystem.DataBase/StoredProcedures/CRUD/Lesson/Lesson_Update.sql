@@ -12,4 +12,4 @@ AS
 		LessonDate = @LessonDate,
 		Comments = @Comments
 WHERE
-	ID=@Id
+	Id=@Id

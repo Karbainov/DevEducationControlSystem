@@ -59,11 +59,10 @@
     <Folder Include="Tables" />
     <Folder Include="StoredProcedures" />
     <Folder Include="StoredProcedures\CRUD" />
-    <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
+    <Folder Include="StoredProcedures\CRUD\Lesson" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
     <Build Include="Tables\GroupStatus.sql" />
     <Build Include="Tables\Homework_Course.sql" />
     <Build Include="Tables\Homework_Theme.sql" />
@@ -98,6 +97,11 @@
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Lesson_SelectById]
+﻿CREATE PROCEDURE [dbo].[Lesson_Select]
 AS
 	SELECT * FROM Lesson
 GO
