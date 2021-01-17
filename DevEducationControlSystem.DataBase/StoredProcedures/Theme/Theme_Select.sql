@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE Theme_Select
+﻿CREATE PROCEDURE [dbo].[Theme_Select]
 AS  
 	SELECT * FROM [Theme]

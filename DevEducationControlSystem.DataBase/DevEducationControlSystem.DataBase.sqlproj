@@ -62,7 +62,6 @@
     <Folder Include="StoredProcedures\CRUD\User" />
     <Folder Include="Foreign Keys" />
     <Folder Include="StoredProcedures\Theme" />
-    <Folder Include="StoredProcedures\CRUD\ThemeTag" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\CRUD\User\Procedure1.sql" />
@@ -105,11 +104,6 @@
     <Build Include="StoredProcedures\Theme\Theme_Select.sql" />
     <Build Include="StoredProcedures\Theme\Theme_SelectBuId.sql" />
     <Build Include="StoredProcedures\Theme\Theme_Update.sql" />
-    <Build Include="StoredProcedures\CRUD\ThemeTag\Add_Theme_Tag.sql" />
-    <Build Include="StoredProcedures\CRUD\ThemeTag\Delete_Theme_Tag.sql" />
-    <Build Include="StoredProcedures\CRUD\ThemeTag\Select_Theme_Tag.sql" />
-    <Build Include="StoredProcedures\CRUD\ThemeTag\Theme_Tag_SelectByID.sql" />
-    <Build Include="StoredProcedures\CRUD\ThemeTag\Theme_Tag_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
