@@ -67,7 +67,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Material_Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Payment" />
-	<Folder Include="dbo\Stored Procedures\CRUD\Lesson_Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Lesson_Theme" />
     <Folder Include="dbo\Stored Procedures\CRUD\Theme_Material" />
     <Folder Include="dbo\Stored Procedures\CRUD\Attendance\" />
     <Folder Include="dbo\Stored Procedures\CRUD\Material" />
@@ -88,6 +88,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Answer_Status" />
     <Folder Include="dbo\Stored Procedures\CRUD\User\" />
     <Folder Include="dbo\Stored Procedures\CRUD\Attendance\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Homework" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Homework_Theme" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -158,11 +160,11 @@
     <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_Update.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Add.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Delete.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Select.sql" />	  
-	<Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_SelectById.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_SelectById.sql" />
@@ -299,5 +301,16 @@
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_SelectByID.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SoftDelete.sql" />
   </ItemGroup>
 </Project>
