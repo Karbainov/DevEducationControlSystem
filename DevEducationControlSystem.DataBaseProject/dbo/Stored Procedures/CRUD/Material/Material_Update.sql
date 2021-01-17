@@ -7,5 +7,5 @@
 @IsDeleted bit
 as
 update dbo.Material
-set UserID = @UserId, ResourceId = @ResourceId, Name = @Name, Message = @Message, IsDeleted = @IsDeleted
-where ID = @Id
+set UserId = @UserId, ResourceId = @ResourceId, Name = @Name, Message = @Message, IsDeleted = @IsDeleted
+where Id = @Id
