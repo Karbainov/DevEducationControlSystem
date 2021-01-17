@@ -76,8 +76,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\User" />
     <Folder Include="dbo\Stored Procedures\CRUD\UserStatus" />
     <Folder Include="dbo\Stored Procedures\CRUD\Group_Material" />
-	<Folder Include="dbo\Stored Procedures\CRUD\User_Group" />
-	<Folder Include="dbo\Stored Procedures\CRUD\Feedback" />
+    <Folder Include="dbo\Stored Procedures\CRUD\User_Group" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Feedback" />
     <Folder Include="dbo\Stored Procedures\CRUD\City" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Theme" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course_Material" />
@@ -87,6 +87,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Answer" />
     <Folder Include="dbo\Stored Procedures\CRUD\Answer_Status" />
     <Folder Include="dbo\Stored Procedures\CRUD\User\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Attendance\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -127,11 +128,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Update.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Add.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Delete.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_SelectById.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Select.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Delete.sql" />
@@ -152,11 +148,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Update.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Add.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Delete.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_SelectById.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Select.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Select.sql" />
@@ -248,16 +239,16 @@
     <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Update.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Add.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Delete.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_SelectById.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Select.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Update.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User\User_Add.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User\User_Delete.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User\User_Select.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User\User_SelectById.sql" />
-	<Build Include="dbo\Stored Procedures\CRUD\User\User_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Select.sql" />

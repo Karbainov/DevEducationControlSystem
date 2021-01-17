@@ -1,4 +1,4 @@
-CREATE PROCEDURE [dbo].[Payment_Delete]
+CREATE PROCEDURE [dbo].[Lesson_Theme_Delete]
 @Id int
 AS
 DELETE from [dbo].[Payment]
