@@ -1,6 +1,6 @@
 ﻿CREATE procedure [dbo].[GroupStatus_Update]
-@Name nvarchar(100),
-@Id int
+@Id int,
+@Name nvarchar(100)
 as
 update dbo.GroupStatus
 set Name = @Name
