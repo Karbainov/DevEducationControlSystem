@@ -104,7 +104,7 @@
     <Build Include="StoredProcedures\CRUD\Theme\Theme_SelectBuId.sql" />
     <Build Include="StoredProcedures\CRUD\Theme\Theme_Update.sql" />
     <Build Include="StoredProcedures\CRUD\ThemeTag\Theme_Tag_Add.sql" />
-    <Build Include="StoredProcedures\CRUD\ThemeTag\heme_Tag_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\ThemeTag\Theme_Tag_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\ThemeTag\Theme_Tag_Select.sql" />
     <Build Include="StoredProcedures\CRUD\ThemeTag\Theme_Tag_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\ThemeTag\Theme_Tag_Update.sql" />
