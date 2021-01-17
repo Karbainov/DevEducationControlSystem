@@ -12,4 +12,4 @@ AS
 		StartDate = @StartDate,
 		DeadLine = @DeadLine
 WHERE
-	ID=@Id
+	Id=@Id
