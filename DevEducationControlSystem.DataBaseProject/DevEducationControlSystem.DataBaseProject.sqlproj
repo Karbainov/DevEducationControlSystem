@@ -169,6 +169,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Update.sql" />
-    <Build Include="dbo\Stored Procedures\AnswerUpdate.sql" />
+    <Build Include="dbo\Stored Procedures\SendNewTryToAnswer.sql" />
   </ItemGroup>
 </Project>
