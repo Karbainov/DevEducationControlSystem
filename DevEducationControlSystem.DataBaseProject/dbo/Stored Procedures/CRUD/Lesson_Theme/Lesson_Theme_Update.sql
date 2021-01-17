@@ -1,8 +1,8 @@
 CREATE procedure [dbo].[Lesson_Theme_Update]
 @Id int,
-@LessonID int,
-@ThemeID int
+@LessonId int,
+@ThemeId int
 as
 update [dbo].[Lesson_Theme]
-set LessonId = @LessonID,ThemeId = @Theme_ID
+set LessonId = @LessonId,ThemeId = @ThemeId
 where Id = @Id
