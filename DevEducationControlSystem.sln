@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevEducationControlSystem.DataBase", "DevEducationControlSystem.DataBase\DevEducationControlSystem.DataBase.sqlproj", "{29823E90-BA7A-4814-A096-3AE7018C075E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{D939AD1A-9D9B-441E-A2D6-15573430F731}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevEducationControlSystem.DataBaseProject", "DevEducationControlSystem.DataBaseProject\DevEducationControlSystem.DataBaseProject.sqlproj", "{F66016D1-DEF5-4D5A-BF35-E2A26CF21D99}"
@@ -15,12 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{29823E90-BA7A-4814-A096-3AE7018C075E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29823E90-BA7A-4814-A096-3AE7018C075E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29823E90-BA7A-4814-A096-3AE7018C075E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{29823E90-BA7A-4814-A096-3AE7018C075E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29823E90-BA7A-4814-A096-3AE7018C075E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29823E90-BA7A-4814-A096-3AE7018C075E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{F66016D1-DEF5-4D5A-BF35-E2A26CF21D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F66016D1-DEF5-4D5A-BF35-E2A26CF21D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F66016D1-DEF5-4D5A-BF35-E2A26CF21D99}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
