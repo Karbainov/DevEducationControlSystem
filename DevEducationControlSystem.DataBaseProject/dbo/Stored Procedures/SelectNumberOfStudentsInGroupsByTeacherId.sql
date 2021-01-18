@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectNumberOfStudentsByTeacherId]
+﻿CREATE PROCEDURE [dbo].[SelectNumberOfStudentsInGroupsByTeacherId]
 		@UserId int
 AS
 select G.Id as GroupId, G.Name as GroupName, NumberOfStudents from [Group] as G inner join
