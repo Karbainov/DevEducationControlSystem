@@ -10,6 +10,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public List<UdaliMeniaDTO> Select()
         {
             List<UdaliMeniaDTO> udaliMeniaDTOs = new List<UdaliMeniaDTO>();
+
             //Тут как-то заполняется
             return udaliMeniaDTOs;
         }
