@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO.Base
 {
-    class Course_ThemeDTO
+    public class Course_ThemeDTO
     {
+        public int courseId { get; set; }
+        public int themeId { get; set; }
     }
 }
