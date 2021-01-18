@@ -312,5 +312,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SoftDelete.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllTagsOnCourse.sql" />
   </ItemGroup>
 </Project>
