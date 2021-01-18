@@ -6,7 +6,18 @@ namespace DevEducationControlSystem.DBL.DTO.Base
 {
     public class Course_ThemeDTO
     {
-        public int courseId { get; set; }
-        public int themeId { get; set; }
+        public int Id { get; set; }
+        public int CourseId { get; set; }
+        public int ThemeId { get; set; }
+        public Course_ThemeDTO()
+        {
+
+        }
+        public Course_ThemeDTO(Course_ThemeDTO dto)
+        {
+            this.Id = dto.Id;
+            this.CourseId = dto.CourseId;
+            this.ThemeId = dto.ThemeId;
+        }
     }
 }
