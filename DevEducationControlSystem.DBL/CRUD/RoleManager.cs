@@ -18,10 +18,44 @@ namespace DevEducationControlSystem.DBL.CRUD
         public List<RoleDTO> Select()
         {
             var RoleDTOs = new List<RoleDTO>();
-            //Тут как-то заполняется
 
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
+            string sqlExpression = "EXEC Role_Select";
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+
+            try
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows) // если есть данные
+                    {
+                        while (reader.Read()) // построчно считываем данные
+                        {
+                            var RoleDTO = new RoleDTO();
+
+                            RoleDTO.Id = (int)reader["Id"];
+                            RoleDTO.Name = (string)reader["Name"];
+
+                            RoleDTOs.Add(RoleDTO);
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
             return RoleDTOs;
+
         }
 
         public RoleDTO SelectById(int id)
@@ -29,7 +63,15 @@ namespace DevEducationControlSystem.DBL.CRUD
             var RoleDTO = new RoleDTO();
             //Тут как-то заполняется
 
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
             string sqlExpression = "EXEC Role_SelectById " + id;
             SqlCommand command = new SqlCommand(sqlExpression, connection);

@@ -48,9 +48,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                             User_RoleDTOs.Add(User_RoleDTO);
                         }
-
                     }
-
                }
             }
             finally
@@ -72,7 +70,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             catch
             {
                 connection.Close();
-                throw new Exception("Connection ne open");
+                throw new Exception("DataBase connection failed");
             }
 
             string sqlExpression = "EXEC User_Role_SelectById " + id;

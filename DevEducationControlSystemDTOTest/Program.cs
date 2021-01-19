@@ -10,14 +10,14 @@ namespace DevEducationControlSystemDTOTest
     {
         static void Main(string[] args)
         {
-            var manager = new User_RoleManager();
+            var manager = new RoleManager();
 
-            //var dto = new Course_ThemeDTO(manager.SelectById(1));
-            var dto = new List<User_RoleDTO>(manager.Select());
+            //var dto = new RoleDTO(manager.SelectById(2));
+            var dto = new List<RoleDTO>(manager.Select());
 
             foreach (var d in dto)
             {
-                Console.WriteLine(d.UserId + " " + d.RoleId);
+                Console.WriteLine(d.Id + " " + d.Name);
             }
         }
     }
