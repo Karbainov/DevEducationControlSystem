@@ -35,8 +35,8 @@ namespace DevEducationControlSystem.DBL.CRUD
             try
             {
                 using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows) // если есть данные
+            {
+                if (reader.HasRows) // если есть данные
                     {
                         while (reader.Read()) // построчно считываем данные
                         {
@@ -51,7 +51,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                     }
 
-                }
+               }
             }
             finally
             {
