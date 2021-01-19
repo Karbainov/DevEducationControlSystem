@@ -1,10 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data.SqlClient;
+using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    class Use_RoleManager
+    public class User_RoleManager
     {
+        private SqlConnection connection;
+
+        public User_RoleManager()
+        {
+            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
+            connection = new SqlConnection(connectionString);
+        }
+        public List<User_RoleDTO> Select()
+        {
+            var User_RoleDTOs = new List<User_RoleDTO>();
+            //Тут как-то заполняется
+
+
+            return User_RoleDTOs;
+        }
+
+        public User_RoleDTO SelectById(int id)
+        {
+            var User_RoleDTO = new User_RoleDTO();
+            //Тут как-то заполняется
+
+            connection.Open();
+
+            string sqlExpression = "EXEC Course_Theme_SelectById " + id;
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            //command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            SqlDataReader reader = command.ExecuteReader();
+            try
+            {
+                reader.Read();
+
+                User_RoleDTO.Id = (int)reader["Id"];
+                User_RoleDTO.UserId = (int)reader["UserId"];
+                User_RoleDTO.RoleId = (int)reader["RoleId"];
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                reader.Close();
+                connection.Close();
+            }
+            
+
+            return User_RoleDTO;
+        }
     }
 }
