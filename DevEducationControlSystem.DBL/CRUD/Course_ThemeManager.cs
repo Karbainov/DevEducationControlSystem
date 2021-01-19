@@ -18,8 +18,27 @@ namespace DevEducationControlSystem.DBL.CRUD
         public List<Course_ThemeDTO> Select()
         {
             var course_ThemeDTOs = new List<Course_ThemeDTO>();
-            //Тут как-то заполняется
             
+            connection.Open();
+
+            string sqlExpression = "EXEC Course_Theme_Select";
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows) // если есть данные
+            {
+                while (reader.Read()) // построчно считываем данные
+                {
+                    var course_ThemeDTO = new Course_ThemeDTO();
+
+                    course_ThemeDTO.Id = (int)reader["Id"];
+                    course_ThemeDTO.CourseId = (int)reader["CourseId"];
+                    course_ThemeDTO.ThemeId = (int)reader["ThemeId"];
+
+                    course_ThemeDTOs.Add(course_ThemeDTO);
+                }
+            }
 
             return course_ThemeDTOs;
         }
@@ -39,7 +58,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             reader.Read();
 
-            course_ThemeDTO.CourseId = (int)reader["Id"];
+            course_ThemeDTO.Id = (int)reader["Id"];
             course_ThemeDTO.CourseId = (int)reader["CourseId"];
             course_ThemeDTO.ThemeId = (int)reader["ThemeId"];
 
