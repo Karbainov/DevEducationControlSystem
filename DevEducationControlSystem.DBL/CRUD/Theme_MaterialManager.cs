@@ -31,8 +31,8 @@ namespace DevEducationControlSystem.DBL.CRUD
                 while (reader.Read())
                 {
                     int id = (int)reader["Id"];
-                    int themeId = (int)reader["themeId"];
-                    int materialId = (int)reader["materialId"];
+                    int themeId = (int)reader["ThemeId"];
+                    int materialId = (int)reader["MaterialId"];
 
                     themesMaterial.Add(new Theme_MaterialDTO(id, themeId, materialId));
                 }
@@ -62,9 +62,9 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 while (reader.Read())
                 {
-                    int id2 = (int)reader["id"];
-                    int themeId = (int)reader["themeId"];
-                    int materialId = (int)reader["materialId"];
+                    int id2 = (int)reader["Id"];
+                    int themeId = (int)reader["ThemeId"];
+                    int materialId = (int)reader["MaterialId"];
 
                     themesMaterial = new Theme_MaterialDTO(id2, themeId, materialId);
                 }
