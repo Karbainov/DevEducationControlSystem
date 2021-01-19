@@ -336,5 +336,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
     <Build Include="dbo\Stored Procedures\SelectPrecentOfPresentsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectHomeworksAndFeedbackByUserId.sql" />
   </ItemGroup>
 </Project>
