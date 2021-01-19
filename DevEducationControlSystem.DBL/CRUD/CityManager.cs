@@ -11,7 +11,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public SqlConnection ConnectToDB()
         {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEduTestSystem;User Id = devEd; Password = qqq!11";
+            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }
