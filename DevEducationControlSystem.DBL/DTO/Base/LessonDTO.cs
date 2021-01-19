@@ -9,7 +9,7 @@ namespace DevEducationControlSystem.DBL.DTO.Base
         public int Id { get; set; }
         public int GroupId { get; set; }
         public string Name { get; set; }
-        public string LessonDate { get; set; }
+        public DateTime LessonDate { get; set; }
         public string Comments { get; set; }
 
         public LessonDTO()
@@ -21,7 +21,7 @@ namespace DevEducationControlSystem.DBL.DTO.Base
             int id,
             int groupId,
             string name,
-            string lessonDate,
+            DateTime lessonDate,
             string comments)
         {
             Id = id;
