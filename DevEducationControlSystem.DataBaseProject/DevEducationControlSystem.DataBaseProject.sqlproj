@@ -232,6 +232,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SendNewTryToAnswer.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Select.sql" />
