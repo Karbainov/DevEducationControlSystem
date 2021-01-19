@@ -40,6 +40,9 @@ namespace DevEducationControlSystem.DBL.CRUD
                 }
             }
 
+            reader.Close();
+            connection.Close();
+
             return course_ThemeDTOs;
         }
 

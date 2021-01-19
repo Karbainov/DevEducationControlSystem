@@ -40,6 +40,9 @@ namespace DevEducationControlSystem.DBL.CRUD
                 }
             }
 
+            reader.Close();
+            connection.Close();
+
             return course_MaterialDTOs;
         }
 
@@ -59,6 +62,9 @@ namespace DevEducationControlSystem.DBL.CRUD
             course_MaterialDTO.Id = (int)reader["Id"];
             course_MaterialDTO.CourseId = (int)reader["CourseId"];
             course_MaterialDTO.MaterialId = (int)reader["MaterialId"];
+
+            reader.Close();
+            connection.Close();
 
             return course_MaterialDTO;
         }

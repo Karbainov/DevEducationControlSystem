@@ -9,14 +9,14 @@ namespace CourseThemeAndCourseMaterialTestApp
     {
         static void Main(string[] args)
         {
-            var manager = new Course_ThemeManager();
+            var manager = new Course_MaterialManager();
 
             //var dto = new Course_ThemeDTO(manager.SelectById(1));
-            var dto = new List<Course_ThemeDTO>(manager.Select());
+            var dto = new List<Course_MaterialDTO>(manager.Select());
             
             foreach (var d in dto)
             {
-                Console.WriteLine(d.CourseId + " " + d.ThemeId);
+                Console.WriteLine(d.CourseId + " " + d.MaterialId);
             }
         }
     }
