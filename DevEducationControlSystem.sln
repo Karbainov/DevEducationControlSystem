@@ -7,8 +7,6 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevEducationControlSystem.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevEducationControlSystem.DBL", "DevEducationControlSystem.DBL\DevEducationControlSystem.DBL.csproj", "{D70F306E-2879-438A-88CA-80B44151FB84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevEducationControlSystemDTOTest", "DevEducationControlSystemDTOTest\DevEducationControlSystemDTOTest.csproj", "{AF0E70ED-760A-48AB-A964-5E2611BC8629}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,10 +23,6 @@ Global
 		{D70F306E-2879-438A-88CA-80B44151FB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D70F306E-2879-438A-88CA-80B44151FB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D70F306E-2879-438A-88CA-80B44151FB84}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF0E70ED-760A-48AB-A964-5E2611BC8629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF0E70ED-760A-48AB-A964-5E2611BC8629}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF0E70ED-760A-48AB-A964-5E2611BC8629}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF0E70ED-760A-48AB-A964-5E2611BC8629}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
