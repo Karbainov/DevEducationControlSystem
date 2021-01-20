@@ -3,7 +3,7 @@
 as
 select
 
-	[Homework].Id as HomeworkId,
+	[Homework].Id as homeworkId,
 	[Homework].Name as homework,
 	[Homework].Description as [description],
 	[Homework].IsSolutionRequired as IsSolutionRequired,
@@ -16,3 +16,5 @@ select
 	left join [Resource] on Resource.Id = Homework.ResourceId
 
 	WHERE [Group].Id = @GroupId
+
+	order by homeworkId asc
