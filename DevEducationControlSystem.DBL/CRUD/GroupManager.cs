@@ -18,30 +18,45 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             List<GroupDTO> groups = new List<GroupDTO>();
             SqlConnection connection = ConnectToDB();
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
             string sqlExpression = "Group_Select";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            SqlDataReader reader = command.ExecuteReader();
-
-
-            if (reader.HasRows) 
+            try
             {
-                while (reader.Read()) 
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    int id = (int)reader["Id"];
-                    int statusId = (int)reader["StatusId"];
-                    int courseId = (int)reader["CourseId"];
-                    int cityId = (int)reader["CityId"];
-                    string name = (string)reader["Name"];
-                    DateTime startDate = (DateTime)reader["StartDate"];
-                    groups.Add(new GroupDTO(id, statusId, courseId, cityId, name, startDate));
+
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int id = (int)reader["Id"];
+                            int statusId = (int)reader["StatusId"];
+                            int courseId = (int)reader["CourseId"];
+                            int cityId = (int)reader["CityId"];
+                            string name = (string)reader["Name"];
+                            DateTime startDate = (DateTime)reader["StartDate"];
+                            groups.Add(new GroupDTO(id, statusId, courseId, cityId, name, startDate));
+                        }
+                    }
                 }
             }
-            reader.Close();
-            connection.Close();
+            finally
+            {
+                connection.Close();
+
+            }
             return groups;
         }
 
@@ -49,7 +64,15 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             GroupDTO group = new GroupDTO();
             SqlConnection connection = ConnectToDB();
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
             string sqlExpression = "Group_SelectById";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
@@ -57,25 +80,31 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             SqlParameter idParameter = new SqlParameter("@Id", id);
             command.Parameters.Add(idParameter);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    int groupId = (int)reader["Id"];
-                    int statusId = (int)reader["StatusId"];
-                    int courseId = (int)reader["CourseId"];
-                    int cityId = (int)reader["CityId"];
-                    string name = (string)reader["Name"];
-                    DateTime startDate = (DateTime)reader["StartDate"];
-                    group = new GroupDTO(groupId, statusId, courseId, cityId, name, startDate);
+
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int groupId = (int)reader["Id"];
+                            int statusId = (int)reader["StatusId"];
+                            int courseId = (int)reader["CourseId"];
+                            int cityId = (int)reader["CityId"];
+                            string name = (string)reader["Name"];
+                            DateTime startDate = (DateTime)reader["StartDate"];
+                            group = new GroupDTO(groupId, statusId, courseId, cityId, name, startDate);
+                        }
+                    }
                 }
             }
-            reader.Close();           
-            connection.Close();
+            finally
+            {
+                connection.Close();
+            }
             return group;
         }
     }
