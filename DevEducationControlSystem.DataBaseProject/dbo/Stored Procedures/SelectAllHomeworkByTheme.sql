@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetAllHomeworkByTheme]
+﻿CREATE PROCEDURE [dbo].[SelectAllHomeworkByTheme]
 	@ThemeId int
 as
 
@@ -6,7 +6,7 @@ select
 
 	Homework.Id as homeworkId,
 	Homework.Name as homework,
-	Homework.Description as [description],
+	Homework.Description as description,
 	[Resource].Links as links,
 	[Resource].Images as images
 
