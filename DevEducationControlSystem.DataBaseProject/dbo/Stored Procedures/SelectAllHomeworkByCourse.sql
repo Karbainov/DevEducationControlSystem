@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetAllHomeworkByCourse]
+﻿CREATE PROCEDURE [dbo].[SelectAllHomeworkByCourse]
 	@CourseId int
 as
 
@@ -15,4 +15,4 @@ select
 	Left join Course on Course.Id = Homework_Course.CourseId
 	left join [Resource] on Resource.Id = Homework.ResourceId
 		
-	where Course.id = 2
+	where Course.id = @CourseId
