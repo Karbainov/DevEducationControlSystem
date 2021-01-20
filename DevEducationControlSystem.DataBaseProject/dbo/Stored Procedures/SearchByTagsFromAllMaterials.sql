@@ -6,7 +6,7 @@
 AS
 BEGIN
 
-SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images
+SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, [Material name], AllGroupMaterials.MaterialId
 FROM
 (SELECT ResourceId, GroupId, Material.Id AS MaterialId, Material.[Name] AS [Material name], Material.[Message] FROM
 	[Material] 
