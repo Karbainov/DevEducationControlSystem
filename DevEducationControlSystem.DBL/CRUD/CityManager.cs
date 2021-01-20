@@ -19,26 +19,38 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             List<CityDTO> cities = new List<CityDTO>();
             SqlConnection connection = ConnectToDB();
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
             string sqlExpression = "City_Select";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            SqlDataReader reader = command.ExecuteReader();
-
-
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    int id = (int)reader["Id"];
-                    string name = (string)reader["Name"];
-                    cities.Add(new CityDTO(id, name));
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int id = (int)reader["Id"];
+                            string name = (string)reader["Name"];
+                            cities.Add(new CityDTO(id, name));
+                        }
+                    }
                 }
             }
-            reader.Close();
+            finally
+            {
             connection.Close();
+            }
             return cities;
         }
 
@@ -46,7 +58,15 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             CityDTO city = new CityDTO();
             SqlConnection connection = ConnectToDB();
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
             string sqlExpression = "City_SelectById";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
@@ -54,21 +74,25 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             SqlParameter idParameter = new SqlParameter("@Id", id);
             command.Parameters.Add(idParameter);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    int cityId = (int)reader["Id"];
-                    string name = (string)reader["Name"];
-                    city = new CityDTO(cityId, name);
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int cityId = (int)reader["Id"];
+                            string name = (string)reader["Name"];
+                            city = new CityDTO(cityId, name);
+                        }
+                    }
                 }
             }
-            reader.Close();
+            finally
+            {
             connection.Close();
+            }
             return city;
         }
     }
