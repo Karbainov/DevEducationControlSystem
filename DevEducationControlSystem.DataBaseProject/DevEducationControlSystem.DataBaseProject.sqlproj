@@ -344,6 +344,6 @@
     <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
     <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
-    <Build Include="dbo\Stored Procedures\SearchByTagsFromAllMaterials.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
   </ItemGroup>
 </Project>
