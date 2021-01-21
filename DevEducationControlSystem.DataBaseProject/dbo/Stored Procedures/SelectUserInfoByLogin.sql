@@ -4,7 +4,7 @@
 AS
 BEGIN
    SELECT [User].Id,[User].FirstName, [User].LastName, [User].BirthDate, [User].Email, [User].Phone, [User].ProfileImage,
-   [Role].Name, [Group].Name, [Course].Name, [City].Name  
+   [Role].Name AS RoleName, [Group].Name AS GroupName, [Course].Name AS CourseName, [City].Name  As CityName
    FROM [User]
  
 
