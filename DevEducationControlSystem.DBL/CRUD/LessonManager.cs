@@ -41,5 +41,39 @@ namespace DevEducationControlSystem.DBL.CRUD
             connection.Close();
             return lessons;
         }
+
+        public LessonDTO SelectById(int id)
+        {
+            var lesson = new LessonDTO();
+            SqlConnection connection = ConnectToBD();
+            connection.Open();
+
+            string sqlExpression = "Lesson_SelectById";
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            SqlParameter idParameter = new SqlParameter("@Id", id);
+            command.Parameters.Add(idParameter);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    int _id = (int)reader["Id"];
+                    int groupId = (int)reader["GroupId"];
+                    string name = (string)reader["Name"];
+                    DateTime lessonDate = (DateTime)reader["LessonDate"];
+                    string comments = (string)reader["Comments"];
+
+                    lesson = new LessonDTO(_id, groupId, name, lessonDate, comments);
+                }
+            }
+            reader.Close();
+            connection.Close();
+            return lesson;
+        }
+
     }
 }
