@@ -4,16 +4,16 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO.Base
 {
-    public class Course_MaterialDTO
+    public class Course_ThemelDTO
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
         public int MaterialId { get; set; }
-        public Course_MaterialDTO()
+        public Course_ThemelDTO()
         {
 
         }
-        public Course_MaterialDTO(Course_MaterialDTO dto)
+        public Course_ThemelDTO(Course_ThemelDTO dto)
         {
             this.Id = dto.Id;
             this.CourseId = dto.CourseId;

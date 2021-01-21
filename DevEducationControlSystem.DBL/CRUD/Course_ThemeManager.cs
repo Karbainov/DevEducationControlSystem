@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
+using System.Data;
+using Dapper;
 using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
@@ -9,40 +11,22 @@ namespace DevEducationControlSystem.DBL.CRUD
     public class Course_ThemeManager
     {
         private SqlConnection connection;
-
+        string _connectionString;
         public Course_ThemeManager()
         {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(connectionString);
+            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
+            connection = new SqlConnection(_connectionString);
         }
-        public List<Course_ThemeDTO> Select()
+        public List<Course_ThemelDTO> Select(int courseId, string themeId)
         {
-            var course_ThemeDTOs = new List<Course_ThemeDTO>();
-            
-            connection.Open();
-
-            string sqlExpression = "EXEC Course_Theme_Select";
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            if (reader.HasRows) // если есть данные
+            var course_ThemeDTOs = new List<Course_ThemelDTO>();
+            string expr = "[Course_Material_Select]";
+            var value = new { CourseId = courseId, ThemeId = themeId };
+            using (var connection = new SqlConnection(_connectionString))
             {
-                while (reader.Read()) // построчно считываем данные
-                {
-                    var course_ThemeDTO = new Course_ThemeDTO();
-
-                    course_ThemeDTO.Id = (int)reader["Id"];
-                    course_ThemeDTO.CourseId = (int)reader["CourseId"];
-                    course_ThemeDTO.ThemeId = (int)reader["ThemeId"];
-
-                    course_ThemeDTOs.Add(course_ThemeDTO);
-                }
+                course_ThemeDTOs = connection.Query<Course_ThemelDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+                //materialsByTag.ForEach(r => Console.WriteLine(r.DuckType + " " + r.ID));
             }
-
-            reader.Close();
-            connection.Close();
-
             return course_ThemeDTOs;
         }
 
@@ -69,6 +53,33 @@ namespace DevEducationControlSystem.DBL.CRUD
             connection.Close();
 
             return course_ThemeDTO;
+        }
+        public void Add(int courseId, int materialId)
+        {
+            string expr = "[Course_Material_Add]";
+            var value = new { CourseId = courseId, MaterialId = materialId };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void Delete(int id)
+        {
+            string expr = "[Course_Material_Delete]";
+            var value = new { Id = id };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void Update(int id)
+        {
+            string expr = "[Course_Material_Delete]";
+            var value = new { Id = id };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }
