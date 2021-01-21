@@ -22,7 +22,15 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             SqlConnection connection = GetConnection();
 
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("Connection failed");
+            }
 
             string sqlExpression = "Homework_Select";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
@@ -58,7 +66,15 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             SqlConnection connection = GetConnection();
 
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("Connection failed");
+            }
 
             string sqlExpression = "Homework_SelectById";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
