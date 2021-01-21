@@ -6,7 +6,7 @@ using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    public class HomeworkManager
+    public class Homework_ThemeManager
     {
        
         private static SqlConnection GetConnection()
@@ -16,15 +16,23 @@ namespace DevEducationControlSystem.DBL.CRUD
             return connection;
         }
        
-        public List<HomeworkDTO> Select()
+        public List<Homework_ThemeDTO> Select()
         {
-            List <HomeworkDTO> homeworks = new List<HomeworkDTO>();
+            List <Homework_ThemeDTO> homeworks_themes = new List<Homework_ThemeDTO>();
 
             SqlConnection connection = GetConnection();
 
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("Connection failed");
+            }
 
-            string sqlExpression = "Homework_Select";
+            string sqlExpression = "Homework_Theme_Select";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -36,29 +44,33 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
                     
                     int Id = (int)reader["Id"];
-                    int ResourceId = (int)reader["ResourceId"];
-                    string Name = (string)reader["Name"];
-                    string Description = (string)reader["Description"];
-                    string IsDeleted = (string)reader["IsDeleted"];
-                    string IsSolutionRequired = (string)reader["IsSolutionRequired"];
-                   
-                    homeworks.Add(new HomeworkDTO(Id, ResourceId, Name, Description, IsDeleted, IsSolutionRequired));
+                    int HomeworkId = (int)reader["HomeworkId"];
+                    int ThemeId = (int)reader["ThemeId"];
+                    homeworks_themes.Add(new Homework_ThemeDTO(Id, HomeworkId, ThemeId));
                 }
             }
 
             reader.Close();
             connection.Close();
 
-            return homeworks;
+            return homeworks_themes;
         }
 
-        public HomeworkDTO SelectById(int id)
+        public Homework_ThemeDTO SelectById(int id)
         {
-            HomeworkDTO homework = new HomeworkDTO();
+            Homework_ThemeDTO homework_theme = new Homework_ThemeDTO();
 
             SqlConnection connection = GetConnection();
 
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("Connection failed");
+            }
 
             string sqlExpression = "Homework_SelectById";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
@@ -74,19 +86,16 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
 
                     int Id = (int)reader["Id"];
-                    int ResourceId = (int)reader["ResourceId"];
-                    string Name = (string)reader["Name"];
-                    string Description = (string)reader["Description"];
-                    string IsDeleted = (string)reader["IsDeleted"];
-                    string IsSolutionRequired = (string)reader["IsSolutionRequired"];
+                    int HomeworkId = (int)reader["HomeworkId"];
+                    int ThemeId = (int)reader["ThemeId"];
 
-                    homework = new HomeworkDTO(Id, ResourceId, Name, Description, IsDeleted, IsSolutionRequired);
+                    homework_theme = new Homework_ThemeDTO(Id, HomeworkId, ThemeId);
                 }
             }
 
             reader.Close();
             connection.Close();
-            return homework;
+            return homework_theme;
         }
     }
 }
