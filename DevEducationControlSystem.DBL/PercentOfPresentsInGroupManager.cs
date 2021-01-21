@@ -20,8 +20,8 @@ namespace DevEducationControlSystem.DBL
         {
             List<UserPercentOfPresentsDTO> usersPercents = new List<UserPercentOfPresentsDTO>();
 
-            string expr = "[Group_Delete]";
-            var value = new { Id = id };
+            string expr = "[SelectPercentOfPresentsByGroupId]";
+            var value = new { GroupId = id };
 
             using (var connection = ConnectToDB())
             {
