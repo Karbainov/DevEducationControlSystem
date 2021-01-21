@@ -7,7 +7,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevEducationControlSystem.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevEducationControlSystem.DBL", "DevEducationControlSystem.DBL\DevEducationControlSystem.DBL.csproj", "{D70F306E-2879-438A-88CA-80B44151FB84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseThemeAndCourseMaterialTestApp", "CourseThemeAndCourseMaterialTestApp\CourseThemeAndCourseMaterialTestApp.csproj", "{610E3802-80DA-420E-97AC-45E35792E69C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleForTests", "CourseThemeAndCourseMaterialTestApp\ConsoleForTests.csproj", "{610E3802-80DA-420E-97AC-45E35792E69C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
