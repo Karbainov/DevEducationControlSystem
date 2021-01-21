@@ -18,27 +18,43 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var lessons = new List<LessonDTO>();
             SqlConnection connection = ConnectToBD();
-            connection.Open();
+            
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
             string sqlExpression = "Lesson_Select";
             var command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    int id = (int)reader["Id"];
-                    int groupId = (int)reader["GroupId"];
-                    string name = (string)reader["Name"];
-                    DateTime lessonDate = (DateTime)reader["LessonDate"];
-                    string comments = (string)reader["Comments"];
-                    lessons.Add(new LessonDTO(id, groupId, name, lessonDate, comments));
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int id = (int)reader["Id"];
+                            int groupId = (int)reader["GroupId"];
+                            string name = (string)reader["Name"];
+                            DateTime lessonDate = (DateTime)reader["LessonDate"];
+                            string comments = (string)reader["Comments"];
+                            lessons.Add(new LessonDTO(id, groupId, name, lessonDate, comments));
+                        }
+                    }
+                    reader.Close();
                 }
             }
-            reader.Close();
-            connection.Close();
+            finally
+            {
+                connection.Close();
+            }
             return lessons;
         }
 
@@ -46,7 +62,15 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var lesson = new LessonDTO();
             SqlConnection connection = ConnectToBD();
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
             string sqlExpression = "Lesson_SelectById";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
@@ -55,23 +79,29 @@ namespace DevEducationControlSystem.DBL.CRUD
             SqlParameter idParameter = new SqlParameter("@Id", id);
             command.Parameters.Add(idParameter);
 
-            SqlDataReader reader = command.ExecuteReader();
-
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    int _id = (int)reader["Id"];
-                    int groupId = (int)reader["GroupId"];
-                    string name = (string)reader["Name"];
-                    DateTime lessonDate = (DateTime)reader["LessonDate"];
-                    string comments = (string)reader["Comments"];
-
-                    lesson = new LessonDTO(_id, groupId, name, lessonDate, comments);
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int _id = (int)reader["Id"];
+                            int groupId = (int)reader["GroupId"];
+                            string name = (string)reader["Name"];
+                            DateTime lessonDate = (DateTime)reader["LessonDate"];
+                            string comments = (string)reader["Comments"];
+                            lesson = new LessonDTO(_id, groupId, name, lessonDate, comments);
+                        }
+                    }
+                    reader.Close();
                 }
             }
-            reader.Close();
-            connection.Close();
+            finally
+            {
+                connection.Close();
+            }
             return lesson;
         }
 
