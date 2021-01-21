@@ -17,8 +17,7 @@ namespace DevEducationControlSystem.DBL
         public AllGroupMaterialsByTagAndUserId_Manager()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            _expr = "[GetAllGroupMaterialsByTagAndUserId]";
-            
+            _expr = "[GetAllGroupMaterialsByTagAndUserId]";  
         }
 
         public List<AllGroupMaterialsByTagAndUserIdDTO> Get(int userId, string tagName)

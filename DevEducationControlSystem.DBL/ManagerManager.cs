@@ -4,8 +4,8 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL
 {
-    public class CollegeManager: AdminManager
+    public class ManagerManager: AdminManager
     {
-
+        
     }
 }
