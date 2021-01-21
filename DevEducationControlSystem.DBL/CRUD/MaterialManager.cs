@@ -66,7 +66,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("Failed to connect");
             }
 
-            string sqlExpression = "Material_Select";
+            string sqlExpression = "Material_SelectById";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             SqlParameter idParam = new SqlParameter("@Id", Id);
