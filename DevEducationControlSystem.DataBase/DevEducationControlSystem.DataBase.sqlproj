@@ -59,9 +59,6 @@
     <Folder Include="Tables" />
     <Folder Include="StoredProcedures" />
     <Folder Include="StoredProcedures\CRUD" />
-    <Folder Include="StoredProcedures\CRUD\User" />
-    <Folder Include="StoredProcedures\CRUD\Attendance" />
-    <Folder Include="StoredProcedures\CRUD\Feedback" />
     <Folder Include="Foreign Keys" />
     <Folder Include="StoredProcedures\CRUD\Theme" />
     <Folder Include="StoredProcedures\CRUD\ThemeTag" />
@@ -83,6 +80,8 @@
     <Folder Include="StoredProcedures\CRUD\Group" />
     <Folder Include="StoredProcedures\CRUD\City" />
     <Folder Include="StoredProcedures\CRUD\Group_Material" />
+    <Folder Include="StoredProcedures\CRUD\Lesson" />
+    <Folder Include="StoredProcedures\CRUD\Group_Homework" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\GroupStatus.sql" />
@@ -118,11 +117,6 @@
     <Build Include="Tables\Payment.sql" />
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\Role_Privileges.sql" />
-    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Add.sql" />
-    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Delete.sql" />
-    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_SelectById.sql" />
-    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Select.sql" />
-    <Build Include="StoredProcedures\CRUD\Attendance\Attendance_Update.sql" />
     <Build Include="Tables\Theme_Tag.sql" />
     <Build Include="StoredProcedures\CRUD\Theme\Theme_Delete.sql" />
     <Build Include="StoredProcedures\CRUD\Theme\Theme_Add.sql" />
@@ -214,23 +208,18 @@
     <Build Include="StoredProcedures\CRUD\Feedback\Feedback_SelectById.sql" />
     <Build Include="StoredProcedures\CRUD\Feedback\Feedback_Select.sql" />
     <Build Include="StoredProcedures\CRUD\Feedback\Feedback_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="StoredProcedures\CRUD\Group_Homework\Group_Homework_Add.sql" />
+    <Build Include="StoredProcedures\CRUD\Group_Homework\Group_Homework_Delete.sql" />
+    <Build Include="StoredProcedures\CRUD\Group_Homework\Group_Homework_Select.sql" />
+    <Build Include="StoredProcedures\CRUD\Group_Homework\Group_Homework_SelectById.sql" />
+    <Build Include="StoredProcedures\CRUD\Group_Homework\Group_Homework_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
-    <None Include="StoredProcedures\CRUD\Group\Group_Add.sql" />
-    <None Include="StoredProcedures\CRUD\Group\Group_Update.sql" />
-    <None Include="StoredProcedures\CRUD\Group\Group_Delete.sql" />
-    <None Include="StoredProcedures\CRUD\Group\Group_Select.sql" />
-    <Build Include="StoredProcedures\CRUD\Homework\Homework_Delete.sql" />
-    <None Include="StoredProcedures\CRUD\City\City_Add.sql" />
-    <None Include="StoredProcedures\CRUD\City\City_Update.sql" />
-    <None Include="StoredProcedures\CRUD\City\City_Delete.sql" />
-    <None Include="StoredProcedures\CRUD\City\City_Select.sql" />
-    <None Include="StoredProcedures\CRUD\City\City_SelectById.sql" />
-    <None Include="StoredProcedures\CRUD\Group_Material\Group_Material_Add.sql" />
-    <None Include="StoredProcedures\CRUD\Group_Material\Group_Material_Delete.sql" />
-    <None Include="StoredProcedures\CRUD\Group_Material\Group_Material_Update.sql" />
-    <None Include="StoredProcedures\CRUD\Group_Material\Group_Material_Select.sql" />
-    <None Include="StoredProcedures\CRUD\Group_Material\Group_Material_SelectById.sql" />
   </ItemGroup>
 </Project>
