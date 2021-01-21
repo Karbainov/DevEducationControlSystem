@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE  SearchByTagsFromAllMaterials
 
 @GroupId int,
-@TagName int
+@TagName nvarchar(100)
 
 AS
 BEGIN
