@@ -355,5 +355,6 @@
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
     <Build Include="dbo\Stored Procedures\SearchByTagsFromAllMaterials.sql" />
     <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
+    <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
   </ItemGroup>
 </Project>
