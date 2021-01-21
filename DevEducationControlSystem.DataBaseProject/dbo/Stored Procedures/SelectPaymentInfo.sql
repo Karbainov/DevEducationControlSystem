@@ -1,10 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[SelectPaymentInfo]
-	 @Login nvarchar(15)
+	 @UserId nvarchar(15)
 
 AS
+
 BEGIN
 
-   SELECT [Payment].Period, [Payment].IsPaid, [Payment].Sum, [Payment].PayDate FROM Payment
-   WHERE UserId =(SELECT Id From [User] WHERE [User].Login IN (@Login));
+   SELECT [Payment].Period, [Payment].IsPaid, [Payment].Sum, [Payment].PayDate, [User].[ContractNumber] FROM Payment
+   LEFT JOIN [User] on [User].[Id] = [Payment].[UserId]
+   WHERE UserId =@UserId;
 
 END
