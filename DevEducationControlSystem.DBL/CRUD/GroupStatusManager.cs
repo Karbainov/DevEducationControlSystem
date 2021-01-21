@@ -57,6 +57,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
             catch
             {
+                connection.Close();
                 throw new Exception("Failed to connect");
             }
 
