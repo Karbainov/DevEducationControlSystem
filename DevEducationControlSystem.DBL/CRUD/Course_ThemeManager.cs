@@ -20,7 +20,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public List<Course_ThemelDTO> Select(int courseId, string themeId)
         {
             var course_ThemeDTOs = new List<Course_ThemelDTO>();
-            string expr = "[Course_Material_Select]";
+            string expr = "[Course_Theme_Select]";
             var value = new { CourseId = courseId, ThemeId = themeId };
             using (var connection = new SqlConnection(_connectionString))
             {
