@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE  SearchByTagsFromAllMaterials
 
 @GroupId int,
-@TagId int
+@TagName int
 
 AS
 BEGIN
@@ -23,5 +23,5 @@ JOIN
 JOIN
 [Tag] ON [Material_Tag].TagId=Tag.Id
 
-WHERE GroupId=@GroupId AND TagId=@TagId--переделать под текст - добавить поиск TagId по тексту тега
+WHERE GroupId=@GroupId AND Tag.[Name]=@TagName
 END
