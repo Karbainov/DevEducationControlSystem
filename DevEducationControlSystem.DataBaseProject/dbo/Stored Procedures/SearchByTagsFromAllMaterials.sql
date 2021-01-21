@@ -6,9 +6,9 @@
 AS
 BEGIN
 
-SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, [Material name], AllGroupMaterials.MaterialId
+SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, [Material_name], AllGroupMaterials.MaterialId
 FROM
-(SELECT ResourceId, GroupId, Material.Id AS MaterialId, Material.[Name] AS [Material name], Material.[Message] FROM
+(SELECT ResourceId, GroupId, Material.Id AS MaterialId, Material.[Name] AS [Material_name], Material.[Message] FROM
 	[Material] 
 	JOIN
 	[Group_Material] ON [Material].Id = Group_Material.MaterialId
