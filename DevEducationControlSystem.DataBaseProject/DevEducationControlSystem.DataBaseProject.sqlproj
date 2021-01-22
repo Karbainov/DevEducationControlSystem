@@ -314,7 +314,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_SelectByID.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Update.sql" />
-    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByUserId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Select.sql" />
@@ -336,10 +336,14 @@
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
     <Build Include="dbo\Stored Procedures\SelectPrecentOfPresentsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
-    <Build Include="dbo\Stored Procedures\SearchByTagsFromAllMaterials.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
   </ItemGroup>
 </Project>
