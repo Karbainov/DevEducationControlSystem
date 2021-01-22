@@ -2,19 +2,30 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
+using Dapper;
+using System.Data;
 using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class HomeworkManager
     {
-       
+        
+
         private static SqlConnection GetConnection()
         {
             string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }
+
+        //private void UseConnectionQueryForStoredProcedure()
+        //{
+        //    using (var connection = new SqlConnection(GetConnection().ConnectionString))
+        //    {
+        //        connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+        //    }
+        //}
        
         public List<HomeworkDTO> Select()
         {
@@ -53,14 +64,12 @@ namespace DevEducationControlSystem.DBL.CRUD
                     homeworks.Add(new HomeworkDTO(Id, ResourceId, Name, Description, IsDeleted, IsSolutionRequired));
                 }
             }
-
             reader.Close();
             connection.Close();
-
             return homeworks;
         }
 
-        public HomeworkDTO SelectById(int id)
+        public HomeworkDTO SelectById (int id)
         {
             HomeworkDTO homework = new HomeworkDTO();
 
@@ -99,10 +108,53 @@ namespace DevEducationControlSystem.DBL.CRUD
                     homework = new HomeworkDTO(Id, ResourceId, Name, Description, IsDeleted, IsSolutionRequired);
                 }
             }
-
             reader.Close();
             connection.Close();
             return homework;
+        }
+
+        public void Add (int resourceId, string name, string description, string isSolutionRequired)
+        {
+            string sqlExpression = "[Homework_Add]";
+            var values = new { ResourceId = resourceId, Name = name, Description = description, IsSolutionRequired = isSolutionRequired };
+
+            using (var connection = new SqlConnection(GetConnection().ConnectionString))
+            {
+                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete (int id)
+        {
+            string sqlExpression = "[Homework_Delete]";
+            var values = new { Id = id };
+
+            using (var connection = new SqlConnection(GetConnection().ConnectionString))
+            {
+                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void SoftDelete(int id)
+        {
+            string sqlExpression = "[Homework_SoftDelete]";
+            var values = new { Id = id };
+
+            using (var connection = new SqlConnection(GetConnection().ConnectionString))
+            {
+                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update (int id, int resourceId, string name, string description, string isDeleted,  string isSolutionRequired)
+        {
+            string sqlExpression = "[Homework_Update]";
+            var values = new { Id = id, ResourceId = resourceId, Name = name, Description = description, IsDeleted = isDeleted, IsSolutionRequired = isSolutionRequired };
+
+            using (var connection = new SqlConnection(GetConnection().ConnectionString))
+            {
+                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }
