@@ -8,4 +8,4 @@ AS
 	RoleID = @RoleId, 
 	PrivilegesID = @PrivilegesID 
 WHERE 
-	ID=@Id
+	Id = @Id
