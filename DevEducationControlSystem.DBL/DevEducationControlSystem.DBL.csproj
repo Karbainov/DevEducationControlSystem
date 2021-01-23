@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AdminManager.cs" />
+    <Compile Remove="AllGroupMaterialsByTagAndUserId_Manager.cs" />
     <Compile Remove="Class1.cs" />
+    <Compile Remove="ManagerManager.cs" />
   </ItemGroup>
 
   <ItemGroup>

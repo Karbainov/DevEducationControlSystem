@@ -6,11 +6,8 @@
 AS
 BEGIN
 
-DECLARE @GroupId int;
-	SET @GroupId = (SELECT GroupId FROM User_Group WHERE UserId=@UserId);
-
 DECLARE @var table (ResourceId int, MaterialId int, Links nvarchar(1000), Images nvarchar(1000))
-INSERT @var EXEC GetAllGroupMaterialsByUserId 17
+INSERT @var EXEC GetAllGroupMaterialsByUserId @UserId
 
 SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, AllGroupMaterials.MaterialId
 FROM

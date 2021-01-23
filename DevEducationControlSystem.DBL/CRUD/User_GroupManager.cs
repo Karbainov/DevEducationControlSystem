@@ -35,5 +35,27 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
+        public void DeleteUserFromGroupByUserId(int userId)
+        {
+            string expr = "[DeleteUserFromGroupByUserId]";
+
+            var value = new { UserId = userId };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void ReplaceUserToAnotheGroupByUserId(int userId, int groupId)
+        {
+            string expr = "[ReplaceUserToAnotherGroupByUserId]";
+
+            var value = new { UserId = userId, GroupId = groupId };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
     }
 }
