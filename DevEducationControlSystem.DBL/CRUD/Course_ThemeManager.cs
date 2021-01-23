@@ -17,15 +17,14 @@ namespace DevEducationControlSystem.DBL.CRUD
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
             connection = new SqlConnection(_connectionString);
         }
-        public List<Course_ThemelDTO> Select(int courseId, string themeId)
+        public List<Course_ThemeDTO> Select(int courseId, string themeId)
         {
-            var course_ThemeDTOs = new List<Course_ThemelDTO>();
+            var course_ThemeDTOs = new List<Course_ThemeDTO>();
             string expr = "[Course_Theme_Select]";
             var value = new { CourseId = courseId, ThemeId = themeId };
             using (var connection = new SqlConnection(_connectionString))
             {
-                course_ThemeDTOs = connection.Query<Course_ThemelDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
-                //materialsByTag.ForEach(r => Console.WriteLine(r.DuckType + " " + r.ID));
+                course_ThemeDTOs = connection.Query<Course_ThemeDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
             }
             return course_ThemeDTOs;
         }

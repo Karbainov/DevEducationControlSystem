@@ -18,22 +18,21 @@ namespace DevEducationControlSystem.DBL.CRUD
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
             connection = new SqlConnection(_connectionString);
         }
-        public List<Course_ThemelDTO> Select(int courseId, string materialId)
+        public List<Course_MaterialDTO> Select(int courseId, string materialId)
         {
-            var course_MaterialDTOs = new List<Course_ThemelDTO>();
+            var course_MaterialDTOs = new List<Course_MaterialDTO>();
             string expr = "[Course_Material_Select]";
             var value = new { CourseId = courseId, MaterialId = materialId };
             using (var connection = new SqlConnection(_connectionString))
             {
-                course_MaterialDTOs = connection.Query<Course_ThemelDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
-                //materialsByTag.ForEach(r => Console.WriteLine(r.DuckType + " " + r.ID));
+                course_MaterialDTOs = connection.Query<Course_MaterialDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
             }
             return course_MaterialDTOs;
         }
 
-        public DTO.Base.Course_ThemelDTO SelectById(int id)
+        public Course_MaterialDTO SelectById(int id)
         {
-            var course_MaterialDTO = new DTO.Base.Course_ThemelDTO();
+            var course_MaterialDTO = new DTO.Base.Course_MaterialDTO();
 
             connection.Open();
 
@@ -55,7 +54,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
         public void Add(int courseId, int themeId)
         {
-            string expr = "[Course_Theme_Add]";
+            string expr = "[Course_Material_Add]";
             var value = new { UserId = courseId, GroupId = themeId };
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -64,7 +63,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
         public void Delete(int id)
         {
-            string expr = "[Course_Theme_Delete]";
+            string expr = "[Course_Material_Delete]";
             var value = new { Id = id };
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -73,7 +72,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
         public void Update(int id)
         {
-            string expr = "[Course_Theme_Delete]";
+            string expr = "[Course_Material_Delete]";
             var value = new { Id = id };
             using (var connection = new SqlConnection(_connectionString))
             {
