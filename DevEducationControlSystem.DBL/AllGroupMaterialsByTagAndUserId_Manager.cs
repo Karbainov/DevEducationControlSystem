@@ -20,13 +20,13 @@ namespace DevEducationControlSystem.DBL
             _expr = "[GetAllGroupMaterialsByTagAndUserId]";  
         }
 
-        public List<AllGroupMaterialsByTagAndUserIdDTO> Get(int userId, string tagName)
+        public List<Course_MaterialDTO> Get(int userId, string tagName)
         {
-            List<AllGroupMaterialsByTagAndUserIdDTO> materialsByTag = new List<AllGroupMaterialsByTagAndUserIdDTO>();
+            List<Course_MaterialDTO> materialsByTag = new List<Course_MaterialDTO>();
             var value = new { UserId = userId, TagName = tagName };
             using (var connection = new SqlConnection(_connectionString))
             {
-                materialsByTag = connection.Query<AllGroupMaterialsByTagAndUserIdDTO>(_expr, value, commandType: CommandType.StoredProcedure).AsList<AllGroupMaterialsByTagAndUserIdDTO>();
+                materialsByTag = connection.Query<AllGroupMaterialsByTagAndUserIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<AllGroupMaterialsByTagAndUserIdDTO>();
                 //materialsByTag.ForEach(r => Console.WriteLine(r.DuckType + " " + r.ID));
             }
             return materialsByTag;
