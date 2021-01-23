@@ -17,3 +17,5 @@ select
 	left join [Resource] on [Resource].Id = Homework.ResourceId
 
 	where Theme.id = @ThemeId
+
+	order by homeworkId asc
