@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using DevEducationControlSystem.DBL.DTO.Base;
+using Dapper;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -61,7 +63,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("Failed to connect");
             }
 
-            string SqlExpression = "GroupStatus_Select";
+            string SqlExpression = "GroupStatus_SelectById";
             SqlCommand command = new SqlCommand(SqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             SqlParameter idParam = new SqlParameter("@Id", Id);
@@ -81,6 +83,36 @@ namespace DevEducationControlSystem.DBL.CRUD
             reader.Close();
             connection.Close();
             return groupStatus;
+        }
+
+        public void Add(string name)
+        {
+            string expr = "[GroupStatus_Add]";
+            var value = new { Name = name };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[GroupStatus_Delete]";
+            var value = new { Id = id };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[GroupStatus_Update]";
+            var value = new { Id = id, Name = name };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }
