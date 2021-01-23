@@ -12,6 +12,11 @@ namespace DevEducationControlSystem.DBL.DTO.Base
 
         public int PrivilegesId { get; set; }
 
+        public Role_PrivilegesDTO()
+        {
+
+        }
+
         public Role_PrivilegesDTO(Role_PrivilegesDTO dto)
         {
             this.Id = dto.Id;
