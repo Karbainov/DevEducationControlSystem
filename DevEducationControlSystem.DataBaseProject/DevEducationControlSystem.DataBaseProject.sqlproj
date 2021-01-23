@@ -327,7 +327,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Update.sql" />
     <Build Include="dbo\Tables\Theme_Tag.sql" />
-    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByUserId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Delete.sql" />
@@ -357,14 +356,14 @@
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
-    <Build Include="dbo\Stored Procedures\SearchByTagsFromAllMaterials.sql" />
     <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
     <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
     <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
     <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
-	<Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
-	<Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
-	<Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
-	<Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCourseThemesFeedback.sql" />
   </ItemGroup>
 </Project>
