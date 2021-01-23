@@ -3,6 +3,8 @@ using DevEducationControlSystem.DBL.DTO.Base;
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
+using Dapper;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -92,5 +94,44 @@ namespace DevEducationControlSystem.DBL.CRUD
             return material;
         }
 
+        public void Add(string name)
+        {
+            string expr = "[Material_Add]";
+            var value = new { Name = name };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Material_Delete]";
+            var value = new { Id = id };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void SoftDelete(int id)
+        {
+            string expr = "[Material_SoftDelete]";
+            var value = new { Id = id };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[Material_Update]";
+            var value = new { Id = id, Name = name };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
