@@ -87,9 +87,13 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Answer" />
     <Folder Include="dbo\Stored Procedures\CRUD\Answer_Status" />
     <Folder Include="dbo\Stored Procedures\CRUD\User\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Group_Homework" />
     <Folder Include="dbo\Stored Procedures\CRUD\Attendance\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Theme_Tag" />
     <Folder Include="dbo\Stored Procedures\CRUD\Homework" />
     <Folder Include="dbo\Stored Procedures\CRUD\Homework_Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Lesson" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -130,6 +134,11 @@
     <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Delete.sql" />
@@ -145,6 +154,11 @@
     <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_SelectById.sql" />
@@ -220,6 +234,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SendNewTryToAnswer.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Select.sql" />
@@ -301,6 +316,24 @@
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_SelectByID.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_SelectBuId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Update.sql" />
+    <Build Include="dbo\Tables\Theme_Tag.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Select.sql" />
@@ -313,5 +346,26 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SoftDelete.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllTagsOnCourse.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPrecentOfPresentsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SearchByTagsFromAllMaterials.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
+    <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
+	<Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
+	<Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
+	<Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
+	<Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
   </ItemGroup>
 </Project>
