@@ -11,4 +11,4 @@ AS
 		LessonId = @LessonId,
 		Message = @Message
 WHERE 
-	ID=@Id
+	Id=@Id
