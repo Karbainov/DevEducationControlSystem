@@ -3,4 +3,5 @@
 	@LessonId int,
 	@IsPresent bit
 AS 
-INSERT [dbo].[Attendance] VALUES (@UserId, @LessonId, @IsPresent)
+INSERT [dbo].[Attendance] (UserId, LessonId, IsPresent)
+VALUES (@UserId, @LessonId, @IsPresent)
