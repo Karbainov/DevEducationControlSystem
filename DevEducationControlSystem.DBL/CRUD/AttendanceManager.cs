@@ -2,51 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
+using Dapper;
 using DevEducationControlSystem.DBL.DTO.Base;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class AttendanceManager
     {
         private SqlConnection connection;
+        private string _connectionString;
 
         public AttendanceManager()
         {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(connectionString);
+            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
+            connection = new SqlConnection(_connectionString);
         }
         public List<AttendanceDTO> Select()
         {
             var AttendanceDTOs = new List<AttendanceDTO>();
-
-            connection.Open();
-
-            string sqlExpression = "EXEC Attendance_Select";
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            if (reader.HasRows)
+            string expr = "[Attendance_Select]";
+            using (var connection = new SqlConnection(_connectionString))
             {
-                while (reader.Read())
-                {
-                    var AttendanceDTO = new AttendanceDTO();
-
-                    AttendanceDTO.Id = (int)reader["Id"];
-                    AttendanceDTO.UserId = (int)reader["UserId"];
-                    AttendanceDTO.LessonId = (int)reader["LessonId"];
-                    AttendanceDTO.IsPresent = (bool)reader["IsPresent"];
-                    
-                    AttendanceDTOs.Add(AttendanceDTO);
-                }
+                AttendanceDTOs = connection.Query<AttendanceDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }
-
-            reader.Close();
-            connection.Close();
 
             return AttendanceDTOs;
         }
-
         public AttendanceDTO SelectById(int id)
         {
             var AttendanceDTO = new AttendanceDTO();
@@ -55,9 +37,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             string sqlExpression = "EXEC Attendance_SelectById " + id;
             SqlCommand command = new SqlCommand(sqlExpression, connection);
-
-
-            SqlDataReader reader = command.ExecuteReader();
+            using SqlDataReader reader = command.ExecuteReader();
 
             reader.Read();
 
@@ -68,9 +48,41 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             reader.Close();
             connection.Close();
+
             return AttendanceDTO;
-
-
         }
+
+
+        public void Update(int id)
+        {
+            string expr = "[Attendance_Update]";
+            var value = new { Id = id };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Attendance_Delete]";
+            var value = new { Id = id };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Add(int userId, int lessonId, bool isPresent)
+        {
+            string expr = "[Attendance_Add]";
+            var value = new { UserId = userId, LessonId = lessonId, IsPresent = isPresent,};
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+       
     }
 }
