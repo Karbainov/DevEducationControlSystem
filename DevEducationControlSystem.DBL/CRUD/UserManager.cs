@@ -19,7 +19,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public List<LessonAndFeedbackDTO> SelectLessonsAndFeedbackByUserId(int id)
         {
             var lessonsAndFeedbacks = new List<LessonAndFeedbackDTO>();
-            string expr = "[Group_Add]";
+            string expr = "[SelectLessonsAndFeedbackByUserId]";
             var value = new {UserId = id };
 
             using (var connection = ConnectToDB())
