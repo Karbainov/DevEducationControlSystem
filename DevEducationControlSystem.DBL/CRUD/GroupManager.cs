@@ -3,6 +3,8 @@ using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Text;
+using Dapper;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -106,6 +108,39 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Close();
             }
             return group;
+        }
+
+        public void Add(int statusId, int courseId, int cityId,string name, DateTime startDate)
+        {
+            string expr = "[Group_Add]";
+            var value = new {StatusId = statusId, CourseId = courseId, CityId = cityId, Name = name, StartDate = startDate };
+
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Group_Delete]";
+            var value = new { Id = id };
+
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, int statusId, int courseId, int cityId, string name, DateTime startDate)
+        {
+            string expr = "[Group_Update]";
+            var value = new { Id = id, StatusId = statusId, CourseId = courseId, CityId = cityId, Name = name, StartDate = startDate };
+
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }
