@@ -54,7 +54,7 @@ namespace DevEducationControlSystem.DBL
 
             using (var connection = ConnectToDB())
             {
-               var numbers = connection.Query<int>(expr, value, commandType: CommandType.StoredProcedure).AsList<int>();
+                var numbers = connection.Query<int>(expr, value, commandType: CommandType.StoredProcedure).AsList<int>();
                 if (numbers.Count > 0)
                 {
                     number = numbers[0];
@@ -62,6 +62,20 @@ namespace DevEducationControlSystem.DBL
             }
 
             return number;
+        }
+
+        public List<NumberOfStudentsInGroupDTO> SelectNumberOfStudentsInGroupsByTeacherId(int id)
+        {
+            var DTOs = new List<NumberOfStudentsInGroupDTO>();
+            string expr = "[SelectNumberOfStudentsInGroupsByTeacherId]";
+            var value = new { UserId = id };
+
+            using (var connection = ConnectToDB())
+            {
+                DTOs = connection.Query<NumberOfStudentsInGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<NumberOfStudentsInGroupDTO>();
+            }
+
+            return DTOs;
         }
     }
 }
