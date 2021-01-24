@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using DevEducationControlSystem.DBL.DTO.Base;
+using Dapper;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -33,8 +35,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
 
             string sqlExpression = "Homework_Theme_Select";
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlCommand command = new SqlCommand(sqlExpression, connection)
+            {
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
 
             SqlDataReader reader = command.ExecuteReader();
 
@@ -73,8 +77,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
 
             string sqlExpression = "Homework_SelectById";
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlCommand command = new SqlCommand(sqlExpression, connection)
+            {
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
 
             SqlParameter idParameter = new SqlParameter("@Id", id);
             command.Parameters.Add(idParameter);
@@ -92,10 +98,36 @@ namespace DevEducationControlSystem.DBL.CRUD
                     homework_theme = new Homework_ThemeDTO(Id, HomeworkId, ThemeId);
                 }
             }
-
             reader.Close();
             connection.Close();
             return homework_theme;
+        }
+
+        public void Add(int homeworkId, int themeId)
+        {
+            string sqlExpression = "[Homework_Theme_Add]";
+            var values = new { HomeworkId = homeworkId, ThemeId = themeId };
+
+            using var connection = new SqlConnection(GetConnection().ConnectionString);
+            connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+        }
+
+        public void Delete(int id)
+        {
+            string sqlExpression = "[Homework_Theme_Delete]";
+            var values = new { Id = id };
+
+            using var connection = new SqlConnection(GetConnection().ConnectionString);
+            connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+        }
+               
+        public void Update(int id, int homeworkId, int themeId)
+        {
+            string sqlExpression = "[Homework_Theme_Update]";
+            var values = new { Id = id, HomeworkId = homeworkId, ThemeId = themeId };
+
+            using var connection = new SqlConnection(GetConnection().ConnectionString);
+            connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
         }
     }
 }
