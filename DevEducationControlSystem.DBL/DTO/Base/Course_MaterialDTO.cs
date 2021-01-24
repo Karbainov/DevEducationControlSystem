@@ -13,11 +13,11 @@ namespace DevEducationControlSystem.DBL.DTO.Base
         {
 
         }
-        public Course_MaterialDTO(Course_MaterialDTO dto)
+        public Course_MaterialDTO(int id, int courseId, int materialId)
         {
-            this.Id = dto.Id;
-            this.CourseId = dto.CourseId;
-            this.MaterialId = dto.MaterialId;
+            Id = id;
+            CourseId = courseId;
+            MaterialId = materialId;
         }
     }
 }
