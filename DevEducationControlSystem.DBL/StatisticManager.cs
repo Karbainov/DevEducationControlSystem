@@ -10,10 +10,14 @@ namespace DevEducationControlSystem.DBL
 {
     public class StatisticManager
     {
+        string _connectionString;
+        public StatisticManager()
+        {
+            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
+        }
         public SqlConnection ConnectToDB()
         {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(_connectionString);
             return connection;
         }
         public List<UserPercentOfPresentsDTO> SelectPercentOfPresentsByGroupId(int id)
@@ -29,6 +33,17 @@ namespace DevEducationControlSystem.DBL
             }
 
             return usersPercents;
+        }
+
+        List<CountsStudentsTeachersTutorsByGroupDTO> CountsStudentsTeachersTutorsByGroupDTO()
+        {
+            List<CountsStudentsTeachersTutorsByGroupDTO> CountRole = null;
+            string expression = "[CountsStudentsTeachersTutorsByGroupDTO]";
+            using (var connection = ConnectToDB())
+            {
+                CountRole = connection.Query<CountsStudentsTeachersTutorsByGroupDTO>(expression, commandType: CommandType.StoredProcedure).AsList<CountsStudentsTeachersTutorsByGroupDTO>();
+            }
+            return CountRole;
         }
     }
 }
