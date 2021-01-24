@@ -99,7 +99,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                         WholeCourseFeedbackDTO wholeCourseFeedbackDTO;
 
-                        if (wholeCourseFeedbackDTOs.TryGetValue(wholeCourseFeedback.FeedbackId, out wholeCourseFeedbackDTO))
+                        if (!wholeCourseFeedbackDTOs.TryGetValue(wholeCourseFeedback.FeedbackId, out wholeCourseFeedbackDTO))
                         {
                             wholeCourseFeedbackDTO = wholeCourseFeedback;
                             wholeCourseFeedbackDTOs.Add(wholeCourseFeedback.FeedbackId, wholeCourseFeedbackDTO);
