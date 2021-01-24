@@ -1,14 +1,14 @@
-﻿using DevEducationControlSystem.DBL.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using Dapper;
-using System.Data.SqlClient;
+using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.DBL
 {
-    public class PercentOfPresentsInGroupManager
+    public class StatisticManager
     {
         public SqlConnection ConnectToDB()
         {
@@ -16,7 +16,7 @@ namespace DevEducationControlSystem.DBL
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }
-        public List<UserPercentOfPresentsDTO> SelectById(int id)
+        public List<UserPercentOfPresentsDTO> SelectPercentOfPresentsByGroupId(int id)
         {
             List<UserPercentOfPresentsDTO> usersPercents = new List<UserPercentOfPresentsDTO>();
 
