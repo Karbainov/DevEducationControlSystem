@@ -1,4 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[SelectAllTagsOnCourse]
+@Id int
 as
 select distinct C.Name as CourseName, T.Name as TagName
 	from Course as C
@@ -7,4 +8,4 @@ select distinct C.Name as CourseName, T.Name as TagName
 	inner join Course_Material as CM on HC.CourseId = CM.CourseId
 	inner join Material_Tag as MT on HT.TagId = MT.TagId
 	inner join Tag as T on MT.TagId = T.Id
-	where C.Id = 5
+	where C.Id = @Id
