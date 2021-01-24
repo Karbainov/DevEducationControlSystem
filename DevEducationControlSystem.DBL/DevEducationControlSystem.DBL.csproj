@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CRUD\UdaliMeniaManager.cs" />
+    <Compile Remove="DTO\Base\UdaliMeniaDTO.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="AdminManager.cs" />
     <Compile Remove="AllGroupMaterialsByTagAndUserId_Manager.cs" />
     <Compile Remove="Class1.cs" />
