@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    class CountsStudentsTeachersTutorsByGroupDTO
+    public class CountsStudentsTeachersTutorsByGroupDTO
     {
         public int GroupId { get; set; }
         public string GroupName { get; set; }
