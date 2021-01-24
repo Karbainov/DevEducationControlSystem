@@ -391,5 +391,6 @@
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
     <Build Include="dbo\Stored Procedures\GetWholeCourseFeedback.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsStudyingAfterBase.sql" />
   </ItemGroup>
 </Project>
