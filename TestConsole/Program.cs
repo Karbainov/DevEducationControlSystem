@@ -11,7 +11,7 @@ namespace TestConsole
             var manager = new AllGroupMaterialsByTagAndUserId_Manager();
 
             //var dto = new Course_ThemeDTO(manager.SelectById(1));
-            var dto = manager.Get(17, "тег1");
+            var dto = manager.Get(17, "тег2");
 
             dto.ForEach(d => Console.WriteLine(d.Tag + " " + d.Links + " " + d.Images + " " + d.MaterialId));
         }
