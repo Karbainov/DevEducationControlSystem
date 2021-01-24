@@ -15,8 +15,8 @@ namespace DevEducationControlSystem.DBL.DTO.Base
 
         public GroupStatusDTO(int id, string name)
         {
-            id = Id;
-            name = Name;
+            Id = id;
+            Name = name;
         }
     }
 }
