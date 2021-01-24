@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DevEducationControlSystem.DataBaseProject</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{f66016d1-def5-4d5a-bf35-e2a26cf21d99}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DevEducationControlSystem.DataBaseProject</RootNamespace>
+    <AssemblyName>DevEducationControlSystem.DataBaseProject</AssemblyName>
+    <ModelCollation>1049,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Cyrillic_General_100_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Stored Procedures\CRUD" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Role" />
+    <Folder Include="dbo\Stored Procedures\CRUD\User_Role" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Tag" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Material_Tag" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Payment" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Lesson_Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Theme_Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Attendance\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\GroupStatus" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Group" />
+    <Folder Include="dbo\Stored Procedures\CRUD\User" />
+    <Folder Include="dbo\Stored Procedures\CRUD\UserStatus" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Group_Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\User_Group" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Feedback" />
+    <Folder Include="dbo\Stored Procedures\CRUD\City" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Course_Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Course_Material" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Privileges\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Role_Privileges\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\UserStatus\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Answer" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Answer_Status" />
+    <Folder Include="dbo\Stored Procedures\CRUD\User\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Group_Homework" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Attendance\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Theme_Tag" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Homework" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Homework_Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Lesson" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Lesson_Theme.sql" />
+    <Build Include="dbo\Tables\Homework_Theme.sql" />
+    <Build Include="dbo\Tables\Homework_Tag.sql" />
+    <Build Include="dbo\Tables\Homework_Course.sql" />
+    <Build Include="dbo\Tables\Group_Material.sql" />
+    <Build Include="dbo\Tables\Group_Homework.sql" />
+    <Build Include="dbo\Tables\AnswerStatus.sql" />
+    <Build Include="dbo\Tables\City.sql" />
+    <Build Include="dbo\Tables\Course.sql" />
+    <Build Include="dbo\Tables\GroupStatus.sql" />
+    <Build Include="dbo\Tables\Group.sql" />
+    <Build Include="dbo\Tables\Lesson.sql" />
+    <Build Include="dbo\Tables\Privileges.sql" />
+    <Build Include="dbo\Tables\Resource.sql" />
+    <Build Include="dbo\Tables\Homework.sql" />
+    <Build Include="dbo\Tables\Role.sql" />
+    <Build Include="dbo\Tables\Role_Privileges.sql" />
+    <Build Include="dbo\Tables\Tag.sql" />
+    <Build Include="dbo\Tables\Theme.sql" />
+    <Build Include="dbo\Tables\Course_Theme.sql" />
+    <Build Include="dbo\Tables\UserStatus.sql" />
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\Answer.sql" />
+    <Build Include="dbo\Tables\Attendance.sql" />
+    <Build Include="dbo\Tables\Comment.sql" />
+    <Build Include="dbo\Tables\Feedback.sql" />
+    <Build Include="dbo\Tables\User_Group.sql" />
+    <Build Include="dbo\Tables\User_Role.sql" />
+    <Build Include="dbo\Tables\Payment.sql" />
+    <Build Include="dbo\Tables\Material.sql" />
+    <Build Include="dbo\Tables\Course_Material.sql" />
+    <Build Include="dbo\Tables\Material_Tag.sql" />
+    <Build Include="dbo\Tables\Theme_Material.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Attendance\Attendance_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role\Role_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Role\User_Role_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\Tag_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User_Group\User_Group_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material_Tag\Material_Tag_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Payment\Payment_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Material\Theme_Material_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Update.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group\Group_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Update.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SendNewTryToAnswer.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_SelectByID.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_SelectByID.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_SoftDelete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GroupStatus\GroupStatus_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Feedback\Feedback_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\User\User_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\UserStatus\UserStatus_Update.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group\Group_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group\Group_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\Group_Material\Group_Material_Update.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Add.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Delete.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Select.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_SelectById.sql" />
+    <None Include="dbo\Stored Procedures\CRUD\City\City_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Theme\Course_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course_Material\Course_Material_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Privileges\Privileges_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Role_Privileges\Role_Privileges_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_SelectByID.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer\Answer_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_SelectByID.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Answer_Status\Answer_Status_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_SelectBuId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Theme_Tag\Theme_Tag_Update.sql" />
+    <Build Include="dbo\Tables\Theme_Tag.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Group_Homework\Group_Homework_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SoftDelete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteUserFromGroupByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\GetMaterialsByThemeId.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
+    <Build Include="dbo\Stored Procedures\ReplaceUserToAnotherGroupByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworksByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllMaterialsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPercentOfPresentsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
+    <Build Include="dbo\Stored Procedures\SendNewTryToAnswer.sql" />
+    <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllGroupsAndAmountPeopleInGroupByCity.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\CountStudentsTeachersTutorsByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\GetWholeCourseFeedback.sql" />
+  </ItemGroup>
+</Project>
