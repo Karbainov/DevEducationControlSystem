@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using DevEducationControlSystem.DBL.DTO.Base;
+using Dapper;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -10,14 +11,16 @@ namespace DevEducationControlSystem.DBL.CRUD
     {
         private SqlConnection connection;
 
-        public RoleManager()
+        public SqlConnection ConnectToDB()
         {
             string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
+            return connection;
         }
         public List<RoleDTO> Select()
         {
-            var RoleDTOs = new List<RoleDTO>();
+            List<RoleDTO> Roles = new List<RoleDTO>();
+            SqlConnection connection = ConnectToDB();
 
             try
             {
@@ -29,8 +32,9 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "EXEC Role_Select";
+            string sqlExpression = "Role_Select";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
 
             try
             {
@@ -42,10 +46,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                         {
                             var RoleDTO = new RoleDTO();
 
-                            RoleDTO.Id = (int)reader["Id"];
-                            RoleDTO.Name = (string)reader["Name"];
-
-                            RoleDTOs.Add(RoleDTO);
+                            int id = (int)reader["Id"];
+                            string name = (string)reader["Name"];
+                            //Roles.Add(new RoleDTO(id, name));
+                            Roles.Add(RoleDTO);
                         }
                     }
                 }
@@ -54,7 +58,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 connection.Close();
             }
-            return RoleDTOs;
+            return Roles;
 
         }
 
@@ -96,6 +100,36 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
 
             return RoleDTO;
+        }
+
+        public void Add(string name)
+        {
+            string expr = "[Role_Add]";
+            var value = new { Name = name };
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Role_Delete]";
+            var value = new { Id = id };
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[Role_Update]";
+            var value = new { Id = id , Name = name };
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: System.Data.CommandType.StoredProcedure);
+            }
         }
     }
 }
