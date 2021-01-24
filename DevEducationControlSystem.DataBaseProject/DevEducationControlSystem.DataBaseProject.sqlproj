@@ -369,15 +369,7 @@
 	<Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
 	<Build Include="dbo\Stored Procedures\SendNewTryToAnswer.sql" />
     <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
-    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
-	  
-	  
-    <Build Include="dbo\Stored Procedures\SearchByTagsFromAllMaterials.sql" />
-    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsId.sql" />
-	  
-	  
-	  
-	  
+    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />	  
 
   </ItemGroup>
 </Project>
