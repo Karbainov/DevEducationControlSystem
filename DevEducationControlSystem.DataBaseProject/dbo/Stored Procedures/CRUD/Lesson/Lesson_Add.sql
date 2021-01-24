@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Lesson_Add]
-	@GroupID int,
+	@GroupId int,
 	@Name nvarchar(100),
 	@LessonDate date,
 	@Comments nvarchar(1000)
