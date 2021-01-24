@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectPrecentOfPresentsByGroupId]
+﻿CREATE PROCEDURE [dbo].[SelectPercentOfPresentsByGroupId]
 	@GroupId int
 AS
 select STUD.UserId, STUD.FirstName, STUD.LastName,  COALESCE(PRES.PercentOfPresents,0) as PercentOfPresents  from [Group] as G 
