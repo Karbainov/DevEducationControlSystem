@@ -6,4 +6,4 @@ AS
 	SET  
 	name = @name
 WHERE  
-	ID=@Id
+	Id = @Id
