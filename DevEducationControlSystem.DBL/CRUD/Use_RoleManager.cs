@@ -104,16 +104,12 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public void Add(int userId, int roleId)
         {
-            //int id = (int)reader["Id"];
-            //int userId = (int)reader["UserId"];
-            //int roleId = (int)reader["RoleId"];
-
             string expr = "[User_Role_Add]";
-            int userIdValue = new { UserId = userId };
-            int roleIdValue -new { RoleId = roleId };
+            var value = new { UserId = userId, RoleId = roleId };
+            //int roleIdValue -new { RoleId = roleId };
             using (var connection = ConnectToDB())
             {
-                connection.Query(expr, userIdValue, roleIdValue, commandType: System.Data.CommandType.StoredProcedure);
+                connection.Query(expr, value, commandType: System.Data.CommandType.StoredProcedure);
             }
         }
 
@@ -127,10 +123,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public void Update(int id, string name)
+        public void Update(int id, int userId, int roleId)
         {
             string expr = "[User_Role_Update]";
-            var value = new { Id = id, Name = name };
+            var value = new { Id = id, UserId = userId, RoleId = roleId };
             using (var connection = ConnectToDB())
             {
                 connection.Query(expr, value, commandType: System.Data.CommandType.StoredProcedure);
