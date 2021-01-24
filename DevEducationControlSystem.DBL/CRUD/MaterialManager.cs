@@ -11,13 +11,21 @@ using System.Data;
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class MaterialManager
-    {
+    {
         string _connectionString;
         SqlConnection _connection;
+        public SqlConnection GetConnection()
+        {
+            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
+            SqlConnection connection = new SqlConnection(connectionString);
+            return connection;
+        }
 
-        public MaterialManager()
-        {
-            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
+        public MaterialManager()
+
+        {
+            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
+
         }
         public List<MaterialDTO> Select()
         {
