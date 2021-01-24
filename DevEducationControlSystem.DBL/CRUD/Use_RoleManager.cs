@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using DevEducationControlSystem.DBL.DTO.Base;
+using Dapper;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -10,14 +11,17 @@ namespace DevEducationControlSystem.DBL.CRUD
     {
         private SqlConnection connection;
 
-        public User_RoleManager()
+        public SqlConnection ConnectToDB()
         {
             string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
+            return connection;
         }
         public List<User_RoleDTO> Select()
         {
-            var User_RoleDTOs = new List<User_RoleDTO>();
+            //var User_RoleDTOs = new List<User_RoleDTO>();
+            List<User_RoleDTO> User_Roles = new List<User_RoleDTO>();
+            SqlConnection connection = ConnectToDB();
 
             try
             {
@@ -29,8 +33,9 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "EXEC User_Role_Select";
+            string sqlExpression = "User_Role_Select";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
 
             try
             {
@@ -42,11 +47,12 @@ namespace DevEducationControlSystem.DBL.CRUD
                         {
                             var User_RoleDTO = new User_RoleDTO();
 
-                            User_RoleDTO.Id = (int)reader["Id"];
-                            User_RoleDTO.UserId = (int)reader["UserId"];
-                            User_RoleDTO.RoleId = (int)reader["RoleId"];
+                            int id = (int)reader["Id"];
+                            int userId = (int)reader["UserId"];
+                            int roleId = (int)reader["RoleId"];
 
-                            User_RoleDTOs.Add(User_RoleDTO);
+                            //User_RoleDTOs.Add(User_RoleDTO);
+                            User_Roles.Add(User_RoleDTO);
                         }
                     }
                }
@@ -55,7 +61,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 connection.Close();
             }
-            return User_RoleDTOs;
+            return User_Roles;
 
         }
         public User_RoleDTO SelectById(int id)
@@ -73,7 +79,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "EXEC User_Role_SelectById " + id;
+            string sqlExpression = "User_Role_SelectById " + id;
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             //command.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -95,6 +101,41 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             return User_RoleDTO;
         }
-        
+
+        public void Add(int userId, int roleId)
+        {
+            //int id = (int)reader["Id"];
+            //int userId = (int)reader["UserId"];
+            //int roleId = (int)reader["RoleId"];
+
+            string expr = "[User_Role_Add]";
+            int userIdValue = new { UserId = userId };
+            int roleIdValue -new { RoleId = roleId };
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, userIdValue, roleIdValue, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[User_Role_Delete]";
+            var value = new { Id = id };
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[User_Role_Update]";
+            var value = new { Id = id, Name = name };
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
     }
 }

@@ -77,7 +77,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "EXEC Role_SelectById " + id;
+            string sqlExpression = "Role_SelectById " + id;
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             //command.CommandType = System.Data.CommandType.StoredProcedure;
 
