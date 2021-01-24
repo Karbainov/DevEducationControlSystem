@@ -17,9 +17,9 @@ namespace DevEducationControlSystem.DBL.CRUD
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
         }
 
-        Dictionary<int, WholeCourseFeedbackDTO>GetFeedbackByCourseId(int courseId)
+        public Dictionary<int, WholeCourseFeedbackDTO>GetFeedbackByCourseId(int courseId)
         {
-            Dictionary<int, WholeCourseFeedbackDTO> wholeCourseFeedbackDTOs = null;
+            Dictionary<int, WholeCourseFeedbackDTO> wholeCourseFeedbackDTOs = new Dictionary<int, WholeCourseFeedbackDTO>(); ;
             string expression = "[GetWholeCourseFeedback]";
             var parameter = new { CourseId = courseId};
             using (var connection = new SqlConnection(_connectionString))
@@ -30,11 +30,17 @@ namespace DevEducationControlSystem.DBL.CRUD
                         
                         WholeCourseFeedbackDTO wholeCourseFeedbackDTO;
 
-                        if (wholeCourseFeedbackDTOs.TryGetValue(wholeCourseFeedback.UserId, out wholeCourseFeedbackDTO)) ;
+                        if (wholeCourseFeedbackDTOs.TryGetValue(wholeCourseFeedback.FeedbackId, out wholeCourseFeedbackDTO)) ;
                         {
                             wholeCourseFeedbackDTO = wholeCourseFeedback;
-                            wholeCourseFeedbackDTOs.Add(wholeCourseFeedback.UserId, wholeCourseFeedbackDTO);
+                            wholeCourseFeedbackDTOs.Add(wholeCourseFeedback.FeedbackId, wholeCourseFeedbackDTO);
                         }
+
+                        if (wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs==null)
+                        {
+                            wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs = new List<ThemeFromCourseFeedbackDTO>();
+                        }
+                        wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs.Add(themeFromCourseFeedback);
 
                         return wholeCourseFeedbackDTO;
                     }, 
