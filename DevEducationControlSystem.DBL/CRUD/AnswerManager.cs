@@ -98,10 +98,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             connection.Close();
             return answerDTO;
         }
-        public void Add(string name)
+        public void Add(int Id, int UserId, int ResourceId, int HomeworkId, DateTime Date, string Message, int StatusId)
         {
             string expr = "[Answer_Add]";
-            var value = new { Name = name };
+            var value = new { Id = Id, UserId = UserId, ResourceId = ResourceId, HomeworkId = HomeworkId, Date = Date, Message = Message, StatusId = StatusId };
 
             using (var connection = GetConnection())
             {
@@ -120,10 +120,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public void Update(int id, string name)
+        public void Update(int Id, int UserId, int ResourceId, int HomeworkId, DateTime Date, string Message, int StatusId)
         {
             string expr = "[Answer_Update]";
-            var value = new { Id = id, Name = name };
+            var value = new { Id = Id, UserId = UserId, ResourceId = ResourceId, HomeworkId = HomeworkId, Date = Date, Message = Message, StatusId = StatusId };
 
             using (var connection = GetConnection())
             {
