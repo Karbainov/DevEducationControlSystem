@@ -41,7 +41,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
                     int id = (int)reader["Id"];
                     int userid = (int)reader["UserId"];
-                    int resourceid = (int)reader["ResouceId"];
+                    int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
                     string message = (string)reader["Message"];
                     bool isdeleted = (bool)reader["IsDeleted"];
@@ -81,7 +81,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
                     int id = (int)reader["Id"];
                     int userid = (int)reader["UserId"];
-                    int resourceid = (int)reader["ResouceId"];
+                    int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
                     string message = (string)reader["Message"];
                     bool isdeleted = (bool)reader["IsDeleted"];
