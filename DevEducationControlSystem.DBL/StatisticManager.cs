@@ -35,7 +35,7 @@ namespace DevEducationControlSystem.DBL
             return usersPercents;
         }
 
-        List<CountsStudentsTeachersTutorsByGroupDTO> CountsStudentsTeachersTutorsByGroupDTO()
+        public List<CountsStudentsTeachersTutorsByGroupDTO> CountsStudentsTeachersTutorsByGroupDTO()
         {
             List<CountsStudentsTeachersTutorsByGroupDTO> CountRole = null;
             string expression = "[CountsStudentsTeachersTutorsByGroupDTO]";
@@ -44,6 +44,24 @@ namespace DevEducationControlSystem.DBL
                 CountRole = connection.Query<CountsStudentsTeachersTutorsByGroupDTO>(expression, commandType: CommandType.StoredProcedure).AsList<CountsStudentsTeachersTutorsByGroupDTO>();
             }
             return CountRole;
+        }
+
+        public int SelectNumberOfStudentsByTeacherId(int id)
+        {
+            int number = 0;
+            string expr = "[SelectNumberOfStudentsByTeacherId]";
+            var value = new { UserId = id };
+
+            using (var connection = ConnectToDB())
+            {
+               var numbers = connection.Query<int>(expr, value, commandType: CommandType.StoredProcedure).AsList<int>();
+                if (numbers.Count > 0)
+                {
+                    number = numbers[0];
+                }
+            }
+
+            return number;
         }
     }
 }
