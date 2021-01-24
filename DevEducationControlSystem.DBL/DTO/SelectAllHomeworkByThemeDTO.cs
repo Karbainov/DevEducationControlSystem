@@ -9,8 +9,9 @@ namespace DevEducationControlSystem.DBL.DTO
         public int HomeworkId { get; set; }
         public string Homework { get; set; }
         public string Description { get; set; }
-        public string ResourceLinks { get; set; }
-        public string ResourceImage { get; set; }
+        public ResourceLinksDTO ResourceLinks { get; set; }
+        public ResourceLinksDTO ResourceImage { get; set; }
+
         public SelectAllHomeworkByThemeDTO()
         {
 

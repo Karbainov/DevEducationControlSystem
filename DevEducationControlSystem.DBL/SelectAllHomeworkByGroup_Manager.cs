@@ -11,20 +11,24 @@ namespace DevEducationControlSystem.DBL
     public class SelectAllHomeworkByGroup_Manager
     {
         private string _connectionString;
+        private SqlConnection connection;
         private string expr;
 
 
-        public SelectAllHomeworkByGroup_Manager()
+        public SqlConnection GetConnection()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            expr = "[SelectAllHomeworkByGroup]";
+            connection = new SqlConnection(_connectionString);
+            return connection;
         }
 
         public List<SelectAllHomeworkByGroupDTO> Get(int GroupId)
         {
             List<SelectAllHomeworkByGroupDTO> homeworksByGroup = new List<SelectAllHomeworkByGroupDTO>();
             var value = new { GroupId = GroupId };
-            using (var connection = new SqlConnection(_connectionString))
+            expr = "[SelectAllHomeworkByGroup]";
+
+            using (connection = GetConnection())
             {
                 homeworksByGroup = connection.Query<SelectAllHomeworkByGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<SelectAllHomeworkByGroupDTO>();
             }

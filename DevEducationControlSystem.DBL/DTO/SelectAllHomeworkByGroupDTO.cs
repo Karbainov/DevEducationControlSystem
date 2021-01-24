@@ -8,12 +8,14 @@ namespace DevEducationControlSystem.DBL.DTO
 		public string Homework { get; set; }
 		public string Description { get; set; }
 		public int IsSolutionRequired { get; set; }
-		public string ResourceLinks { get; set; }
-		public string ResourseImage { get; set; }
+		public ResourceLinksDTO ResourceLinks { get; set; }
+		public ResourceImageDTO ResourseImage { get; set; }
+
 		public SelectAllHomeworkByGroupDTO()
         {
 
         }
+
 		public SelectAllHomeworkByGroupDTO(SelectAllHomeworkByGroupDTO dto)
         {
 			HomeworkId = dto.HomeworkId;

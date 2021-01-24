@@ -9,8 +9,11 @@ namespace DevEducationControlSystem.DBL.DTO
         public int HomeworkId { get; set; }
         public string Homework { get; set; }
         public string Description { get; set; }
-        public string ResourceLinks { get; set; }
-        public string ResourceImage { get; set; }
+        public int ResourceId { get; set; }
+        public ResourceLinksDTO ResourceLinks { get; set; }
+        public ResourceImageDTO ResourceImage { get; set; }
+        
+        
         public SelectAllHomeworkByCourseDTO()
         {
 
@@ -20,6 +23,7 @@ namespace DevEducationControlSystem.DBL.DTO
             HomeworkId = dto.HomeworkId;
             Homework = dto.Homework;
             Description = dto.Description;
+            ResourceId = dto.ResourceId;
             ResourceLinks = dto.ResourceLinks;
             ResourceImage = dto.ResourceImage;
         }

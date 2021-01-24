@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
 
@@ -11,25 +12,22 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class PrivilegesManager
     {
-        private SqlConnection connection;
-        private string _connectionString;
 
-
-        public PrivilegesManager()
+        public SqlConnection GetConnection()
         {
-            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(_connectionString);
+            string _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
+            SqlConnection connection = new SqlConnection(_connectionString);
+            return connection;
         }
 
-        public List<PrivilegesDTO> Select(int roleId, int PrivilegesId)
+        public List<PrivilegesDTO> Select()
         {
             var PrivilegesDTOs = new List<PrivilegesDTO>();
             string expr = "[Privileges_Select]";
-            var value = new { RoleId = roleId, PrivilegesId = PrivilegesId };
-
-            using (var connection = new SqlConnection(_connectionString))
+            
+            using (var connection = GetConnection())
             {
-                PrivilegesDTOs = connection.Query<PrivilegesDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+                PrivilegesDTOs = connection.Query<PrivilegesDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }
 
             return PrivilegesDTOs;
@@ -38,20 +36,12 @@ namespace DevEducationControlSystem.DBL.CRUD
         public PrivilegesDTO SelectById(int id)
         {
             var PrivilegesDTO = new PrivilegesDTO();
+            string expr = "[Privileges_SelectById]";
 
-            connection.Open();
-
-            string sqlExpression = "EXEC Privileges_SelectById " + id;
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-            using SqlDataReader reader = command.ExecuteReader();
-
-            reader.Read();
-
-            PrivilegesDTO.id = (int)reader["id"];
-            PrivilegesDTO.name = (string)reader["name"];
-
-            reader.Close();
-            connection.Close();
+            using (var connection = GetConnection())
+            {
+                PrivilegesDTO = connection.Query<PrivilegesDTO>(expr, commandType: CommandType.StoredProcedure).Single<PrivilegesDTO>();
+            }
 
             return PrivilegesDTO;
         }
@@ -59,9 +49,9 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public void Update(int id)
         {
-            string expr = "[Privileges_Delete]";
+            string expr = "[Privileges_Update]";
             var value = new { Id = id };
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -71,7 +61,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             string expr = "[Privileges_Delete]";
             var value = new { id = id };
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -81,7 +71,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             string expr = "[Privileges_Add]";
             var value = new { id = id, name = name };
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }

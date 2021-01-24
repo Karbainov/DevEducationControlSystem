@@ -4,11 +4,11 @@ as
 
 select
 
-	Homework.Id as homeworkId,
-	Homework.Name as homework,
-	Homework.Description as description,
-	[Resource].Links as links,
-	[Resource].Images as images
+	Homework.Id as HomeworkId,
+	Homework.Name as Homework,
+	Homework.Description as Description,
+	[Resource].Links as ResourceLinks,
+	[Resource].Images as ResourceImages
 
 	from Homework
 	
@@ -16,6 +16,6 @@ select
 	left join Theme on Homework_Theme.ThemeId = Theme.id
 	left join [Resource] on [Resource].Id = Homework.ResourceId
 
-	where Theme.id = @ThemeId
+	where Theme.id = @ThemeId and Homework.IsDeleted = 0
 
 	order by homeworkId asc

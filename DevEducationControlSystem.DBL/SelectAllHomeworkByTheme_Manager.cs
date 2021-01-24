@@ -11,18 +11,22 @@ namespace DevEducationControlSystem.DBL
     public class SelectAllHomeworkByTheme_Manager
     {
         private string _connectionString;
+        private SqlConnection connection;
         private string expr;
 
-        public SelectAllHomeworkByTheme_Manager()
+        public SqlConnection GetConnection()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            expr = "[SelectAllHomeworkByTheme]";
+            connection = new SqlConnection(_connectionString);
+            return connection;
         }
 
         public List<SelectAllHomeworkByThemeDTO> Get(int ThemeId)
         {
             List<SelectAllHomeworkByThemeDTO> homeworksByTheme = new List<SelectAllHomeworkByThemeDTO>();
             var value = new { ThemeId = ThemeId };
+            expr = "[SelectAllHomeworkByTheme]";
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 homeworksByTheme = connection.Query<SelectAllHomeworkByThemeDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<SelectAllHomeworkByThemeDTO>();
