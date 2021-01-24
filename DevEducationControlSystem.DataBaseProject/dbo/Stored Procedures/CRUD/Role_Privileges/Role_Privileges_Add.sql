@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Role_Privileges_Add]
-	@RoleID int,
-	@PrivilegesID int
+	@RoleId int,
+	@PrivilegesId int
 AS
-INSERT [dbo].[Role_Privileges] VALUES (@RoleID, @PrivilegesID)
+INSERT [dbo].[Role_Privileges] VALUES (@RoleId, @PrivilegesId)
