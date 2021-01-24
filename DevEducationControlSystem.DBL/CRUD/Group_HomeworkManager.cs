@@ -2,7 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
+using Dapper;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -104,6 +105,26 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Close();
             }
             return Group_Homework;
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "Group_Homework_Delete";
+            var value = new { Id = id };
+            using (SqlConnection connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "Group_Homework_Update";
+            var value = new { Id = id, Name = name };
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }

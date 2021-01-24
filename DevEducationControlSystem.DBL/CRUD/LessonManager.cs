@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using Dapper;
 using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
@@ -103,6 +105,26 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Close();
             }
             return lesson;
+        }
+
+        public void Delete(int id, string name)
+        {
+            string expr = "Lesson_Delete";
+            var value = new { Id = id, Name = name };
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "Lesson_Update";
+            var value = new { Id = id, Name = name };
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
 
     }
