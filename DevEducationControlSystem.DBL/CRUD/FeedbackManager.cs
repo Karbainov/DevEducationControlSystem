@@ -10,13 +10,13 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class FeedbackManager
     {
-        private SqlConnection connection;
+        
         private string _connectionString;
 
         public FeedbackManager()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(_connectionString);
+            
         }
         public List<FeedbackDTO> Select()
         {
@@ -32,6 +32,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public FeedbackDTO SelectById(int id)
         {
             var FeedbackDTO = new FeedbackDTO();
+            var connection = new SqlConnection (_connectionString);
 
             connection.Open();
 

@@ -11,14 +11,12 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class User_GroupManager
     {
-        private SqlConnection connection;
         private string _connectionString;
 
         public User_GroupManager()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(_connectionString);
-
+            
         }
         public void Add(int userId, int groupId)
         {
@@ -62,7 +60,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public User_GroupDTO SelectById(int id)
         {
             var User_GroupDTO = new User_GroupDTO();
-
+            var connection = new SqlConnection(_connectionString);
             connection.Open();
 
             string sqlExpression = "EXEC User_Group_SelectById " + id;

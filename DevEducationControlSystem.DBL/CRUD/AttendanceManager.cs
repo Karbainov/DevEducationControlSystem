@@ -10,13 +10,13 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class AttendanceManager
     {
-        private SqlConnection connection;
+        
         private string _connectionString;
 
         public AttendanceManager()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(_connectionString);
+            
         }
         public List<AttendanceDTO> Select()
         {
@@ -32,6 +32,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public AttendanceDTO SelectById(int id)
         {
             var AttendanceDTO = new AttendanceDTO();
+            var connection = new SqlConnection(_connectionString);
 
             connection.Open();
 
