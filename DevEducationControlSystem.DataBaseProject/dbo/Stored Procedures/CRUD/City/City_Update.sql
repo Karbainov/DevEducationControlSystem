@@ -2,7 +2,7 @@
 	@Id int,	
 	@Name nvarchar(100)
 AS  
-	UPDATE [dbo].[Group] 
+	UPDATE [dbo].[City] 
 	SET
 	[Name] = @Name
 WHERE  
