@@ -20,16 +20,16 @@ namespace DevEducationControlSystem.DBL.CRUD
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11"; 
             connection = new SqlConnection(_connectionString);
         }
-
-        public List<Role_PrivilegesDTO> Select(int roleId, int PrivilegesId)
+        
+        public List<Role_PrivilegesDTO> Select()
         {
             var Role_PrivilegesDTOs = new List<Role_PrivilegesDTO>();
             string expr = "[Role_Privileges_Select]";
-            var value = new { RoleId = roleId, PrivilegesId = PrivilegesId };
+
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                Role_PrivilegesDTOs = connection.Query<Role_PrivilegesDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+                Role_PrivilegesDTOs = connection.Query<Role_PrivilegesDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }
 
             return Role_PrivilegesDTOs;
@@ -48,8 +48,8 @@ namespace DevEducationControlSystem.DBL.CRUD
             reader.Read();
 
             Role_PrivilegesDTO.Id = (int)reader["Id"];
-            Role_PrivilegesDTO.RoleId = (int)reader["CourseId"];
-            Role_PrivilegesDTO.PrivilegesId = (int)reader["ThemeId"];
+            Role_PrivilegesDTO.RoleId = (int)reader["RoleId"];
+            Role_PrivilegesDTO.PrivilegesId = (int)reader["PrivilegesId"];
 
             reader.Close();
             connection.Close();
@@ -60,7 +60,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public void Update(int id)
         {
-            string expr = "[Role_Privileges_Delete]";
+            string expr = "[Role_Privileges_Update]";
             var value = new { Id = id };
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -87,7 +87,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
-
+        
     }
     
 }

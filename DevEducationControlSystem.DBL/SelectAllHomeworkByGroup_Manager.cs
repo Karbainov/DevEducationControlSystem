@@ -20,7 +20,6 @@ namespace DevEducationControlSystem.DBL
             expr = "[SelectAllHomeworkByGroup]";
         }
 
-
         public List<SelectAllHomeworkByGroupDTO> Get(int GroupId)
         {
             List<SelectAllHomeworkByGroupDTO> homeworksByGroup = new List<SelectAllHomeworkByGroupDTO>();
