@@ -16,7 +16,7 @@ namespace DevEducationControlSystem.DBL.DTO.WholeCourseFeedback
         public string Message;
         public List<ThemeFromCourseFeedbackDTO> ThemeFromCourseFeedbackDTOs;
 
-        public WholeCourseFeedbackDTO(int userId, string firstName, string lastName, int groupId, int feedbackId, int lessonId, int rate, string message)
+        public WholeCourseFeedbackDTO(int userId, string firstName, string lastName, int groupId, int feedbackId, int lessonId, int rate, string message, List<ThemeFromCourseFeedbackDTO> themeFromCourseFeedbackDTOs)
         {
             UserId = userId;
             FirstName = firstName;
@@ -26,6 +26,7 @@ namespace DevEducationControlSystem.DBL.DTO.WholeCourseFeedback
             LessonId = lessonId;
             Rate = rate;
             Message = message;
+            ThemeFromCourseFeedbackDTOs = themeFromCourseFeedbackDTOs;
         }
     }
 }
