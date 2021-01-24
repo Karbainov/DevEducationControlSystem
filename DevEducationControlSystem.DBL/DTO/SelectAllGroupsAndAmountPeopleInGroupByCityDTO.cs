@@ -6,9 +6,9 @@ namespace DevEducationControlSystem.DBL.DTO
 {
     public class SelectAllGroupsAndAmountPeopleInGroupByCityDTO
     {
-        public string cityname { get; set; }
-        public int groupcount { get; set; }
-        public int personcount { get; set; }
+        public string Cityname { get; set; }
+        public int Groupcount { get; set; }
+        public int Personcount { get; set; }
 
         public SelectAllGroupsAndAmountPeopleInGroupByCityDTO ()
         {
@@ -17,9 +17,9 @@ namespace DevEducationControlSystem.DBL.DTO
 
         public SelectAllGroupsAndAmountPeopleInGroupByCityDTO(SelectAllGroupsAndAmountPeopleInGroupByCityDTO dto)
         {
-            cityname = dto.cityname;
-            groupcount = dto.groupcount;
-            personcount = dto.personcount;
+            Cityname = dto.Cityname;
+            Groupcount = dto.Groupcount;
+            Personcount = dto.Personcount;
         }
     }
 }

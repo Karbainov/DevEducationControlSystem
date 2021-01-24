@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using Dapper;
 using DevEducationControlSystem.DBL.DTO.Base;
 using System.Data;
+using DevEducationControlSystem.DBL.DTO.WholeCourseFeedback;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -85,7 +86,42 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
+        public Dictionary<int, WholeCourseFeedbackDTO> GetFeedbackByCourseId(int courseId)
+        {
+            Dictionary<int, WholeCourseFeedbackDTO> wholeCourseFeedbackDTOs = new Dictionary<int, WholeCourseFeedbackDTO>(); ;
+            string expression = "[GetWholeCourseFeedback]";
+            var parameter = new { CourseId = courseId };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query<WholeCourseFeedbackDTO, ThemeFromCourseFeedbackDTO, WholeCourseFeedbackDTO>
+                    (expression, (wholeCourseFeedback, themeFromCourseFeedback) =>
+                    {
+
+                        WholeCourseFeedbackDTO wholeCourseFeedbackDTO;
+
+                        if (wholeCourseFeedbackDTOs.TryGetValue(wholeCourseFeedback.FeedbackId, out wholeCourseFeedbackDTO))
+                        {
+                            wholeCourseFeedbackDTO = wholeCourseFeedback;
+                            wholeCourseFeedbackDTOs.Add(wholeCourseFeedback.FeedbackId, wholeCourseFeedbackDTO);
+                        }
+
+                        if (wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs == null)
+                        {
+                            wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs = new List<ThemeFromCourseFeedbackDTO>();
+                        }
+                        wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs.Add(themeFromCourseFeedback);
+
+                        return wholeCourseFeedbackDTO;
+                    },
+                    parameter, commandType: CommandType.StoredProcedure, splitOn: "ThemeId");
+            }
+            return wholeCourseFeedbackDTOs;
+        }
+
+
     }
 }
 
 
+
+        

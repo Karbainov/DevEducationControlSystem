@@ -28,7 +28,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
         public void Delete(int id)
-        {
+        {   
             string expr = "[User_Group_Delete]";
             var value = new { Id = id };
             using (var connection = new SqlConnection(_connectionString))
