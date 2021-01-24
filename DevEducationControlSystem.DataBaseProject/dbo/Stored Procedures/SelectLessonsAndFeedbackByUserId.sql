@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectHomeworksAndFeedbackByUserId]
+﻿CREATE PROCEDURE [dbo].[SelectLessonsAndFeedbackByUserId]
 	@UserId int
 AS
 select U.Id as UserId, 
