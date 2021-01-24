@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using Dapper;
 using System.Data.SqlClient;
 using DevEducationControlSystem.DBL.DTO.Base;
 
@@ -84,6 +86,38 @@ namespace DevEducationControlSystem.DBL.CRUD
             reader.Close();
             connection.Close();
             return Answer_StatusDTO;
+        }
+        public void Add(string name)
+        {
+            string expr = "[Answer_Status_Add]";
+            var value = new { Name = name };
+
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Answer_Status_Delete]";
+            var value = new { Id = id };
+
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[Answer_Status_Update]";
+            var value = new { Id = id, Name = name };
+
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using Dapper;
 using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
@@ -95,6 +97,38 @@ namespace DevEducationControlSystem.DBL.CRUD
             reader.Close();
             connection.Close();
             return answerDTO;
+        }
+        public void Add(string name)
+        {
+            string expr = "[Answer_Add]";
+            var value = new { Name = name };
+
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Answer_Delete]";
+            var value = new { Id = id };
+
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[Answer_Update]";
+            var value = new { Id = id, Name = name };
+
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }
