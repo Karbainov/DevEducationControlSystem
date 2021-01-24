@@ -4,16 +4,21 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.78" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  <ItemGroup>
+    <Compile Remove="AdminManager.cs" />
+    <Compile Remove="AllGroupMaterialsByTagAndUserId_Manager.cs" />
+    <Compile Remove="Class1.cs" />
+    <Compile Remove="DTO\Base\Course_ThemelDTO.cs" />
+    <Compile Remove="ManagerManager.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
