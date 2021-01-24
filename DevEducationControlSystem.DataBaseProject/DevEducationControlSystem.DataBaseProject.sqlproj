@@ -353,7 +353,7 @@
     <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
     <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
     <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
-    <Build Include="dbo\Stored Procedures\SelectPrecentOfPresentsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPercentOfPresentsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
