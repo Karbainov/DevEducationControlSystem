@@ -92,7 +92,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 DateTime Date = (DateTime)reader["Date"];
                 string Message = (string)reader["Message"];
                 int StatusId = (int)reader["StatusId"];
-                answerDTO = new AnswerDTO(Id, UserId, ResourceId, HomeworkId, Date, Message, StatusId));
+                answerDTO = new AnswerDTO(Id, UserId, ResourceId, HomeworkId, Date, Message, StatusId);
             }
             reader.Close();
             connection.Close();
