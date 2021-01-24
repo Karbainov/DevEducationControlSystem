@@ -2,4 +2,5 @@
 	@UserId int,
 	@RoleId int
 AS
-	INSERT [dbo].[User_Role] VALUES (@UserId, @RoleId)
+	INSERT [dbo].[User_Role] (UserId, RoleId)
+	VALUES (@UserId, @RoleId)
