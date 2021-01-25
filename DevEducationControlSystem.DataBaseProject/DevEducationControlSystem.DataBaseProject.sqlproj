@@ -380,6 +380,11 @@
     <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
     <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
     <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\AddTags.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllGroupsAndAmountPeopleInGroupByCity.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
