@@ -1,58 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Data;
+using Dapper;
 using System.Data.SqlClient;
 using DevEducationControlSystem.DBL.DTO.Base;
-using Dapper;
-using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    public class GroupStatusManager
+    public class Answer_StatusManager
     {
-        public SqlConnection GetConnection()
+
+        private static SqlConnection GetConnection()
         {
             string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            SqlConnection connection = new SqlConnection(connectionString);
+            var connection = new SqlConnection(connectionString);
             return connection;
         }
 
-        public List<GroupStatusDTO> Select()
+        public List<Answer_StatusDTO> Select()
         {
-            List<GroupStatusDTO> groupStatusAll = new List<GroupStatusDTO>();
-            SqlConnection connection = GetConnection();
-            try
-            {
-                connection.Open();
-            }
-            catch
-            {
-                throw new Exception("Failed to connect");
-            }
+            var Answer_StatusDTOs = new List<Answer_StatusDTO>();
+            var connection = GetConnection();
 
-            string SqlExpression = "GroupStatus_Select";
-            SqlCommand command = new SqlCommand(SqlExpression, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows) // если есть данные
-            {
-                while (reader.Read()) // построчно считываем данные
-                {
-                    int id = (int)reader["Id"];
-                    string name = (string)reader["Name"];
-                    
-                    groupStatusAll.Add(new GroupStatusDTO(id, name));
-                }
-            }
-            reader.Close();
-            connection.Close();
-            return groupStatusAll;
-        }
-
-        public GroupStatusDTO SelectById(int Id)
-        {
-            GroupStatusDTO groupStatus = new GroupStatusDTO();
-            SqlConnection connection = GetConnection();
             try
             {
                 connection.Open();
@@ -60,35 +29,69 @@ namespace DevEducationControlSystem.DBL.CRUD
             catch
             {
                 connection.Close();
-                throw new Exception("Failed to connect");
+                throw new Exception("Connection failed");
             }
 
-            string SqlExpression = "GroupStatus_SelectById";
-            SqlCommand command = new SqlCommand(SqlExpression, connection);
+            string sqlExpression = "Answer_Status_Select";
+            var command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            SqlParameter idParam = new SqlParameter("@Id", Id);
-            command.Parameters.Add(idParam);
 
             SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows) // если есть данные
-            {
-                while (reader.Read()) // построчно считываем данные
-                {
-                    int id = (int)reader["Id"];
-                    string name = (string)reader["Name"];
 
-                    groupStatus = new GroupStatusDTO(id, name);
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+
+                    int Id = (int)reader["Id"];
+                    string Name = (string)reader["Name"];
+                    Answer_StatusDTOs.Add(new Answer_StatusDTO(Id, Name));
                 }
             }
             reader.Close();
             connection.Close();
-            return groupStatus;
+            return Answer_StatusDTOs;
         }
 
+        public Answer_StatusDTO SelectById(int id)
+        {
+            var Answer_StatusDTO = new Answer_StatusDTO();
+            var connection = GetConnection();
+
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("Connection failed");
+            }
+
+            string sqlExpression = "Answer_Status_SelectById";
+            var command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            var idParameter = new SqlParameter("@Id", id);
+            command.Parameters.Add(idParameter);
+
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows) 
+            {
+                reader.Read();
+                int Id = (int)reader["Id"];
+                string Name = (string)reader["Name"];
+                Answer_StatusDTO = new Answer_StatusDTO(Id, Name);
+            }
+            reader.Close();
+            connection.Close();
+            return Answer_StatusDTO;
+        }
         public void Add(string name)
         {
-            string expr = "[GroupStatus_Add]";
+            string expr = "[Answer_Status_Add]";
             var value = new { Name = name };
+
             using (var connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
@@ -97,8 +100,9 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public void Delete(int id)
         {
-            string expr = "[GroupStatus_Delete]";
+            string expr = "[Answer_Status_Delete]";
             var value = new { Id = id };
+
             using (var connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
@@ -107,8 +111,9 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public void Update(int id, string name)
         {
-            string expr = "[GroupStatus_Update]";
+            string expr = "[Answer_Status_Update]";
             var value = new { Id = id, Name = name };
+
             using (var connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);

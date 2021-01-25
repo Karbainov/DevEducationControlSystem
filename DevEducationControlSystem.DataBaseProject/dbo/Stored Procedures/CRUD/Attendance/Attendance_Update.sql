@@ -10,4 +10,4 @@ AS
 		LessonId = @LessonId,
 		IsPresent = @IsPresent
 WHERE 
-	ID=@Id
+	Id=@Id

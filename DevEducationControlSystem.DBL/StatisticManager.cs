@@ -35,7 +35,7 @@ namespace DevEducationControlSystem.DBL
             return usersPercents;
         }
 
-        List<CountsStudentsTeachersTutorsByGroupDTO> CountsStudentsTeachersTutorsByGroupDTO()
+        public List<CountsStudentsTeachersTutorsByGroupDTO> CountsStudentsTeachersTutorsByGroupDTO()
         {
             List<CountsStudentsTeachersTutorsByGroupDTO> CountRole = null;
             string expression = "[CountsStudentsTeachersTutorsByGroupDTO]";
