@@ -10,14 +10,14 @@ namespace DevEducationControlSystem.DBL.DTO.Base
         public int ResourceId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string IsDeleted { get; set; }
-        public string IsSolutionRequired { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool IsSolutionRequired { get; set; }
 
         public HomeworkDTO()
         {
 
         }
-        public HomeworkDTO(int Id, int ResourceId, string Name, string Description, string IsDeleted, string IsSolutionRequired)
+        public HomeworkDTO(int Id, int ResourceId, string Name, string Description, bool IsDeleted, bool IsSolutionRequired)
         {
             this.Id = Id;
             this.ResourceId = ResourceId;
