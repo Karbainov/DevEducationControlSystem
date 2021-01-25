@@ -10,15 +10,19 @@ namespace DevEducationControlSystem.DBL.DTO
         public bool IsPaid { get; set; }
         public int Sum { get; set; }
         public string PayDate { get; set; }
-        public int ContractNumber { get; set; }
+        public string ContractNumber { get; set; }
 
-        public  SelectPaymentInfoDTO(SelectPaymentInfoDTO dto)
+        public SelectPaymentInfoDTO()
         {
-            Period = dto.Period;
-            IsPaid = dto.IsPaid;
-            Sum = dto.Sum;
-            PayDate = dto.PayDate;
-            ContractNumber = dto.ContractNumber;
+
+        }
+        public  SelectPaymentInfoDTO(int period, bool ispaid,int sum, string paydate, string contractnumber)
+        {
+            Period = period;
+            IsPaid = ispaid;
+            Sum = sum;
+            PayDate = paydate;
+            ContractNumber = contractnumber;
         }
 
     }
