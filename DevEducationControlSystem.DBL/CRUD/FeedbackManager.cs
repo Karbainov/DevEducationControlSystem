@@ -109,7 +109,11 @@ namespace DevEducationControlSystem.DBL.CRUD
                         {
                             wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs = new List<ThemeFromCourseFeedbackDTO>();
                         }
-                        wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs.Add(themeFromCourseFeedback);
+
+                        if (themeFromCourseFeedback != null)
+                        {
+                            wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs.Add(themeFromCourseFeedback);
+                        }
 
                         return wholeCourseFeedbackDTO;
                     },
