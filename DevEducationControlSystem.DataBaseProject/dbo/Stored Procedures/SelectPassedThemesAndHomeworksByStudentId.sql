@@ -1,5 +1,4 @@
---Какие темы, уже пройдены студентом (Материалы, Задания)
-Create PROCEDURE dbo.SelectPassedThemesAndHomeworksByStudentId
+п»їCreate PROCEDURE [dbo].[SelectPassedThemesAndHomeworksByStudentId]
 @StudentID int
 AS
 Select h.Id as HomeworkID,h.Name as HomeworkName, l.LessonDate,t.Id as ThemeID, t.Name as ThemeName,a.id as AnswerID, a.Date as AnswerDate, AnS.Name as AnswerStatus
@@ -18,5 +17,3 @@ left join [Role] r on ur.RoleId = r.Id
 
 where (u.Id = @StudentID) and (r.Id=2)
 and (LessonDate<GETDATE())
-
-exec SelectPassedThemesAndHomeworksByStudentId 17

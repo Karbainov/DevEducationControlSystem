@@ -82,6 +82,9 @@
     <Folder Include="StoredProcedures\CRUD\Group_Material" />
     <Folder Include="StoredProcedures\CRUD\Lesson" />
     <Folder Include="StoredProcedures\CRUD\Group_Homework" />
+    <Folder Include="StoredProcedures\CRUD\Feedback\" />
+    <Folder Include="StoredProcedures\CRUD\Course" />
+    <Folder Include="StoredProcedures\CRUD\Homework_Course" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\GroupStatus.sql" />
@@ -221,5 +224,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Foreign Keys\ForeignKeys.sql" />
+    <None Include="StoredProcedures\CRUD\Course\Course_Select.sql" />
+    <None Include="StoredProcedures\CRUD\Course\Course_SelectById.sql" />
+    <None Include="StoredProcedures\CRUD\Course\Course_Add.sql" />
+    <None Include="StoredProcedures\CRUD\Course\Course_Delete.sql" />
+    <None Include="StoredProcedures\CRUD\Course\Course_Update.sql" />
+    <None Include="StoredProcedures\CRUD\Course\Course_SoftDelete.sql" />
+    <None Include="StoredProcedures\CRUD\Homework_Course\Homework_Course_Add.sql" />
+    <None Include="StoredProcedures\CRUD\Homework_Course\Homework_Course_Delete.sql" />
+    <None Include="StoredProcedures\CRUD\Homework_Course\Homework_Course_Select.sql" />
+    <None Include="StoredProcedures\CRUD\Homework_Course\Homework_Course_SelectById.sql" />
+    <None Include="StoredProcedures\CRUD\Homework_Course\Homework_Course_Update.sql" />
   </ItemGroup>
 </Project>

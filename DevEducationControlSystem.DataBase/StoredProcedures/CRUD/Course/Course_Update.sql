@@ -1,5 +1,5 @@
-CREATE PROCEDURE dbo.Course_Update
-	@ID int,
+﻿CREATE PROCEDURE dbo.Course_Update
+	@Id int,
 	@Name nvarchar(100),
 	@Description nvarchar(1000),
 	@DurationInWeeks int,
@@ -10,4 +10,4 @@ AS
 		Description = @Description,
 		DurationInWeeks = @DurationInWeeks,
 		IsDeleted = @IsDeleted
-  WHERE ID = @ID
+  WHERE ID = @Id
