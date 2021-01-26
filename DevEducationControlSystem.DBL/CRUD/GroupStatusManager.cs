@@ -38,7 +38,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 while (reader.Read()) // построчно считываем данные
                 {
-                    int id = (int)reader["id"];
+                    int id = (int)reader["Id"];
                     string name = (string)reader["Name"];
                     
                     groupStatusAll.Add(new GroupStatusDTO(id, name));
@@ -74,7 +74,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 while (reader.Read()) // построчно считываем данные
                 {
-                    int id = (int)reader["id"];
+                    int id = (int)reader["Id"];
                     string name = (string)reader["Name"];
 
                     groupStatus = new GroupStatusDTO(id, name);
