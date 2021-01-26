@@ -4,16 +4,17 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO.Base
 {
-    public class GroupStatusDTO
+    public class UserStatusDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public GroupStatusDTO()
+
+        public UserStatusDTO()
         {
 
         }
 
-        public GroupStatusDTO(int id, string name)
+        public UserStatusDTO(int id, string name)
         {
             Id = id;
             Name = name;
