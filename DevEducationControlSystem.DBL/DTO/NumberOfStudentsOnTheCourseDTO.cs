@@ -8,14 +8,14 @@ namespace DevEducationControlSystem.DBL.DTO
     {
         public int GroupId { get; set; }
         public int CourseId { get; set; }
-        public int UserGroup { get; set; }
+        public int UserId { get; set; }
 
 
-        public NumberOfStudentsOnTheCourseDTO(int groupId, int courseId, int userGroup)
+        public NumberOfStudentsOnTheCourseDTO(int groupId, int courseId, int userId)
         {
             GroupId = groupId;
             CourseId = courseId;
-            UserGroup = userGroup;
+            UserId = userId;
         }
 
     }
