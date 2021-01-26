@@ -79,6 +79,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(sqlExpression, value, commandType: CommandType.StoredProcedure);
             }
         }
+
         //public List<ThemeDTO> Select()
         //{
         //    List<ThemeDTO> themes = new List<ThemeDTO>();
