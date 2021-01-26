@@ -8,7 +8,6 @@
 AS
 UPDATE [dbo].[Comment] 
 SET
-Id = @Id,
 UserId = @UserId, 
 AnswerId = @AnswerId,
 ResourceId = @ResourceId,

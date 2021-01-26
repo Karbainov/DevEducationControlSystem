@@ -5,7 +5,6 @@
 AS
 UPDATE [dbo].[Resource] 
 SET
-Id = @Id,
 Links = @Links, 
 Images = @Images 
 WHERE [dbo].[Resource].Id = @Id
