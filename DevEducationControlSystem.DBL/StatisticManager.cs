@@ -45,5 +45,37 @@ namespace DevEducationControlSystem.DBL
             }
             return CountRole;
         }
+
+        public int SelectNumberOfStudentsByTeacherId(int id)
+        {
+            int number = 0;
+            string expr = "[SelectNumberOfStudentsByTeacherId]";
+            var value = new { UserId = id };
+
+            using (var connection = ConnectToDB())
+            {
+                var numbers = connection.Query<int>(expr, value, commandType: CommandType.StoredProcedure).AsList<int>();
+                if (numbers.Count > 0)
+                {
+                    number = numbers[0];
+                }
+            }
+
+            return number;
+        }
+
+        public List<NumberOfStudentsInGroupDTO> SelectNumberOfStudentsInGroupsByTeacherId(int id)
+        {
+            var DTOs = new List<NumberOfStudentsInGroupDTO>();
+            string expr = "[SelectNumberOfStudentsInGroupsByTeacherId]";
+            var value = new { UserId = id };
+
+            using (var connection = ConnectToDB())
+            {
+                DTOs = connection.Query<NumberOfStudentsInGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<NumberOfStudentsInGroupDTO>();
+            }
+
+            return DTOs;
+        }
     }
 }
