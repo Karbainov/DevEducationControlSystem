@@ -1,13 +1,16 @@
-﻿using DevEducationControlSystem.DBL.DTO.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Text;
+using System.Data.SqlClient;
+using DevEducationControlSystem.DBL.DTO.Base;
+using System.Data;
+using Dapper;
+using System.Linq;
 
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    class PrivilegesManager
+    public class PrivilegesManager
     {
         private SqlConnection connection;
 
