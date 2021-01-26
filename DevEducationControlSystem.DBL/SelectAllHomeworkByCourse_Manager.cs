@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Linq;
+using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL
 {
@@ -22,18 +24,37 @@ namespace DevEducationControlSystem.DBL
         }
 
 
-        public List<SelectAllHomeworkByCourseDTO> Get(int CourseId)
+        public Dictionary<SelectAllHomeworkByCourseDTO, ResourceDTO> Get(int CourseId)
         {
-            List<SelectAllHomeworkByCourseDTO> homeworskByCourse = new List<SelectAllHomeworkByCourseDTO>();
-            var value = new { CourseId = CourseId };
+            Dictionary<int, SelectAllHomeworkByCourseDTO> homeworksByCourse = new Dictionary<int, SelectAllHomeworkByCourseDTO>();
+            var value = new { CourseId };
             expr = "[SelectAllHomeworkByCourse]";
 
             using (_connection = GetConnection())
             {
-                homeworskByCourse = _connection.Query<SelectAllHomeworkByCourseDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<SelectAllHomeworkByCourseDTO>();
+                var item = _connection.Query<SelectAllHomeworkByCourseDTO, ResourceDTO, SelectAllHomeworkByCourseDTO>(expr, 
+                    (Homework, Resource) => 
+                    {
+                        SelectAllHomeworkByCourseDTO homeworkCourse = new SelectAllHomeworkByCourseDTO();
+
+                        if (homeworksByCourse.TryGetValue(homeworkCourse.HomeworkId, out homeworkCourse))
+                        {
+                            homeworkCourse = Homework;
+                            homeworksByCourse.Add(homeworkCourse.HomeworkId, homeworkCourse);
+                        }
+
+                        if(homeworkCourse.Resource == null)
+                        {
+                            homeworkCourse.Resource = new List<ResourceDTO>();
+                        }
+                        homeworkCourse.Resource.Add(Resource);
+
+                        return homeworkCourse;
+
+                    }, commandType: CommandType.StoredProcedure, splitOn : "Resource").AsList<SelectAllHomeworkByCourseDTO>();
             }
 
-            return homeworskByCourse;
+            return homeworksByCourse;
         }
     }
 }
