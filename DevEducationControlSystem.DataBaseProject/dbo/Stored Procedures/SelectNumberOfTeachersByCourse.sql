@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectTeachersByCourse]
+﻿CREATE PROCEDURE [dbo].[SelectNumberOfTeachersByCourse]
 as
 select C.Id as CourseId, C.[Name] as [Name], G.CityId as CityId, CT.[Name] as CityName, count (C.Id) as Amount
 	from Course as C
