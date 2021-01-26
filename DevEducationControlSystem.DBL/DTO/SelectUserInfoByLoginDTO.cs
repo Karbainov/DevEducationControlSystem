@@ -19,19 +19,36 @@ namespace DevEducationControlSystem.DBL.DTO
            public string CityName { get; set; }
          //  public List <RoleDTO> roles { get; set; }
 
-        public SelectUserInfoByLoginDTO(SelectUserInfoByLoginDTO dto)
+        public SelectUserInfoByLoginDTO()
         {
-            Id = dto.Id;
-            FirstName = dto.FirstName;
-            LastName = dto.LastName;
-            BirthDate = dto.BirthDate;
-            Email = dto.Email;
-            Phone = dto.Phone;
-            ProfileImage = dto.ProfileImage;
-            RoleName = dto.RoleName;
-            GroupName = dto.GroupName;
-            CourseName = dto.CourseName;
-            CityName = dto.CityName;
+
+        }
+
+        public SelectUserInfoByLoginDTO
+            (int id,
+            string firstname,
+            string lastname,
+            string birthdate,
+            string email,
+            string phone,
+            string profileimage,
+            string rolename,
+            string groupname,
+            string coursename,
+            string cityname
+            )
+        {
+            Id = id;
+            FirstName = firstname;
+            LastName = lastname;
+            BirthDate = birthdate;
+            Email = email;
+            Phone = phone;
+            ProfileImage = profileimage;
+            RoleName = rolename;
+            GroupName = groupname;
+            CourseName = coursename;
+            CityName = cityname;
         }
 
 
