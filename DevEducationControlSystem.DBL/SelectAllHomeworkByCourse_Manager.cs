@@ -24,7 +24,7 @@ namespace DevEducationControlSystem.DBL
         }
 
 
-        public Dictionary<SelectAllHomeworkByCourseDTO, ResourceDTO> Get(int CourseId)
+        public Dictionary<int, SelectAllHomeworkByCourseDTO> Get(int CourseId)
         {
             Dictionary<int, SelectAllHomeworkByCourseDTO> homeworksByCourse = new Dictionary<int, SelectAllHomeworkByCourseDTO>();
             var value = new { CourseId };
