@@ -20,14 +20,14 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public List<Theme_TagDTO> Select()
         {
-            var themeTag = new List<Theme_TagDTO>();
+            var ThemeTag = new List<Theme_TagDTO>();
             string sqlExpression = "[Theme_Tag_Select]";
 
             using (var connection = GetConnection())
             {
-                themeTag = connection.Query<Theme_TagDTO>(sqlExpression, commandType: CommandType.StoredProcedure).ToList<Theme_TagDTO>();
+                ThemeTag = connection.Query<Theme_TagDTO>(sqlExpression, commandType: CommandType.StoredProcedure).ToList<Theme_TagDTO>();
             }
-            return themeTag;
+            return ThemeTag;
         }
 
         public Theme_TagDTO SelectById(int id)
