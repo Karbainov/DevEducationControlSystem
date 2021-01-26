@@ -316,6 +316,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_SelectBuId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Update.sql" />
-    <Build Include="dbo\Stored Procedures\SelectThemesByTag.sql" />
+    <Build Include="dbo\Stored Procedures\SelectThemesByTagId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectThemesByTagName.sql" />
   </ItemGroup>
 </Project>
