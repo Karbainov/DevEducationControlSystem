@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 using DevEducationControlSystem.DBL.DTO.Base;
+using Dapper;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -28,7 +30,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             if (reader.HasRows)
             {
-                while (reader.Read())
+                while (reader.Read()==true)
                 {
                     int id = (int)reader["Id"];
                     int themeId = (int)reader["ThemeId"];
@@ -73,5 +75,41 @@ namespace DevEducationControlSystem.DBL.CRUD
             connection.Close();
             return themesMaterial;
         }
+
+        public void Add(int themeId, int materialId)
+        {
+            string expr = "[Theme_Material_Add]";
+            var value = new { ThemeId = themeId, MaterialId = materialId };
+
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Theme_Material_Delete]";
+            var value = new { Id = id };
+
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, int themeId, int materialId)
+        {
+            string expr = "[Theme_Material_Update]";
+            var value = new { Id = id, ThemeId = themeId, MaterialId = materialId };
+
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
     }
 }
