@@ -76,7 +76,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void Add(int RoleId, int PrivilegesId)
         {
             string expr = "[Role_Privileges_Add]";
-            var value = new { RoleId = RoleId, PrivilegesId = PrivilegesId };
+            var value = new { RoleId, PrivilegesId };
 
             using (var connection = GetConnection())
             {
