@@ -53,7 +53,15 @@ namespace DevEducationControlSystem.DBL.CRUD
                     int userid = (int)reader["UserId"];
                     int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
-                    string message = (string)reader["Message"];
+                    string message;
+                    if (!reader.IsDBNull(reader.GetOrdinal("Message")))
+                    {
+                        message = (string)reader["Message"];
+                    }
+                    else
+                    {
+                        message = null;
+                    }
                     bool isdeleted = (bool)reader["IsDeleted"];
                     materials.Add(new MaterialDTO(id, userid, resourceid, name, message, isdeleted));
                 }
@@ -93,7 +101,15 @@ namespace DevEducationControlSystem.DBL.CRUD
                     int userid = (int)reader["UserId"];
                     int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
-                    string message = (string)reader["Message"];
+                    string message;
+                    if (!reader.IsDBNull(reader.GetOrdinal("Message")))
+                    {
+                        message = (string)reader["Message"];
+                    }
+                    else
+                    {
+                        message = null;
+                    }
                     bool isdeleted = (bool)reader["IsDeleted"];
                     material = new MaterialDTO(id, userid, resourceid, name, message, isdeleted);
                 }
