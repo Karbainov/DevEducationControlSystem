@@ -1,4 +1,5 @@
 ﻿using System;
+using DevEducationControlSystem.DBL.DTO.Base;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,11 +14,10 @@ namespace DevEducationControlSystem.DBL.DTO
            public string Email { get; set; }
            public string Phone { get; set; }
            public string ProfileImage { get; set; }
-           public string RoleName { get; set; }
            public string GroupName { get; set; }
            public string CourseName { get; set; }
            public string CityName { get; set; }
-         //  public List <RoleDTO> roles { get; set; }
+           public List <RoleNameDTO> Roles { get; set; }
 
         public SelectUserInfoByLoginDTO()
         {
@@ -32,10 +32,10 @@ namespace DevEducationControlSystem.DBL.DTO
             string email,
             string phone,
             string profileimage,
-            string rolename,
             string groupname,
             string coursename,
-            string cityname
+            string cityname,
+            List <RoleNameDTO> roles
             )
         {
             Id = id;
@@ -45,7 +45,7 @@ namespace DevEducationControlSystem.DBL.DTO
             Email = email;
             Phone = phone;
             ProfileImage = profileimage;
-            RoleName = rolename;
+            Roles = roles;
             GroupName = groupname;
             CourseName = coursename;
             CityName = cityname;
