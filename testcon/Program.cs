@@ -14,7 +14,7 @@ namespace TestConsole
             //var manager = new GroupStatusManager();
             var manager = new CourseManager();
 
-            manager.SelectById(1);
+            manager.Update(6, "проверка", "хранимки", 12, true);
         }
     }
 }
