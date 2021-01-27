@@ -16,7 +16,15 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult GetCourseInfoAndFeedbacksById(int courseId)
         {
             CoursePlusFeedbacksMapper feedbacksMapper = new CoursePlusFeedbacksMapper();
-            return new OkObjectResult(feedbacksMapper.GetCourseInfoAndFeedbacksByCourseId(courseId));
+            var model = feedbacksMapper.GetCourseInfoAndFeedbacksByCourseId(courseId);
+
+            string a = model.CourseDTO.Name
+                     + model.CourseDTO.Description
+                     + '\n' + model.WholeCourseFeedbackDTO[0].ToString()
+                     + '\n' + model.WholeCourseFeedbackDTO[1].ToString()
+                     + '\n' + model.WholeCourseFeedbackDTO[2].ToString();
+
+            return new OkObjectResult(a);
         }
     }
 }

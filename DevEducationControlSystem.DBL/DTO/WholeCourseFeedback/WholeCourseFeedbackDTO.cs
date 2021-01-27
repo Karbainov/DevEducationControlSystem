@@ -32,5 +32,9 @@ namespace DevEducationControlSystem.DBL.DTO.WholeCourseFeedback
             Message = message;
             ThemeFromCourseFeedbackDTOs = themeFromCourseFeedbackDTOs;
         }
+        public override string ToString()
+        {
+            return UserId + " " + FirstName +" " + LastName + " " + "Оценка: " + Rate + " " + Message;
+        }
     }
 }

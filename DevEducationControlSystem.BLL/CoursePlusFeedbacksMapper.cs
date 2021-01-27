@@ -14,8 +14,10 @@ namespace DevEducationControlSystem.BLL
         public CourseInfoAndFeedbacksModel GetCourseInfoAndFeedbacksByCourseId(int courseId)
         {
             FeedbackManager feedbackManager = new FeedbackManager();
+            CourseManager courseManager = new CourseManager();
 
             CourseInfoAndFeedbacksModel courseInfo = new CourseInfoAndFeedbacksModel();
+
             courseInfo.WholeCourseFeedbackDTO = new List<WholeCourseFeedbackDTO>();
             courseInfo.CourseDTO = new CourseDTO();
 
@@ -27,7 +29,6 @@ namespace DevEducationControlSystem.BLL
 
             //тут заполняется курс DTO
 
-            CourseManager courseManager = new CourseManager();
             courseInfo.CourseDTO = courseManager.SelectById(courseId);
 
             return courseInfo;
