@@ -6,6 +6,7 @@ using DevEducationControlSystem.DBL.DTO.Base;
 using System.Data;
 using Dapper;
 using System.Linq;
+using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -43,6 +44,17 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var values = new { id, resourceId, name, description, isDeleted, isSolutionRequired };
             SqlServerConnection.GetConnection().Query("[Homework_Update]", values, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<HomeworkAllInfoDTO> SelectAllHomeworkByGroupId(int groupId)
+        {
+            string expr = "[SelectAllHomeworkByGroupId]";
+            var value = new { groupId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<HomeworkAllInfoDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<HomeworkAllInfoDTO>();
+            }
         }
     }
 }

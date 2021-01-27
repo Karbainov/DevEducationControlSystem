@@ -369,5 +369,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\SelectGroupWithCityAndStatusAndCourseById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
   </ItemGroup>
 </Project>

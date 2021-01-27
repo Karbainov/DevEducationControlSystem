@@ -3,6 +3,7 @@ using DevEducationControlSystem.BLL.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DevEducationControlSystem.DBL.CRUD;
 
 namespace DevEducationControlSystem.BLL
 {
@@ -10,11 +11,14 @@ namespace DevEducationControlSystem.BLL
     {
         public GroupInfoModel GetGroupInfoById(int groupId)
         {
-            //public GroupWithCityAndStatusAndCourseDTO SelectGroupWithCityAndStatusAndCourseById(int groupId)
-
-
+            var homeworkManager = new HomeworkManager();
+            var groupManager = new GroupManager();
             var mapper = new GroupDTOUsersDTOMaterialsDTOHomeworksDTOtoGroupInfoModelMapper();
-            return mapper.Map();
+
+            return mapper.Map(
+                groupManager.SelectGroupWithCityAndStatusAndCourseById(groupId),
+                homeworkManager.SelectAllHomeworkByGroupId(groupId)
+                );
         }
     }
 }
