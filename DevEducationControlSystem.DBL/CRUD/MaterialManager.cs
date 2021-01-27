@@ -22,10 +22,8 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
 
         public MaterialManager()
-
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-
         }
         public List<MaterialDTO> Select()
         {

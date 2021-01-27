@@ -2,7 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
+using Dapper;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -30,7 +31,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "Group_Homework_Select";
+            string sqlExpression = "[Group_Homework_Select]";
             var command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             try
@@ -73,7 +74,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "Group_Homework_SelectById";
+            string sqlExpression = "[Group_Homework_SelectById]";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -104,6 +105,38 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Close();
             }
             return Group_Homework;
+        }
+
+
+
+        public void Delete(int id)
+        {
+            string expr = "[Group_Homework_Delete]";
+            var value = new { Id = id };
+            using (SqlConnection connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, int groupId, int homeworkId, DateTime startDate, DateTime dealLine)
+        {
+            string expr = "[Group_Homework_Update]";
+            var value = new { Id = id, GroupId = groupId, HomeworkId = homeworkId, StartDate = startDate, DealLine = dealLine };
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Add(int groupId, int homeworkId, DateTime startDate, DateTime dealLine)
+        {
+            string expr = "[Group_Homework_Add]";
+            var value = new {GroupId = groupId, HomeworkId = homeworkId, StartDate = startDate, DealLine = dealLine };
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }
