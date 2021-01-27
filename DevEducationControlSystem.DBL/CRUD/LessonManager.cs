@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
@@ -135,6 +136,51 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
+        }
+
+        public List<LessonAttendanceDTO> SelectLessonAttendanceByGroupId(int groupId)
+        {
+            string expr = "[SelectLessonAttendanceByGroupId]";
+            var value = new { groupId };
+
+            List<LessonAttendanceDTO> lessons = new List<LessonAttendanceDTO>();
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+
+                connection.Query<LessonAttendanceDTO, UserDTO, LessonAttendanceDTO>(expr,
+                (lessonAttendance, user) =>
+                {
+                    LessonAttendanceDTO tmpLesson = null;
+
+                    foreach (var r in lessons)
+                    {
+                        if (r.LessonId == lessonAttendance.LessonId)
+                        {
+                            tmpLesson = r;
+                            break;
+                        }
+                    }
+                    if (tmpLesson == null)
+                    {
+                        tmpLesson = lessonAttendance;
+                        lessons.Add(tmpLesson);
+                    }
+
+                    if(tmpLesson.Users == null)
+                    {
+                        tmpLesson.Users = new List<UserDTO>();
+                    }
+                    tmpLesson.Users.Add(user);
+
+                    return tmpLesson;
+                },
+                value,
+                splitOn: "UserId",
+                commandType: CommandType.StoredProcedure);
+            }
+
+            return lessons;
         }
 
     }

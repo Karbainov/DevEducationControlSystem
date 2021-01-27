@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DevEducationControlSystem.DBL.CRUD;
+using DevEducationControlSystem.DBL;
 
 namespace DevEducationControlSystem.BLL
 {
@@ -19,6 +20,19 @@ namespace DevEducationControlSystem.BLL
                 groupManager.SelectGroupWithCityAndStatusAndCourseById(groupId),
                 homeworkManager.SelectAllHomeworkByGroupId(groupId)
                 );
+        }
+
+        public GroupAttendanceModel GetGroupAttendanceById(int groupId)
+        {
+            var statisticManager = new StatisticManager();
+            var lessonManager = new LessonManager();
+            var mapper = new UserPercentOfPresentDTOsLessonAttendanceDTOsToGroupAttendanceMapper();
+
+            statisticManager.SelectPercentOfPresentsByGroupId(groupId);
+            lessonManager.SelectLessonAttendanceByGroupId(groupId);
+
+            return mapper.Map(statisticManager.SelectPercentOfPresentsByGroupId(groupId),
+                                lessonManager.SelectLessonAttendanceByGroupId(groupId));
         }
     }
 }
