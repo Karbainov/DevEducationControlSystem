@@ -322,5 +322,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectCourseByTagId.sql" />
   </ItemGroup>
 </Project>
