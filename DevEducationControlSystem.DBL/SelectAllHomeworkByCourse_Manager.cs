@@ -16,7 +16,7 @@ namespace DevEducationControlSystem.DBL
         private string expr;
 
 
-        public SqlConnection GetConnection()
+        private SqlConnection GetConnection()
         {
             string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
             _connection = new SqlConnection(connectionString);
@@ -24,34 +24,36 @@ namespace DevEducationControlSystem.DBL
         }
 
 
-        public Dictionary<int, SelectAllHomeworkByCourseDTO> Get(int CourseId)
+        public List<SelectAllHomeworkByCourseDTO> Get(int CourseId)
         {
-            Dictionary<int, SelectAllHomeworkByCourseDTO> homeworksByCourse = new Dictionary<int, SelectAllHomeworkByCourseDTO>();
+            List<SelectAllHomeworkByCourseDTO> homeworksByCourse = new List<SelectAllHomeworkByCourseDTO>();
             var value = new { CourseId };
             expr = "[SelectAllHomeworkByCourse]";
 
             using (_connection = GetConnection())
             {
-                var item = _connection.Query<SelectAllHomeworkByCourseDTO, ResourceDTO, SelectAllHomeworkByCourseDTO>(expr, 
-                    (Homework, Resource) => 
+                var item = _connection.Query<SelectAllHomeworkByCourseDTO, ResourceDTO, SelectAllHomeworkByCourseDTO>(expr,
+                    (Homework, Resource) =>
                     {
                         SelectAllHomeworkByCourseDTO homeworkCourse = new SelectAllHomeworkByCourseDTO();
-
-                        if (homeworksByCourse.TryGetValue(homeworkCourse.HomeworkId, out homeworkCourse))
+                        foreach(var h in  homeworksByCourse)
                         {
-                            homeworkCourse = Homework;
-                            homeworksByCourse.Add(homeworkCourse.HomeworkId, homeworkCourse);
-                        }
 
-                        if(homeworkCourse.Resource == null)
-                        {
-                            homeworkCourse.Resource = new List<ResourceDTO>();
-                        }
-                        homeworkCourse.Resource.Add(Resource);
+                            homeworkCourse = h;
+                            homeworksByCourse.Add(homeworkCourse);                            
 
+                            if (homeworkCourse.Resource == null)
+                            {
+                                homeworkCourse.Resource = new List<ResourceDTO>();
+                            }
+                            homeworkCourse.Resource.Add(Resource);
+                            
+                        };
+                       
                         return homeworkCourse;
 
-                    }, commandType: CommandType.StoredProcedure, splitOn : "Resource").AsList<SelectAllHomeworkByCourseDTO>();
+
+                    }, commandType: CommandType.StoredProcedure, splitOn : "Resource").AsList();
             }
 
             return homeworksByCourse;

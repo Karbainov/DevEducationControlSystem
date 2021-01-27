@@ -12,11 +12,13 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class PrivilegesManager
     {
+        private string _connectionString;
+        private SqlConnection connection;
 
-        public SqlConnection GetConnection()
+        private SqlConnection GetConnection()
         {
-            string _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            SqlConnection connection = new SqlConnection(_connectionString);
+            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
+            connection = new SqlConnection(_connectionString);
             return connection;
         }
 
@@ -25,7 +27,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             var PrivilegesDTOs = new List<PrivilegesDTO>();
             string expr = "[Privileges_Select]";
             
-            using (var connection = GetConnection())
+            using (connection = GetConnection())
             {
                 PrivilegesDTOs = connection.Query<PrivilegesDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }
@@ -37,10 +39,11 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var PrivilegesDTO = new PrivilegesDTO();
             string expr = "[Privileges_SelectById]";
+            var value = new { id };
 
-            using (var connection = GetConnection())
+            using (connection = GetConnection())
             {
-                PrivilegesDTO = connection.Query<PrivilegesDTO>(expr, commandType: CommandType.StoredProcedure).Single<PrivilegesDTO>();
+                PrivilegesDTO = connection.Query<PrivilegesDTO>(expr, value, commandType: CommandType.StoredProcedure).Single<PrivilegesDTO>();
             }
 
             return PrivilegesDTO;
@@ -50,8 +53,8 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void Update(int id)
         {
             string expr = "[Privileges_Update]";
-            var value = new { Id = id };
-            using (var connection = GetConnection())
+            var value = new { id };
+            using (connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -60,8 +63,8 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void Delete(int id)
         {
             string expr = "[Privileges_Delete]";
-            var value = new { id = id };
-            using (var connection = GetConnection())
+            var value = new { id };
+            using (connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -70,8 +73,8 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void Add(int id, int name)
         {
             string expr = "[Privileges_Add]";
-            var value = new { id = id, name = name };
-            using (var connection = GetConnection())
+            var value = new { id, name };
+            using (connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }

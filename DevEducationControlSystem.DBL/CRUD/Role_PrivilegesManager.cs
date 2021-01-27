@@ -28,7 +28,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             string expr = "[Role_Privileges_Select]";
 
 
-            using (var connection = GetConnection())
+            using (connection = GetConnection())
             {
                 Role_PrivilegesDTOs = connection.Query<Role_PrivilegesDTO>(expr, commandType: CommandType.StoredProcedure).AsList<Role_PrivilegesDTO>();
             }
@@ -39,7 +39,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public Role_PrivilegesDTO SelectById(int id)
         {
             var Role_PrivilegesDTO = new Role_PrivilegesDTO();
-            var value = new { Id = id };
+            var value = new { id };
             string expr = "[Role_Privileges_SelectById]";
 
             using (connection = GetConnection())
@@ -54,9 +54,9 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void Update(int id)
         {
             string expr = "[Role_Privileges_Update]";
-            var value = new { Id = id };
+            var value = new { id };
 
-            using (var connection = GetConnection())
+            using (connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -65,9 +65,9 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void Delete(int id)
         {
             string expr = "[Role_Privileges_Delete]";
-            var value = new { Id = id };
+            var value = new { id };
 
-            using (var connection = GetConnection())
+            using (connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -78,7 +78,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             string expr = "[Role_Privileges_Add]";
             var value = new { RoleId, PrivilegesId };
 
-            using (var connection = GetConnection())
+            using (connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }

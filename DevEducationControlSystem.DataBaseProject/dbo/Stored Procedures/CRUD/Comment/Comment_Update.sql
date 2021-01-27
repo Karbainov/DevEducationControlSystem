@@ -1,5 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[Comment_Update]
-	@Id int,
 	@UserId int,
     @AnswerId int,
     @ResourceId int,
@@ -8,7 +7,6 @@
 AS
 UPDATE [dbo].[Comment] 
 SET
-Id = @Id,
 UserId = @UserId, 
 AnswerId = @AnswerId,
 ResourceId = @ResourceId,

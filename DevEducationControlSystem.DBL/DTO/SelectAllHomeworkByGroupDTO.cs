@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEducationControlSystem.DBL.DTO.Base;
+using System.Collections.Generic;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
@@ -8,8 +9,7 @@ namespace DevEducationControlSystem.DBL.DTO
 		public string Homework { get; set; }
 		public string Description { get; set; }
 		public int IsSolutionRequired { get; set; }
-		public ResourceLinksDTO ResourceLinks { get; set; }
-		public ResourceImageDTO ResourseImage { get; set; }
+		public List<ResourceDTO> Resource { get; set; }
 
 		public SelectAllHomeworkByGroupDTO()
         {
@@ -22,8 +22,7 @@ namespace DevEducationControlSystem.DBL.DTO
 			Homework = dto.Homework;
 			Description = dto.Description;
 			IsSolutionRequired = dto.IsSolutionRequired;
-			ResourceLinks = dto.ResourceLinks;
-			ResourseImage = dto.ResourseImage;
+			Resource = dto.Resource;
         }
 
 	}

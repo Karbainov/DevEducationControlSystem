@@ -12,22 +12,23 @@ namespace DevEducationControlSystem.DBL
     {
         private string _connectionString;
         private SqlConnection connection;
+ 
         private string expr;
 
-        public SqlConnection GetConnection()
+        private SqlConnection GetConnection()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
             connection = new SqlConnection(_connectionString);
             return connection;
         }
-
+        
         public List<SelectAllHomeworkByThemeDTO> Get(int ThemeId)
         {
             List<SelectAllHomeworkByThemeDTO> homeworksByTheme = new List<SelectAllHomeworkByThemeDTO>();
-            var value = new { ThemeId = ThemeId };
+            var value = new { ThemeId };
             expr = "[SelectAllHomeworkByTheme]";
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (connection = new SqlConnection(_connectionString))
             {
                 homeworksByTheme = connection.Query<SelectAllHomeworkByThemeDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<SelectAllHomeworkByThemeDTO>();
             }

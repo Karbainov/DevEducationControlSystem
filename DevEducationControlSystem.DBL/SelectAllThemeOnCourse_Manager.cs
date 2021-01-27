@@ -14,7 +14,7 @@ namespace DevEducationControlSystem.DBL
         private SqlConnection connection;
         private string expr;
 
-        public SqlConnection GetConnection()
+        private SqlConnection GetConnection()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
             connection = new SqlConnection(_connectionString);

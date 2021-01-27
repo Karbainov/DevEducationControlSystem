@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CRUD\StatisticsManager.cs" />
     <Compile Remove="CRUD\UdaliMeniaManager.cs" />
     <Compile Remove="DTO\Base\UdaliMeniaDTO.cs" />
   </ItemGroup>
