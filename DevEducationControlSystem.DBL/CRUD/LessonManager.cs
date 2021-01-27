@@ -148,8 +148,8 @@ namespace DevEducationControlSystem.DBL.CRUD
             using (var connection = SqlServerConnection.GetConnection())
             {
 
-                connection.Query<LessonAttendanceDTO, UserDTO, LessonAttendanceDTO>(expr,
-                (lessonAttendance, user) =>
+                connection.Query<LessonAttendanceDTO, AttendanceDTO, LessonAttendanceDTO>(expr,
+                (lessonAttendance, attendance) =>
                 {
                     LessonAttendanceDTO tmpLesson = null;
 
@@ -169,9 +169,9 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                     if(tmpLesson.Users == null)
                     {
-                        tmpLesson.Users = new List<UserDTO>();
+                        tmpLesson.Users = new List<AttendanceDTO>();
                     }
-                    tmpLesson.Users.Add(user);
+                    tmpLesson.Users.Add(attendance);
 
                     return tmpLesson;
                 },
