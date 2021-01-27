@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DevEducationControlSystem.API.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class CourseController : ControllerBase
     {
         [HttpGet("{courseId}")]
