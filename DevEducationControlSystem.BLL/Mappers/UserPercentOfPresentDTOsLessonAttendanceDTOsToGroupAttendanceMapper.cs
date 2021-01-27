@@ -12,7 +12,8 @@ namespace DevEducationControlSystem.BLL.Mappers
         {
             var groupAttendance = new GroupAttendanceModel();
             groupAttendance.UsersPercentOfPresent = userPercents;
-            groupAttendance.LessonsAttendances = lessonAttendances;
+            groupAttendance.LessonsAttendances = new List<LessonAttendanceModel>();
+            lessonAttendances.ForEach((r) => { groupAttendance.LessonsAttendances.Add(new LessonAttendanceModel(r)); });
             return groupAttendance;
         }
     }

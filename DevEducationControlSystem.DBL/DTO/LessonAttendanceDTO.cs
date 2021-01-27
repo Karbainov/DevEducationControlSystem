@@ -12,7 +12,7 @@ namespace DevEducationControlSystem.DBL.DTO
         public DateTime LessonDate { get; set; }
         public int GroupId { get; set; }
         public string Group { get; set; }
-        public List<AttendanceDTO> Users {get;set;}
+        public List<AttendanceDTO> Attendances { get;set;}
 
     }
 }

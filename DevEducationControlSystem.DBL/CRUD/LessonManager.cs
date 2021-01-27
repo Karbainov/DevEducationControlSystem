@@ -167,16 +167,16 @@ namespace DevEducationControlSystem.DBL.CRUD
                         lessons.Add(tmpLesson);
                     }
 
-                    if(tmpLesson.Users == null)
+                    if(tmpLesson.Attendances == null)
                     {
-                        tmpLesson.Users = new List<AttendanceDTO>();
+                        tmpLesson.Attendances = new List<AttendanceDTO>();
                     }
-                    tmpLesson.Users.Add(attendance);
+                    tmpLesson.Attendances.Add(attendance);
 
                     return tmpLesson;
                 },
                 value,
-                splitOn: "UserId",
+                splitOn: "Id",
                 commandType: CommandType.StoredProcedure);
             }
 

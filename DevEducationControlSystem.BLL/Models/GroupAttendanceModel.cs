@@ -8,6 +8,6 @@ namespace DevEducationControlSystem.BLL.Models
     public class GroupAttendanceModel
     {
         public List<UserPercentOfPresentsDTO> UsersPercentOfPresent { get; set; }
-        public List<LessonAttendanceDTO> LessonsAttendances { get; set; }
+        public List<LessonAttendanceModel> LessonsAttendances { get; set; }
     }
 }
