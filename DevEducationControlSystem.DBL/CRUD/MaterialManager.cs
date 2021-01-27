@@ -172,14 +172,12 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
         {
-            var materialsInfoForGroup = new List<MaterialsInfoForGroupDTO>();
             string expr = "[SelectAllMaterialsByGroupId]";
             var value = new { groupId };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                materialsInfoForGroup = connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
+                return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
             }
-            return materialsInfoForGroup;
         }
 
 

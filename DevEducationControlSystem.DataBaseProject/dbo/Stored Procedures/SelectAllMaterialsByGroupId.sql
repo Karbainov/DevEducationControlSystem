@@ -5,6 +5,7 @@ select
 	M.Id,
 	M.Name,
 	M.Message,
+	M.ResourceId,
 	R.Links,
 	R.Images
 from Material M
