@@ -8,7 +8,7 @@ namespace DevEducationControlSystem.BLL.Models
 {
     public class CourseInfoAndFeedbacksModel
     {
-        public CityDTO KakBudtoCourseDTO { get; set; }
-        public List<WholeCourseFeedbackDTO> wholeCourseFeedbackDTO { get; set; }
+        public CourseDTO CourseDTO { get; set; }
+        public List<WholeCourseFeedbackDTO> WholeCourseFeedbackDTO { get; set; }
     }
 }
