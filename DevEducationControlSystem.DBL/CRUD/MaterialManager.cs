@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using System.Data;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -13,10 +14,18 @@ namespace DevEducationControlSystem.DBL.CRUD
     {
         string _connectionString;
         SqlConnection _connection;
+        public SqlConnection GetConnection()
+        {
+            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
+            SqlConnection connection = new SqlConnection(connectionString);
+            return connection;
+        }
 
         public MaterialManager()
+
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
+
         }
         public List<MaterialDTO> Select()
         {
@@ -42,9 +51,17 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
                     int id = (int)reader["Id"];
                     int userid = (int)reader["UserId"];
-                    int resourceid = (int)reader["ResouceId"];
+                    int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
-                    string message = (string)reader["Message"];
+                    string message;
+                    if (!reader.IsDBNull(reader.GetOrdinal("Message")))
+                    {
+                        message = (string)reader["Message"];
+                    }
+                    else
+                    {
+                        message = null;
+                    }
                     bool isdeleted = (bool)reader["IsDeleted"];
                     materials.Add(new MaterialDTO(id, userid, resourceid, name, message, isdeleted));
                 }
@@ -82,9 +99,17 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
                     int id = (int)reader["Id"];
                     int userid = (int)reader["UserId"];
-                    int resourceid = (int)reader["ResouceId"];
+                    int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
-                    string message = (string)reader["Message"];
+                    string message;
+                    if (!reader.IsDBNull(reader.GetOrdinal("Message")))
+                    {
+                        message = (string)reader["Message"];
+                    }
+                    else
+                    {
+                        message = null;
+                    }
                     bool isdeleted = (bool)reader["IsDeleted"];
                     material = new MaterialDTO(id, userid, resourceid, name, message, isdeleted);
                 }
@@ -95,6 +120,45 @@ namespace DevEducationControlSystem.DBL.CRUD
             return material;
         }
 
+        public void Add(string name)
+        {
+            string expr = "[Material_Add]";
+            var value = new { Name = name };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Material_Delete]";
+            var value = new { Id = id };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void SoftDelete(int id)
+        {
+            string expr = "[Material_SoftDelete]";
+            var value = new { Id = id };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[Material_Update]";
+            var value = new { Id = id, Name = name };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
         public List<AllGroupMaterialsByTagAndUserIdDTO> Get(int userId, string tagName)
         {
             List<AllGroupMaterialsByTagAndUserIdDTO> materialsByTag = new List<AllGroupMaterialsByTagAndUserIdDTO>();

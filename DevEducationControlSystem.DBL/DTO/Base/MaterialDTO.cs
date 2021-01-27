@@ -10,7 +10,9 @@ namespace DevEducationControlSystem.DBL.DTO.Base
         public int UserId { get; set; }
         public int ResourceId { get; set; }
         public string Name { get; set; }
-        public string Message { get; set; }
+#nullable enable
+        public string? Message { get; set; }
+#nullable disable
         public bool IsDeleted { get; set; }
 
         public MaterialDTO()
