@@ -304,7 +304,6 @@
     <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
     <Build Include="dbo\Stored Procedures\ReplaceUserToAnotherGroupByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllMaterialsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />

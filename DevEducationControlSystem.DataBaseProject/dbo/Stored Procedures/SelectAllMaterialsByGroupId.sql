@@ -6,10 +6,9 @@ select
 	M.Name,
 	M.Message,
 	R.Links,
-	R.Images,
-	M.IsDeleted
+	R.Images
 from Material M
 	Left join [Group_Material] on [Group_Material].MaterialId = M.Id
 	Left join [group] on [Group].Id = [Group_Material].GroupId
 	left join [Resource] R on R.Id = M.ResourceId
-Where Group_Material.GroupId = @GroupId
+Where Group_Material.GroupId = @GroupId and M.IsDeleted = 0
