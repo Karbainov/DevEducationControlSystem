@@ -6,8 +6,8 @@ namespace DevEducationControlSystem.DBL.DTO.Base
 {
     public class PrivilegesDTO
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         public PrivilegesDTO()
         {
@@ -16,8 +16,8 @@ namespace DevEducationControlSystem.DBL.DTO.Base
 
         public PrivilegesDTO(PrivilegesDTO dto)
         {
-            this.id = dto.id;
-            this.name = dto.name;
+            this.Id = dto.Id;
+            this.Name = dto.Name;
         }
     }
 }

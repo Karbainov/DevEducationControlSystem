@@ -16,6 +16,6 @@ select
 	Left join Course on Course.Id = Homework_Course.CourseId
 	left join [Resource] on Resource.Id = Homework.ResourceId
 		
-	where Course.id = @CourseId and Homework.IsDeleted = 0 and Course.IsDeleted = 0
+	where Course.Id = @CourseId and Homework.IsDeleted = 0 and Course.IsDeleted = 0
 
 	order by homeworkId asc

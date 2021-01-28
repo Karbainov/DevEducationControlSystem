@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[Comment_Update]
-	@UserId int,
+	@Id int,
+    @UserId int,
     @AnswerId int,
     @ResourceId int,
     @Date datetime,

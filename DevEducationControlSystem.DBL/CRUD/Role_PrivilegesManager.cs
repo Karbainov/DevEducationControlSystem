@@ -11,79 +11,34 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class Role_PrivilegesManager
     {
-        private string _connectionString;
-        private SqlConnection connection;
-
-
-        public SqlConnection GetConnection()
-        {
-            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            SqlConnection connection = new SqlConnection(_connectionString);
-            return connection;
-        }
-        
         public List<Role_PrivilegesDTO> Select()
         {
-            var Role_PrivilegesDTOs = new List<Role_PrivilegesDTO>();
-            string expr = "[Role_Privileges_Select]";
-
-
-            using (connection = GetConnection())
-            {
-                Role_PrivilegesDTOs = connection.Query<Role_PrivilegesDTO>(expr, commandType: CommandType.StoredProcedure).AsList<Role_PrivilegesDTO>();
-            }
-
-            return Role_PrivilegesDTOs;
+            var ListRole_PrivilegesDTOs = SqlServerConnection.GetConnection().Query<Role_PrivilegesDTO>("[Role_Privileges_Select]", commandType: CommandType.StoredProcedure).AsList<Role_PrivilegesDTO>();
+            return ListRole_PrivilegesDTOs;
         }
 
         public Role_PrivilegesDTO SelectById(int id)
         {
-            var Role_PrivilegesDTO = new Role_PrivilegesDTO();
-            var value = new { id };
-            string expr = "[Role_Privileges_SelectById]";
-
-            using (connection = GetConnection())
-            {
-                Role_PrivilegesDTO = connection.Query<Role_PrivilegesDTO>(expr, value, commandType: CommandType.StoredProcedure).Single<Role_PrivilegesDTO>();
-            }
-
+            var Role_PrivilegesDTO = SqlServerConnection.GetConnection().Query<Role_PrivilegesDTO>("[Role_Privileges_SelectById]", id, commandType: CommandType.StoredProcedure).Single<Role_PrivilegesDTO>();
             return Role_PrivilegesDTO;
         }
 
-
-        public void Update(int id)
+        public void Update(int id, int RoleId, int PrivilegesId)
         {
-            string expr = "[Role_Privileges_Update]";
-            var value = new { id };
-
-            using (connection = GetConnection())
-            {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
-            }
+            var value = new { id, RoleId, PrivilegesId };
+            SqlServerConnection.GetConnection().Query("[Role_Privileges_Update]", value, commandType: CommandType.StoredProcedure);
         }
 
         public void Delete(int id)
         {
-            string expr = "[Role_Privileges_Delete]";
-            var value = new { id };
-
-            using (connection = GetConnection())
-            {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
-            }
+            SqlServerConnection.GetConnection().Query("[Role_Privileges_Delete]", id, commandType: CommandType.StoredProcedure);
         }
 
         public void Add(int RoleId, int PrivilegesId)
         {
-            string expr = "[Role_Privileges_Add]";
             var value = new { RoleId, PrivilegesId };
-
-            using (connection = GetConnection())
-            {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
-            }
+            SqlServerConnection.GetConnection().Query("[Role_Privileges_Add]", value, commandType: CommandType.StoredProcedure);
         }
-        
     }
     
 }

@@ -12,7 +12,7 @@ select
 
 	from Homework
 	Left join Group_Homework as GroupHomework on Homework.Id = GroupHomework.HomeworkId
-	Left join [group] on [Group].Id = GroupHomework.GroupId
+	Left join [Group] on [Group].Id = GroupHomework.GroupId
 	left join [Resource] on Resource.Id = Homework.ResourceId
 
 	where [Group].Id = @GroupId and Homework.IsDeleted = 0
