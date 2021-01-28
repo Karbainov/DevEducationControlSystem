@@ -93,7 +93,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             var parameter = new { CourseId = courseId };
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Query<WholeCourseFeedbackDTO, ThemeFromCourseFeedbackDTO, WholeCourseFeedbackDTO>
+                connection.Query<WholeCourseFeedbackDTO, ThemeFromCourseDTO, WholeCourseFeedbackDTO>
                     (expression, (wholeCourseFeedback, themeFromCourseFeedback) =>
                     {
 
@@ -107,7 +107,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                         if (wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs == null)
                         {
-                            wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs = new List<ThemeFromCourseFeedbackDTO>();
+                            wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs = new List<ThemeFromCourseDTO>();
                         }
                         wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs.Add(themeFromCourseFeedback);
 

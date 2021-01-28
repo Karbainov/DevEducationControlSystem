@@ -169,5 +169,15 @@ namespace DevEducationControlSystem.DBL.CRUD
             return materialsByTag;
         }
 
+        public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
+        {
+            string expr = "[SelectAllMaterialsByGroupId]";
+            var value = new { groupId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
+            }
+        }
+
     }
 }

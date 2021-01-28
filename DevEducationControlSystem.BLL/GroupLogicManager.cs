@@ -20,5 +20,10 @@ namespace DevEducationControlSystem.BLL
                 homeworkManager.SelectAllHomeworkByGroupId(groupId)
                 );
         }
+
+        public StudentUnlockedDataModel GetStudentUnlockedData(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
