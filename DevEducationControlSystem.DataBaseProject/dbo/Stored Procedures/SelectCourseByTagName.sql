@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[SelectCourseByTagName]
 @TagName nvarchar(100)
 as
-select T.[Name] as TagName, C.[Name] as CourseName
+select T.[Name] as TagName, C.Id as CourseId, C.[Name] as CourseName
 from Tag as T
 inner join Theme_Tag as TT on TT.TagId = T.Id
 inner join Course_Theme as CT on CT.ThemeId = TT.ThemeId
