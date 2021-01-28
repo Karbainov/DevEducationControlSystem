@@ -17,15 +17,15 @@ namespace DevEducationControlSystem.DBL.CRUD
             return connection;
         }
 
-        public List<SelectAllTagsOnCourseDTO> SelectAllTagsOnCourse(int id)
+        public List<AllTagsOnCourseDTO> SelectAllTagsOnCourse(int id)
         {
-            var themesList = new List<SelectAllTagsOnCourseDTO>();
+            var themesList = new List<AllTagsOnCourseDTO>();
             string expr = "[SelectAllTagsOnCourse]";
-            var value = new { Id = id };
+            var value = new { id };
 
             using (var connection = GetConnection())
             {
-                themesList = connection.Query<SelectAllTagsOnCourseDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+                themesList = connection.Query<AllTagsOnCourseDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
             }
 
             return themesList;

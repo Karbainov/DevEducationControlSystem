@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[SelectAllTagsOnCourse]
 @Id int
 as
-select distinct C.Name as CourseName, T.Name as TagName
+select distinct C.[Name] as Course, T.Id as TagId, T.[Name] as TagName
 	from Course as C
 	inner join Homework_Course as HC on C.Id = HC.CourseId
 	inner join Homework_Tag as HT on HC.HomeworkId = HT.HomeworkId
