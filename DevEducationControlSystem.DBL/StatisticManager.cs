@@ -77,5 +77,17 @@ namespace DevEducationControlSystem.DBL
 
             return DTOs;
         }
+
+        public List<SelectNumberOfTeachersByCourseDTO> SelectNumberOfTeachersByCourse()
+        {
+            var teachersByCourseList = new List<SelectNumberOfTeachersByCourseDTO>();
+            string expr = "[SelectNumberOfTeachersByCourse]";
+            using (var connection = ConnectToDB())
+            {
+                teachersByCourseList = connection.Query<SelectNumberOfTeachersByCourseDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return teachersByCourseList;
+        }
     }
 }
