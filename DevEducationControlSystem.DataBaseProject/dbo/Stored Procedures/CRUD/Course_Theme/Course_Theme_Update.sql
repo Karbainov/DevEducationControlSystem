@@ -6,6 +6,6 @@ AS
 	UPDATE [dbo].[Course_Theme]
 	SET
 		CourseId = @CourseId,
-		ThemeID = @ThemeId
+		ThemeId = @ThemeId
 WHERE
-	ID=@Id
+	Id=@Id

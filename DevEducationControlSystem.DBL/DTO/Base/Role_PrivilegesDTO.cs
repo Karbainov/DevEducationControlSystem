@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO.Base
 {
-    class Role_PrivilegesDTO
+    public class Role_PrivilegesDTO
     {
         public int Id { get; set; }
 

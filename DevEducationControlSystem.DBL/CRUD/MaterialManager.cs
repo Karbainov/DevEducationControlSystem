@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using System.Data;
+
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
