@@ -4,19 +4,21 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    public class SelectCourseByTagIdDTO
+    public class CourseByTagIdDTO
     {
         public string TagName { get; set; }
+        public int CourseId { get; set; }
         public string CourseName { get; set; }
 
-        public SelectCourseByTagIdDTO()
+        public CourseByTagIdDTO()
         {
 
         }
 
-        public SelectCourseByTagIdDTO(SelectCourseByTagIdDTO dto)
+        public CourseByTagIdDTO(CourseByTagIdDTO dto)
         {
             TagName = dto.TagName;
+            CourseId = dto.CourseId;
             CourseName = dto.CourseName;
         }
     }
