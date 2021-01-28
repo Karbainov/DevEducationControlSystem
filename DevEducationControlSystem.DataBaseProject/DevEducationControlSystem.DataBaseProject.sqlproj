@@ -286,6 +286,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SoftDelete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
@@ -363,6 +364,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_SelectBuId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfTeachersByCourse.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Update.sql" />
