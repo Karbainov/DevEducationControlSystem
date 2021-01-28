@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    public class SelectNumberOfTeachersByCourseDTO
+    public class NumberOfTeachersByCourseDTO
     {
         public int CourseId { get; set; }
         public string CourseName { get; set; }
@@ -12,12 +12,12 @@ namespace DevEducationControlSystem.DBL.DTO
         public string CityName { get; set; }
         public int Amount { get; set; }
 
-        public SelectNumberOfTeachersByCourseDTO()
+        public NumberOfTeachersByCourseDTO()
         {
 
         }
 
-        public SelectNumberOfTeachersByCourseDTO(SelectNumberOfTeachersByCourseDTO dto)
+        public NumberOfTeachersByCourseDTO(NumberOfTeachersByCourseDTO dto)
         {
             CourseId = dto.CourseId;
             CourseName = dto.CourseName;

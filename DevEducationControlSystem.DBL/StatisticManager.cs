@@ -78,13 +78,13 @@ namespace DevEducationControlSystem.DBL
             return DTOs;
         }
 
-        public List<SelectNumberOfTeachersByCourseDTO> SelectNumberOfTeachersByCourse()
+        public List<NumberOfTeachersByCourseDTO> SelectNumberOfTeachersByCourse()
         {
-            var teachersByCourseList = new List<SelectNumberOfTeachersByCourseDTO>();
+            var teachersByCourseList = new List<NumberOfTeachersByCourseDTO>();
             string expr = "[SelectNumberOfTeachersByCourse]";
             using (var connection = ConnectToDB())
             {
-                teachersByCourseList = connection.Query<SelectNumberOfTeachersByCourseDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
+                teachersByCourseList = connection.Query<NumberOfTeachersByCourseDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }
 
             return teachersByCourseList;
