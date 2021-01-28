@@ -4,7 +4,7 @@ AS
   alter table [Theme_Tag]
   ADD CONSTRAINT FK_TagId
   FOREIGN KEY(TagId)
-  REFERENCES [Tag] (id)
+  REFERENCES [Tag] (Id)
   on delete cascade;
    
    delete 

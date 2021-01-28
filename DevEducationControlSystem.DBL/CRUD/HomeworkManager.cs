@@ -6,162 +6,152 @@ using DevEducationControlSystem.DBL.DTO.Base;
 using System.Data;
 using Dapper;
 using System.Linq;
-
+using DevEducationControlSystem.DBL.DTO;
+
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class HomeworkManager
     {
-        
-
-        private static SqlConnection GetConnection()
-        {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            SqlConnection connection = new SqlConnection(connectionString);
-            return connection;
-        }
-
-        //public List<HomeworkDTO> Select()
-        //{
-        //    List<HomeworkDTO> homeworks = new List<HomeworkDTO>();
-
-        //    SqlConnection connection = GetConnection();
-
-        //    try
-        //    {
-        //        connection.Open();
-        //    }
-        //    catch
-        //    {
-        //        connection.Close();
-        //        throw new Exception("Connection failed");
-        //    }
-
-        //    string sqlExpression = "Homework_Select";
-        //    SqlCommand command = new SqlCommand(sqlExpression, connection);
-        //    command.CommandType = System.Data.CommandType.StoredProcedure;
-
-        //    SqlDataReader reader = command.ExecuteReader();
-
-        //    if (reader.HasRows) // если есть данные
-        //    {
-        //        while (reader.Read()) // пока read==true читаем строку
-        //        {
-
-        //            int Id = (int)reader["Id"];
-        //            int ResourceId = (int)reader["ResourceId"];
-        //            string Name = (string)reader["Name"];
-        //            string? Description = (string?)reader["Description"];
-        //            bool IsDeleted = (bool)reader["IsDeleted"];
-        //            bool IsSolutionRequired = (bool)reader["IsSolutionRequired"];
-
-        //            homeworks.Add(new HomeworkDTO(Id, ResourceId, Name, Description, IsDeleted, IsSolutionRequired));
-        //        }
-        //    }
-
-        //    reader.Close();
-        //    connection.Close();
-
-        //    return homeworks;
-        //}
-
         public List<HomeworkDTO> Select()
         {
-            var  hw = new List <HomeworkDTO>();
-            string sqlExpression = "[Homework_Select]";
-            
-
-            using (var connection = new SqlConnection(GetConnection().ConnectionString))
-            {
-                hw = connection.Query<HomeworkDTO>(sqlExpression, commandType: CommandType.StoredProcedure).ToList<HomeworkDTO>();
-            }
-            return hw;
+            var howeworkList = SqlServerConnection.GetConnection().Query<HomeworkDTO>("Homework_Select", commandType: CommandType.StoredProcedure).ToList<HomeworkDTO>();
+            return howeworkList;
         }
 
-        public HomeworkDTO SelectById (int id)
+        public HomeworkDTO SelectById(int id)
         {
-            HomeworkDTO homework = new HomeworkDTO();
-
-            SqlConnection connection = GetConnection();
-
-            try
-            {
-                connection.Open();
-            }
-            catch
-            {
-                connection.Close();
-                throw new Exception("Connection failed");
-            }
-
-            string sqlExpression = "Homework_SelectById";
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            SqlParameter idParameter = new SqlParameter("@Id", id);
-            command.Parameters.Add(idParameter);
-
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows) // если есть данные
-            {
-                while (reader.Read()) // пока read==true читаем строку
-                {
-
-                    int Id = (int)reader["Id"];
-                    int ResourceId = (int)reader["ResourceId"];
-                    string Name = (string)reader["Name"];
-                    string Description = (string)reader["Description"];
-                    bool IsDeleted = (bool)reader["IsDeleted"];
-                    bool IsSolutionRequired = (bool)reader["IsSolutionRequired"];
-
-                    homework = new HomeworkDTO(Id, ResourceId, Name, Description, IsDeleted, IsSolutionRequired);
-                }
-            }
-            reader.Close();
-            connection.Close();
+            var homework = SqlServerConnection.GetConnection().QuerySingleOrDefault<HomeworkDTO>("Homework_SelectById", new { id }, commandType: CommandType.StoredProcedure);
             return homework;
         }
 
-        public void Add (int resourceId, string name, string description, string isSolutionRequired)
+        public void Add(int resourceId, string name, string description, string isSolutionRequired)
         {
-            string sqlExpression = "[Homework_Add]";
             var values = new { ResourceId = resourceId, Name = name, Description = description, IsSolutionRequired = isSolutionRequired };
-
-            using (var connection = new SqlConnection(GetConnection().ConnectionString))
-            {
-                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
-            }
+            SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
         }
 
-        public void Delete (int id)
+        public void Delete(int id)
         {
-            string sqlExpression = "[Homework_Delete]";
-            var values = new { Id = id };
-
-            using (var connection = new SqlConnection(GetConnection().ConnectionString))
-            {
-                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
-            }
+            SqlServerConnection.GetConnection().Query("[Homework_Delete]", new { id }, commandType: CommandType.StoredProcedure);
         }
 
         public void SoftDelete(int id)
         {
-            string sqlExpression = "[Homework_SoftDelete]";
-            var values = new { Id = id };
-
-            using (var connection = new SqlConnection(GetConnection().ConnectionString))
-            {
-                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
-            }
+            SqlServerConnection.GetConnection().Query("[Homework_SoftDelete]", new { id }, commandType: CommandType.StoredProcedure);
         }
 
-        public void Update (int id, int resourceId, string name, string description, string isDeleted,  string isSolutionRequired)
+        public void Update(int id, int resourceId, string name, string description, string isDeleted, string isSolutionRequired)
         {
-            string sqlExpression = "[Homework_Update]";
-            var values = new { Id = id, ResourceId = resourceId, Name = name, Description = description, IsDeleted = isDeleted, IsSolutionRequired = isSolutionRequired };
+            var values = new { id, resourceId, name, description, isDeleted, isSolutionRequired };
+            SqlServerConnection.GetConnection().Query("[Homework_Update]", values, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<SelectAllHomeworkByThemeDTO> GetAllHomeworkByTheme(int ThemeId)
+        {
+            List<SelectAllHomeworkByThemeDTO> homeworksByTheme = new List<SelectAllHomeworkByThemeDTO>();
 
-            using (var connection = new SqlConnection(GetConnection().ConnectionString))
+            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByThemeDTO, ResourceDTO, SelectAllHomeworkByThemeDTO>("[SelectAllHomeworkByTheme]",
+                    (Homework, Resource) =>
+                    {
+                        SelectAllHomeworkByThemeDTO homeworkTheme = new SelectAllHomeworkByThemeDTO();
+
+                        foreach (var h in homeworksByTheme)
+                        {
+                            if (h.HomeworkId == homeworkTheme.HomeworkId)
+                            {
+                                homeworkTheme = h;
+                                break;
+                            }
+                        };
+
+                        if (homeworkTheme == null)
+                        {
+                            homeworkTheme = Homework;
+                            homeworksByTheme.Add(homeworkTheme);
+                        }
+
+                        homeworkTheme.Resource.Add(Resource);
+                        return homeworkTheme;
+
+
+                    }, ThemeId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByThemeDTO>();
+
+
+            return homeworksByTheme;
+        }
+
+        public List<SelectAllHomeworkByGroupDTO> GetAllHomeworkByGroup(int GroupId)
+        {
+            List<SelectAllHomeworkByGroupDTO> homeworksByGroup = new List<SelectAllHomeworkByGroupDTO>();
+
+            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByGroupDTO, ResourceDTO, SelectAllHomeworkByGroupDTO>("[SelectAllHomeworkByGroup]",
+                    (Homework, Resource) =>
+                    {
+                        SelectAllHomeworkByGroupDTO homeworkGroup = new SelectAllHomeworkByGroupDTO();
+
+                        foreach (var h in homeworksByGroup)
+                        {
+                            if (h.HomeworkId == homeworkGroup.HomeworkId)
+                            {
+                                homeworkGroup = h;
+                                break;
+                            }
+                        };
+
+                        if (homeworkGroup == null)
+                        {
+                            homeworkGroup = Homework;
+                            homeworksByGroup.Add(homeworkGroup);
+                        }
+
+                        homeworkGroup.Resource.Add(Resource);
+                        return homeworkGroup;
+
+
+                    }, GroupId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByGroupDTO>();
+
+            return homeworksByGroup;
+        }
+
+        public List<SelectAllHomeworkByCourseDTO> GetAllHomeworkByCourse(int CourseId)
+        {
+            List<SelectAllHomeworkByCourseDTO> homeworksByCourse = new List<SelectAllHomeworkByCourseDTO>();
+
+            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByCourseDTO, ResourceDTO, SelectAllHomeworkByCourseDTO>("[SelectAllHomeworkByCourse]", (Homework, Resource) =>
+            {
+                SelectAllHomeworkByCourseDTO homeworkCourse = new SelectAllHomeworkByCourseDTO();
+                foreach (var h in homeworksByCourse)
+                {
+                    if (h.HomeworkId == homeworkCourse.HomeworkId)
+                    {
+                        homeworkCourse = h;
+                        break;
+                    }
+                };
+
+                if (homeworkCourse == null)
+                {
+                    homeworkCourse = Homework;
+                    homeworksByCourse.Add(homeworkCourse);
+                }
+
+                homeworkCourse.Resource.Add(Resource);
+                return homeworkCourse;
+
+            }, CourseId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByCourseDTO>();
+
+            return homeworksByCourse;
+        }
+
+
+        public List<HomeworkAllInfoDTO> SelectAllHomeworkByGroupId(int groupId)
+        {
+            string expr = "[SelectAllHomeworkByGroupId]";
+            var value = new { groupId };
+
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(sqlExpression, values, commandType: CommandType.StoredProcedure);
+                return connection.Query<HomeworkAllInfoDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<HomeworkAllInfoDTO>();
             }
         }
     }
