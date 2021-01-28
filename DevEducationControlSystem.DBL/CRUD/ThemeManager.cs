@@ -98,29 +98,29 @@ namespace DevEducationControlSystem.DBL.CRUD
             return theme;
         }
 
-        public List<SelectThemesByTagIdDTO> SelectThemesByTagId(int id)
+        public List<ThemesByTagIdDTO> SelectThemesByTagId(int id)
         {
-            var themesByTagId = new List<SelectThemesByTagIdDTO>();
+            var themesByTagId = new List<ThemesByTagIdDTO>();
             string expr = "[SelectThemesByTagId]";
             var value = new { TagId = id };
 
             using (var connection = ConnectToDB())
             {
-                themesByTagId = connection.Query<SelectThemesByTagIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+                themesByTagId = connection.Query<ThemesByTagIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
             }
 
             return themesByTagId;
         }
 
-        public List<SelectThemesByTagNameDTO> SelectThemesByTagName(string name)
+        public List<ThemesByTagNameDTO> SelectThemesByTagName(string name)
         {
-            var themesByTagName = new List<SelectThemesByTagNameDTO>();
+            var themesByTagName = new List<ThemesByTagNameDTO>();
             string expr = "[SelectThemesByTagId]";
             var value = new { TagName = name };
 
             using (var connection = ConnectToDB())
             {
-                themesByTagName = connection.Query<SelectThemesByTagNameDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+                themesByTagName = connection.Query<ThemesByTagNameDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
             }
 
             return themesByTagName;

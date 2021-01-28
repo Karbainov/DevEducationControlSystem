@@ -4,17 +4,17 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    public class SelectThemesByTagIdDTO
+    public class ThemesByTagNameDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public SelectThemesByTagIdDTO()
+        public ThemesByTagNameDTO()
         {
 
         }
 
-        public SelectThemesByTagIdDTO(SelectThemesByTagNameDTO dto)
+        public ThemesByTagNameDTO(ThemesByTagNameDTO dto)
         {
             Id = dto.Id;
             Name = dto.Name;
