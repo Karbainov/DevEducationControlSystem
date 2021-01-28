@@ -321,13 +321,11 @@
     <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
     <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
     <Build Include="dbo\Stored Procedures\AddTags.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllGroupsAndAmountPeopleInGroupByCity.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
     <Build Include="dbo\Stored Procedures\CountStudentsTeachersTutorsByGroup.sql" />
@@ -370,5 +368,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\SelectGroupWithCityAndStatusAndCourseById.sql" />
     <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
   </ItemGroup>
 </Project>

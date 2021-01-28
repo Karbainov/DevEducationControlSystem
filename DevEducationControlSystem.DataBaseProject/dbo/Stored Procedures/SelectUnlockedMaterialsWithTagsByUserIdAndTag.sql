@@ -1,13 +1,18 @@
-﻿CREATE PROCEDURE  [dbo].[GetAllGroupMaterialsByTagAndUserId]
+﻿CREATE PROCEDURE SelectUnlockedMaterialsWithTagsByUserIdAndTag
 
-@UserId int,
-@TagName nvarchar(100)
+@UserId INT,
+@Tag nvarchar(100)
 
 AS
+
 BEGIN
 
 DECLARE @var table (ResourceId int, MaterialId int, Links nvarchar(1000), Images nvarchar(1000))
 INSERT @var EXEC GetAllGroupMaterialsByUserId @UserId
+
+
+SELECT Links, Images, AllGroupMaterialsByTagAndUserId.MaterialId, TagId, [Name] AS Tag FROM
+(
 
 SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, AllGroupMaterials.MaterialId
 FROM
@@ -22,5 +27,11 @@ JOIN
 JOIN
 [Tag] ON [Material_Tag].TagId=Tag.Id AND Material_Tag.MaterialId=AllGroupMaterials.MaterialId
 
-WHERE Tag.[Name]=@TagName
+WHERE Tag.[Name]=@Tag
+) AS AllGroupMaterialsByTagAndUserId
+JOIN
+Material_Tag ON AllGroupMaterialsByTagAndUserId.MaterialId=Material_Tag.MaterialId
+JOIN
+Tag ON Tag.Id=Material_Tag.TagId
+
 END
