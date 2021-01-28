@@ -1,6 +1,9 @@
-﻿using DevEducationControlSystem.DBL.DTO.Base;
+﻿using Dapper;
+using DevEducationControlSystem.DBL.DTO;
+using DevEducationControlSystem.DBL.DTO.Base;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -94,5 +97,34 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
             return theme;
         }
+
+        public List<SelectThemesByTagIdDTO> SelectThemesByTagId(int id)
+        {
+            var themesByTagId = new List<SelectThemesByTagIdDTO>();
+            string expr = "[SelectThemesByTagId]";
+            var value = new { TagId = id };
+
+            using (var connection = ConnectToDB())
+            {
+                themesByTagId = connection.Query<SelectThemesByTagIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return themesByTagId;
+        }
+
+        public List<SelectThemesByTagNameDTO> SelectThemesByTagName(string name)
+        {
+            var themesByTagName = new List<SelectThemesByTagNameDTO>();
+            string expr = "[SelectThemesByTagId]";
+            var value = new { TagName = name };
+
+            using (var connection = ConnectToDB())
+            {
+                themesByTagName = connection.Query<SelectThemesByTagNameDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return themesByTagName;
+        }
+
     }
 }
