@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Material_Tag_SelectById]
-	@ID int
+	@Id int
 AS
 	SELECT * from dbo.Material_Tag
-	where dbo.Material_Tag.ID=@ID
+	where dbo.Material_Tag.Id=@Id

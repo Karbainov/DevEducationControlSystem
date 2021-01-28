@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Course_Material_Delete]
 	@Id int
 AS
-	DELETE FROM [dbo].[Course_Material] WHERE ID=@Id
+	DELETE FROM [dbo].[Course_Material] WHERE Id=@Id
 GO

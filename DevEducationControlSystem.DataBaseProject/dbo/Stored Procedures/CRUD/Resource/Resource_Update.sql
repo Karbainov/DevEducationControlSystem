@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Resource_Update]
-	@Id int,
+	@Id Int,
 	@Links NVARCHAR(1000),
     @Images NVARCHAR(1000)
 AS
