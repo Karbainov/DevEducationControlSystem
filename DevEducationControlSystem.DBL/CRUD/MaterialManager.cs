@@ -157,6 +157,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
+
         public List<AllGroupMaterialsByTagAndUserIdDTO> Get(int userId, string tagName)
         {
             List<AllGroupMaterialsByTagAndUserIdDTO> materialsByTag = new List<AllGroupMaterialsByTagAndUserIdDTO>();
@@ -168,6 +169,18 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
             return materialsByTag;
         }
+
+        public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
+        {
+            string expr = "[SelectAllMaterialsByGroupId]";
+            var value = new { groupId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
+            }
+        }
+
+
 
     }
 }

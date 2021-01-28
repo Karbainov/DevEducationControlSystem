@@ -248,6 +248,7 @@
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllMaterialsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
@@ -304,7 +305,6 @@
     <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
     <Build Include="dbo\Stored Procedures\ReplaceUserToAnotherGroupByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllMaterialsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
@@ -368,5 +368,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Update.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectGroupWithCityAndStatusAndCourseById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
   </ItemGroup>
 </Project>
