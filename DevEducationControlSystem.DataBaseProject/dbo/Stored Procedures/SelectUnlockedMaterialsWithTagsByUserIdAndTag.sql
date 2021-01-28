@@ -7,14 +7,14 @@ AS
 
 BEGIN
 
-DECLARE @var table (ResourceId int, MaterialId int, Links nvarchar(1000), Images nvarchar(1000))
+DECLARE @var table (MaterialName nvarchar(100), Message nvarchar(1000), ResourceId int, MaterialId int, Links nvarchar(1000), Images nvarchar(1000))
 INSERT @var EXEC GetAllGroupMaterialsByUserId @UserId
 
 
-SELECT Links, Images, AllGroupMaterialsByTagAndUserId.MaterialId, TagId, [Name] AS Tag FROM
+SELECT AllM.MaterialId, AllM.[MaterialName], AllM.[Message], Links, Images, Tag.[Name] AS TagName FROM
 (
 
-SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, AllGroupMaterials.MaterialId
+SELECT AllGroupMaterials.[MaterialName], AllGroupMaterials.[Message], Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, AllGroupMaterials.MaterialId
 FROM
 
 (SELECT * FROM  @var)
@@ -28,9 +28,9 @@ JOIN
 [Tag] ON [Material_Tag].TagId=Tag.Id AND Material_Tag.MaterialId=AllGroupMaterials.MaterialId
 
 WHERE Tag.[Name]=@Tag
-) AS AllGroupMaterialsByTagAndUserId
+) AS AllM
 JOIN
-Material_Tag ON AllGroupMaterialsByTagAndUserId.MaterialId=Material_Tag.MaterialId
+Material_Tag ON AllM.MaterialId=Material_Tag.MaterialId
 JOIN
 Tag ON Tag.Id=Material_Tag.TagId
 

@@ -21,10 +21,16 @@ namespace DevEducationControlSystem.API.Controllers
         }
 
         [HttpGet("User/{userId}/Materials")]
-        public IActionResult GetStudentAllowedData(int userId)
+        public IActionResult GetStudentUnlockedData(int userId)
         {
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetStudentUnlockedData(userId));
+        }
+        [HttpGet("User/{userId}/Materials/{tag}")]
+        public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            return Ok(groupLogicManager.GetStudentUnlockedMaterialsByTag(userId, tag));
         }
 
     }
