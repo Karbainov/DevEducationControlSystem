@@ -1,4 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[Theme_Delete]
 	@Id int
 AS
-	DELETE FROM [Theme] WHERE ID=@Id
+	DELETE FROM [Theme] WHERE Id=@Id

@@ -4,7 +4,7 @@ as
 
 select 
 
-	Theme.id as themeId,
+	Theme.Id as themeId,
 	Theme.Name as theme
 
 	from Theme  
