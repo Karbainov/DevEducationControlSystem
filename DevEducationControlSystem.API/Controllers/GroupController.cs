@@ -19,5 +19,12 @@ namespace DevEducationControlSystem.API.Controllers
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetGroupInfoById(groupId));
         }
+
+        [HttpGet("Payment/{groupId}")]
+        public IActionResult GetPaymentInfoById(int groupId)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            return Ok(groupLogicManager.GetGroupInfoById(groupId));
+        }
     }
 }
