@@ -5,7 +5,7 @@
 AS 
 	UPDATE [dbo].[Role_Privileges]
 	SET 
-	RoleID = @RoleId, 
-	PrivilegesID = @PrivilegesID 
+	RoleId = @RoleId, 
+	PrivilegesId = @PrivilegesId 
 WHERE 
 	Id = @Id

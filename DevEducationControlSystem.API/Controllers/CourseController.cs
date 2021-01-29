@@ -12,11 +12,6 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
-        [HttpGet("{courseId}")]
-        public IActionResult GetCourseInfoAndFeedbacksById(int courseId)
-        {
-            CoursePlusFeedbacksMapper feedbacksMapper = new CoursePlusFeedbacksMapper();
-            return new OkObjectResult(feedbacksMapper.GetCourseInfoAndFeedbacksByCourseId(courseId));
-        }
+        
     }
 }
