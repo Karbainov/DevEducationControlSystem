@@ -6,8 +6,6 @@ select
 
 	Homework.Id as HomeworkId,
 	Homework.Name as Homework,
-	Homework.StartDate as StartDate,
-	Homework.DeadLine as DeadLine,
 	[Resource].Id as ResourceId,
 	[Resource].Links as ResourceLinks,
 	[Resource].Images as ResourceImages
