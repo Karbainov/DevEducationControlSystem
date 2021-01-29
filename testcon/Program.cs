@@ -11,10 +11,10 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            
-            var manager = new MaterialManager();
+            //var manager = new GroupStatusManager();
+            var manager = new HomeworkManager();
 
-            manager.GetUnlockedMaterialsWithTagsByUserIdAndTag(1, "Тег1");
+            manager.GetAllHomeworkByCourse(2);
 
         }
     }

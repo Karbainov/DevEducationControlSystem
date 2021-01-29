@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using System.Data;
+
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -208,6 +208,8 @@ namespace DevEducationControlSystem.DBL.CRUD
                 return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
             }
         }
+
+
 
     }
 }
