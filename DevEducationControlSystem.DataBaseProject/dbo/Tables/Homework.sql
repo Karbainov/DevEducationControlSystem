@@ -3,6 +3,8 @@
     [ResourceId]         INT             NULL,
     [Name]               NVARCHAR (100)  NOT NULL,
     [Description]        NVARCHAR (1000) NULL,
+    [StartDate]          DATE            NULL,
+    [DeadLine]           DATE            NULL,
     [IsDeleted]          BIT             DEFAULT ('0') NOT NULL,
     [IsSolutionRequired] BIT             NOT NULL,
     CONSTRAINT [PK_Homework] PRIMARY KEY CLUSTERED ([Id] ASC),

@@ -3,6 +3,8 @@
 	@ResourceId INT,
 	@Name nvarchar(100),
 	@Description nvarchar(1000),
+	@StartDate date,
+	@DeadLine date,
 	@IsDeleted bit,
 	@IsSolutionRequred bit
 AS
@@ -10,6 +12,8 @@ AS
 		ResourceId = @ResourceId,
 		Name = @Name,
 		Description = @Description,
+		StartDate = @StartDate,
+		DeadLine = @DeadLine,
 		IsDeleted = @IsDeleted,
 		IsSolutionRequired = @IsSolutionRequred
   WHERE Id = @Id

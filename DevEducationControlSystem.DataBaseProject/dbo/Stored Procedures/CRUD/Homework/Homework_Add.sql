@@ -2,8 +2,10 @@
 	@ResourceId INT,
 	@Name nvarchar(100),
 	@Description nvarchar(1000),
+	@StartDate date,
+	@DeadLine date,
 	@IsSolutionRequred bit
 AS
-	INSERT INTO dbo.Homework(ResourceId, Name, Description, IsSolutionRequired)
-	VALUES(@ResourceId,	@Name, @Description, @IsSolutionRequred)
+	INSERT INTO dbo.Homework(ResourceId, Name, Description, StartDate, DeadLine, IsSolutionRequired)
+	VALUES(@ResourceId,	@Name, @Description, @StartDate, @DeadLine, @IsSolutionRequred)
 	

@@ -305,10 +305,10 @@
     <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
     <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
     <Build Include="dbo\Stored Procedures\ReplaceUserToAnotherGroupByUserId.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourseId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByThemeId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllMaterialsByGroupId.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourseId.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
