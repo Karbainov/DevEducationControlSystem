@@ -1,10 +1,10 @@
-﻿CREATE PROCEDURE [dbo].[SelectAllThemeOnCourse]
+﻿CREATE PROCEDURE [dbo].[SelectAllThemeOnCourseId]
 	@CourseId int
 as
 
 select 
 
-	Theme.id as themeId,
+	Theme.Id as themeId,
 	Theme.Name as theme
 
 	from Theme  
@@ -14,4 +14,3 @@ select
  
 	where Course.Id = @CourseId
 
-	order By themeId asc

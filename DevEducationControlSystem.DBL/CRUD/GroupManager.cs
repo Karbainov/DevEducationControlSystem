@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Dapper;
 using System.Data;
+using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -140,6 +141,18 @@ namespace DevEducationControlSystem.DBL.CRUD
             using (var connection = ConnectToDB())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public GroupWithCityAndStatusAndCourseDTO SelectGroupWithCityAndStatusAndCourseById(int groupId)
+        {
+           
+            string expr = "[SelectGroupWithCityAndStatusAndCourseById]";
+            var value = new {groupId};
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.QuerySingle<GroupWithCityAndStatusAndCourseDTO>(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
     }

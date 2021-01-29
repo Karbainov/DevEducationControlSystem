@@ -5,5 +5,5 @@
     @Message NVARCHAR(1000),
 	@StatusId int
 AS
-INSERT [dbo].[Answer] (UserId, [HomeWorkId], [Date], [Message], StatusId)
+INSERT [dbo].[Answer] (UserId, [HomeworkId], [Date], [Message], StatusId)
 VALUES(@UserId, @HomeWorkId, @Date, @Message, @StatusId)

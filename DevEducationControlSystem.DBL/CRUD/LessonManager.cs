@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using Dapper;
 using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
@@ -29,7 +31,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "Lesson_Select";
+            string sqlExpression = "[Lesson_Select]";
             var command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             try
@@ -72,7 +74,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 throw new Exception("DataBase connection failed");
             }
 
-            string sqlExpression = "Lesson_SelectById";
+            string sqlExpression = "[Lesson_SelectById]";
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -103,6 +105,36 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Close();
             }
             return lesson;
+        }
+
+        public void Add(int groupId, string name, DateTime lessonDate, string comments)
+        {
+            string expr = "[Lesson_Add]";
+            var value = new { GroupId = groupId, Name = name, LessonDate = lessonDate, Comments = comments };
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Lesson_Delete]";
+            var value = new { Id = id};
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, int groupId, string name, DateTime lessonDate, string comments)
+        {
+            string expr = "[Lesson_Update]";
+            var value = new { Id = id, GroupId = groupId, Name = name, LessonDate = lessonDate, Comments = comments };
+            using (var connection = ConnectToBD())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
 
     }
