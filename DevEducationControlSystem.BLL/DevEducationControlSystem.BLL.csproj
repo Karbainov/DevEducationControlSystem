@@ -1,8 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Models\MaterialInfoModel.cs~dev" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DevEducationControlSystem.DBL\DevEducationControlSystem.DBL.csproj" />

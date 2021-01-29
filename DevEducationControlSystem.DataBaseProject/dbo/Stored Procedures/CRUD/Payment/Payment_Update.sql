@@ -1,12 +1,12 @@
 ﻿CREATE procedure [dbo].[Payment_Update]
 @Id int,
-@UserID int,
-@GroupID int,
+@UserId int,
+@GroupId int,
 @Period int,
 @isPaid bit,
 @Sum int,
 @PayDate date
 as
 update [dbo].[Payment]
-set UserId = @UserID, GroupId = @GroupID, [Period] = @Period, isPaid = @isPaid, [Sum] = @Sum, PayDate = @PayDate
+set UserId = @UserId, GroupId = @GroupId, [Period] = @Period, isPaid = @isPaid, [Sum] = @Sum, PayDate = @PayDate
 where Id = @Id

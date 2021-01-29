@@ -95,6 +95,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Payment" />
     <Folder Include="dbo\Stored Procedures\CRUD\Resource" />
     <Folder Include="dbo\Stored Procedures\CRUD\Theme" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Course" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -244,12 +245,8 @@
     <Build Include="dbo\Stored Procedures\RemoveTags.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllGroupsAndAmountPeopleInGroupByCity.sql" />
     <Build Include="dbo\Stored Procedures\ReplaceUserToAnotherGroupByUserId.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourse.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByTheme.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroup.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllHomeworksByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllMaterialsByGroupId.sql" />
-    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourse.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
@@ -285,11 +282,46 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Theme\Homework_Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SoftDelete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteUserFromGroupByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\GetMaterialsByThemeId.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfStudentsOnTheCourse.sql" />
+    <Build Include="dbo\Stored Procedures\ReplaceUserToAnotherGroupByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByCourseId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllHomeworkByThemeId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllMaterialsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllThemeByCourseId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectLessonsAndFeedbackByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsInGroupsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfStudentsByTeacherId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPercentOfPresentsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
+    <Build Include="dbo\Stored Procedures\SendNewTryToAnswer.sql" />
+    <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\StudentTeachersAndTutorsFromTheGroup.sql" />
+    <Build Include="dbo\Stored Procedures\NumberOfPeoplePerRole.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupMaterialsByTagAndUserId.sql" />
+    <Build Include="dbo\Stored Procedures\AddTags.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllGroupsAndAmountPeopleInGroupByCity.sql" />
+    <Build Include="dbo\Stored Procedures\CountStudentsTeachersTutorsByGroup.sql" />
+    <Build Include="dbo\Stored Procedures\GetWholeCourseFeedback.sql" />
+    <Build Include="dbo\Stored Procedures\SelectHomeworkWithStatusesByUserId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Add.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Delete.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson_Theme\Lesson_Theme_Select.sql" />
@@ -316,5 +348,14 @@
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_SelectBuId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Theme\Theme_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfTeachersByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectGroupWithCityAndStatusAndCourseById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
   </ItemGroup>
 </Project>

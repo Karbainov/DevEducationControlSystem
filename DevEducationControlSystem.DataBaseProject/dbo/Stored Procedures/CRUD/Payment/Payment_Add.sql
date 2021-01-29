@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[Payment_Add]
-@UserID int,
-@GroupID int,
+@UserId int,
+@GroupId int,
 @Period int,
 @isPaid bit,
 @Sum int,
@@ -9,4 +9,4 @@ AS
 INSERT into [dbo].[Payment]
 (UserId, GroupId, [Period], isPaid, [Sum], PayDate)
 VALUES
-(@UserID, @GroupID, @Period, @isPaid, @Sum, @PayDate)
+(@UserId, @GroupID, @Period, @isPaid, @Sum, @PayDate)
