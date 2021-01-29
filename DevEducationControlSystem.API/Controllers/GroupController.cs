@@ -19,5 +19,19 @@ namespace DevEducationControlSystem.API.Controllers
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetGroupInfoById(groupId));
         }
+
+        [HttpGet("User/{userId}/Materials")]
+        public IActionResult GetStudentUnlockedData(int userId)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            return Ok(groupLogicManager.GetStudentUnlockedData(userId));
+        }
+        [HttpGet("User/{userId}/Materials/{tag}")]
+        public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            return Ok(groupLogicManager.GetStudentUnlockedMaterialsByTag(userId, tag));
+        }
+
     }
 }

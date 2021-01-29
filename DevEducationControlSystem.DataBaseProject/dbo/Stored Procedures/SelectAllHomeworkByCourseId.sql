@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectAllHomeworkByCourse]
+﻿CREATE PROCEDURE [dbo].[SelectAllHomeworkByCourseId]
 	@CourseId int
 as
 
@@ -6,7 +6,6 @@ select
 
 	Homework.Id as HomeworkId,
 	Homework.Name as Homework,
-	Homework.Description as Description,
 	[Resource].Id as ResourceId,
 	[Resource].Links as ResourceLinks,
 	[Resource].Images as ResourceImages
@@ -17,5 +16,3 @@ select
 	left join [Resource] on Resource.Id = Homework.ResourceId
 		
 	where Course.Id = @CourseId and Homework.IsDeleted = 0 and Course.IsDeleted = 0
-
-	order by homeworkId asc
