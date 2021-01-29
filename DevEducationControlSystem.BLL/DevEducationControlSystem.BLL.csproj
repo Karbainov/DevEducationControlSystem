@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Models\MaterialInfoModel.cs~dev" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DevEducationControlSystem.DBL\DevEducationControlSystem.DBL.csproj" />
   </ItemGroup>
 

@@ -356,5 +356,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\SelectGroupWithCityAndStatusAndCourseById.sql" />
     <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
   </ItemGroup>
 </Project>
