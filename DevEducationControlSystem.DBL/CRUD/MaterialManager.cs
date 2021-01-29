@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using System.Data;
+
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -22,10 +22,8 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
 
         public MaterialManager()
-
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-
         }
         public List<MaterialDTO> Select()
         {
@@ -159,17 +157,59 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
-        public List<AllGroupMaterialsByTagAndUserIdDTO> Get(int userId, string tagName)
+
+        public List<UnlockedMaterialsWithTagsByUserIdAndTagDTO> GetUnlockedMaterialsWithTagsByUserIdAndTag(int userId, string tagName)
         {
-            List<AllGroupMaterialsByTagAndUserIdDTO> materialsByTag = new List<AllGroupMaterialsByTagAndUserIdDTO>();
-            string expr = "[GetAllGroupMaterialsByTagAndUserId]";
-            var value = new { UserId = userId, TagName = tagName };
-            using (_connection = new SqlConnection(_connectionString))
+            List<UnlockedMaterialsWithTagsByUserIdAndTagDTO> materialsByTag = new List<UnlockedMaterialsWithTagsByUserIdAndTagDTO>();
+            string expr = "[SelectUnlockedMaterialsWithTagsByUserIdAndTag]";
+            var values = new { UserId = userId, Tag = tagName };
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                materialsByTag = _connection.Query<AllGroupMaterialsByTagAndUserIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<AllGroupMaterialsByTagAndUserIdDTO>();
+                materialsByTag = connection.Query<UnlockedMaterialsWithTagsByUserIdAndTagDTO, string, UnlockedMaterialsWithTagsByUserIdAndTagDTO>(expr,(MaterialsByTag, Tags)=>
+                {
+                    UnlockedMaterialsWithTagsByUserIdAndTagDTO unlockedMaterialsWithTagsByUserIdAndTagDTO = null;
+                    void CheckExist()
+                    {
+                        foreach (var m in materialsByTag)
+                        {
+                            if (MaterialsByTag.MaterialId == m.MaterialId)
+                            {
+                                unlockedMaterialsWithTagsByUserIdAndTagDTO = m;
+                                return;
+                            }
+                        }
+                    }
+                    CheckExist();
+
+                    if (unlockedMaterialsWithTagsByUserIdAndTagDTO==null)
+                    {
+                        unlockedMaterialsWithTagsByUserIdAndTagDTO = MaterialsByTag;
+                        materialsByTag.Add(unlockedMaterialsWithTagsByUserIdAndTagDTO);
+                    }
+
+                    if (unlockedMaterialsWithTagsByUserIdAndTagDTO.TagName == null) unlockedMaterialsWithTagsByUserIdAndTagDTO.TagName = new List<string>();
+
+                    unlockedMaterialsWithTagsByUserIdAndTagDTO.TagName.Add(Tags);
+
+                    return unlockedMaterialsWithTagsByUserIdAndTagDTO;
+                },
+                    
+                    values, commandType: CommandType.StoredProcedure, splitOn: "TagName" ).AsList<UnlockedMaterialsWithTagsByUserIdAndTagDTO>();
             }
             return materialsByTag;
         }
+
+        public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
+        {
+            string expr = "[SelectAllMaterialsByGroupId]";
+            var value = new { groupId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
+            }
+        }
+
+
 
     }
 }
