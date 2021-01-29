@@ -1,9 +1,11 @@
 ﻿using Dapper;
 using DevEducationControlSystem.DBL.DTO;
+using DevEducationControlSystem.DBL.DTO.Base;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
 namespace DevEducationControlSystem.DBL.CRUD
