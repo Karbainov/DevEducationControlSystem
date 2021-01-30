@@ -51,9 +51,13 @@ namespace DevEducationControlSystem.BLL
 
             var mapper = new CourseOverlookDTOGroupmatesDTOPassedLessonByStudentIdDTOtoPrivateStudentMainPageModelMapper();
 
-            return mapper.Map(
+            var privatePage = new PrivateStudentMainPageModel();
+
+            privatePage = mapper.Map(
                 courseManager.SelectCourseGeneralInfoByStudentId(studentId),
                 lessonManager.SelectPassedLessonByStudentId(studentId));
+
+            return privatePage;
         }
     }
 }
