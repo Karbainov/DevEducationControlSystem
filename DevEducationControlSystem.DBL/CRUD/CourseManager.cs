@@ -101,5 +101,28 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
             }
         }
+        public CourseGeneralInfoByStudentIdDTO SelectCourseGeneralInfoByStudentId(int studentId)
+        {
+            var courseGeneralInfo = new CourseGeneralInfoByStudentIdDTO();
+            string expression = "[SelectCourseGeneralInfoByStudentId]";
+            var parameter = new { UserId = studentId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<CourseGeneralInfoByStudentIdDTO, StudentPublicInfoDTO, CourseGeneralInfoByStudentIdDTO>(expression, (CourseGeneralInfo, PublicStudenInfo) =>
+                {
+                    CourseGeneralInfoByStudentIdDTO cgi = courseGeneralInfo;
+                    
+                    if (cgi.StudentPublicInfoDTOs == null)
+                    {
+                        cgi.StudentPublicInfoDTOs = new List<StudentPublicInfoDTO>();
+                    }
+                    cgi.StudentPublicInfoDTOs.Add(PublicStudenInfo);
+                    
+                    return null;
+                },
+                parameter, commandType: CommandType.StoredProcedure, splitOn: "StudentId");
+                return courseGeneralInfo;
+            }
+        }
     }
 }

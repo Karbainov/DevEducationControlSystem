@@ -12,15 +12,13 @@ namespace DevEducationControlSystem.DBL.DTO
         public DateTime CourseStartDate;
         public int DurationInWeeks;
         public int GroupId;
-        public int GroupName;
+        public string GroupName;
         public int TeacherId;
         public string TeacherFirstName;
         public string TeacherLastName;
         public int TutorId;
         public string TutorFirstName;
         public string TutorLastName;
-        public List<int> StudentId;
-        public List<string> StudenFirstName;
-        public List<string> StudenLasttName;  
+        public List<StudentPublicInfoDTO> StudentPublicInfoDTOs; 
     }
 }
