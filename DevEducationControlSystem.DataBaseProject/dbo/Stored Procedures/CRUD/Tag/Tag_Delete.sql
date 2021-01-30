@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Tag_Delete]
-	@ID int
+	@Id int
 AS
 	DELETE FROM dbo.Tag
-	WHERE ID=@ID
+	WHERE Id=@Id
