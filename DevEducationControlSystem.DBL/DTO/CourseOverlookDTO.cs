@@ -19,6 +19,6 @@ namespace DevEducationControlSystem.DBL.DTO
         public int TutorId;
         public string TutorFirstName;
         public string TutorLastName;
-        public List<GroupmatesDTO> StudentPublicInfoDTOs; 
+        public List<GroupmatesDTO> GroupmatesDTOs; 
     }
 }

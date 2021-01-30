@@ -20,6 +20,7 @@ namespace DevEducationControlSystem.BLL.Models
         public int TutorId;
         public string TutorFirstName;
         public string TutorLastName;
+        public List<GroupmatesModel> Groupmates;
 
         public CourseOverlookModel(CourseOverlookDTO dto)
         {
@@ -36,7 +37,6 @@ namespace DevEducationControlSystem.BLL.Models
             TutorId = dto.TutorId;
             TutorFirstName = dto.TutorFirstName;
             TutorLastName = dto.TutorLastName;
-        
         }
     }
 }

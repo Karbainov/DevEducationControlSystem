@@ -24,11 +24,6 @@ namespace DevEducationControlSystem.BLL
                 );
         }
 
-        public ListOfUnlockedMaterialsByTagModel GetStudentUnlockedData(int userId)
-        {
-            throw new NotImplementedException();
-        }
-
         public ListOfUnlockedMaterialsByTagModel GetStudentUnlockedMaterialsByTag(int userId, string tag)
         {
             var materialManager = new MaterialManager();
@@ -47,6 +42,18 @@ namespace DevEducationControlSystem.BLL
 
             return mapper.Map(statisticManager.SelectPercentOfPresentsByGroupId(groupId),
                                 lessonManager.SelectLessonAttendanceByGroupId(groupId));
+        }
+
+        public PrivateStudentMainPageModel GetPrivateStudentMainPageModel(int studentId)
+        {
+            var courseManager = new CourseManager();
+            var lessonManager = new LessonManager();
+
+            var mapper = new CourseOverlookDTOGroupmatesDTOPassedLessonByStudentIdDTOtoPrivateStudentMainPageModelMapper();
+
+            return mapper.Map(
+                courseManager.SelectCourseGeneralInfoByStudentId(studentId),
+                lessonManager.SelectPassedLessonByStudentId(studentId));
         }
     }
 }

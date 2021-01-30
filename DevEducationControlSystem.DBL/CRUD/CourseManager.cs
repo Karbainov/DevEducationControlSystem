@@ -115,12 +115,12 @@ namespace DevEducationControlSystem.DBL.CRUD
                         courseGeneralInfo = CourseGeneralInfo;
                     }
 
-                    if (courseGeneralInfo.StudentPublicInfoDTOs == null)
+                    if (courseGeneralInfo.GroupmatesDTOs == null)
                     {
-                        courseGeneralInfo.StudentPublicInfoDTOs = new List<GroupmatesDTO>();
+                        courseGeneralInfo.GroupmatesDTOs = new List<GroupmatesDTO>();
                     }
 
-                    courseGeneralInfo.StudentPublicInfoDTOs.Add(PublicStudenInfo);
+                    courseGeneralInfo.GroupmatesDTOs.Add(PublicStudenInfo);
                     
                     return null;
                 },
