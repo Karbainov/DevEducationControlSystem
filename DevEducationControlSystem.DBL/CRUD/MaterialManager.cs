@@ -165,36 +165,34 @@ namespace DevEducationControlSystem.DBL.CRUD
             var values = new { UserId = userId, Tag = tagName };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                materialsByTag = connection.Query<UnlockedMaterialsWithTagsByUserIdAndTagDTO, string, UnlockedMaterialsWithTagsByUserIdAndTagDTO>(expr,(MaterialsByTag, Tags)=>
+                connection.Query<UnlockedMaterialsWithTagsByUserIdAndTagDTO, string, UnlockedMaterialsWithTagsByUserIdAndTagDTO>(expr,(Material, Tag)=>
                 {
-                    UnlockedMaterialsWithTagsByUserIdAndTagDTO unlockedMaterialsWithTagsByUserIdAndTagDTO = null;
-                    void CheckExist()
-                    {
+                    UnlockedMaterialsWithTagsByUserIdAndTagDTO material = null;
+                    
                         foreach (var m in materialsByTag)
                         {
-                            if (MaterialsByTag.MaterialId == m.MaterialId)
+                            if (Material.MaterialId == m.MaterialId)
                             {
-                                unlockedMaterialsWithTagsByUserIdAndTagDTO = m;
-                                return;
+                                material = m;
+                                break;
                             }
                         }
-                    }
-                    CheckExist();
+                    
 
-                    if (unlockedMaterialsWithTagsByUserIdAndTagDTO==null)
+                    if (material==null)
                     {
-                        unlockedMaterialsWithTagsByUserIdAndTagDTO = MaterialsByTag;
-                        materialsByTag.Add(unlockedMaterialsWithTagsByUserIdAndTagDTO);
+                        material = Material;
+                        materialsByTag.Add(material);
                     }
 
-                    if (unlockedMaterialsWithTagsByUserIdAndTagDTO.TagName == null) unlockedMaterialsWithTagsByUserIdAndTagDTO.TagName = new List<string>();
+                    if (material.TagName == null) material.TagName = new List<string>();
 
-                    unlockedMaterialsWithTagsByUserIdAndTagDTO.TagName.Add(Tags);
+                    material.TagName.Add(Tag);
 
-                    return unlockedMaterialsWithTagsByUserIdAndTagDTO;
+                    return material;
                 },
                     
-                    values, commandType: CommandType.StoredProcedure, splitOn: "TagName" ).AsList<UnlockedMaterialsWithTagsByUserIdAndTagDTO>();
+                    values, commandType: CommandType.StoredProcedure, splitOn: "TagName" );
             }
             return materialsByTag;
         }
