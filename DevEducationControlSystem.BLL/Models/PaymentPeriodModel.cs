@@ -4,8 +4,9 @@ using System.Text;
 
 namespace DevEducationControlSystem.BLL.Models
 {
-    public class PaymentInfoModel
+    public class PaymentPeriodModel
     {
-        public List<GroupPaymentModel> GroupPayment{ get; set; }
+        public int Period { get; set; }
+        public DateTime StartDate { get; set; }
     }
 }
