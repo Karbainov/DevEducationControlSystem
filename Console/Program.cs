@@ -8,8 +8,8 @@ namespace TConsole
     {
         static void Main(string[] args)
         {
-            var manager = new CourseManager();
-            manager.SelectCourseGeneralInfoByStudentId(40);
+            var manager = new LessonManager();
+            manager.SelectPassedLessonByStudentId(40);
         }
     }
 }
