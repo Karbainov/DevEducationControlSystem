@@ -89,5 +89,19 @@ namespace DevEducationControlSystem.DBL
 
             return teachersByCourseList;
         }
+
+        public List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO> SelectAllGroupsAndAmountPeopleInGroupByCity()
+        {
+            var allGroupssAndAmountPeopleInGroupByCity = new List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO>();
+            string expression = "[SelectAllGroupsAndAmountPeopleInGroupByCityDTO]";
+            using (var connection = ConnectToDB())
+            {
+                allGroupssAndAmountPeopleInGroupByCity = connection.Query<SelectAllGroupsAndAmountPeopleInGroupByCityDTO>(expression, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return allGroupssAndAmountPeopleInGroupByCity;
+        }
+
+
     }
 }
