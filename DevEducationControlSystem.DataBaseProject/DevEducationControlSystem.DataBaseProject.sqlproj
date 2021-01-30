@@ -290,6 +290,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SelectNumberOfUsersWithStatusInGroupInCity.sql" />
     <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
     <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
     <Build Include="dbo\Stored Procedures\SelectPaymentInfo.sql" />
@@ -362,6 +363,7 @@
     <Build Include="dbo\Stored Procedures\SelectCourseByTagName.sql" />
     <Build Include="dbo\Stored Procedures\SelectGroupWithCityAndStatusAndCourseById.sql" />
     <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectLessonAttendanceByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
   </ItemGroup>
 </Project>
