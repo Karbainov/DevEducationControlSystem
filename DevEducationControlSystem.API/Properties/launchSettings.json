@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "Group/Teacher",
+      "launchUrl": "Statistic/Teachers",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
