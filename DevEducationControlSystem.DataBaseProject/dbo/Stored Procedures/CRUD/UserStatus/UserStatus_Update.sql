@@ -5,4 +5,4 @@ AS
 UPDATE [dbo].[UserStatus]
 	SET 
 	Name = @Name
-WHERE ID = @Id
+WHERE Id = @Id

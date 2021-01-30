@@ -1,31 +1,30 @@
-﻿using System;
+﻿using DevEducationControlSystem.DBL.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DevEducationControlSystem.DBL.DTO
+namespace DevEducationControlSystem.BLL.Models
 {
-    class SelectAllMaterialsByGroupIdDTO
+    public class MaterialInfoModel
     {
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Message { get; set; }
+		public int? ResourceId { get; set; }
 		public string Links { get; set; }
 		public string Images { get; set; }
-		public bool IsDeleted { get; set; }
 
-		public SelectAllMaterialsByGroupIdDTO()
-        {
+		public MaterialInfoModel()
+		{}
 
-        }
-
-		public SelectAllMaterialsByGroupIdDTO(SelectAllMaterialsByGroupIdDTO dto)
-        {
+		public MaterialInfoModel(MaterialsInfoForGroupDTO dto)
+		{
 			Id = dto.Id;
 			Name = dto.Name;
 			Message = dto.Message;
+			ResourceId = dto.ResourceId;
 			Links = dto.Links;
 			Images = dto.Images;
-			IsDeleted = dto.IsDeleted;
-        }
+		}
 	}
 }

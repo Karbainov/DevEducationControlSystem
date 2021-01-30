@@ -4,4 +4,4 @@
 	@LessonDate date,
 	@Comments nvarchar(1000)
 AS
-INSERT Lesson VALUES (@GroupID, @Name, @LessonDate, @Comments)
+INSERT Lesson VALUES (@GroupId, @Name, @LessonDate, @Comments)
