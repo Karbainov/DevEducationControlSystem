@@ -10,14 +10,12 @@ namespace DevEducationControlSystem.BLL.Mappers
     {
         public ListOfTeachersByCourseModel Map(List<NumberOfTeachersByCourseDTO> numberOfTeachers)
         {
-            var listOfTeachers = new ListOfTeachersByCourseModel();
+            var listOfTeachers = new ListOfTeachersByCourseModel(){ teachersByCourseList = new List<NumberOfTeachersByCourseModel>() };
+            
 
             foreach(var n in numberOfTeachers)
             {
-                if (n != null)
-                {
-                    listOfTeachers.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(n));
-                }
+                listOfTeachers.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(n));
             }
             return listOfTeachers;
         }

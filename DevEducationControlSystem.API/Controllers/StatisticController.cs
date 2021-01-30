@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevEducationControlSystem.BLL;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace DevEducationControlSystem.API.Controllers
     [Route("[controller]")]
     public class StatisticController: Controller
     {
-        [HttpGet]
-        public IActionResult GetNumberOfTeachersByCourseId(int courseId)
+        [HttpGet("Teachers")]
+        public IActionResult GetNumberOfTeachersByCourseId()
         {
-
-            return Ok();
+            var statisticLogic = new StatisticLogicManager();
+            return Ok(statisticLogic.GetNumberOfTeachers());
         }
     }
 }
