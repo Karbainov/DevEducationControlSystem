@@ -10,4 +10,4 @@ AS
 		GroupId = @GroupId
 		
 WHERE 
-	ID=@Id
+	Id=@Id

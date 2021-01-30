@@ -5,6 +5,6 @@
 @Message nvarchar(1000)
 AS
 INSERT into dbo.Material
-(UserID, ResourceId, Name, Message, IsDeleted)
+(UserId, ResourceId, Name, Message, IsDeleted)
 VALUES
 (@UserId, @ResourceId, @Name, @Message, '0')
