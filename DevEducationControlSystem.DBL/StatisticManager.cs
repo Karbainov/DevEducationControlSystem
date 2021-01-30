@@ -82,7 +82,7 @@ namespace DevEducationControlSystem.DBL
         {
             var teachersByCourseList = new List<NumberOfTeachersByCourseDTO>();
             string expr = "[SelectNumberOfTeachersByCourse]";
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 teachersByCourseList = connection.Query<NumberOfTeachersByCourseDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }

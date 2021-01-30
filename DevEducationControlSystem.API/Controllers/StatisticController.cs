@@ -13,6 +13,7 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpGet]
         public IActionResult GetNumberOfTeachersByCourseId(int courseId)
         {
+
             return Ok();
         }
     }
