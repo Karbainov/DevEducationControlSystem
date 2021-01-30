@@ -4,6 +4,6 @@
 AS  
 	UPDATE [dbo].[Privileges] 
 	SET  
-	name = @name
+	Name = @name
 WHERE  
-	ID=@Id
+	Id = @Id
