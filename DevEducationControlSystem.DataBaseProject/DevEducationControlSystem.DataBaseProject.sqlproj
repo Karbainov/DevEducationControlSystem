@@ -290,6 +290,8 @@
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SelectMaterialsByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectGroupsOnCoursesInfo.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfUsersWithStatusInGroupInCity.sql" />
     <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
     <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
