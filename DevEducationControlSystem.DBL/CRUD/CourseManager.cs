@@ -101,14 +101,14 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
             }
         }
-        public CourseGeneralInfoByStudentIdDTO SelectCourseGeneralInfoByStudentId(int studentId)
+        public CourseOverlookDTO SelectCourseGeneralInfoByStudentId(int studentId)
         {
-            CourseGeneralInfoByStudentIdDTO courseGeneralInfo = null;
+            CourseOverlookDTO courseGeneralInfo = null;
             string expression = "[SelectCourseGeneralInfoByStudentId]";
             var parameter = new { UserId = studentId };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query<CourseGeneralInfoByStudentIdDTO, StudentPublicInfoDTO, CourseGeneralInfoByStudentIdDTO>(expression, (CourseGeneralInfo, PublicStudenInfo) =>
+                connection.Query<CourseOverlookDTO, GroupmatesDTO, CourseOverlookDTO>(expression, (CourseGeneralInfo, PublicStudenInfo) =>
                 {
                     if (courseGeneralInfo == null)
                     {
@@ -117,7 +117,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                     if (courseGeneralInfo.StudentPublicInfoDTOs == null)
                     {
-                        courseGeneralInfo.StudentPublicInfoDTOs = new List<StudentPublicInfoDTO>();
+                        courseGeneralInfo.StudentPublicInfoDTOs = new List<GroupmatesDTO>();
                     }
 
                     courseGeneralInfo.StudentPublicInfoDTOs.Add(PublicStudenInfo);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    public class CourseGeneralInfoByStudentIdDTO
+    public class CourseOverlookDTO
     {
         public int CourseId;
         public string CourseName;
@@ -19,6 +19,6 @@ namespace DevEducationControlSystem.DBL.DTO
         public int TutorId;
         public string TutorFirstName;
         public string TutorLastName;
-        public List<StudentPublicInfoDTO> StudentPublicInfoDTOs; 
+        public List<GroupmatesDTO> StudentPublicInfoDTOs; 
     }
 }

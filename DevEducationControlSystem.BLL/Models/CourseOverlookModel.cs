@@ -5,7 +5,7 @@ using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.BLL.Models
 {
-    public class CourseGeneralInfoByStudentIdModel
+    public class CourseOverlookModel
     {
         public int CourseId;
         public string CourseName;
@@ -21,7 +21,7 @@ namespace DevEducationControlSystem.BLL.Models
         public string TutorFirstName;
         public string TutorLastName;
 
-        public CourseGeneralInfoByStudentIdModel(CourseGeneralInfoByStudentIdDTO dto)
+        public CourseOverlookModel(CourseOverlookDTO dto)
         {
             CourseId = dto.CourseId;
             CourseName = dto.CourseName;

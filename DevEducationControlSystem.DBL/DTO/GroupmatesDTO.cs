@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    public class StudentPublicInfoDTO
+    public class GroupmatesDTO
     {
         public int StudentId;
         public string StudentFirstName;
