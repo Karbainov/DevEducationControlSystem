@@ -103,20 +103,24 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
         public CourseGeneralInfoByStudentIdDTO SelectCourseGeneralInfoByStudentId(int studentId)
         {
-            var courseGeneralInfo = new CourseGeneralInfoByStudentIdDTO();
+            CourseGeneralInfoByStudentIdDTO courseGeneralInfo = null;
             string expression = "[SelectCourseGeneralInfoByStudentId]";
             var parameter = new { UserId = studentId };
             using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query<CourseGeneralInfoByStudentIdDTO, StudentPublicInfoDTO, CourseGeneralInfoByStudentIdDTO>(expression, (CourseGeneralInfo, PublicStudenInfo) =>
                 {
-                    CourseGeneralInfoByStudentIdDTO cgi = courseGeneralInfo;
-                    
-                    if (cgi.StudentPublicInfoDTOs == null)
+                    if (courseGeneralInfo == null)
                     {
-                        cgi.StudentPublicInfoDTOs = new List<StudentPublicInfoDTO>();
+                        courseGeneralInfo = CourseGeneralInfo;
                     }
-                    cgi.StudentPublicInfoDTOs.Add(PublicStudenInfo);
+
+                    if (courseGeneralInfo.StudentPublicInfoDTOs == null)
+                    {
+                        courseGeneralInfo.StudentPublicInfoDTOs = new List<StudentPublicInfoDTO>();
+                    }
+
+                    courseGeneralInfo.StudentPublicInfoDTOs.Add(PublicStudenInfo);
                     
                     return null;
                 },
