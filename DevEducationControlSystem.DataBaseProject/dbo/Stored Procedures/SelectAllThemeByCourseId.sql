@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectAllThemeOnCourse]
+﻿CREATE PROCEDURE [dbo].[SelectAllThemeOnCourseId]
 	@CourseId int
 as
 
@@ -14,4 +14,3 @@ select
  
 	where Course.Id = @CourseId
 
-	order By themeId asc

@@ -20,12 +20,12 @@ namespace DevEducationControlSystem.DBL
             SqlConnection connection = new SqlConnection(_connectionString);
             return connection;
         }
-        public List<UserPercentOfPresentsDTO> SelectPercentOfPresentsByGroupId(int id)
+        public List<UserPercentOfPresentsDTO> SelectPercentOfPresentsByGroupId(int groupId)
         {
             List<UserPercentOfPresentsDTO> usersPercents = new List<UserPercentOfPresentsDTO>();
 
             string expr = "[SelectPercentOfPresentsByGroupId]";
-            var value = new { GroupId = id };
+            var value = new { GroupId = groupId };
 
             using (var connection = ConnectToDB())
             {

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectAllHomeworkByTheme]
+﻿CREATE PROCEDURE [dbo].[SelectAllHomeworkByThemeId]
 	@ThemeId int
 as
 
@@ -6,7 +6,6 @@ select
 
 	Homework.Id as HomeworkId,
 	Homework.Name as Homework,
-	Homework.Description as Description,
 	[Resource].Links as ResourceLinks,
 	[Resource].Images as ResourceImages
 
@@ -17,5 +16,3 @@ select
 	left join [Resource] on [Resource].Id = Homework.ResourceId
 
 	where Theme.Id = @ThemeId and Homework.IsDeleted = 0
-
-	order by homeworkId asc
