@@ -33,5 +33,12 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetStudentUnlockedMaterialsByTag(userId, tag));
         }
 
+
+        [HttpGet("Attendance/{groupId}")]
+        public IActionResult GetGroupAttendanceById(int groupId)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            return Ok(groupLogicManager.GetGroupAttendanceById(groupId));
+        }
     }
 }

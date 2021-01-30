@@ -362,6 +362,7 @@
     <Build Include="dbo\Stored Procedures\SelectCourseByTagName.sql" />
     <Build Include="dbo\Stored Procedures\SelectGroupWithCityAndStatusAndCourseById.sql" />
     <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectLessonAttendanceByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
   </ItemGroup>
 </Project>

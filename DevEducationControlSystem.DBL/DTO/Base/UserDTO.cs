@@ -13,7 +13,7 @@ namespace DevEducationControlSystem.DBL.DTO.Base
         public DateTime BirthDate { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public string email { get; set; }
+        public string Email { get; set; }
         public string Phone { get; set; }
         public string ContractNumber { get; set; }
         public string ProfileImage { get; set; }
@@ -42,7 +42,7 @@ namespace DevEducationControlSystem.DBL.DTO.Base
             BirthDate = birthdate;
             Login = login;
             Password = password;
-            this.email = email;
+            this.Email = email;
             Phone = phone;
             ContractNumber = contractnumber;
             ProfileImage = profileimage;
