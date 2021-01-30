@@ -48,5 +48,10 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(statisticManager.SelectPercentOfPresentsByGroupId(groupId),
                                 lessonManager.SelectLessonAttendanceByGroupId(groupId));
         }
+
+        public void CreateLesson(LessonModel lesson)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

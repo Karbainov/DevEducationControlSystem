@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevEducationControlSystem.API.InputModels;
 using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.BLL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,6 +41,15 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetGroupAttendanceById(groupId));
+        }
+
+        [HttpPost("Lesson")]
+        public IActionResult CreateLesson(LessonInputModel lesson)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            var lessonModel = new LessonModel() { GroupId = lesson.GroupId, Name = lesson.Name, LessonDate = lesson.LessonDate, Comments = lesson.Comments };
+            groupLogicManager.CreateLesson(lessonModel);
+            return Ok();
         }
     }
 }
