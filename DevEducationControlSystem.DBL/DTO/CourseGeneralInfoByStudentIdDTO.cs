@@ -11,7 +11,6 @@ namespace DevEducationControlSystem.DBL.DTO
         public string CourseName;
         public DateTime CourseStartDate;
         public int DurationInWeeks;
-        public DateTime CourseEndDate;
         public int GroupId;
         public int GroupName;
         public int TeacherId;
@@ -20,10 +19,8 @@ namespace DevEducationControlSystem.DBL.DTO
         public int TutorId;
         public string TutorFirstName;
         public string TutorLastName;
-        public List<StudentsInGroupByUserIdDTO> studentsInGroupByUserIdDTOs;
-        public List<PassedLessonDTO> PassedLessonDTOs;
-
-
-        
+        public List<int> StudentId;
+        public List<string> StudenFirstName;
+        public List<string> StudenLasttName;  
     }
 }
