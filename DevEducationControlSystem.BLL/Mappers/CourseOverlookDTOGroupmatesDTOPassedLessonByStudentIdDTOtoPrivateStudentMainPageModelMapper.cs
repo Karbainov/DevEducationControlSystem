@@ -13,24 +13,24 @@ namespace DevEducationControlSystem.BLL.Mappers
             CourseOverlookDTO courseOverlookDTO,
             List<PassedLessonByStudentIdDTO> passedLessonDTOs)
         {
-            var privateStudentMainPageModel = new PrivateStudentMainPageModel();
+            var model = new PrivateStudentMainPageModel();
 
-            privateStudentMainPageModel.CourseOverlook = new CourseOverlookModel(courseOverlookDTO);
+            model.CourseOverlook = new CourseOverlookModel(courseOverlookDTO);
             
-            privateStudentMainPageModel.CourseOverlook.Groupmates = new List<GroupmatesModel>();
-            privateStudentMainPageModel.passedLessonByStudentId = new List<PassedLessonByStudentIdModel>();
+            model.CourseOverlook.Groupmates = new List<GroupmatesModel>();
+            model.passedLessonByStudentId = new List<PassedLessonByStudentIdModel>();
 
             foreach(var GroupmatesDTO in courseOverlookDTO.GroupmatesDTOs)
             {
-                privateStudentMainPageModel.CourseOverlook.Groupmates.Add(new GroupmatesModel(GroupmatesDTO));
+                model.CourseOverlook.Groupmates.Add(new GroupmatesModel(GroupmatesDTO));
             }
 
             foreach(var passedLessonDTO in passedLessonDTOs)
             {
-                privateStudentMainPageModel.passedLessonByStudentId.Add(new PassedLessonByStudentIdModel(passedLessonDTO));
+                model.passedLessonByStudentId.Add(new PassedLessonByStudentIdModel(passedLessonDTO));
             }
 
-            return privateStudentMainPageModel;
+            return model;
         }
     }
 }

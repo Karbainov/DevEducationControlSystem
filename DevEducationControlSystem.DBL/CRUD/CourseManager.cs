@@ -122,11 +122,11 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                     courseGeneralInfo.GroupmatesDTOs.Add(PublicStudenInfo);
                     
-                    return null;
+                    return courseGeneralInfo;
                 },
                 parameter, commandType: CommandType.StoredProcedure, splitOn: "StudentId");
-                return courseGeneralInfo;
             }
+             return courseGeneralInfo;
         }
     }
 }

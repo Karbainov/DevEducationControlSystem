@@ -7,18 +7,18 @@ namespace DevEducationControlSystem.DBL.DTO
 {
     public class CourseOverlookDTO
     {
-        public int CourseId;
-        public string CourseName;
-        public DateTime CourseStartDate;
-        public int DurationInWeeks;
-        public int GroupId;
-        public string GroupName;
-        public int TeacherId;
-        public string TeacherFirstName;
-        public string TeacherLastName;
-        public int TutorId;
-        public string TutorFirstName;
-        public string TutorLastName;
-        public List<GroupmatesDTO> GroupmatesDTOs; 
+        public int CourseId { get; set; }
+        public string CourseName { get; set; }
+        public DateTime CourseStartDate { get; set; }
+        public int DurationInWeeks { get; set; }
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
+        public int TeacherId { get; set; }
+        public string TeacherFirstName { get; set; }
+        public string TeacherLastName { get; set; }
+        public int TutorId { get; set; }
+        public string TutorFirstName { get; set; }
+        public string TutorLastName { get; set; }
+        public List<GroupmatesDTO> GroupmatesDTOs { get; set; }
     }
 }

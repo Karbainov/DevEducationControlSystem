@@ -7,9 +7,9 @@ namespace DevEducationControlSystem.BLL.Models
 {
     public class GroupmatesModel
     {
-        public int StudentId;
-        public string StudentFirstName;
-        public string StudentLastName;
+        public int StudentId { get; set; }
+        public string StudentFirstName { get; set; }
+        public string StudentLastName { get; set; }
 
         public GroupmatesModel(GroupmatesDTO dto)
         {

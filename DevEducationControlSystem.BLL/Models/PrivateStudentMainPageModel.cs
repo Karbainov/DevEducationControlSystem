@@ -6,7 +6,7 @@ namespace DevEducationControlSystem.BLL.Models
 {
     public class PrivateStudentMainPageModel
     {
-        public CourseOverlookModel CourseOverlook;
-        public List<PassedLessonByStudentIdModel> passedLessonByStudentId;
+        public CourseOverlookModel CourseOverlook { get; set; }
+        public List<PassedLessonByStudentIdModel> passedLessonByStudentId { get; set; }
     }
 }

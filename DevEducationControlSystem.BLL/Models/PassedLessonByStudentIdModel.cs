@@ -7,9 +7,9 @@ namespace DevEducationControlSystem.BLL.Models
 {
     public class PassedLessonByStudentIdModel
     {
-        public string LessonName;
-        public DateTime LessonDate;
-        public string Comments;
+        public string LessonName { get; set; }
+        public DateTime LessonDate { get; set; }
+        public string Comments { get; set; }
 
         public PassedLessonByStudentIdModel(PassedLessonByStudentIdDTO dto)
         {

@@ -7,20 +7,20 @@ namespace DevEducationControlSystem.BLL.Models
 {
     public class CourseOverlookModel
     {
-        public int CourseId;
-        public string CourseName;
-        public DateTime CourseStartDate;
-        public int DurationInWeeks;
-        public DateTime CourseEndDate;
-        public int GroupId;
-        public string GroupName;
-        public int TeacherId;
-        public string TeacherFirstName;
-        public string TeacherLastName;
-        public int TutorId;
-        public string TutorFirstName;
-        public string TutorLastName;
-        public List<GroupmatesModel> Groupmates;
+        public int CourseId { get; set; }
+        public string CourseName { get; set; }
+        public DateTime CourseStartDate { get; set; }
+        public int DurationInWeeks { get; set; }
+        public DateTime CourseEndDate { get; set; }
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
+        public int TeacherId { get; set; }
+        public string TeacherFirstName { get; set; }
+        public string TeacherLastName { get; set; }
+        public int TutorId { get; set; }
+        public string TutorFirstName { get; set; }
+        public string TutorLastName { get; set; }
+        public List<GroupmatesModel> Groupmates { get; set; }
 
         public CourseOverlookModel(CourseOverlookDTO dto)
         {
