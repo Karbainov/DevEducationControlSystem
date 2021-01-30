@@ -19,5 +19,8 @@ namespace DevEducationControlSystem.BLL.Models
         public string TutorFirstName;
         public string TutorLastName;
         public List<StudentPublicInfoModel> StudentPublicInfoModels;
+        public List<PassedLessonByStudentIdModel> passedLessonByStudentIdModels;
+
+        
     }
 }
