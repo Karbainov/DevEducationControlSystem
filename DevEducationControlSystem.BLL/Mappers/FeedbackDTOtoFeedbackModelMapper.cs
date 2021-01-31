@@ -8,16 +8,23 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     class FeedbackDTOtoFeedbackModelMapper
     {
-        public FeedbackModel Map(FeedbackDTO dto)
+        public List<FeedbackModel> Map(List<FeedbackDTO> dto)
         {
-            var feedback = new FeedbackModel()
+            var feedback = new List<FeedbackModel>();
+
+            foreach(var d in dto)
             {
-                Id = dto.Id,
-                UserId = dto.UserId,
-                LessonId = dto.LessonId,
-                Rate = dto.Rate,
-                Message = dto.Message
-            };
+                feedback.Add(new FeedbackModel()
+                {
+                    Id = d.Id,
+                    UserId = d.UserId,
+                    LessonId = d.LessonId,
+                    Rate = d.Rate,
+                    Message = d.Message
+                });
+            }
+
+           
             return feedback;
         }
     }

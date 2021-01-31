@@ -86,13 +86,13 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public FeedbackDTO SelectByUserId(int userId)
+        public List<FeedbackDTO> SelectByUserId(int userId)
         {
             string expr = "[Feedback_SelectByUserId]";
             var value = new { UserId = userId };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                return connection.QuerySingle(expr, value, commandType: CommandType.StoredProcedure);
+                return connection.Query<FeedbackDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<FeedbackDTO>();
             }
         }
 
