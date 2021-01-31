@@ -64,7 +64,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                 courseDTOs = connection.Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
             }
             return courseDTOs;
-        }
+        } 
+
+        
+
         public CourseDTO SelectById(int id)
         {
             var courseDTO = new CourseDTO();
@@ -128,5 +131,17 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
              return courseGeneralInfo;
         }
+
+        public List<CourseDTO> SelectSoftDeleted()
+        {
+            var courseDTOs = new List<CourseDTO>();
+            string expression = "[Course_SelectSoftDeleted]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                courseDTOs = connection.Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
+            }
+            return courseDTOs;
+        }
+
     }
 }
