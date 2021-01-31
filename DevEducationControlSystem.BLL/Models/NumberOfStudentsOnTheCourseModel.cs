@@ -23,6 +23,7 @@ namespace DevEducationControlSystem.BLL.Models
             GroupId = dto.GroupId;
             CourseId = dto.CourseId;
             GroupName = dto.GroupName;
-    }
+    
         }
+    }
 }

@@ -11,13 +11,14 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
    public class AllInfoUserOnTheCourseManager
     {
-        public AllInfoUserOnTheCourseDTO AllInfoUserOnTheCourseById(int courseId)
+        public List<AllInfoUserOnTheCourseDTO> SelectCourseInfoById(int courseId)
+
         {
             string sqlExpression = "[AllInfoUserOnTheCourse]";
             var value = new { courseId };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                return connection.QuerySingle<AllInfoUserOnTheCourseDTO>(sqlExpression, value, commandType: CommandType.StoredProcedure);
+                return connection.Query<AllInfoUserOnTheCourseDTO>(sqlExpression, value, commandType: CommandType.StoredProcedure).AsList<AllInfoUserOnTheCourseDTO>();
             }
         }
     }

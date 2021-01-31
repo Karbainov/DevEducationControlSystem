@@ -20,7 +20,30 @@ namespace DevEducationControlSystem.BLL.Models
         public string ProfileImage { get; set; }
         public string Status { get; set; }
         public string GroupName { get; set; }
-
        public List<NumberOfStudentsOnTheCourseModel> Course { get; set; }
+       public List<AllInfoUserOnTheCourseModel> Info { get; set; }
+
+        public AllInfoUserOnTheCourseModel()
+        {
+
+        }
+
+        public AllInfoUserOnTheCourseModel(AllInfoUserOnTheCourseDTO dto)
+        {
+            Id = dto.Id;
+            StatusId = dto.StatusId;
+            FirstName = dto.FirstName;
+            LastName = dto.LastName;
+            BirthDate = dto.BirthDate;
+            Login = dto.Login;
+            Password = dto.Password;
+            email = dto.email;
+            Phone = dto.Phone;
+            ContractNumber = dto.ContractNumber;
+            ProfileImage = dto.ProfileImage;
+            Status = dto.Status;
+            GroupName = dto.GroupName;
+
+        }
     }
 }

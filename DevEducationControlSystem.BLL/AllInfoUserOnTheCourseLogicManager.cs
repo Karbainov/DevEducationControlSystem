@@ -15,7 +15,7 @@ namespace DevEducationControlSystem.BLL
             var allInfoUserOnTheCourseManager = new AllInfoUserOnTheCourseManager();
             var mapper = new SomeMapper();
             return mapper.Map(
-                allInfoUserOnTheCourseManager.AllInfoUserOnTheCourseById(courseId), 
+                allInfoUserOnTheCourseManager.SelectCourseInfoById(courseId), 
                 numberOfStudentsOnTheCourseManager.SelectCourseInfoById(courseId)
                 );           
         }
