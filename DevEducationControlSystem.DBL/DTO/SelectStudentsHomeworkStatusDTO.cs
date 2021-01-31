@@ -6,9 +6,9 @@ namespace DevEducationControlSystem.DBL.DTO
 {
     public class SelectStudentsHomeworkStatusDTO
     {
-        public int Cityname { get; set; }
-        public int Groupname { get; set; }
-        public int Homeworkname { get; set; }
+        public string Cityname { get; set; }
+        public string Groupname { get; set; }
+        public string Homeworkname { get; set; }
         public int DoneHomework { get; set; }
         public int NotDoneHomework { get; set; }
         public int DoneHomeworkOnTime { get; set; }

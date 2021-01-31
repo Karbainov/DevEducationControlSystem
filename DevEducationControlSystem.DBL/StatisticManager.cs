@@ -94,7 +94,7 @@ namespace DevEducationControlSystem.DBL
         {
             var allGroupssAndAmountPeopleInGroupByCity = new List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO>();
             string expression = "[SelectAllGroupsAndAmountPeopleInGroupByCityDTO]";
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 allGroupssAndAmountPeopleInGroupByCity = connection.Query<SelectAllGroupsAndAmountPeopleInGroupByCityDTO>(expression, commandType: CommandType.StoredProcedure).AsList();
             }
@@ -102,16 +102,32 @@ namespace DevEducationControlSystem.DBL
             return allGroupssAndAmountPeopleInGroupByCity;
         }
 
-        public List<SelectStudentsStudyingAfterBaseDTO> SelectStudentsStudyingAfterBase()
+        public List<StudentsStudyingAfterBaseDTO> SelectStudentsStudyingAfterBase()
         {
-            var selectStudentsStudyingAfterBase = new List<SelectStudentsStudyingAfterBaseDTO>();
+            var cityList = new List<StudentsStudyingAfterBaseDTO>();
             string expression = "[SelectStudentsStudyingAfterBaseDTO]";
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                selectStudentsStudyingAfterBase = connection.Query<SelectStudentsStudyingAfterBaseDTO>(expression, commandType: CommandType.StoredProcedure).AsList();
+                cityList = connection.Query<StudentsStudyingAfterBaseDTO, UsersInGroupCountDTO, StudentsStudyingAfterBaseDTO>(expression,  (City,Group) =>
+                {
+                    StudentsStudyingAfterBaseDTO city = null;
+
+                    foreach (var c in cityList)
+                    {
+
+                    }
+
+                }, 
+
+
+                  commandType: CommandType.StoredProcedure).AsList();
             }
 
-            return selectStudentsStudyingAfterBase;
+            return cityList;
+        }
+
+        
+
         }
 
     }
