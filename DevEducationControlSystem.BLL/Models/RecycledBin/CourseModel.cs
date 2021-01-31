@@ -19,13 +19,13 @@ namespace DevEducationControlSystem.BLL.Models
 
         }
 
-        public CourseModel(int id, string name, string description, int durationInWeeks, bool isDeleted)
+        public CourseModel(CourseDTO dto)
         {
-            Id = id;
-            Name = name;
-            Description = description;
-            DurationInWeeks = durationInWeeks;
-            IsDeleted = isDeleted;
+            Id = dto.Id;
+            Name = dto.Name;
+            Description = dto.Description;
+            DurationInWeeks = dto.DurationInWeeks;
+            IsDeleted = dto.IsDeleted;
         }
     }
 }
