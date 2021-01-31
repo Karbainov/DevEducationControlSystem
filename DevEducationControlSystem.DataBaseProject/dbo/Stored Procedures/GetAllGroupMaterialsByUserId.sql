@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE GetAllGroupMaterialsByUserId
+﻿CREATE PROCEDURE [dbo].[GetAllGroupMaterialsByUserId]
 	@UserId int
 AS
 
@@ -7,7 +7,7 @@ BEGIN
 	DECLARE @GroupId int;
 	SET @GroupId = (SELECT GroupId FROM User_Group WHERE UserId=@UserId);
 
-	SELECT ResourceId, MaterialId, Links, Images FROM
+	SELECT Material.[Name] as MaterialName, Material.[Message], ResourceId, MaterialId, Links, Images FROM
 	(
 	SELECT Course_Material.MaterialId FROM Course_Material
 		WHERE [Course_Material].[CourseId] = (SELECT [Group].[CourseId] FROM [Group] WHERE Id=@GroupId)
