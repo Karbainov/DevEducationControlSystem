@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[SelectStudentsStudyingAfterBase]
-	as select
+as  select
 City.name as Cityname,
 [Group].name as Groupname,
 count( [User].id) as Usercount

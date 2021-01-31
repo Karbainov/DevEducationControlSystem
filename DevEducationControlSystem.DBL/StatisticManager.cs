@@ -102,6 +102,17 @@ namespace DevEducationControlSystem.DBL
             return allGroupssAndAmountPeopleInGroupByCity;
         }
 
+        public List<SelectStudentsStudyingAfterBaseDTO> SelectStudentsStudyingAfterBase()
+        {
+            var selectStudentsStudyingAfterBase = new List<SelectStudentsStudyingAfterBaseDTO>();
+            string expression = "[SelectStudentsStudyingAfterBaseDTO]";
+            using (var connection = ConnectToDB())
+            {
+                selectStudentsStudyingAfterBase = connection.Query<SelectStudentsStudyingAfterBaseDTO>(expression, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return selectStudentsStudyingAfterBase;
+        }
 
     }
 }

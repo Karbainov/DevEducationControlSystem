@@ -6,6 +6,8 @@ namespace DevEducationControlSystem.DBL.DTO
 {
    public  class SelectStudentsStudyingAfterBaseDTO
     {
+        public int Cityname{ get; set; }
+        public int Groupname { get; set; }
         public int Usercount { get; set; }
 
         public SelectStudentsStudyingAfterBaseDTO()
@@ -15,6 +17,8 @@ namespace DevEducationControlSystem.DBL.DTO
 
         public SelectStudentsStudyingAfterBaseDTO(SelectStudentsStudyingAfterBaseDTO dto)
         {
+            Cityname = dto.Cityname;
+            Groupname = dto.Groupname;
             Usercount = dto.Usercount;
         }
     }
