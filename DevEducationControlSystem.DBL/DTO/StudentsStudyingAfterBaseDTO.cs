@@ -7,7 +7,7 @@ namespace DevEducationControlSystem.DBL.DTO
     public class StudentsStudyingAfterBaseDTO
     {
         public string Cityname { get; set; }
-        List<UsersInGroupCountDTO> groupList {get; set;} 
+        public List<UsersInGroupCountDTO> groupList {get; set;} 
             
      }
 }

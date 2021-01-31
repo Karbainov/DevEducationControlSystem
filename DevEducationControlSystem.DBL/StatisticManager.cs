@@ -105,30 +105,43 @@ namespace DevEducationControlSystem.DBL
         public List<StudentsStudyingAfterBaseDTO> SelectStudentsStudyingAfterBase()
         {
             var cityList = new List<StudentsStudyingAfterBaseDTO>();
-            string expression = "[SelectStudentsStudyingAfterBaseDTO]";
+            string expression = "[SelectStudentsStudyingAfterBase]";
             using (var connection = SqlServerConnection.GetConnection())
             {
-                cityList = connection.Query<StudentsStudyingAfterBaseDTO, UsersInGroupCountDTO, StudentsStudyingAfterBaseDTO>(expression,  (City,Group) =>
+                connection.Query<StudentsStudyingAfterBaseDTO, UsersInGroupCountDTO, StudentsStudyingAfterBaseDTO>(expression,  (City,Group)=>
                 {
                     StudentsStudyingAfterBaseDTO city = null;
 
                     foreach (var c in cityList)
                     {
+                        if (City.Cityname == c.Cityname)
+                        {
+                            city = c;
+                            break;
+                        }
 
                     }
 
-                }, 
+                    if (city == null)
+                    {
+                        city = City;
+                        cityList.Add(city);
+                    }
+                    if (city.groupList == null) city.groupList = new List<UsersInGroupCountDTO>();
 
 
-                  commandType: CommandType.StoredProcedure).AsList();
+                    city.groupList.Add(Group);
+                    return city;
+                },
+
+                  commandType: CommandType.StoredProcedure,splitOn: "Groupname");
             }
 
             return cityList;
+            
         }
 
-        
-
-        }
+     }
 
     }
-}
+
