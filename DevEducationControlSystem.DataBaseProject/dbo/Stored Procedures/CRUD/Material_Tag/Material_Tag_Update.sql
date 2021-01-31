@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[Material_Tag_Update]
-	@ID int,
-	@MaterialID int,
-	@TagID int
+	@Id int,
+	@MaterialId int,
+	@TagId int
 AS
 	update Material_Tag
-	set MaterialId=@MaterialID, TagID=@TagID
-	WHERE ID=@ID
+	set MaterialId=@MaterialId, TagId=@TagId
+	WHERE Id=@Id

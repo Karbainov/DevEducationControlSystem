@@ -1,101 +1,44 @@
-﻿using DevEducationControlSystem.DBL.DTO.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Text;
+using System.Data.SqlClient;
+using DevEducationControlSystem.DBL.DTO.Base;
+using System.Data;
+using Dapper;
+using System.Linq;
 
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    class PrivilegesManager
+    public class PrivilegesManager
     {
-        private SqlConnection connection;
-
-        public PrivilegesManager()
-        {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            connection = new SqlConnection(connectionString);
-        }
-
         public List<PrivilegesDTO> Select()
         {
-            var PrivilegesDTOs = new List<PrivilegesDTO>();
-
-            try
-            {
-                connection.Open();
-            }
-            finally
-            {
-                connection.Close();
-                throw new Exception("DataBase connection failed");
-            }
-
-            string sqlExpression = "EXEC Privileges_Select";
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-
-
-            try
-            {
-                using(SqlDataReader reader = command.ExecuteReader())
-                {
-                    if(reader.HasRows)
-                    {
-                        while(reader.Read())
-                        {
-                            var PrivilegesDTO = new PrivilegesDTO
-                            {
-                                Id = (int)reader["Id"],
-                                Name = (string)reader["Name"]
-                            };
-
-                            PrivilegesDTOs.Add(PrivilegesDTO);
-                        }
-                    }
-                }
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return PrivilegesDTOs;
-
+            var ListPrivilegesDTOs = SqlServerConnection.GetConnection().Query<PrivilegesDTO>("[Privileges_Select]", commandType: CommandType.StoredProcedure).AsList<PrivilegesDTO>();
+            return ListPrivilegesDTOs;
         }
 
         public PrivilegesDTO SelectById(int id)
         {
-            var PrivilegesDTO = new PrivilegesDTO();
-
-            try
-            {
-                connection.Open();
-            }
-            finally
-            {
-                connection.Close();
-                throw new Exception("DataBase connection failed");
-            }
-
-            string sqlExpression = $"EXEC Privileges_SelectById  {id}";
-            SqlCommand command = new SqlCommand(sqlExpression, connection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            try
-            {
-                reader.Read();
-                PrivilegesDTO.Id = (int)reader["Id"];
-                PrivilegesDTO.Name = (string)reader["Name"];
-            }
-            finally
-            {
-                reader.Close();
-                connection.Close();
-            }
-
+            var PrivilegesDTO = SqlServerConnection.GetConnection().Query<PrivilegesDTO>("[Privileges_SelectById]", id, commandType: CommandType.StoredProcedure).Single<PrivilegesDTO>();
             return PrivilegesDTO;
-
         }
+
+        public void Update(int id, int name)
+        {
+            var value = new { id, name };
+            SqlServerConnection.GetConnection().Query("[RPrivileges_Update]", value, commandType: CommandType.StoredProcedure);
+        }
+
+        public void Delete(int id)
+        {
+            SqlServerConnection.GetConnection().Query("[Role_Privileges_Delete]", id, commandType: CommandType.StoredProcedure);
+        }
+
+        public void Add(string name)
+        {
+            SqlServerConnection.GetConnection().Query("[Role_Privileges_Add]", name, commandType: CommandType.StoredProcedure);
+        }
+
     }
 }

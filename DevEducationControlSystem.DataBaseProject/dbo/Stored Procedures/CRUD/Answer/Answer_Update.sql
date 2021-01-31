@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[Answer_Update]
 	@Id int,
 	@UserId int,
-	@HomeWorkId int,
+	@HomeworkId int,
     @Date Datetime,
     @Message NVARCHAR(1000),
 	@StatusId int
@@ -9,7 +9,7 @@ AS
 UPDATE [dbo].[Answer] 
 SET 
 UserId = @UserId, 
-[HomeWorkId] = @HomeWorkId,
+[HomeworkId] = @HomeworkId,
 [Date] = @Date,
 [Message] = @Message,
 StatusId = @StatusId
