@@ -108,14 +108,16 @@ namespace DevEducationControlSystem.DBL.CRUD
             return lesson;
         }
 
-        public void Add(int groupId, string name, DateTime lessonDate, string comments)
+        public int Add(int groupId, string name, DateTime lessonDate, string comments)
         {
+            int id = -1;
             string expr = "[Lesson_Add]";
             var value = new { GroupId = groupId, Name = name, LessonDate = lessonDate, Comments = comments };
             using (var connection = ConnectToBD())
             {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+               id = connection.QuerySingle<int>(expr, value, commandType: CommandType.StoredProcedure);
             }
+            return id;
         }
 
         public void Delete(int id)

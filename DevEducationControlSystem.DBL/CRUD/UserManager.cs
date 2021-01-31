@@ -58,7 +58,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                         tmpUserWithRole = user;
                         users.Add(tmpUserWithRole);
                     }
-
+                    if(tmpUserWithRole.Roles == null)
+                    {
+                        tmpUserWithRole.Roles = new List<RoleDTO>();
+                    }
 
                     tmpUserWithRole.Roles.Add(role);
 

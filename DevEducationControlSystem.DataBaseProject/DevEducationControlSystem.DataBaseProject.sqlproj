@@ -364,5 +364,6 @@
     <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonAttendanceByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateAttendanceIsPresent.sql" />
   </ItemGroup>
 </Project>
