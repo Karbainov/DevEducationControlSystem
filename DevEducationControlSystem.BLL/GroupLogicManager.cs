@@ -35,7 +35,7 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(materialManager.GetUnlockedMaterialsWithTagsByUserIdAndTag(userId, tag));
         }
 
-        public RoleStatisticModel GetRoleStatistic()
+        public ListRoleStatisticModel GetRoleStatistic()
         {
             var roleManager = new RoleManager();
             var mapper = new RoleStatisticMapper();
