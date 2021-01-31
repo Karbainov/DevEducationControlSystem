@@ -49,9 +49,21 @@ namespace DevEducationControlSystem.BLL
                                 lessonManager.SelectLessonAttendanceByGroupId(groupId));
         }
 
-        public void CreateLesson(LessonModel lesson)
+        public void AddLessonWithAttendances(LessonModel lesson)
         {
-            throw new NotImplementedException();
+            int lessonId = new LessonManager().Add(lesson.GroupId,lesson.Name,lesson.LessonDate,lesson.Comments);
+            var users = new UserManager().SelectUsersByGroupId(lesson.GroupId);
+            var manager = new AttendanceManager();
+            users.ForEach((u) =>
+            {
+                manager.Add(u.Id, lessonId, false);
+            });
+        }
+
+        public void UpdateAttendance(int attendanceId, bool isPresent)
+        {
+            var manager =  new AttendanceManager();
+            manager.UpdateIsPresent(attendanceId, isPresent);
         }
     }
 }

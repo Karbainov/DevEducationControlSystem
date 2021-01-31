@@ -43,12 +43,20 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetGroupAttendanceById(groupId));
         }
 
-        [HttpPost("Lesson")]
-        public IActionResult CreateLesson(LessonInputModel lesson)
+        [HttpPut("Lesson")]
+        public IActionResult AddLessonWithAttendances(LessonInputModel lesson)
         {
             var groupLogicManager = new GroupLogicManager();
             var lessonModel = new LessonModel() { GroupId = lesson.GroupId, Name = lesson.Name, LessonDate = lesson.LessonDate, Comments = lesson.Comments };
-            groupLogicManager.CreateLesson(lessonModel);
+            groupLogicManager.AddLessonWithAttendances(lessonModel);
+            return Ok();
+        }
+
+        [HttpPost("Attendance")]
+        public IActionResult UpdateAttendance(int attendanceId, bool isPresent)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            groupLogicManager.UpdateAttendance(attendanceId, isPresent);
             return Ok();
         }
     }

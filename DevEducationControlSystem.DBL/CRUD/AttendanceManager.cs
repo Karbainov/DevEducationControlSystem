@@ -54,10 +54,28 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
 
 
-        public void Update(int id)
+        public void Update(int id, int userId, int lessonId, bool isPresent)
         {
             string expr = "[Attendance_Update]";
-            var value = new { Id = id };
+            var value = new { Id = id,
+                UserId = userId,
+                LessonId = lessonId,
+                IsPresent = isPresent
+            };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateIsPresent(int id, bool isPresent)
+        {
+            string expr = "[UpdateAttendanceIsPresent]";
+            var value = new
+            {
+                Id = id,
+                IsPresent = isPresent
+            };
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
