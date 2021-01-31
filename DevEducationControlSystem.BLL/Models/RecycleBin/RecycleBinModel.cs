@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.BLL.Models.RecycledBin
 {
-    class RecycledBinModel
+    public class RecycleBinModel
     {
         public List<HomeworkModel> Homeworks { get; set; }
 

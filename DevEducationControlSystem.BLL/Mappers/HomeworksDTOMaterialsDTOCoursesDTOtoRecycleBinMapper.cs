@@ -7,11 +7,11 @@ using System.Text;
 
 namespace DevEducationControlSystem.BLL.Mappers
 {
-    class HomeworksDTOMaterialsDTOCoursesDTOtoRecycledBinMapper
+    class HomeworksDTOMaterialsDTOCoursesDTOtoRecycleBinMapper
     {
-        public RecycledBinModel Map(List<HomeworkDTO> homeworksList, List<MaterialDTO> materialsList,  List<CourseDTO> coursesList)
+        public RecycleBinModel Map(List<HomeworkDTO> homeworksList, List<MaterialDTO> materialsList,  List<CourseDTO> coursesList)
         {
-            RecycledBinModel recycledBin = new RecycledBinModel()
+            RecycleBinModel recycleBin = new RecycleBinModel()
             {
                 Homeworks = new List<HomeworkModel>(),
                 Materials = new List<MaterialModel>(),
@@ -22,7 +22,7 @@ namespace DevEducationControlSystem.BLL.Mappers
             {
                 if (r != null)
                 {
-                    recycledBin.Homeworks.Add(new HomeworkModel(r));
+                    recycleBin.Homeworks.Add(new HomeworkModel(r));
                 }
             }
 
@@ -30,7 +30,7 @@ namespace DevEducationControlSystem.BLL.Mappers
             {
                 if (r != null)
                 {
-                    recycledBin.Materials.Add(new MaterialModel(r));
+                    recycleBin.Materials.Add(new MaterialModel(r));
                 }
             }
 
@@ -38,11 +38,11 @@ namespace DevEducationControlSystem.BLL.Mappers
             {
                 if (r != null)
                 {
-                    recycledBin.Courses.Add(new CourseModel(r));
+                    recycleBin.Courses.Add(new CourseModel(r));
                 }
             }
 
-            return recycledBin;
+            return recycleBin;
         }
 
     }
