@@ -59,5 +59,13 @@ namespace DevEducationControlSystem.BLL
 
             return privatePage;
         }
+        public FeedbackModel GetFeedbackByUserId(int userId)
+        {
+            var feedbackManager = new FeedbackManager();
+
+            var mapper = new FeedbackDTOtoFeedbackModelMapper();
+
+            return mapper.Map(feedbackManager.SelectById(userId));
+        }
     }
 }

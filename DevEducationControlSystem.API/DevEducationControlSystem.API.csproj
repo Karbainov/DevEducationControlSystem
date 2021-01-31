@@ -9,9 +9,5 @@
     <ProjectReference Include="..\DevEducationControlSystem.DBL\DevEducationControlSystem.DBL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="InputModels\" />
-  </ItemGroup>
-
 
 </Project>

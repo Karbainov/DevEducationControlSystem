@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DevEducationControlSystem.BLL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using DevEducationControlSystem.API.InputModels;
 
 namespace DevEducationControlSystem.API.Controllers
 {
@@ -25,6 +26,12 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+        }
+        [HttpPut("Student/{userId}/private")]
+        public IActionResult AddFeedback(NewFeedbackInputModel feedback, int userId)
+        {
+            var groupAPIManager = new GroupAPIManager();
+            return Ok(groupAPIManager.AddAndCheckNewFeedback(feedback, userId));
         }
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
