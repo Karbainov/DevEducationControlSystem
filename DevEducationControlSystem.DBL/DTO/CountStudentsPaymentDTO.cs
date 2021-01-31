@@ -17,12 +17,9 @@ namespace DevEducationControlSystem.DBL.DTO
         public int PaymentId{ get; set; }
         public int UserId { get; set; }
         public bool IsPaid { get; set; }
-       
+        public DateTime PayDate { get; set; }
 
 
-        [Group].[Name] AS GroupName, [Group].StartDate,
-  Course.DurationInWeeks,
-  FirstName, LastName, email, Phone, ContractNumber,
-  Payment.Id AS PaymentId, UserId, [Period],  isPaid, [Sum], PayDate
+
     }
 }

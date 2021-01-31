@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.BLL.Models
 {
-    class GroupPaymentModel
+    public class GroupPaymentModel
     {
         public int Id { get; set; }
         public string Group { get; set; }
