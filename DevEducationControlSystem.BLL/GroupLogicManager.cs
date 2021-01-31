@@ -60,6 +60,11 @@ namespace DevEducationControlSystem.BLL
             return privatePage;
         }
 
+        public void AddAttendance(int userId, int lessonId, bool isPresent)
+        {
+            new AttendanceManager().Add(userId,lessonId,isPresent);
+        }
+
         public void AddLessonWithAttendances(LessonModel lesson)
         {
             int lessonId = new LessonManager().Add(lesson.GroupId,lesson.Name,lesson.LessonDate,lesson.Comments);

@@ -58,5 +58,13 @@ namespace DevEducationControlSystem.API.Controllers
             groupLogicManager.UpdateAttendance(attendanceId, isPresent);
             return Ok();
         }
+
+        [HttpPut("Attendance")]
+        public IActionResult AddAttendance(int userId,int lessonId, bool isPresent)
+        {
+            var groupLogicManager = new GroupLogicManager();
+            groupLogicManager.AddAttendance(userId, lessonId, isPresent);
+            return Ok();
+        }
     }
 }
