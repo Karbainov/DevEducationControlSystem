@@ -13,11 +13,11 @@ namespace DevEducationControlSystem.API.Controllers
     public class StatisticController : Controller
     {
 
-        [HttpGet("Statistic")]
+        [HttpGet("")]
         public IActionResult GetGroupInfoById(int groupId)
         {
-            var groupLogicManager = new GroupLogicManager();
-            return Ok(groupLogicManager.GetRoleStatistic());
+            var StatisticLogicManager = new StatisticLogicManager();
+            return Ok(StatisticLogicManager.GetRoleStatistic());
         }
     }
 }

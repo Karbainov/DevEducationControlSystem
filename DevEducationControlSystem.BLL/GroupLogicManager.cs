@@ -34,12 +34,5 @@ namespace DevEducationControlSystem.BLL
             var mapper = new UnlockedMaterialsWithTagsByUserIdAndTagDTOtoUnlockedMaterialsByTagModelMapper();
             return mapper.Map(materialManager.GetUnlockedMaterialsWithTagsByUserIdAndTag(userId, tag));
         }
-
-        public ListRoleStatisticModel GetRoleStatistic()
-        {
-            var roleManager = new RoleManager();
-            var mapper = new RoleStatisticMapper();
-            return mapper.Map(roleManager.GetNumberOfPeoplePerRole());
-        }
     }
 }

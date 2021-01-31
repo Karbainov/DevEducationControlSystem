@@ -8,14 +8,14 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     public class RoleStatisticMapper
     {
-        public ListRoleStatisticModel Map(List<NumberOfPeoplePerRoleDTO> dto)
+        public List<RoleStatisticModel> Map(List<NumberOfPeoplePerRoleDTO> dto)
         {
-            var list = new ListRoleStatisticModel();
-            list.listRoleStatistic = new List<RoleStatisticModel>();
+            var list = new List<RoleStatisticModel>();
+            
 
             foreach (var m in dto)
             {
-                list.listRoleStatistic.Add(new RoleStatisticModel(m));
+                list.Add(new RoleStatisticModel(m));
             }
 
             return list;
