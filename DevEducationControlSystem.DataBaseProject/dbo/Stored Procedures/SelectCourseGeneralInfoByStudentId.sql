@@ -10,7 +10,7 @@ Course.Id AS CourseId, Course.[Name] AS CourseName, [Group].StartDate AS CourseS
 [Group].Id AS GroupId, [Group].[Name] AS GroupName,
 C.Id AS TeacherId, C.FirstName AS TeacherFirstName, C.LastName AS TeacherLastName,
 A.Id AS TutorId, A.FirstName AS TutorFirstName, A.LastName AS TutorLastName,
-B.Id AS StudenId, B.FirstName AS StudentFirstName, B.LastName AS StudenLastName
+B.Id AS StudentId, B.FirstName AS StudentFirstName, B.LastName AS StudentLastName
 FROM Course
 JOIN [Group] ON Course.Id=[Group].CourseId
 JOIN (SELECT * FROM User_Group WHERE User_Group.GroupId=@GroupId) AS D ON D.GroupId=[Group].Id
