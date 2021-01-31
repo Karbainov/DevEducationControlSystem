@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using Dapper;
 using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.DTO.Base;
+using System.Linq;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -183,6 +184,20 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
 
             return lessons;
+        }
+
+        public List<PassedLessonByStudentIdDTO> SelectPassedLessonByStudentId(int studentId)
+        {
+            var passedLesson = new List<PassedLessonByStudentIdDTO>();
+            
+            string expression = "[SelectPassedLessonByStudentId]";
+            var parameter = new { UserId = studentId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                passedLesson = connection.Query<PassedLessonByStudentIdDTO>(expression, parameter, commandType: CommandType.StoredProcedure).ToList<PassedLessonByStudentIdDTO>();
+            }
+            return passedLesson;
         }
 
     }

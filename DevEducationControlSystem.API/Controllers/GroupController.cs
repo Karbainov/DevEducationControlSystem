@@ -22,11 +22,11 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetGroupInfoById(groupId));
         }
 
-        [HttpGet("User/{userId}/Materials")]
+        [HttpGet("Student/{userId}/private")]
         public IActionResult GetStudentUnlockedData(int userId)
         {
             var groupLogicManager = new GroupLogicManager();
-            return Ok(groupLogicManager.GetStudentUnlockedData(userId));
+            return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
         }
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
@@ -34,7 +34,6 @@ namespace DevEducationControlSystem.API.Controllers
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetStudentUnlockedMaterialsByTag(userId, tag));
         }
-
 
         [HttpGet("Attendance/{groupId}")]
         public IActionResult GetGroupAttendanceById(int groupId)
