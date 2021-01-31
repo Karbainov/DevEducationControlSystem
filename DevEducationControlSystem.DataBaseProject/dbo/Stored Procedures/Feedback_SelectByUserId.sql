@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[Feedback_SelectByUserId]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+﻿CREATE PROCEDURE Feedback_SelectByUserId
+  @UserId INT
+  AS
+  BEGIN
+  SELECT * FROM Feedback WHERE UserId=@UserId
+  END
