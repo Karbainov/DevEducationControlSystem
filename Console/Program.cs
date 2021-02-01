@@ -8,8 +8,11 @@ namespace TConsole
     {
         static void Main(string[] args)
         {
-            var manager = new LessonManager();
-            manager.SelectPassedLessonByStudentId(40);
+            var manager = new PaymentManager();
+            manager.GetPaymentDTOs();
+
+
+
         }
     }
 }

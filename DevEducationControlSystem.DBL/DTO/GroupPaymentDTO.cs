@@ -9,6 +9,6 @@ namespace DevEducationControlSystem.DBL.DTO
         public int GroupId { get; set; }
         public string GroupName { get; set; }
         public int DurationInWeeks { get; set; }
-        public List<UserPaymentDTO> Student { get; set; }
+        public List<UserPaymentDTO> StudentList { get; set; }
     }
 }
