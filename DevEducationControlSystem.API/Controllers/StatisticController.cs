@@ -18,7 +18,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(statisticLogic.GetNumberOfTeachers());
         }
 
-        [HttpGet("")]
+        [HttpGet("Roles")]
         public IActionResult GetGroupInfoById()
         {
             var StatisticLogicManager = new StatisticLogicManager();

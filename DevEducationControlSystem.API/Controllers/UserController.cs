@@ -12,13 +12,6 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class UserController : Controller
     {
-        //[HttpGet("Student/{userId}")]
-        //public IActionResult UpdatePersonalData(int userId)
-        //{
-            
-        //    return Ok(null);
-        //}
-
         [HttpGet("Student/{userId}")]
         public IActionResult GetHomeworksWithStatus(int userId)
         {
