@@ -35,7 +35,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public List<GroupPaymentDTO> GetPaymentDTOs()
         {
-            var groupList = new List<GroupPaymentDTO>();
+            List<GroupPaymentDTO> groupList = null;
 
             string expr = "[CountStudentsPayment]";
             using (var connection = SqlServerConnection.GetConnection())
@@ -46,14 +46,18 @@ namespace DevEducationControlSystem.DBL.CRUD
                      (expr, (Group, User, Period) =>
 
                      {
+                         if (groupList==null)
+                         {
+                             groupList = new List<GroupPaymentDTO>();
+                         }
+
                          GroupPaymentDTO tmpGroup = null;
                          UserPaymentDTO tmpStudent = null;
-                         PeriodDTO tmpPeriod = null;
                          
 
                          foreach (var g in groupList)
                          {
-                             if(g.GroupId == Group.GroupId)
+                             if(g.GroupName == Group.GroupName)
                              {
                                  tmpGroup = g;
                                  break;
@@ -73,9 +77,9 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                          foreach (var s in tmpGroup.StudentList)
                          {
-                             if (s.UserId == User.UserId)
+                             if (s.FirstName == User.FirstName)
                              {
-                                 tmpStudent = User;
+                                 tmpStudent = s;
                                  break;
                              }
                          }
@@ -86,30 +90,12 @@ namespace DevEducationControlSystem.DBL.CRUD
                              tmpGroup.StudentList.Add(tmpStudent);
                          }
 
-
-
                          if (tmpStudent.Periods == null)
                          {
                              tmpStudent.Periods = new List<PeriodDTO>();
                          }
 
-
-                         foreach (var p in tmpStudent.Periods)
-                         {
-                             if (p.PeriodNumber == Period.PeriodNumber)
-                             {
-                                 tmpPeriod = Period;
-                                 break;
-                             }
-                         }
-
-                         if (tmpPeriod == null)
-                         {
-                             tmpPeriod = Period;
-                             tmpStudent.Periods.Add(tmpPeriod);
-                         }
-
-
+                         tmpStudent.Periods.Add(Period);
 
                          return null;
                      },
