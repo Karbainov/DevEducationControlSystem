@@ -71,5 +71,39 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             return users;
         }
+
+        public List<LoginPassRoleDTO> GetLoginPassRole()
+        {
+            string expr = "GetLoginPassRole";
+            var listUserAuthtorisInfo = new List<LoginPassRoleDTO>();
+
+            using(var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<LoginPassRoleDTO, RoleDTO, LoginPassRoleDTO>(expr,
+                (user,role) =>
+                {
+                    LoginPassRoleDTO tmpLoginPassRole = null;
+
+                    foreach(var r in listUserAuthtorisInfo)
+                    {
+                        if(r.UserId == user.UserId)
+                        {
+                            tmpLoginPassRole = r;
+                            break;
+                        }
+                    }
+                    if(tmpLoginPassRole == null)
+                    {
+                        tmpLoginPassRole = user;
+                        listUserAuthtorisInfo.Add(tmpLoginPassRole);
+                    }
+                    tmpLoginPassRole.Role.Add(role);
+                    return tmpLoginPassRole;
+                },
+                splitOn: "RoleId",
+                commandType: CommandType.StoredProcedure);
+            }
+            return listUserAuthtorisInfo;
+        }
     }
 }
