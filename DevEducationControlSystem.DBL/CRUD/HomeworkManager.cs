@@ -18,7 +18,9 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var howeworkList = SqlServerConnection.GetConnection().Query<HomeworkDTO>("Homework_Select", commandType: CommandType.StoredProcedure).ToList<HomeworkDTO>();
             return howeworkList;
-        }
+        } 
+
+       
 
         public HomeworkDTO SelectById(int id)
         {
@@ -173,5 +175,12 @@ namespace DevEducationControlSystem.DBL.CRUD
                 return connection.Query<HomeworkWithStatusesDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<HomeworkWithStatusesDTO>();
             }
         }
+
+        public List<HomeworkDTO> SelectSoftDeleted()
+        {
+            var howeworkList = SqlServerConnection.GetConnection().Query<HomeworkDTO>("Homework_SelectSoftDeleted", commandType: CommandType.StoredProcedure).ToList<HomeworkDTO>();
+            return howeworkList;
+        }
+
     }
 }

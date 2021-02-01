@@ -2,5 +2,5 @@
 	
 AS
 BEGIN
-	SELECT * FROM Course WHERE IsDeleted<>1
+	SELECT * FROM Course WHERE IsDeleted=0
 END

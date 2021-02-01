@@ -1,17 +1,22 @@
-﻿using System;
+﻿using DevEducationControlSystem.BLL;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DevEducationControlSystem.BLL;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DevEducationControlSystem.API.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
-    public class StatisticController : Controller
+    [Route("[controller]")]
+    public class StatisticController: Controller
     {
+        [HttpGet("Teachers")]
+        public IActionResult GetNumberOfTeachersByCourseId()
+        {
+            var statisticLogic = new StatisticLogicManager();
+            return Ok(statisticLogic.GetNumberOfTeachers());
+        }
 
         [HttpGet("")]
         public IActionResult GetGroupInfoById()

@@ -20,12 +20,12 @@ namespace DevEducationControlSystem.DBL
             SqlConnection connection = new SqlConnection(_connectionString);
             return connection;
         }
-        public List<UserPercentOfPresentsDTO> SelectPercentOfPresentsByGroupId(int id)
+        public List<UserPercentOfPresentsDTO> SelectPercentOfPresentsByGroupId(int groupId)
         {
             List<UserPercentOfPresentsDTO> usersPercents = new List<UserPercentOfPresentsDTO>();
 
             string expr = "[SelectPercentOfPresentsByGroupId]";
-            var value = new { GroupId = id };
+            var value = new { GroupId = groupId };
 
             using (var connection = ConnectToDB())
             {
@@ -82,12 +82,66 @@ namespace DevEducationControlSystem.DBL
         {
             var teachersByCourseList = new List<NumberOfTeachersByCourseDTO>();
             string expr = "[SelectNumberOfTeachersByCourse]";
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 teachersByCourseList = connection.Query<NumberOfTeachersByCourseDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }
 
             return teachersByCourseList;
         }
+
+        public List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO> SelectAllGroupsAndAmountPeopleInGroupByCity()
+        {
+            var allGroupssAndAmountPeopleInGroupByCity = new List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO>();
+            string expression = "[SelectAllGroupsAndAmountPeopleInGroupByCityDTO]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                allGroupssAndAmountPeopleInGroupByCity = connection.Query<SelectAllGroupsAndAmountPeopleInGroupByCityDTO>(expression, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return allGroupssAndAmountPeopleInGroupByCity;
+        }
+
+        public List<StudentsStudyingAfterBaseDTO> SelectStudentsStudyingAfterBase()
+        {
+            var cityList = new List<StudentsStudyingAfterBaseDTO>();
+            string expression = "[SelectStudentsStudyingAfterBase]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<StudentsStudyingAfterBaseDTO, UsersInGroupCountDTO, StudentsStudyingAfterBaseDTO>(expression,  (City,Group)=>
+                {
+                    StudentsStudyingAfterBaseDTO city = null;
+
+                    foreach (var c in cityList)
+                    {
+                        if (City.Cityname == c.Cityname)
+                        {
+                            city = c;
+                            break;
+                        }
+
+                    }
+
+                    if (city == null)
+                    {
+                        city = City;
+                        cityList.Add(city);
+                    }
+                    if (city.groupList == null) city.groupList = new List<UsersInGroupCountDTO>();
+
+
+                    city.groupList.Add(Group);
+                    return city;
+                },
+
+                  commandType: CommandType.StoredProcedure,splitOn: "Groupname");
+            }
+
+            return cityList;
+            
+        }
+
+     }
+
     }
-}
+
