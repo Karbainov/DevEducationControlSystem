@@ -16,5 +16,11 @@ namespace DevEducationControlSystem.BLL
 
             return mapper.Map(statisticManager.SelectNumberOfTeachersByCourse());
         }
+        public List<RoleStatisticModel> GetRoleStatistic()
+        {
+            var roleManager = new RoleManager();
+            var mapper = new RoleStatisticMapper();
+            return mapper.Map(roleManager.GetNumberOfPeoplePerRole());
+        }
     }
 }

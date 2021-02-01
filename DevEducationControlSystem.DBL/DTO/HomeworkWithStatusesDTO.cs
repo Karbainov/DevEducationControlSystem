@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    class SelectHomeworkWithStatusesByUserIdDTO
+    public class HomeworkWithStatusesDTO
     {
         public string HomeworkName { get; set; }
         public string HomeworkStatus { get; set; }
@@ -13,12 +13,12 @@ namespace DevEducationControlSystem.DBL.DTO
         public string Images { get; set; }
         public DateTime AnswerDate { get; set; }
 
-        public SelectHomeworkWithStatusesByUserIdDTO()
+        public HomeworkWithStatusesDTO()
         {
 
         }
 
-        public SelectHomeworkWithStatusesByUserIdDTO(SelectHomeworkWithStatusesByUserIdDTO dto)
+        public HomeworkWithStatusesDTO(HomeworkWithStatusesDTO dto)
         {
             HomeworkName = dto.HomeworkName;
             HomeworkStatus = dto.HomeworkStatus;
