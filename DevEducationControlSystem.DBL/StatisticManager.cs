@@ -89,5 +89,63 @@ namespace DevEducationControlSystem.DBL
 
             return teachersByCourseList;
         }
+
+        public List<NumberOfUsersWithStatusInCourseInCityDTO> SelectNumberOfUsersWithStatusInCourseInCity()
+        {
+            List<NumberOfUsersWithStatusInCourseInCityDTO> CountUser = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
+            string expr = "[SelectNumberOfUsersWithStatusInCourseInCity]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                List<NumberOfUsersWithStatusInCourseInCityDTO> cities = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
+                CountUser = connection.Query<NumberOfUsersWithStatusInCourseInCityDTO,
+                    NumberOfUsersByStatusInCourseDTO,
+                    NumberOfUsersByStatusDTO,
+                    NumberOfUsersWithStatusInCourseInCityDTO>(expr,
+                    (city, course, status) =>
+                    {
+                        NumberOfUsersWithStatusInCourseInCityDTO tmpCity = null;
+
+                        foreach (var r in cities)
+                        {
+                            if (r.CityId == city.CityId)
+                            {
+                                tmpCity = r;
+                                break;
+                            }
+                        }
+                        if (tmpCity == null)
+                        {
+                            tmpCity = city;
+                            tmpCity.NumberOfUsersByStatusInCourse = new List<NumberOfUsersByStatusInCourseDTO>();
+                            cities.Add(tmpCity);
+                        }
+
+
+                        NumberOfUsersByStatusInCourseDTO tmpCourse = null;
+
+                        foreach (var r in tmpCity.NumberOfUsersByStatusInCourse)
+                        {
+                            if (r.CourseId == course.CourseId)
+                            {
+                                tmpCourse = r;
+                                break;
+                            }
+                        }
+                        if (tmpCourse == null)
+                        {
+                            tmpCourse = course;
+                            tmpCourse.NumberOfUsersByStatus = new List<NumberOfUsersByStatusDTO>();
+                            tmpCity.NumberOfUsersByStatusInCourse.Add(tmpCourse);
+                        }
+
+                        tmpCourse.NumberOfUsersByStatus.Add(status);
+
+                        return tmpCity;
+                    },
+                    splitOn: "CourseId, StatusId",
+                    commandType: CommandType.StoredProcedure).AsList<NumberOfUsersWithStatusInCourseInCityDTO>();
+            }
+            return CountUser;
+        }
     }
 }

@@ -16,12 +16,12 @@ namespace DevEducationControlSystem.BLL.Models
         {
 
         }
-        public NumberOfUsersByStatusInCourseModel(NumberOfUsersByStatusInCourseDTO dto)
-        {
-            CourseId = dto.CourseId;
-            CourseName = dto.CourseName;
+        //public NumberOfUsersByStatusInCourseModel(NumberOfUsersByStatusInCourseDTO dto)
+        //{
+        //    CourseId = dto.CourseId;
+        //    CourseName = dto.CourseName;
 
-            NumberOfUsersByStatus = dto.NumberOfUsersByStatus;
-        }
+        //    NumberOfUsersByStatus = dto.NumberOfUsersByStatus;
+        //}
     }
 }
