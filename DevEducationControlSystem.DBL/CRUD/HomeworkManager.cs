@@ -163,14 +163,14 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public HomeworkWithStatusesDTO SelectHomeworkWithStatusesByUserId(int userId)
+        public List<HomeworkWithStatusesDTO> SelectHomeworkWithStatusesByUserId(int userId)
         {
             string expr = "[SelectHomeworkWithStatusesByUserId]";
             var value = new { userId };
 
             using (var connection = SqlServerConnection.GetConnection())
             {
-                return connection.QuerySingle<HomeworkWithStatusesDTO>(expr, value, commandType: CommandType.StoredProcedure);
+                return connection.Query<HomeworkWithStatusesDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<HomeworkWithStatusesDTO>();
             }
         }
     }

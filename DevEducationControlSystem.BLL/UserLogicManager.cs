@@ -9,7 +9,7 @@ namespace DevEducationControlSystem.BLL
 {
     public class UserLogicManager
     {
-        public HomeworkWithStatusModel GetHomeworksWithStatus(int userId)
+        public List<HomeworkWithStatusModel> GetHomeworksWithStatus(int userId)
         {
             var homeworkManager = new HomeworkManager();
             var mapper = new HomeworkWithStatusMapper();

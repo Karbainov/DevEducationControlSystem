@@ -8,18 +8,16 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     public class HomeworkWithStatusMapper
     {
-        public HomeworkWithStatusModel Map(HomeworkWithStatusesDTO dto)
+        public List<HomeworkWithStatusModel> Map(List<HomeworkWithStatusesDTO> dto)
         {
-            return new HomeworkWithStatusModel()
+            var list = new List<HomeworkWithStatusModel>();
+
+            foreach (var m in dto)
             {
-                HomeworkName = dto.HomeworkName,
-                HomeworkStatus = dto.HomeworkStatus,
-                Description = dto.Description,
-                Links = dto.Links,
-                Images = dto.Images,
-                AnswerDate = dto.AnswerDate
-            };
-            
+                list.Add(new HomeworkWithStatusModel(m));
+            }
+
+            return list;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DevEducationControlSystem.API.Controllers
     {
 
         [HttpGet("")]
-        public IActionResult GetGroupInfoById(int groupId)
+        public IActionResult GetGroupInfoById()
         {
             var StatisticLogicManager = new StatisticLogicManager();
             return Ok(StatisticLogicManager.GetRoleStatistic());

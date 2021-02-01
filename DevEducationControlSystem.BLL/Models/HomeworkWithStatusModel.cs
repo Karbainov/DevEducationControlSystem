@@ -13,5 +13,15 @@ namespace DevEducationControlSystem.BLL.Models
         public string Links { get; set; }
         public string Images { get; set; }
         public DateTime AnswerDate { get; set; }
+
+        public HomeworkWithStatusModel(HomeworkWithStatusesDTO dto)
+        {
+            HomeworkName = dto.HomeworkName;
+            HomeworkStatus = dto.HomeworkStatus;
+            Description = dto.Description;
+            Links = dto.Links;
+            Images = dto.Images;
+            AnswerDate = dto.AnswerDate;
+        }
     }
 }
