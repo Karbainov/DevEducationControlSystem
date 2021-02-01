@@ -85,14 +85,16 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public void Add(int userId, int lessonId, bool isPresent)
+        public int Add(int userId, int lessonId, bool isPresent)
         {
+            int attendanceId = -1;
             string expr = "[Attendance_Add]";
             var value = new { UserId = userId, LessonId = lessonId, IsPresent = isPresent};
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+               attendanceId = connection.QuerySingle<int>(expr, value, commandType: CommandType.StoredProcedure);
             }
+            return attendanceId;
         }
 
        

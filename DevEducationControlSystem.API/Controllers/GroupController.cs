@@ -42,13 +42,23 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetGroupAttendanceById(groupId));
         }
 
-        [HttpPut("Lesson")]
-        public IActionResult AddLessonWithAttendances(LessonInputModel lesson)
+        [HttpPut("Lesson/{groupId}")]
+        public IActionResult AddLessonWithAttendances(LessonInputModel lesson, int groupId)
         {
+            if(groupId != lesson.GroupId)
+            {
+                return StatusCode(415);
+            }
             var groupLogicManager = new GroupLogicManager();
             var lessonModel = new LessonModel() { GroupId = lesson.GroupId, Name = lesson.Name, LessonDate = lesson.LessonDate, Comments = lesson.Comments };
-            groupLogicManager.AddLessonWithAttendances(lessonModel);
-            return Ok();
+            try
+            {
+                return Ok(groupLogicManager.AddLessonWithAttendances(lessonModel));
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(415, "Group is not exist");
+            }
         }
 
         [HttpPost("Attendance")]
@@ -62,9 +72,8 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpPut("Attendance")]
         public IActionResult AddAttendance(int userId,int lessonId, bool isPresent)
         {
-            var groupLogicManager = new GroupLogicManager();
-            groupLogicManager.AddAttendance(userId, lessonId, isPresent);
-            return Ok();
+            var groupLogicManager = new GroupLogicManager();            
+            return Ok(groupLogicManager.AddAttendance(userId, lessonId, isPresent));
         }
     }
 }
