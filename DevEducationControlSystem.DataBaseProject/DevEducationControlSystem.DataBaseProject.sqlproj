@@ -368,6 +368,8 @@
     <Build Include="dbo\Stored Procedures\SelectLessonAttendanceByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
     <Build Include="dbo\Stored Procedures\SelectCourseGeneralInfoByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsHomeworkStatus.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsStudyingAfterBase.sql" />
     <Build Include="dbo\Stored Procedures\UpdateAttendanceIsPresent.sql" />
   </ItemGroup>
 </Project>
