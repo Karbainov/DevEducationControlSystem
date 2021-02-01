@@ -42,23 +42,44 @@ namespace DevEducationControlSystem.DBL.CRUD
                     NumberOfUsersWithStatusInCourseInCityDTO>(expr, 
                     (city, course, status) => 
                     {
-                        NumberOfUsersWithStatusInCourseInCityDTO numberOfUsersWithStatusInCourseInCity = null;
+                        NumberOfUsersWithStatusInCourseInCityDTO tmpCity = null;
 
                         foreach(var r in cities)
                         {
                             if(r.CityId==city.CityId)
                             {
-                                numberOfUsersWithStatusInCourseInCity = r;
+                                tmpCity = r;
                                 break;
                             }
                         }
-                        if (numberOfUsersWithStatusInCourseInCity == null)
+                        if (tmpCity == null)
                         {
-                            numberOfUsersWithStatusInCourseInCity = city;
-                            cities.Add(numberOfUsersWithStatusInCourseInCity);
+                            tmpCity = city;
+                            tmpCity.NumberOfUsersByStatusInCourse = new List<NumberOfUsersByStatusInCourseDTO>();
+                            cities.Add(tmpCity);
                         }
-                        numberOfUsersWithStatusInCourseInCity.NumberOfUsersByStatusInCourse.Add(course);
-                        return numberOfUsersWithStatusInCourseInCity;
+
+
+                        NumberOfUsersByStatusInCourseDTO tmpCourse = null;
+
+                        foreach (var r in tmpCity.NumberOfUsersByStatusInCourse)
+                        {
+                            if (r.CourseId == course.CourseId)
+                            {
+                                tmpCourse = r;
+                                break;
+                            }
+                        }
+                        if (tmpCourse == null)
+                        {
+                            tmpCourse = course;
+                            tmpCourse.NumberOfUsersByStatus = new List<NumberOfUsersByStatusDTO>();
+                            tmpCity.NumberOfUsersByStatusInCourse.Add(tmpCourse);
+                        }
+
+                        tmpCourse.NumberOfUsersByStatus.Add(status);
+
+                        return tmpCity;
                     },
                     splitOn: "CourseId, StatusId", 
                     commandType: CommandType.StoredProcedure).AsList<NumberOfUsersWithStatusInCourseInCityDTO>();
