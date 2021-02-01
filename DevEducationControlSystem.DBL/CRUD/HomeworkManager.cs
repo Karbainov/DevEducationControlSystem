@@ -32,6 +32,11 @@ namespace DevEducationControlSystem.DBL.CRUD
             SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
         }
 
+        public List<HomeworkDTO> SelectAdd()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             SqlServerConnection.GetConnection().Query("[Homework_Delete]", new { id }, commandType: CommandType.StoredProcedure);
@@ -46,8 +51,13 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var values = new { id, resourceId, name, description, isDeleted, isSolutionRequired };
             SqlServerConnection.GetConnection().Query("[Homework_Update]", values, commandType: CommandType.StoredProcedure);
-        }
-
+        }
+
+        public List<HomeworkDTO> SelectUpdate()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<SelectAllHomeworkByThemeDTO> GetAllHomeworkByThemeId(int ThemeId)
         {
             List<SelectAllHomeworkByThemeDTO> homeworksByTheme = new List<SelectAllHomeworkByThemeDTO>();
