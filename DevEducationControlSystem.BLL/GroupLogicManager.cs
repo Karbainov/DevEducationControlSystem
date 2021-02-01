@@ -10,6 +10,7 @@ namespace DevEducationControlSystem.BLL
 {
     public class GroupLogicManager
     {
+
         public GroupInfoModel GetGroupInfoById(int groupId)
         {
             var homeworkManager = new HomeworkManager();
@@ -58,6 +59,38 @@ namespace DevEducationControlSystem.BLL
                 lessonManager.SelectPassedLessonByStudentId(studentId));
 
             return privatePage;
+        }
+
+        public int AddAttendance(int userId, int lessonId, bool isPresent)
+        {
+            return new AttendanceManager().Add(userId, lessonId, isPresent);
+        }
+
+        public int AddLessonWithAttendances(LessonModel lesson)
+        {
+            var groupManager = new GroupManager();
+            var group = groupManager.SelectById(lesson.GroupId);
+            if(group == null)
+            {
+                throw new ArgumentException("Group is not exist");
+            }
+            int lessonId = new LessonManager().Add(lesson.GroupId, lesson.Name, lesson.LessonDate, lesson.Comments);
+            var users = new UserManager().SelectUsersByGroupId(lesson.GroupId);
+            var manager = new AttendanceManager();
+            users.ForEach((u) =>
+            {
+                if (u.StatusId == Parameters.BaseStudentStatusId || u.StatusId == Parameters.SpecialtyStudentStatusId)
+                {
+                    manager.Add(u.Id, lessonId, false);
+                }
+            });
+            return lessonId;
+        }
+
+        public void UpdateAttendance(int attendanceId, bool isPresent)
+        {
+            var manager = new AttendanceManager();
+            manager.UpdateIsPresent(attendanceId, isPresent);
         }
     }
 }
