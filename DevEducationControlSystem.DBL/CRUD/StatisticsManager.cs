@@ -8,7 +8,7 @@ using Dapper;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    class StatisticsManager
+    public class StatisticsManager
     {
         private string _connectionString;
 
@@ -26,6 +26,44 @@ namespace DevEducationControlSystem.DBL.CRUD
                 CountRole = connection.Query<CountsStudentsTeachersTutorsByGroupDTO>(expression, commandType: CommandType.StoredProcedure).AsList<CountsStudentsTeachersTutorsByGroupDTO>();
             }
                 return CountRole;
+        }
+
+
+        public List<NumberOfUsersWithStatusInCourseInCityDTO> SelectNumberOfUsersWithStatusInCourseInCity()
+        {
+            List<NumberOfUsersWithStatusInCourseInCityDTO> CountUser = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
+            string expr = "[SelectNumberOfUsersWithStatusInCourseInCity]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                List<NumberOfUsersWithStatusInCourseInCityDTO> cities = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
+                CountUser = connection.Query<NumberOfUsersWithStatusInCourseInCityDTO, 
+                    NumberOfUsersByStatusInCourseDTO, 
+                    NumberOfUsersByStatusDTO, 
+                    NumberOfUsersWithStatusInCourseInCityDTO>(expr, 
+                    (city, course, status) => 
+                    {
+                        NumberOfUsersWithStatusInCourseInCityDTO numberOfUsersWithStatusInCourseInCity = null;
+
+                        foreach(var r in cities)
+                        {
+                            if(r.CityId==city.CityId)
+                            {
+                                numberOfUsersWithStatusInCourseInCity = r;
+                                break;
+                            }
+                        }
+                        if (numberOfUsersWithStatusInCourseInCity == null)
+                        {
+                            numberOfUsersWithStatusInCourseInCity = city;
+                            cities.Add(numberOfUsersWithStatusInCourseInCity);
+                        }
+                        numberOfUsersWithStatusInCourseInCity.NumberOfUsersByStatusInCourse.Add(course);
+                        return numberOfUsersWithStatusInCourseInCity;
+                    },
+                    splitOn: "CourseId, StatusId", 
+                    commandType: CommandType.StoredProcedure).AsList<NumberOfUsersWithStatusInCourseInCityDTO>();
+            }
+            return CountUser;
         }
     }
 }

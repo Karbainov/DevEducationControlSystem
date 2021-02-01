@@ -16,5 +16,14 @@ namespace DevEducationControlSystem.BLL
 
             return mapper.Map(statisticManager.SelectNumberOfTeachersByCourse());
         }
+
+        public NumberOfUsersWithStatusInCourseInCityModel GetNumberOfUsersWithStatusInCourseInCity()
+        {
+            //public List<NumberOfUsersWithStatusInGroupInCityDTO> SelectNumberOfUsersWithStatusInGroupInCity()
+            var statisticManager = new StatisticManager();
+
+            var mapper = new NumberOfUsersWithStatusInCourseInCityDTOMapper();
+            return mapper.Map(statisticManager.SelectNumberOfUsersWithStatusInCourseInCity());
+        }
     }
 }
