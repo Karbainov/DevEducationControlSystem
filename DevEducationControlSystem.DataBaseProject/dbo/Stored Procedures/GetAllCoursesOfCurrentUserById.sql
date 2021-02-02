@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetAllCoursesOfCurrentUser]
+﻿CREATE PROCEDURE [dbo].[GetAllCoursesOfCurrentUserById]
 	@UserId int
 AS
 	SELECT U.Id AS UserId, U.FirstName, U.LastName,US.Id As StatusId, US.Name AS UserStatus, C.Id AS CourseId, C.Name AS Course FROM [dbo].[User] AS U
