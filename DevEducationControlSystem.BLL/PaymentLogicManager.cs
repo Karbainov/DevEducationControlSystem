@@ -9,9 +9,10 @@ namespace DevEducationControlSystem.BLL
 {
     public class PaymentLogicManager
     {
-        public PaymentInfoModel GetPaymentInfo(int groupId)
+        public GroupPaymentModel GetGroupPaymentInfo()
         {
-            return null;
+            var mapper = new GroupDTOUsersDTOPaymentDTOtoPaymentInfoModelMapper();
+            return mapper.Map();
         }
     }
 }

@@ -9,9 +9,9 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     public class GroupDTOUsersDTOPaymentDTOtoPaymentInfoModelMapper
     {
-        public PaymentInfoModel Map()
+        public GroupPaymentModel Map()
         {
-            PaymentInfoModel paymentInfoModel = new PaymentInfoModel();
+            GroupPaymentModel paymentInfoModel = new GroupPaymentModel();
             {
                 
             };
