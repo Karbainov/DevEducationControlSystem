@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-
+using System.Linq;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -25,6 +25,8 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
         }
+
+
         public List<MaterialDTO> Select()
         {
             List<MaterialDTO> materials = new List<MaterialDTO>();
@@ -157,17 +159,68 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
-        public List<AllGroupMaterialsByTagAndUserIdDTO> Get(int userId, string tagName)
+
+        public List<UnlockedMaterialsWithTagsByUserIdAndTagDTO> GetUnlockedMaterialsWithTagsByUserIdAndTag(int userId, string tagName)
         {
-            List<AllGroupMaterialsByTagAndUserIdDTO> materialsByTag = new List<AllGroupMaterialsByTagAndUserIdDTO>();
-            string expr = "[GetAllGroupMaterialsByTagAndUserId]";
-            var value = new { UserId = userId, TagName = tagName };
-            using (_connection = new SqlConnection(_connectionString))
+            List<UnlockedMaterialsWithTagsByUserIdAndTagDTO> materialsByTag = new List<UnlockedMaterialsWithTagsByUserIdAndTagDTO>();
+            string expr = "[SelectUnlockedMaterialsWithTagsByUserIdAndTag]";
+            var values = new { UserId = userId, Tag = tagName };
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                materialsByTag = _connection.Query<AllGroupMaterialsByTagAndUserIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<AllGroupMaterialsByTagAndUserIdDTO>();
+                connection.Query<UnlockedMaterialsWithTagsByUserIdAndTagDTO, string, UnlockedMaterialsWithTagsByUserIdAndTagDTO>(expr,(Material, Tag)=>
+                {
+                    UnlockedMaterialsWithTagsByUserIdAndTagDTO material = null;
+                    
+                        foreach (var m in materialsByTag)
+                        {
+                            if (Material.MaterialId == m.MaterialId)
+                            {
+                                material = m;
+                                break;
+                            }
+                        }
+                    
+
+                    if (material==null)
+                    {
+                        material = Material;
+                        materialsByTag.Add(material);
+                    }
+
+                    if (material.TagName == null) material.TagName = new List<string>();
+
+                    material.TagName.Add(Tag);
+
+                    return material;
+                },
+                    
+                    values, commandType: CommandType.StoredProcedure, splitOn: "TagName" );
             }
             return materialsByTag;
         }
+
+        public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
+        {
+            string expr = "[SelectAllMaterialsByGroupId]";
+            var value = new { groupId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
+            }
+        }
+        public List<MaterialDTO> SelectSoftDeleted()
+        {
+            string expr = "[Material_SelectSoftDeleted]";
+            var materialList = SqlServerConnection.GetConnection().Query<MaterialDTO>(expr, commandType: CommandType.StoredProcedure).ToList<MaterialDTO>();
+            return materialList;
+        }
+
+        public void UpdateIsDeleted(int id)
+        {
+            var materialList = SqlServerConnection.GetConnection().Query("Material_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
+
 
     }
 }

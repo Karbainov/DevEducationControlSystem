@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.DTO.Base;
+using System.Linq;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -107,14 +109,16 @@ namespace DevEducationControlSystem.DBL.CRUD
             return lesson;
         }
 
-        public void Add(int groupId, string name, DateTime lessonDate, string comments)
+        public int Add(int groupId, string name, DateTime lessonDate, string comments)
         {
+            int id = -1;
             string expr = "[Lesson_Add]";
             var value = new { GroupId = groupId, Name = name, LessonDate = lessonDate, Comments = comments };
             using (var connection = ConnectToBD())
             {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+               id = connection.QuerySingle<int>(expr, value, commandType: CommandType.StoredProcedure);
             }
+            return id;
         }
 
         public void Delete(int id)
@@ -135,6 +139,65 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
+        }
+
+        public List<LessonAttendanceDTO> SelectLessonAttendanceByGroupId(int groupId)
+        {
+            string expr = "[SelectLessonAttendanceByGroupId]";
+            var value = new { groupId };
+
+            List<LessonAttendanceDTO> lessons = new List<LessonAttendanceDTO>();
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+
+                connection.Query<LessonAttendanceDTO, AttendanceDTO, LessonAttendanceDTO>(expr,
+                (lessonAttendance, attendance) =>
+                {
+                    LessonAttendanceDTO tmpLesson = null;
+
+                    foreach (var r in lessons)
+                    {
+                        if (r.LessonId == lessonAttendance.LessonId)
+                        {
+                            tmpLesson = r;
+                            break;
+                        }
+                    }
+                    if (tmpLesson == null)
+                    {
+                        tmpLesson = lessonAttendance;
+                        lessons.Add(tmpLesson);
+                    }
+
+                    if(tmpLesson.Attendances == null)
+                    {
+                        tmpLesson.Attendances = new List<AttendanceDTO>();
+                    }
+                    tmpLesson.Attendances.Add(attendance);
+
+                    return tmpLesson;
+                },
+                value,
+                splitOn: "Id",
+                commandType: CommandType.StoredProcedure);
+            }
+
+            return lessons;
+        }
+
+        public List<PassedLessonByStudentIdDTO> SelectPassedLessonByStudentId(int studentId)
+        {
+            var passedLesson = new List<PassedLessonByStudentIdDTO>();
+            
+            string expression = "[SelectPassedLessonByStudentId]";
+            var parameter = new { UserId = studentId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                passedLesson = connection.Query<PassedLessonByStudentIdDTO>(expression, parameter, commandType: CommandType.StoredProcedure).ToList<PassedLessonByStudentIdDTO>();
+            }
+            return passedLesson;
         }
 
     }

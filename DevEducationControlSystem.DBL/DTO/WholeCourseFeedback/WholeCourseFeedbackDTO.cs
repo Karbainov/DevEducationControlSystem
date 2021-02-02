@@ -14,13 +14,13 @@ namespace DevEducationControlSystem.DBL.DTO.WholeCourseFeedback
         public int LessonId;
         public int Rate;
         public string Message;
-        public List<ThemeFromCourseFeedbackDTO> ThemeFromCourseFeedbackDTOs;
+        public List<ThemeFromCourseDTO> ThemeFromCourseFeedbackDTOs;
 
         public WholeCourseFeedbackDTO()
         {
 
         }
-        public WholeCourseFeedbackDTO(int userId, string firstName, string lastName, int groupId, int feedbackId, int lessonId, int rate, string message, List<ThemeFromCourseFeedbackDTO> themeFromCourseFeedbackDTOs)
+        public WholeCourseFeedbackDTO(int userId, string firstName, string lastName, int groupId, int feedbackId, int lessonId, int rate, string message, List<ThemeFromCourseDTO> themeFromCourseFeedbackDTOs)
         {
             UserId = userId;
             FirstName = firstName;
