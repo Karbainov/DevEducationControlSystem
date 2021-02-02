@@ -18,5 +18,15 @@ namespace DevEducationControlSystem.API.Controllers
             var adminLogic = new AdminLogicManager();
             return Ok(adminLogic.GetSoftDeletedItems());
         }
+
+        [HttpPost("RecycleBin")]
+        public IActionResult RecoverHomeworkById(int homeworkId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.RecoverHomeworkById(homeworkId);
+            return Ok("Homework  {homeworkId} recovered");
+        }
+
+       
     }
 }
