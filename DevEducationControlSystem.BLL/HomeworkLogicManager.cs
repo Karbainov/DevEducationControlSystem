@@ -1,4 +1,6 @@
 ﻿using DevEducationControlSystem.BLL.Models;
+using DevEducationControlSystem.DBL.CRUD;
+using DevEducationControlSystem.DBL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +11,54 @@ namespace DevEducationControlSystem.BLL
     {
         public void AppointHomeworkToGroup(HomeworkAppointmentModel homeworkAppointmentModel)
         {
-            throw new NotImplementedException();
+            var groupManager = new GroupManager();
+            var group = groupManager.SelectById(homeworkAppointmentModel.GroupId);
+            if (group == null)
+            {
+                throw new ArgumentException("Group is not exist");
+            }
+            var homeworkManager = new HomeworkManager();
+            var homework = homeworkManager.SelectById(homeworkAppointmentModel.HomeworkId);
+            if(homework == null)
+            {
+                throw new ArgumentException("Homework is not exist");
+            }
+            var ghManager = new Group_HomeworkManager();
+            ghManager.Add(homeworkAppointmentModel.GroupId,
+                homeworkAppointmentModel.HomeworkId,
+                homeworkAppointmentModel.StartDate,
+                homeworkAppointmentModel.DeadLine);
+            var users = new UserManager().SelectUsersByGroupId(homeworkAppointmentModel.GroupId);
+            var answerManager = new AnswerManager();
+            users.ForEach((u) =>
+            {
+                if (u.StatusId == Parameters.BaseStudentStatusId || u.StatusId == Parameters.SpecialtyStudentStatusId)
+                {
+                    answerManager.Add(u.Id,
+                        null,
+                        homeworkAppointmentModel.HomeworkId,
+                        homeworkAppointmentModel.StartDate,
+                        null,
+                        Parameters.AppointedAnswerStatus);
+                }
+            });
+        }
+
+        public List<AnswerExpandedDTO> SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
+        {
+            var groupManager = new GroupManager();
+            var group = groupManager.SelectById(groupId);
+            if (group == null)
+            {
+                throw new ArgumentException("Group is not exist");
+            }
+            var homeworkManager = new HomeworkManager();
+            var homework = homeworkManager.SelectById(homeworkId);
+            if (homework == null)
+            {
+                throw new ArgumentException("Homework is not exist");
+            }
+            return new AnswerManager().SelectAllAnswersByHomeworkIdAndGroupId(homeworkId, groupId);
         }
     }
 }
