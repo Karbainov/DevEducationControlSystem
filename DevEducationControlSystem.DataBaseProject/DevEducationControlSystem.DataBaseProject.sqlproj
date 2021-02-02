@@ -373,5 +373,6 @@
     <Build Include="dbo\Stored Procedures\SelectStudentsStudyingAfterBase.sql" />
     <Build Include="dbo\Stored Procedures\UpdateAttendanceIsPresent.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_RecoverSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
   </ItemGroup>
 </Project>
