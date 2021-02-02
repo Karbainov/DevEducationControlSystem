@@ -14,30 +14,45 @@ namespace DevEducationControlSystem.DBL.CRUD
     {
         public List<PrivilegesDTO> Select()
         {
-            var ListPrivilegesDTOs = SqlServerConnection.GetConnection().Query<PrivilegesDTO>("[Privileges_Select]", commandType: CommandType.StoredProcedure).AsList<PrivilegesDTO>();
-            return ListPrivilegesDTOs;
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                var ListPrivilegesDTOs = connection.Query<PrivilegesDTO>("[Privileges_Select]", commandType: CommandType.StoredProcedure).AsList<PrivilegesDTO>();
+                return ListPrivilegesDTOs;
+            }
         }
 
         public PrivilegesDTO SelectById(int id)
         {
-            var PrivilegesDTO = SqlServerConnection.GetConnection().Query<PrivilegesDTO>("[Privileges_SelectById]", id, commandType: CommandType.StoredProcedure).Single<PrivilegesDTO>();
-            return PrivilegesDTO;
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                var PrivilegesDTO = connection.QuerySingle<PrivilegesDTO>("[Privileges_SelectById]", id, commandType: CommandType.StoredProcedure);
+                return PrivilegesDTO;
+            }
         }
 
         public void Update(int id, int name)
         {
-            var value = new { id, name };
-            SqlServerConnection.GetConnection().Query("[RPrivileges_Update]", value, commandType: CommandType.StoredProcedure);
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                var value = new { id, name };
+                connection.Query("[Privileges_Update]", value, commandType: CommandType.StoredProcedure);
+            }
         }
 
         public void Delete(int id)
         {
-            SqlServerConnection.GetConnection().Query("[Role_Privileges_Delete]", id, commandType: CommandType.StoredProcedure);
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query("[Role_Privileges_Delete]", id, commandType: CommandType.StoredProcedure);
+            }
         }
 
         public void Add(string name)
         {
-            SqlServerConnection.GetConnection().Query("[Role_Privileges_Add]", name, commandType: CommandType.StoredProcedure);
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query("[Role_Privileges_Add]", name, commandType: CommandType.StoredProcedure);
+            }
         }
 
     }
