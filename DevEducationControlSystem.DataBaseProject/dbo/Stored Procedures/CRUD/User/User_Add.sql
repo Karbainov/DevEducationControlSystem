@@ -5,7 +5,7 @@
 	@BirthDate date,
 	@Login nvarchar(15), 
 	@Password nvarchar(8),
-	@email nvarchar(30),
+	@Email nvarchar(30),
 	@Phone nvarchar(12),
 	@ContractNumber nvarchar(15),
 	@ProfileImage nvarchar(1000)
@@ -17,7 +17,7 @@ INSERT [dbo].[User] VALUES (
 	@BirthDate,
 	@Login, 
 	@Password, 
-	@email, 
+	@Email, 
 	@Phone, 
 	@ContractNumber,
 	@ProfileImage

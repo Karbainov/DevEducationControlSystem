@@ -2,4 +2,4 @@
 	@CourseId int,
 	@MaterialId int
 AS
-INSERT INTO [dbo].[Course_Material] (CourseID, MaterialID) VALUES (@CourseId, @MaterialId)
+INSERT INTO [dbo].[Course_Material] (CourseId, MaterialId) VALUES (@CourseId, @MaterialId)

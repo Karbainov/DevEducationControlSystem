@@ -55,11 +55,23 @@ namespace DevEducationControlSystem.DBL.CRUD
             return FeedbackDTO;
         }
 
+        public FeedbackDTO SelectFeedbackByUserIdAndLessonId(int userId, int lessonId)
+        {
+            var feedback = new FeedbackDTO();
+            string expression = "SelectFeedbackByUserIdAndLessonId";
+            var parameter = new { UserId = userId, LessonId = lessonId};
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                feedback = connection.QuerySingleOrDefault<FeedbackDTO>(expression, parameter, commandType: CommandType.StoredProcedure);
+            }
+            return feedback;
+        }
 
-        public void Update(int id)
+
+        public void Update(int id, int userId, int lessonId, int rate, string message)
         {
             string expr = "[Feedback_Update]";
-            var value = new { Id = id };
+            var value = new { Id = id, UserId = userId, LessonId = lessonId, Rate = rate, Message = message };
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
@@ -86,6 +98,16 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
+        public List<FeedbackDTO> SelectByUserId(int userId)
+        {
+            string expr = "[Feedback_SelectByUserId]";
+            var value = new { UserId = userId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<FeedbackDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<FeedbackDTO>();
+            }
+        }
+
         public Dictionary<int, WholeCourseFeedbackDTO> GetFeedbackByCourseId(int courseId)
         {
             Dictionary<int, WholeCourseFeedbackDTO> wholeCourseFeedbackDTOs = new Dictionary<int, WholeCourseFeedbackDTO>(); ;
@@ -93,7 +115,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             var parameter = new { CourseId = courseId };
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Query<WholeCourseFeedbackDTO, ThemeFromCourseFeedbackDTO, WholeCourseFeedbackDTO>
+                connection.Query<WholeCourseFeedbackDTO, ThemeFromCourseDTO, WholeCourseFeedbackDTO>
                     (expression, (wholeCourseFeedback, themeFromCourseFeedback) =>
                     {
 
@@ -107,7 +129,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
                         if (wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs == null)
                         {
-                            wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs = new List<ThemeFromCourseFeedbackDTO>();
+                            wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs = new List<ThemeFromCourseDTO>();
                         }
                         wholeCourseFeedbackDTO.ThemeFromCourseFeedbackDTOs.Add(themeFromCourseFeedback);
 

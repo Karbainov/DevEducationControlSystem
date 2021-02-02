@@ -10,5 +10,5 @@ LEFT JOIN
 	Material ON Theme_Material.MaterialId=Material.Id
 INNER JOIN 
 	[User] ON Material.UserId=[User].Id
-WHERE Theme.Id=@ThemeId AND Material.isDeleted='False'
+WHERE Theme.Id=@ThemeId AND Material.IsDeleted='False'
 GO;

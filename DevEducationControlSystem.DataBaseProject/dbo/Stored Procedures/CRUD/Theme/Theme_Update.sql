@@ -3,4 +3,4 @@
 	@Name nvarchar(255)
 AS
 	UPDATE [Theme]
-	SET Name = @Name WHERE ID=@Id
+	SET Name = @Name WHERE Id=@Id

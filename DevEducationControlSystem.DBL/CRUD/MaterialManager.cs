@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using System.Linq;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -13,11 +14,19 @@ namespace DevEducationControlSystem.DBL.CRUD
     {
         string _connectionString;
         SqlConnection _connection;
+        public SqlConnection GetConnection()
+        {
+            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
+            SqlConnection connection = new SqlConnection(connectionString);
+            return connection;
+        }
 
         public MaterialManager()
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
         }
+
+
         public List<MaterialDTO> Select()
         {
             List<MaterialDTO> materials = new List<MaterialDTO>();
@@ -42,9 +51,17 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
                     int id = (int)reader["Id"];
                     int userid = (int)reader["UserId"];
-                    int resourceid = (int)reader["ResouceId"];
+                    int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
-                    string message = (string)reader["Message"];
+                    string message;
+                    if (!reader.IsDBNull(reader.GetOrdinal("Message")))
+                    {
+                        message = (string)reader["Message"];
+                    }
+                    else
+                    {
+                        message = null;
+                    }
                     bool isdeleted = (bool)reader["IsDeleted"];
                     materials.Add(new MaterialDTO(id, userid, resourceid, name, message, isdeleted));
                 }
@@ -82,9 +99,17 @@ namespace DevEducationControlSystem.DBL.CRUD
                 {
                     int id = (int)reader["Id"];
                     int userid = (int)reader["UserId"];
-                    int resourceid = (int)reader["ResouceId"];
+                    int resourceid = (int)reader["ResourceId"];
                     string name = (string)reader["Name"];
-                    string message = (string)reader["Message"];
+                    string message;
+                    if (!reader.IsDBNull(reader.GetOrdinal("Message")))
+                    {
+                        message = (string)reader["Message"];
+                    }
+                    else
+                    {
+                        message = null;
+                    }
                     bool isdeleted = (bool)reader["IsDeleted"];
                     material = new MaterialDTO(id, userid, resourceid, name, message, isdeleted);
                 }
@@ -95,17 +120,107 @@ namespace DevEducationControlSystem.DBL.CRUD
             return material;
         }
 
-        public List<AllGroupMaterialsByTagAndUserIdDTO> Get(int userId, string tagName)
+        public void Add(string name)
         {
-            List<AllGroupMaterialsByTagAndUserIdDTO> materialsByTag = new List<AllGroupMaterialsByTagAndUserIdDTO>();
-            string expr = "[GetAllGroupMaterialsByTagAndUserId]";
-            var value = new { UserId = userId, TagName = tagName };
-            using (_connection = new SqlConnection(_connectionString))
+            string expr = "[Material_Add]";
+            var value = new { Name = name };
+            using (var connection = GetConnection())
             {
-                materialsByTag = _connection.Query<AllGroupMaterialsByTagAndUserIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<AllGroupMaterialsByTagAndUserIdDTO>();
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            string expr = "[Material_Delete]";
+            var value = new { Id = id };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void SoftDelete(int id)
+        {
+            string expr = "[Material_SoftDelete]";
+            var value = new { Id = id };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Update(int id, string name)
+        {
+            string expr = "[Material_Update]";
+            var value = new { Id = id, Name = name };
+            using (var connection = GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<UnlockedMaterialsWithTagsByUserIdAndTagDTO> GetUnlockedMaterialsWithTagsByUserIdAndTag(int userId, string tagName)
+        {
+            List<UnlockedMaterialsWithTagsByUserIdAndTagDTO> materialsByTag = new List<UnlockedMaterialsWithTagsByUserIdAndTagDTO>();
+            string expr = "[SelectUnlockedMaterialsWithTagsByUserIdAndTag]";
+            var values = new { UserId = userId, Tag = tagName };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<UnlockedMaterialsWithTagsByUserIdAndTagDTO, string, UnlockedMaterialsWithTagsByUserIdAndTagDTO>(expr,(Material, Tag)=>
+                {
+                    UnlockedMaterialsWithTagsByUserIdAndTagDTO material = null;
+                    
+                        foreach (var m in materialsByTag)
+                        {
+                            if (Material.MaterialId == m.MaterialId)
+                            {
+                                material = m;
+                                break;
+                            }
+                        }
+                    
+
+                    if (material==null)
+                    {
+                        material = Material;
+                        materialsByTag.Add(material);
+                    }
+
+                    if (material.TagName == null) material.TagName = new List<string>();
+
+                    material.TagName.Add(Tag);
+
+                    return material;
+                },
+                    
+                    values, commandType: CommandType.StoredProcedure, splitOn: "TagName" );
             }
             return materialsByTag;
         }
+
+        public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
+        {
+            string expr = "[SelectAllMaterialsByGroupId]";
+            var value = new { groupId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
+            }
+        }
+        public List<MaterialDTO> SelectSoftDeleted()
+        {
+            string expr = "[Material_SelectSoftDeleted]";
+            var materialList = SqlServerConnection.GetConnection().Query<MaterialDTO>(expr, commandType: CommandType.StoredProcedure).ToList<MaterialDTO>();
+            return materialList;
+        }
+
+        public void UpdateIsDeleted(int id)
+        {
+            var materialList = SqlServerConnection.GetConnection().Query("Material_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
+
 
     }
 }
