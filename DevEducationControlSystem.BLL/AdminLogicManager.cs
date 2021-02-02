@@ -28,5 +28,11 @@ namespace DevEducationControlSystem.BLL
             var manager = new HomeworkManager();
             manager.UpdateIsDeleted(homeworkId);
         }
+
+        public void RecoverMaterialById(int materialId)
+        {
+            var manager = new MaterialManager();
+            manager.UpdateIsDeleted(materialId);
+        }
     }
 }
