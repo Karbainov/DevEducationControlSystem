@@ -33,7 +33,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             string expr = "[SelectUserInfoByLogin]";
             var value = new { Login = login };
 
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query<SelectUserInfoByLoginDTO, RoleNameDTO, SelectUserInfoByLoginDTO>(expr, (userinfo, role) =>
                 {
@@ -66,9 +66,9 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             string expr = "[UpdateUserProfile]";
             var values = new { UserId = userId, NewPassword = password, NewPhone = phone, NewEmail = email, NewProfileImage = profileImage };
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(expr, values, commandType CommandType.StoredProcedure);
+                connection.Query(expr, values, commandType: CommandType.StoredProcedure);
             }
         }
 
