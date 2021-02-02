@@ -7,6 +7,7 @@ using DevEducationControlSystem.DBL.DTO.Base;
 using DevEducationControlSystem.DBL.CRUD;
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.BLL;
+using System.Linq;
 
 namespace DevEducationControlSystem.API
 {
@@ -15,7 +16,8 @@ namespace DevEducationControlSystem.API
         public List<FeedbackModel> AddAndCheckNewFeedback(List<NewFeedbackInputModel> feedbackModelsList, int userId)
         {
             var dalManager = new FeedbackManager();
-            List<FeedbackDTO> previousFeedbackDTOs = null;
+            
+            List<int> feedbackIDsForUpdate = null;
 
             foreach (var f in feedbackModelsList)
             {
@@ -23,35 +25,15 @@ namespace DevEducationControlSystem.API
 
                 if (pfDTO!=null)
                 {
-                    if (previousFeedbackDTOs == null)
+                    if (feedbackIDsForUpdate == null)
                     {
-                        previousFeedbackDTOs = new List<FeedbackDTO>();
+                        feedbackIDsForUpdate = new List<int>();
                     }
-                    previousFeedbackDTOs.Add(pfDTO);
-                }
-            }
 
-
-            if (previousFeedbackDTOs != null)
-            {
-                foreach (var pfDTO in previousFeedbackDTOs)
-                {
-                    foreach (var f in feedbackModelsList)
-                    {
-                        if (pfDTO.LessonId == f.LessonId)
-                        {
-                            dalManager.Update(pfDTO.Id, f.UserId, f.LessonId, f.Rate, f.Message);
-                        }
-                        else
-                        {
-                            dalManager.Add(f.UserId, f.LessonId, f.Rate, f.Message);
-                        }
-                    }
+                    feedbackIDsForUpdate.Add(pfDTO.Id);
+                    dalManager.Update(pfDTO.Id, f.UserId, f.LessonId, f.Rate, f.Message);
                 }
-            }
-            else
-            {
-                foreach (var f in feedbackModelsList)
+                else
                 {
                     dalManager.Add(f.UserId, f.LessonId, f.Rate, f.Message);
                 }
