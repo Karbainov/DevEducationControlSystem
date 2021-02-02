@@ -22,7 +22,7 @@ namespace DevEducationControlSystem.BLL.Mappers
                     UserPas = log.UserPas,
                     Roles = new List<RoleModel>()
                 };
-                foreach(var r in log.Role)
+                foreach(var r in log.Roles)
                 {
                     if (r != null)
                     {

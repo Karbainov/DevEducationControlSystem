@@ -27,26 +27,26 @@ namespace DevEducationControlSystem.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
-            settings =>
-            {
-                settings.RequireHttpsMetadata = false;
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+            //settings =>
+            //{
+            //    settings.RequireHttpsMetadata = false;
 
-                settings.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ValidateIssuer = true,
-                    ValidIssuer = AuthenticationSettings.Issuer,
+            //    settings.TokenValidationParameters = new TokenValidationParameters()
+            //    {
+            //        ValidateIssuer = true,
+            //        ValidIssuer = AuthenticationSettings.Issuer,
 
-                    ValidateAudience = true,
-                    ValidAudience = AuthenticationSettings.Audience,
+            //        ValidateAudience = true,
+            //        ValidAudience = AuthenticationSettings.Audience,
 
-                    ValidateLifetime = true,
+            //        ValidateLifetime = true,
 
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = AuthenticationSettings.SecurityKey
-                };
-            }
-            );
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = AuthenticationSettings.SecurityKey
+            //    };
+            //}
+            //);
 
             services.AddControllers();
         }

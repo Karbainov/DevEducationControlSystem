@@ -10,6 +10,6 @@ namespace DevEducationControlSystem.DBL.DTO
         public int UserId {get; set;}
         public string UserLog { get; set;}
         public string UserPas {get; set;}
-        public List<RoleDTO> Role {get; set;}
+        public List<RoleDTO> Roles {get; set;}
     }
 }

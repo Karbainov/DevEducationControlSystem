@@ -39,7 +39,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             
             using (var connection = SqlServerConnection.GetConnection())
             {
-
                 connection.Query<UserWithRoleDTO, RoleDTO, UserWithRoleDTO>(expr,
                 (user, role) =>
                 {
@@ -58,17 +57,13 @@ namespace DevEducationControlSystem.DBL.CRUD
                         tmpUserWithRole = user;
                         users.Add(tmpUserWithRole);
                     }
-
-
                     tmpUserWithRole.Roles.Add(role);
-
                     return tmpUserWithRole;
                 },
                 value,
                 splitOn: "RoleId",
                 commandType: CommandType.StoredProcedure);
             }
-
             return users;
         }
 
@@ -97,10 +92,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                         tmpLoginPassRole = user;
                         listUserAuthtorisInfo.Add(tmpLoginPassRole);
                     }
-                    tmpLoginPassRole.Role.Add(role);
+                    tmpLoginPassRole.Roles.Add(role);
                     return tmpLoginPassRole;
                 },
-                splitOn: "RoleId",
+                splitOn: "Id",
                 commandType: CommandType.StoredProcedure);
             }
             return listUserAuthtorisInfo;

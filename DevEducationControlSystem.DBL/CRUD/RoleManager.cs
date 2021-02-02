@@ -11,7 +11,7 @@ namespace DevEducationControlSystem.DBL.CRUD
     {
         public RoleDTO SelectById(int id)
         {
-            var RoleDTO = SqlServerConnection.GetConnection().Query<RoleDTO>("[Role_SelectById]", id, commandType: CommandType.StoredProcedure).Single<RoleDTO>();
+            var RoleDTO = SqlServerConnection.GetConnection().QuerySingle<RoleDTO>("[Role_SelectById]", id, commandType: CommandType.StoredProcedure);
             return RoleDTO;
         }
     }

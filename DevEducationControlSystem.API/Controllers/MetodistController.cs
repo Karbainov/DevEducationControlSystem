@@ -12,11 +12,11 @@ namespace DevEducationControlSystem.API.Controllers
 
     public class MetodistController : Controller
     {
-        [HttpPut("course/add")]
-        public IActionResult GetAddHomework()
-        {
-            var metodistLogic = new MetodistLogicManager();
-            return Ok(metodistLogic.GetAddHomework()); 
-        }
+        //[HttpPut("course/add")]
+        //public IActionResult GetAddHomework()
+        //{
+        //    var metodistLogic = new MetodistLogicManager();
+        //    return Ok(metodistLogic.GetAddHomework(name, description, int durationInWeeks)); 
+        //}
     }
 }
