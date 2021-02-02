@@ -92,5 +92,13 @@ namespace DevEducationControlSystem.BLL
             var manager = new AttendanceManager();
             manager.UpdateIsPresent(attendanceId, isPresent);
         }
+        public List<FeedbackModel> GetFeedbackByUserId(int userId)
+        {
+            var feedbackManager = new FeedbackManager();
+
+            var mapper = new FeedbackDTOtoFeedbackModelMapper();
+
+            return mapper.Map(feedbackManager.SelectByUserId(userId));
+        }
     }
 }
