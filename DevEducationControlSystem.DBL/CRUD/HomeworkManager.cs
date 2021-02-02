@@ -182,5 +182,12 @@ namespace DevEducationControlSystem.DBL.CRUD
             return howeworkList;
         }
 
+
+        public void UpdateIsDeleted(int id)
+        {
+            var howeworkList = SqlServerConnection.GetConnection().Query("Homework_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
+
     }
 }
