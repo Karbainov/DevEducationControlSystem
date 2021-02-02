@@ -290,6 +290,8 @@
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Lesson\Lesson_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SelectMaterialsByCourse.sql" />
+    <Build Include="dbo\Stored Procedures\SelectGroupsOnCoursesInfo.sql" />
     <Build Include="dbo\Stored Procedures\SelectNumberOfUsersWithStatusInGroupInCity.sql" />
     <Build Include="dbo\Stored Procedures\UpdateUserProfile.sql" />
     <Build Include="dbo\Stored Procedures\SelectUserInfoByLogin.sql" />
@@ -365,5 +367,13 @@
     <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonAttendanceByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
+    <Build Include="dbo\Stored Procedures\SelectCourseGeneralInfoByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\CountStudentsPayment.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsHomeworkStatus.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsStudyingAfterBase.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateAttendanceIsPresent.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_RecoverSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
   </ItemGroup>
 </Project>

@@ -64,7 +64,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                 courseDTOs = connection.Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
             }
             return courseDTOs;
-        }
+        } 
+
+        
+
         public CourseDTO SelectById(int id)
         {
             var courseDTO = new CourseDTO();
@@ -101,5 +104,49 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
             }
         }
+        public CourseOverlookDTO SelectCourseGeneralInfoByStudentId(int studentId)
+        {
+            CourseOverlookDTO courseGeneralInfo = null;
+            string expression = "[SelectCourseGeneralInfoByStudentId]";
+            var parameter = new { UserId = studentId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<CourseOverlookDTO, GroupmatesDTO, CourseOverlookDTO>(expression, (CourseGeneralInfo, PublicStudenInfo) =>
+                {
+                    if (courseGeneralInfo == null)
+                    {
+                        courseGeneralInfo = CourseGeneralInfo;
+                    }
+
+                    if (courseGeneralInfo.GroupmatesDTOs == null)
+                    {
+                        courseGeneralInfo.GroupmatesDTOs = new List<GroupmatesDTO>();
+                    }
+
+                    courseGeneralInfo.GroupmatesDTOs.Add(PublicStudenInfo);
+                    
+                    return courseGeneralInfo;
+                },
+                parameter, commandType: CommandType.StoredProcedure, splitOn: "StudentId");
+            }
+             return courseGeneralInfo;
+        }
+
+        public List<CourseDTO> SelectSoftDeleted()
+        {
+            var courseDTOs = new List<CourseDTO>();
+            string expression = "[Course_SelectSoftDeleted]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                courseDTOs = connection.Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
+            }
+            return courseDTOs;
+        }
+
+        public void UpdateIsDeleted(int id)
+        {
+            var CourseList = SqlServerConnection.GetConnection().Query("Course_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
     }
 }

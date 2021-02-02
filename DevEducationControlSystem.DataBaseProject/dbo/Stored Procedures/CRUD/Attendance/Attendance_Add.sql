@@ -2,6 +2,7 @@
 	@UserId int, 
 	@LessonId int,
 	@IsPresent bit
-AS 
+AS
 INSERT [dbo].[Attendance] (UserId, LessonId, IsPresent)
+output inserted.Id
 VALUES (@UserId, @LessonId, @IsPresent)
