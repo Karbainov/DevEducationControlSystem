@@ -65,7 +65,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public GroupDTO SelectById(int id)
         {
-            GroupDTO group = new GroupDTO();
+            GroupDTO group = null;
             SqlConnection connection = ConnectToDB();
             try
             {
