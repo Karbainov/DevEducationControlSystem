@@ -9,8 +9,11 @@ namespace TConsole
     {
         static void Main(string[] args)
         {
-            var manager = new StatisticManager();
-            manager.SelectStudentsStudyingAfterBase();
+            var manager = new FeedbackManager();
+            manager.SelectFeedbackByUserIdAndLessonId(37, 6);
+
+
+
         }
     }
 }

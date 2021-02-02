@@ -10,19 +10,12 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class AttendanceManager
     {
-        
-        private string _connectionString;
-
-        public AttendanceManager()
-        {
-            _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-            
-        }
+      
         public List<AttendanceDTO> Select()
         {
             var AttendanceDTOs = new List<AttendanceDTO>();
             string expr = "[Attendance_Select]";
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 AttendanceDTOs = connection.Query<AttendanceDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
             }
@@ -32,7 +25,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public AttendanceDTO SelectById(int id)
         {
             var AttendanceDTO = new AttendanceDTO();
-            var connection = new SqlConnection(_connectionString);
+            var connection = SqlServerConnection.GetConnection();
 
             connection.Open();
 
@@ -54,11 +47,29 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
 
 
-        public void Update(int id)
+        public void Update(int id, int userId, int lessonId, bool isPresent)
         {
             string expr = "[Attendance_Update]";
-            var value = new { Id = id };
-            using (var connection = new SqlConnection(_connectionString))
+            var value = new { Id = id,
+                UserId = userId,
+                LessonId = lessonId,
+                IsPresent = isPresent
+            };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateIsPresent(int id, bool isPresent)
+        {
+            string expr = "[UpdateAttendanceIsPresent]";
+            var value = new
+            {
+                Id = id,
+                IsPresent = isPresent
+            };
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -68,20 +79,22 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             string expr = "[Attendance_Delete]";
             var value = new { Id = id };
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
 
-        public void Add(int userId, int lessonId, bool isPresent)
+        public int Add(int userId, int lessonId, bool isPresent)
         {
+            int attendanceId = -1;
             string expr = "[Attendance_Add]";
-            var value = new { UserId = userId, LessonId = lessonId, IsPresent = isPresent,};
-            using (var connection = new SqlConnection(_connectionString))
+            var value = new { UserId = userId, LessonId = lessonId, IsPresent = isPresent};
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+               attendanceId = connection.QuerySingle<int>(expr, value, commandType: CommandType.StoredProcedure);
             }
+            return attendanceId;
         }
 
        

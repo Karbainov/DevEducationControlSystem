@@ -368,7 +368,12 @@
     <Build Include="dbo\Stored Procedures\SelectLessonAttendanceByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
     <Build Include="dbo\Stored Procedures\SelectCourseGeneralInfoByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\CountStudentsPayment.sql" />
     <Build Include="dbo\Stored Procedures\SelectStudentsHomeworkStatus.sql" />
     <Build Include="dbo\Stored Procedures\SelectStudentsStudyingAfterBase.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateAttendanceIsPresent.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_RecoverSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
   </ItemGroup>
 </Project>
