@@ -8,5 +8,6 @@ namespace DevEducationControlSystem.BLL
     {
         public const int BaseStudentStatusId = 4;
         public const int SpecialtyStudentStatusId = 5;
+        public const int AppointedAnswerStatus = 1;
     }
 }
