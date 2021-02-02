@@ -35,6 +35,14 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Material recovered");
         }
 
+        [HttpPost("RecycleBin/Course")]
+        public IActionResult RecoverCourseById(int courseId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.RecoverCourseById(courseId);
+            return Ok("Course recovered");
+        }
+
 
     }
 }

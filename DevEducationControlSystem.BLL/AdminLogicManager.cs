@@ -34,5 +34,11 @@ namespace DevEducationControlSystem.BLL
             var manager = new MaterialManager();
             manager.UpdateIsDeleted(materialId);
         }
+
+        public void RecoverCourseById(int courseId)
+        {
+            var manager = new CourseManager();
+            manager.UpdateIsDeleted(courseId);
+        }
     }
 }
