@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
@@ -98,12 +99,12 @@ namespace DevEducationControlSystem.DBL.CRUD
             connection.Close();
             return answerDTO;
         }
-        public void Add(int Id, int UserId, int ResourceId, int HomeworkId, DateTime Date, string Message, int StatusId)
+        public void Add(int UserId, int? ResourceId, int HomeworkId, DateTime Date, string Message, int StatusId)
         {
             string expr = "[Answer_Add]";
-            var value = new { Id = Id, UserId = UserId, ResourceId = ResourceId, HomeworkId = HomeworkId, Date = Date, Message = Message, StatusId = StatusId };
+            var value = new { UserId = UserId, ResourceId = ResourceId, HomeworkId = HomeworkId, Date = Date, Message = Message, StatusId = StatusId };
 
-            using (var connection = GetConnection())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -128,6 +129,17 @@ namespace DevEducationControlSystem.DBL.CRUD
             using (var connection = GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<AnswerExpandedDTO> SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
+        {
+            string expr = "[SelectAllAnswersByHomeworkIdAndGroupId]";
+            var value = new { HomeworkId = homeworkId, GroupId = groupId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+               return connection.Query<AnswerExpandedDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<AnswerExpandedDTO>();
             }
         }
     }
