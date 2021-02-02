@@ -16,8 +16,6 @@ namespace DevEducationControlSystem.API
         public List<FeedbackModel> AddAndCheckNewFeedback(List<NewFeedbackInputModel> feedbackModelsList, int userId)
         {
             var dalManager = new FeedbackManager();
-            
-            List<int> feedbackIDsForUpdate = null;
 
             foreach (var f in feedbackModelsList)
             {
@@ -25,12 +23,7 @@ namespace DevEducationControlSystem.API
 
                 if (pfDTO!=null)
                 {
-                    if (feedbackIDsForUpdate == null)
-                    {
-                        feedbackIDsForUpdate = new List<int>();
-                    }
-
-                    feedbackIDsForUpdate.Add(pfDTO.Id);
+                    
                     dalManager.Update(pfDTO.Id, f.UserId, f.LessonId, f.Rate, f.Message);
                 }
                 else
