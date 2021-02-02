@@ -18,14 +18,34 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult AppointHomeworkToGroup(HomeworkAppointmentInputModel inputModel)
         {
             var homeworkLogicManager = new HomeworkLogicManager();
-            homeworkLogicManager.AppointHomeworkToGroup(new HomeworkAppointmentModel()
+            try
             {
-                HomeworkId = inputModel.HomeworkId,
-                GroupId = inputModel.GroupId,
-                StartDate = inputModel.StartDate,
-                DeadLine = inputModel.DeadLine
-            });
+                homeworkLogicManager.AppointHomeworkToGroup(new HomeworkAppointmentModel()
+                {
+                    HomeworkId = inputModel.HomeworkId,
+                    GroupId = inputModel.GroupId,
+                    StartDate = inputModel.StartDate,
+                    DeadLine = inputModel.DeadLine
+                });
+            } catch (ArgumentException e)
+            {
+                return StatusCode(415, e.Message);
+            }
             return Ok();
+        }
+
+        [HttpGet("{homeworkId}/{groupId}")]
+        public IActionResult SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
+        {
+            var homeworkLogicManager = new HomeworkLogicManager();
+            try
+            {
+               return Ok( homeworkLogicManager.SelectAllAnswersByHomeworkIdAndGroupId(homeworkId,groupId));
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(415, e.Message);
+            }
         }
     }
 }
