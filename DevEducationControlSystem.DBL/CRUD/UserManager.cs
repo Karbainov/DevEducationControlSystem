@@ -64,5 +64,15 @@ namespace DevEducationControlSystem.DBL.CRUD
                 return selectUserInfoByLogin;
             
         }
+
+        public void UpdateUserProfile(int userId, string password, string phone, string email, string profileImage)
+        {
+            string expr = "[UpdateUserProfile]";
+            var values = new { UserId = userId, NewPassword = password, NewPhone = phone, NewEmail = email, NewProfileImage = profileImage };
+            using (var connection = ConnectToDB())
+            {
+                connection.Query(expr, values, commandType CommandType.StoredProcedure);
+            }
+        }
     }
 }
