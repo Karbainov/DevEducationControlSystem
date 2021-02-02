@@ -10,6 +10,8 @@ namespace DevEducationControlSystem.DBL.DTO
         public int HomeworkId { get; set; }
         public string Homework { get; set; }
         public string Description { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime DeadLine { get; set; }
         public List<ResourceDTO> Resource { get; set; }
 
         

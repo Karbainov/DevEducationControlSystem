@@ -20,7 +20,7 @@ JOIN
 JOIN
 [Material_Tag] ON [Material_Tag].MaterialId=AllGroupMaterials.MaterialId
 JOIN
-[Tag] ON [Material_Tag].TagId=Tag.Id
+[Tag] ON [Material_Tag].TagId=Tag.Id AND Material_Tag.MaterialId=AllGroupMaterials.MaterialId
 
 WHERE Tag.[Name]=@TagName
 END

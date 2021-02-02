@@ -8,6 +8,8 @@ using Dapper;
 using System.Linq;
 using DevEducationControlSystem.DBL.DTO;
 
+
+
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class HomeworkManager
@@ -16,7 +18,9 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var howeworkList = SqlServerConnection.GetConnection().Query<HomeworkDTO>("Homework_Select", commandType: CommandType.StoredProcedure).ToList<HomeworkDTO>();
             return howeworkList;
-        }
+        } 
+
+       
 
         public HomeworkDTO SelectById(int id)
         {
@@ -46,79 +50,84 @@ namespace DevEducationControlSystem.DBL.CRUD
             SqlServerConnection.GetConnection().Query("[Homework_Update]", values, commandType: CommandType.StoredProcedure);
         }
 
-        public List<SelectAllHomeworkByThemeDTO> GetAllHomeworkByTheme(int ThemeId)
+
+
+        public List<SelectAllHomeworkByThemeDTO> GetAllHomeworkByThemeId(int ThemeId)
         {
             List<SelectAllHomeworkByThemeDTO> homeworksByTheme = new List<SelectAllHomeworkByThemeDTO>();
 
-            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByThemeDTO, ResourceDTO, SelectAllHomeworkByThemeDTO>("[SelectAllHomeworkByTheme]",
-                    (Homework, Resource) =>
+            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByThemeDTO, ResourceDTO, SelectAllHomeworkByThemeDTO>("[SelectAllHomeworkByThemeId]",
+            (Homework, Resource) =>
+                {
+                    SelectAllHomeworkByThemeDTO homeworkTheme = new SelectAllHomeworkByThemeDTO();
+
+                    foreach (var h in homeworksByTheme)
                     {
-                        SelectAllHomeworkByThemeDTO homeworkTheme = new SelectAllHomeworkByThemeDTO();
-
-                        foreach (var h in homeworksByTheme)
+                        if (h.HomeworkId == homeworkTheme.HomeworkId)
                         {
-                            if (h.HomeworkId == homeworkTheme.HomeworkId)
-                            {
-                                homeworkTheme = h;
-                                break;
-                            }
-                        };
-
-                        if (homeworkTheme == null)
-                        {
-                            homeworkTheme = Homework;
-                            homeworksByTheme.Add(homeworkTheme);
+                            homeworkTheme = h;
+                            break;
                         }
+                    };
 
-                        homeworkTheme.Resource.Add(Resource);
-                        return homeworkTheme;
+                    if (homeworkTheme == null)
+                    {
+                        homeworkTheme = Homework;
+                        homeworksByTheme.Add(homeworkTheme);
+                    }
+
+                    homeworkTheme.Resource.Add(Resource);
+                    return homeworkTheme;
 
 
-                    }, ThemeId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByThemeDTO>();
-
+                }, ThemeId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByThemeDTO>();
 
             return homeworksByTheme;
         }
 
-        public List<SelectAllHomeworkByGroupDTO> GetAllHomeworkByGroup(int GroupId)
+
+
+        public List<SelectAllHomeworkByGroupDTO> GetAllHomeworkByGroupId(int GroupId)
+
         {
             List<SelectAllHomeworkByGroupDTO> homeworksByGroup = new List<SelectAllHomeworkByGroupDTO>();
-
-            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByGroupDTO, ResourceDTO, SelectAllHomeworkByGroupDTO>("[SelectAllHomeworkByGroup]",
-                    (Homework, Resource) =>
+            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByGroupDTO, ResourceDTO, SelectAllHomeworkByGroupDTO>("[SelectAllHomeworkByGroupId]",
+            (Homework, Resource) =>
+            {
+                SelectAllHomeworkByGroupDTO homeworkGroup = new SelectAllHomeworkByGroupDTO();
+                foreach (var h in homeworksByGroup)
+                {
+                    if (h.HomeworkId == homeworkGroup.HomeworkId)
                     {
-                        SelectAllHomeworkByGroupDTO homeworkGroup = new SelectAllHomeworkByGroupDTO();
+                        homeworkGroup = h;
+                        break;
+                    }
+                };
 
-                        foreach (var h in homeworksByGroup)
-                        {
-                            if (h.HomeworkId == homeworkGroup.HomeworkId)
-                            {
-                                homeworkGroup = h;
-                                break;
-                            }
-                        };
+                if (homeworkGroup == null)
+                {
+                    homeworkGroup = Homework;
+                    homeworksByGroup.Add(homeworkGroup);
+                }
 
-                        if (homeworkGroup == null)
-                        {
-                            homeworkGroup = Homework;
-                            homeworksByGroup.Add(homeworkGroup);
-                        }
+                homeworkGroup.Resource.Add(Resource);
 
-                        homeworkGroup.Resource.Add(Resource);
-                        return homeworkGroup;
+                return homeworkGroup;
 
-
-                    }, GroupId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByGroupDTO>();
+            }, GroupId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByGroupDTO>();
 
             return homeworksByGroup;
+
         }
 
         public List<SelectAllHomeworkByCourseDTO> GetAllHomeworkByCourse(int CourseId)
         {
             List<SelectAllHomeworkByCourseDTO> homeworksByCourse = new List<SelectAllHomeworkByCourseDTO>();
 
-            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByCourseDTO, ResourceDTO, SelectAllHomeworkByCourseDTO>("[SelectAllHomeworkByCourse]", (Homework, Resource) =>
+            SqlServerConnection.GetConnection().Query<SelectAllHomeworkByCourseDTO, ResourceDTO, SelectAllHomeworkByCourseDTO>("[SelectAllHomeworkByCourseId]",
+            (Homework, Resource) =>
             {
+
                 SelectAllHomeworkByCourseDTO homeworkCourse = new SelectAllHomeworkByCourseDTO();
                 foreach (var h in homeworksByCourse)
                 {
@@ -136,12 +145,49 @@ namespace DevEducationControlSystem.DBL.CRUD
                 }
 
                 homeworkCourse.Resource.Add(Resource);
+
                 return homeworkCourse;
 
             }, CourseId, commandType: CommandType.StoredProcedure, splitOn: "ResourceId").AsList<SelectAllHomeworkByCourseDTO>();
 
             return homeworksByCourse;
         }
+
+
+        public List<HomeworkAllInfoDTO> SelectAllHomeworkByGroupId(int groupId)
+        {
+            string expr = "[SelectAllHomeworkByGroupId]";
+            var value = new { groupId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<HomeworkAllInfoDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<HomeworkAllInfoDTO>();
+            }
+        }
+
+        public List<HomeworkWithStatusesDTO> SelectHomeworkWithStatusesByUserId(int userId)
+        {
+            string expr = "[SelectHomeworkWithStatusesByUserId]";
+            var value = new { userId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<HomeworkWithStatusesDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<HomeworkWithStatusesDTO>();
+            }
+        }
+
+        public List<HomeworkDTO> SelectSoftDeleted()
+        {
+            var howeworkList = SqlServerConnection.GetConnection().Query<HomeworkDTO>("Homework_SelectSoftDeleted", commandType: CommandType.StoredProcedure).ToList<HomeworkDTO>();
+            return howeworkList;
+        }
+
+
+        public void UpdateIsDeleted(int id)
+        {
+            var howeworkList = SqlServerConnection.GetConnection().Query("Homework_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
 
     }
 }
