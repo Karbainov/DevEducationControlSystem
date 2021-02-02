@@ -11,6 +11,8 @@ namespace DevEducationControlSystem.BLL.Models
         public int GroupId { get; set; }
         public int CourseId { get; set; }
         public string GroupName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public NumberOfStudentsOnTheCourseModel()
         {
@@ -23,7 +25,10 @@ namespace DevEducationControlSystem.BLL.Models
             GroupId = dto.GroupId;
             CourseId = dto.CourseId;
             GroupName = dto.GroupName;
-    
+            FirstName = dto.FirstName;
+            LastName = dto.LastName;
+
+
         }
     }
 }
