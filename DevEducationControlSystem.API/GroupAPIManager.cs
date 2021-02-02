@@ -12,14 +12,54 @@ namespace DevEducationControlSystem.API
 {
     public class GroupAPIManager
     {
-        public List<FeedbackModel> AddAndCheckNewFeedback(NewFeedbackInputModel model, int userId)
+        public List<FeedbackModel> AddAndCheckNewFeedback(List<NewFeedbackInputModel> feedbackModelsList, int userId)
         {
             var dalManager = new FeedbackManager();
-            dalManager.Add(model.UserId, model.LessonId, model.Rate, model.Message);
+            List<FeedbackDTO> previousFeedbackDTOs = null;
+
+            foreach (var f in feedbackModelsList)
+            {
+                var pfDTO = dalManager.SelectFeedbackByUserIdAndLessonId(userId, f.LessonId);
+
+                if (pfDTO!=null)
+                {
+                    if (previousFeedbackDTOs == null)
+                    {
+                        previousFeedbackDTOs = new List<FeedbackDTO>();
+                    }
+                    previousFeedbackDTOs.Add(pfDTO);
+                }
+            }
+
+
+            if (previousFeedbackDTOs != null)
+            {
+                foreach (var pfDTO in previousFeedbackDTOs)
+                {
+                    foreach (var f in feedbackModelsList)
+                    {
+                        if (pfDTO.LessonId == f.LessonId)
+                        {
+                            dalManager.Update(pfDTO.Id, f.UserId, f.LessonId, f.Rate, f.Message);
+                        }
+                        else
+                        {
+                            dalManager.Add(f.UserId, f.LessonId, f.Rate, f.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var f in feedbackModelsList)
+                {
+                    dalManager.Add(f.UserId, f.LessonId, f.Rate, f.Message);
+                }
+            }
 
             var bllManager = new GroupLogicManager();
 
-            return bllManager.GetFeedbackByUserId(userId) ;
+            return bllManager.GetFeedbackByUserId(userId);
         }
     }
 }

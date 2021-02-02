@@ -37,7 +37,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
         }
         [HttpPut("Student/{userId}/private")]
-        public IActionResult AddFeedback(NewFeedbackInputModel feedback, int userId)
+        public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
         {
             var groupAPIManager = new GroupAPIManager();
             return Ok(groupAPIManager.AddAndCheckNewFeedback(feedback, userId));
