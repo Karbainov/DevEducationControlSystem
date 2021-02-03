@@ -59,20 +59,9 @@ namespace DevEducationControlSystem.DBL.CRUD
       finally
       {
         connection.Close();
-
-        public GroupDTO SelectById(int id)
-        {
-            GroupDTO group = null;
-            SqlConnection connection = ConnectToDB();
-            try
-            {
-                connection.Open();
-            }
-            catch
-            {
-                connection.Close();
-                throw new Exception("DataBase connection failed");
-            }
+      }
+      return groups;
+    }
 
     public GroupDTO SelectById(int id)
     {
@@ -166,7 +155,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         return connection.QuerySingle<GroupWithCityAndStatusAndCourseDTO>(expr, value, commandType: CommandType.StoredProcedure);
       }
     }
-    
+
     public List<StudentDTO> SelectStudentsByGroupId(int groupId)
     {
       string expr = "[SelectStudentsByGroupId]";
@@ -185,6 +174,6 @@ namespace DevEducationControlSystem.DBL.CRUD
         return connection.Query<PassedThemesAndHomeworksAndAnswerByStudentIdDTO>(expr, value, commandType: CommandType.StoredProcedure).ToList<PassedThemesAndHomeworksAndAnswerByStudentIdDTO>();
       }
     }
-    
+
   }
 }
