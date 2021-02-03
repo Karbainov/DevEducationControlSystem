@@ -19,14 +19,30 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(adminLogic.GetSoftDeletedItems());
         }
 
-        [HttpPost("RecycleBin")]
+        [HttpPost("RecycleBin/Homework")]
         public IActionResult RecoverHomeworkById(int homeworkId)
         {
             var adminLogicManager = new AdminLogicManager();
             adminLogicManager.RecoverHomeworkById(homeworkId);
-            return Ok("Homework  {homeworkId} recovered");
+            return Ok("Homework recovered");
         }
 
-       
+        [HttpPost("RecycleBin/Material")]
+        public IActionResult RecoverMaterialById(int materialId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.RecoverMaterialById(materialId);
+            return Ok("Material recovered");
+        }
+
+        [HttpPost("RecycleBin/Course")]
+        public IActionResult RecoverCourseById(int courseId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.RecoverCourseById(courseId);
+            return Ok("Course recovered");
+        }
+
+
     }
 }

@@ -379,5 +379,7 @@
     <Build Include="dbo\Stored Procedures\GetAllCitiesByCurrentCourseById.sql" />
     <Build Include="dbo\Stored Procedures\AddAnswerOnCurrentHomework.sql" />
     <Build Include="dbo\Stored Procedures\GetCourseDurationOfCurrentStudentById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
   </ItemGroup>
 </Project>

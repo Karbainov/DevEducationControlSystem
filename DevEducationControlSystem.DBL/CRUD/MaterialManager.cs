@@ -215,6 +215,11 @@ namespace DevEducationControlSystem.DBL.CRUD
             return materialList;
         }
 
+        public void UpdateIsDeleted(int id)
+        {
+            var materialList = SqlServerConnection.GetConnection().Query("Material_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
 
 
     }

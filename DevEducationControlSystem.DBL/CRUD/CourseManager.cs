@@ -148,5 +148,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             return courseDTOs;
         }
 
+        public void UpdateIsDeleted(int id)
+        {
+            var CourseList = SqlServerConnection.GetConnection().Query("Course_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
     }
 }
