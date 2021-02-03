@@ -10,18 +10,10 @@ using DevEducationControlSystem.DBL.DTO;
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class NumberOfStudentsOnTheCourseManager
-    {
-        //private SqlConnection connection;
-        //string _connectionString;
-
-        //public NumberOfStudentsOnTheCourseManager()
-        //{
-        //    _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test; User Id = devEd; Password = qqq!11";
-        //    connection = new SqlConnection(_connectionString);
-        //}
+    {        
         public List <NumberOfStudentsOnTheCourseDTO> SelectCourseInfoById (int courseId)
         {
-            string sqlExpression = "[NumberOfStudentsOnTheCourse]";
+            string sqlExpression = "[GetAllUsersOfCurrentCourse]";
             var value = new { courseId };
             using (var connection = SqlServerConnection.GetConnection())
             {

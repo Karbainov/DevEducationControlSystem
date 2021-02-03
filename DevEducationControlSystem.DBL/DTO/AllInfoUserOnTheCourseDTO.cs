@@ -19,5 +19,5 @@ namespace DevEducationControlSystem.DBL.DTO
         public string ProfileImage { get; set; }
         public string Status { get; set; }
         public string GroupName { get; set; }
-    }
+    }   
 }

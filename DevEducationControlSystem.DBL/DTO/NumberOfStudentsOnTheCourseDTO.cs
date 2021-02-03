@@ -9,18 +9,10 @@ namespace DevEducationControlSystem.DBL.DTO
         public int UserId { get; set; }
         public int GroupId { get; set; }
         public int CourseId { get; set; }
+        public string CourseName { get; set; }
         public string GroupName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-
-        //public NumberOfStudentsOnTheCourseDTO(int groupId, int courseId, int userId)
-        //{
-        //    GroupId = groupId;
-        //    CourseId = courseId;
-        //    UserId = userId;
-        //}
-
     }
 }
 
