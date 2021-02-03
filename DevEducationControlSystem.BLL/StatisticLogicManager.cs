@@ -18,11 +18,20 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(statisticManager.SelectNumberOfTeachersByCourse());
         }
 
-        public NumberOfTeachersByCourseModel GetNumberOfTeachersByCourseId()
+        //public List<NumberOfTeachersByCourseModel> GetNumberOfTeachersStat()
+        //{
+        //    var statisticManager = new StatisticManager();
+        //    var mapper = new NumberOfTeachersByCourseDTOtoNumberOfTeachersByCourseModelSecondMapper();
+
+        //    return mapper.Map(statisticManager.SelectNumberOfTeachersByCourse());
+        //}
+
+        public NumberOfTeachersByCourseModel GetNumberOfTeachersByCourseId(int id)
         {
             var statisticManager = new StatisticManager();
             var mapper = new NumberOfTeachersByCourseDTOtoNumberOfTeachersByCourseModelSecondMapper();
-            return mapper.Map(statisticManager.SelectTeachersOnCourseStatisctic());
+            return mapper.Map(statisticManager.SelectNumberOfTeachersByCourseId(id),
+                statisticManager.SelectTeachersOnCourseStatisctic());
         }
 
         public List<RoleStatisticModel> GetRoleStatistic()

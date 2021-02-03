@@ -8,12 +8,15 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     public class NumberOfTeachersByCourseDTOtoNumberOfTeachersByCourseModelSecondMapper
     {
-        public List<NumberOfTeachersByCourseModel> Map(
+        public NumberOfTeachersByCourseModel Map(
             //List<NumberOfTeachersByCourseDTO> dtoList,
-            NumberOfTeachersByCourseDTO dto,
+            NumberOfTeachersByCourseIdDTO dto,
             List<TeacherOnCourseDTO> teacherOnCourses
             )
         {
+            var listOfTeachers = new NumberOfTeachersByCourseModel();
+
+
             var numberModel = new NumberOfTeachersByCourseModel()
             {
                 CourseId = dto.CourseId,
@@ -29,7 +32,6 @@ namespace DevEducationControlSystem.BLL.Mappers
                 numberModel.Teachers.Add(new TeacherOnCourseModel(n));
             }
 
-            var listOfTeachers = new List<NumberOfTeachersByCourseModel>();
 
             //foreach (var r in dtoList)
             //{

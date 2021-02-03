@@ -21,8 +21,9 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpGet("TeachersStatistic")]
         public IActionResult GetTeachersStatisticByCourseId(int courseId)
         {
+            //courseId = 1;
             var statisticLogic = new StatisticLogicManager();
-            return Ok(statisticLogic.GetNumberOfTeachersByCourseId());
+            return Ok(statisticLogic.GetNumberOfTeachersByCourseId(courseId));
         }
 
         [HttpGet("Roles")]

@@ -90,6 +90,19 @@ namespace DevEducationControlSystem.DBL
             return teachersByCourseList;
         }
 
+        public NumberOfTeachersByCourseIdDTO SelectNumberOfTeachersByCourseId(int id)
+        {
+            var teachersByCourse = new NumberOfTeachersByCourseIdDTO();
+            string expr = "[SelectNumberOfTeachersByCourseId]";
+            var value = new { id };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                teachersByCourse = connection.QuerySingle<NumberOfTeachersByCourseIdDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
+
+            return teachersByCourse;
+        }
+
         public List<TeacherOnCourseDTO> SelectTeachersOnCourseStatisctic()
         {
             var teachersByCourseList = new List<TeacherOnCourseDTO>();
