@@ -24,14 +24,24 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public HomeworkDTO SelectById(int id)
         {
-            var homework = SqlServerConnection.GetConnection().QuerySingleOrDefault<HomeworkDTO>("Homework_SelectById", new { id }, commandType: CommandType.StoredProcedure);
-            return homework;
+            string expr = "[Homework_SelectById]";
+            var value = new { Id = id };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.QuerySingleOrDefault<HomeworkDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
 
         public void Add(int resourceId, string name, string description, string isSolutionRequired)
         {
             var values = new { ResourceId = resourceId, Name = name, Description = description, IsSolutionRequired = isSolutionRequired };
             SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<HomeworkDTO> SelectAdd()
+        {
+            throw new NotImplementedException();
         }
 
         public void Delete(int id)
