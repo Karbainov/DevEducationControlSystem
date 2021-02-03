@@ -60,9 +60,19 @@ namespace DevEducationControlSystem.DBL.CRUD
       {
         connection.Close();
 
-      }
-      return groups;
-    }
+        public GroupDTO SelectById(int id)
+        {
+            GroupDTO group = null;
+            SqlConnection connection = ConnectToDB();
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                connection.Close();
+                throw new Exception("DataBase connection failed");
+            }
 
     public GroupDTO SelectById(int id)
     {

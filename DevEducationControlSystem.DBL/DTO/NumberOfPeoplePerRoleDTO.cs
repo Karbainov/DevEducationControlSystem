@@ -4,15 +4,13 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO
 {
-    class NumberOfPeoplePerRoleDTO
+    public class NumberOfPeoplePerRoleDTO
     {
         public string Role{get; set;}
         public int NumberOfPeople { get; set; }
 
         public NumberOfPeoplePerRoleDTO()
-        {
-
-        }
+        { }
 
         public NumberOfPeoplePerRoleDTO(
             string role,

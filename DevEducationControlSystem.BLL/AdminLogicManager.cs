@@ -23,5 +23,22 @@ namespace DevEducationControlSystem.BLL
                 );
         }
 
+        public void RecoverHomeworkById(int homeworkId)
+        {
+            var manager = new HomeworkManager();
+            manager.UpdateIsDeleted(homeworkId);
+        }
+
+        public void RecoverMaterialById(int materialId)
+        {
+            var manager = new MaterialManager();
+            manager.UpdateIsDeleted(materialId);
+        }
+
+        public void RecoverCourseById(int courseId)
+        {
+            var manager = new CourseManager();
+            manager.UpdateIsDeleted(courseId);
+        }
     }
 }
