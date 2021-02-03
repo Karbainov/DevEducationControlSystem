@@ -19,3 +19,4 @@ left join Answer on (Aldo.HomeworkId = Answer.HomeworkId)
 
 Where Aldo.IsSolutionRequired = 1
 Group By Aldo.HomeworkName, Aldo.ThemeName 
+
