@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using DevEducationControlSystem.DBL.DTO;
-using DevEducationControlSystem.DBL.DTO.Base;
+using DevEducationControlSystem.DBL.DTO.Base;
 using System;
 using System.Collections.Generic;
 using System.Data;

@@ -40,7 +40,8 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
         {
             var groupAPIManager = new GroupAPIManager();
-            return Ok(groupAPIManager.AddAndCheckNewFeedback(feedback, userId));
+            var groupLogicManager = new GroupLogicManager();
+            return Ok(new { AllLessons = groupLogicManager.GetPrivateStudentMainPageModel(userId), AllFedbacks = groupAPIManager.AddAndCheckNewFeedback(feedback, userId)});
         }
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
@@ -71,7 +72,7 @@ namespace DevEducationControlSystem.API.Controllers
             }
             catch (ArgumentException e)
             {
-                return StatusCode(415, "Group is not exist");
+                return StatusCode(404, e.Message);
             }
         }
 
