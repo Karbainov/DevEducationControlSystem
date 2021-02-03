@@ -141,6 +141,13 @@ namespace DevEducationControlSystem.DBL
             
         }
 
+        public List<SelectCityCourseHomeworkThemeStatusDTO> SelectCityCourseHomeworkThemeStatus()
+        {
+
+
+            return cityList;
+        }
+
      }
 
     }
