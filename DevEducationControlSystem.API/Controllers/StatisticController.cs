@@ -17,5 +17,12 @@ namespace DevEducationControlSystem.API.Controllers
             var statisticLogic = new StatisticLogicManager();
             return Ok(statisticLogic.GetNumberOfTeachers());
         }
+
+        [HttpGet("Roles")]
+        public IActionResult GetGroupInfoById()
+        {
+            var StatisticLogicManager = new StatisticLogicManager();
+            return Ok(StatisticLogicManager.GetRoleStatistic());
+        }
     }
 }

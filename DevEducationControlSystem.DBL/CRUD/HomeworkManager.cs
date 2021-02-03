@@ -55,10 +55,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             SqlServerConnection.GetConnection().Query("[Homework_Update]", values, commandType: CommandType.StoredProcedure);
         }
 
-        public List<HomeworkDTO> SelectUpdate()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public List<SelectAllHomeworkByThemeDTO> GetAllHomeworkByThemeId(int ThemeId)
         {
@@ -173,11 +170,29 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
+        public List<HomeworkWithStatusesDTO> SelectHomeworkWithStatusesByUserId(int userId)
+        {
+            string expr = "[SelectHomeworkWithStatusesByUserId]";
+            var value = new { userId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.Query<HomeworkWithStatusesDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<HomeworkWithStatusesDTO>();
+            }
+        }
+
         public List<HomeworkDTO> SelectSoftDeleted()
         {
             var howeworkList = SqlServerConnection.GetConnection().Query<HomeworkDTO>("Homework_SelectSoftDeleted", commandType: CommandType.StoredProcedure).ToList<HomeworkDTO>();
             return howeworkList;
         }
+
+
+        public void UpdateIsDeleted(int id)
+        {
+            var howeworkList = SqlServerConnection.GetConnection().Query("Homework_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
 
     }
 }
