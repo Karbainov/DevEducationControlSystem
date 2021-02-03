@@ -6,12 +6,11 @@ namespace DevEducationControlSystem.DBL.DTO
 {
     public class SelectStudentsHomeworkStatusDTO
     {
-        public string Cityname { get; set; }
-        public string Groupname { get; set; }
-        public string Homeworkname { get; set; }
+        public string HomeworkName { get; set; }
+        public string ThemeName { get; set; }
         public int DoneHomework { get; set; }
         public int NotDoneHomework { get; set; }
-        public int DoneHomeworkOnTime { get; set; }
+        public int HomeworkDoneOnTime { get; set; }
         public int LateDoneHomework { get; set; }
 
         public SelectStudentsHomeworkStatusDTO()
@@ -21,12 +20,11 @@ namespace DevEducationControlSystem.DBL.DTO
 
         public SelectStudentsHomeworkStatusDTO(SelectStudentsHomeworkStatusDTO dto)
         {
-            Cityname = dto.Cityname;
-            Groupname = dto.Groupname;
-            Homeworkname = dto.Homeworkname;
+            HomeworkName = dto.HomeworkName;
+            ThemeName = dto.ThemeName;
             DoneHomework = dto.DoneHomework;
             NotDoneHomework = dto.NotDoneHomework;
-            DoneHomeworkOnTime = dto.DoneHomeworkOnTime;
+            HomeworkDoneOnTime = dto.HomeworkDoneOnTime; 
             LateDoneHomework = dto.LateDoneHomework;
 
         }
