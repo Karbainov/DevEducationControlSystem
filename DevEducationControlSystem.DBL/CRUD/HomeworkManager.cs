@@ -28,7 +28,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             return homework;
         }
 
-        public void Add(int resourceId, string name, string description, string isSolutionRequired)
+        public void Add(int resourceId, string name, string description, bool isSolutionRequired)
         {
             var values = new { ResourceId = resourceId, Name = name, Description = description, IsSolutionRequired = isSolutionRequired };
             SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);

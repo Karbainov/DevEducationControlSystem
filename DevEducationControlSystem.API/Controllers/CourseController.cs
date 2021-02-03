@@ -42,5 +42,13 @@ namespace DevEducationControlSystem.API.Controllers
 
             return Ok(courseManager);
         }
+
+        [HttpPost("CourseCreateHomework/{courseId}")]
+        public IActionResult CreateHomeworkCourse(int courseId, NewHomeworkCourseInputModel inputModel)
+        {
+            var homeworkManager = new HomeworkManager();
+            homeworkManager.Add(inputModel.ResourceId, inputModel.Name, inputModel.Description, inputModel.IsSolutionRequired);
+            return Ok(homeworkManager);
+        }
     }
 }
