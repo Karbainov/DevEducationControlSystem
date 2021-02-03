@@ -16,5 +16,14 @@ namespace DevEducationControlSystem.BLL
 
             return mapper.Map(statisticManager.SelectNumberOfTeachersByCourse());
         }
+
+        public ListOfCountOfStudentsOnCourseByGroupsModel NumberOfStudentsOnCourseByGroups()
+        { 
+            var statisticManager = new StatisticManager();
+            var mapper = new CountStudentsOnCourseByGroupsDTOtoCountStudentsOnCourseByGroupModel();
+
+            return mapper.Map(statisticManager.GetCountStudentsOnCourseByGroups());
+         
+        }
     }
 }

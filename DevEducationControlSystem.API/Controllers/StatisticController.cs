@@ -17,5 +17,12 @@ namespace DevEducationControlSystem.API.Controllers
             var statisticLogic = new StatisticLogicManager();
             return Ok(statisticLogic.GetNumberOfTeachers());
         }
+
+        [HttpGet("StudentsOnCourseByGroups")]
+        public IActionResult CountStudentsOnCourseByGroup()
+        {
+            var statisticLogic = new StatisticLogicManager();
+            return Ok(statisticLogic.NumberOfStudentsOnCourseByGroups());
+        }
     }
 }
