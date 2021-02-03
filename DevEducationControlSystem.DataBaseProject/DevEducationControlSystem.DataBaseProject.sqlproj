@@ -373,6 +373,12 @@
     <Build Include="dbo\Stored Procedures\SelectStudentsStudyingAfterBase.sql" />
     <Build Include="dbo\Stored Procedures\UpdateAttendanceIsPresent.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_RecoverSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllUsersOfCurrentCourseById.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCoursesOfCurrentUserById.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCoursesInCurrentCityById.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCitiesByCurrentCourseById.sql" />
+    <Build Include="dbo\Stored Procedures\AddAnswerOnCurrentHomework.sql" />
+    <Build Include="dbo\Stored Procedures\GetCourseDurationOfCurrentStudentById.sql" />
     <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
     <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
