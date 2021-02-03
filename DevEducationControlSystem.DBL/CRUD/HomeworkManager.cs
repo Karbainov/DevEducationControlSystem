@@ -29,7 +29,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             using (var connection = SqlServerConnection.GetConnection())
             {
-                return connection.QuerySingle<HomeworkDTO>(expr, value, commandType: CommandType.StoredProcedure);
+                return connection.QuerySingleOrDefault<HomeworkDTO>(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
 

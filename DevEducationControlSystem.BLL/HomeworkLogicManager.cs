@@ -17,17 +17,20 @@ namespace DevEducationControlSystem.BLL
             {
                 throw new ArgumentException("Group is not exist");
             }
+
             var homeworkManager = new HomeworkManager();
             var homework = homeworkManager.SelectById(homeworkAppointmentModel.HomeworkId);
             if(homework == null)
             {
                 throw new ArgumentException("Homework is not exist");
             }
+
             var ghManager = new Group_HomeworkManager();
             ghManager.Add(homeworkAppointmentModel.GroupId,
                 homeworkAppointmentModel.HomeworkId,
                 homeworkAppointmentModel.StartDate,
                 homeworkAppointmentModel.DeadLine);
+
             var users = new UserManager().SelectUsersByGroupId(homeworkAppointmentModel.GroupId);
             var answerManager = new AnswerManager();
             users.ForEach((u) =>
@@ -52,6 +55,7 @@ namespace DevEducationControlSystem.BLL
             {
                 throw new ArgumentException("Group is not exist");
             }
+
             var homeworkManager = new HomeworkManager();
             var homework = homeworkManager.SelectById(homeworkId);
             if (homework == null)
