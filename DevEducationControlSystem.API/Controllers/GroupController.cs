@@ -71,7 +71,7 @@ namespace DevEducationControlSystem.API.Controllers
             }
             catch (ArgumentException e)
             {
-                return StatusCode(415, e.Message);
+                return StatusCode(404, e.Message);
             }
         }
 
