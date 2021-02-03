@@ -53,10 +53,10 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             return course_ThemeDTO;
         }
-        public void Add(int courseId, int materialId)
+        public void Add(int courseId, int themeId)
         {
-            string expr = "[Course_Material_Add]";
-            var value = new { CourseId = courseId, MaterialId = materialId };
+            string expr = "[Course_Theme_Add]";
+            var value = new { CourseId = courseId, themeId = themeId };
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
@@ -64,7 +64,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
         public void Delete(int id)
         {
-            string expr = "[Course_Material_Delete]";
+            string expr = "[Course_Theme_Delete]";
             var value = new { Id = id };
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -73,7 +73,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         }
         public void Update(int id)
         {
-            string expr = "[Course_Material_Delete]";
+            string expr = "[Course_Theme_Update]";
             var value = new { Id = id };
             using (var connection = new SqlConnection(_connectionString))
             {

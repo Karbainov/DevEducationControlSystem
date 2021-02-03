@@ -25,20 +25,20 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(courseManager);
         }
 
-        [HttpPut("UpdateCourse/{courseid}/{isDeleted}")]
-        public IActionResult UpdateCourse(NewCourseInputModel inputModel, int courseid, int isDeleted)
+        [HttpPut("UpdateCourse/{courseId}/{isDeleted}")]
+        public IActionResult UpdateCourse(NewCourseInputModel inputModel, int courseId, int isDeleted)
         {
             var courseManager = new CourseManager();
-            courseManager.Update(courseid, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks, Convert.ToBoolean(isDeleted));
+            courseManager.Update(courseId, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks, Convert.ToBoolean(isDeleted));
 
             return Ok(courseManager);
         }
 
-        [HttpPost("DeleteCourse/{courseid}")]
-        public IActionResult DeleteCourse(int courseid)
+        [HttpPost("DeleteCourse/{courseId}")]
+        public IActionResult DeleteCourse(int courseId)
         {
             var courseManager = new CourseManager();
-            courseManager.Delete(courseid);
+            courseManager.Delete(courseId);
 
             return Ok(courseManager);
         }
