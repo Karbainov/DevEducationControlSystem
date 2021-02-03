@@ -35,6 +35,14 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Material recovered");
         }
 
+        [HttpDelete("RecycleBin/Material")]
+        public IActionResult HardDeleteMaterialById(int materialId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.HardDelete(materialId);
+            return Ok("Material recovered");
+        }
+
         [HttpPost("RecycleBin/Course")]
         public IActionResult RecoverCourseById(int courseId)
         {
