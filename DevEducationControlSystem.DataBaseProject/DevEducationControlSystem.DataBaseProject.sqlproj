@@ -375,5 +375,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_RecoverSoftDeleted.sql" />
     <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
     <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\GetTeachersStatistic.sql" />
   </ItemGroup>
 </Project>

@@ -18,6 +18,13 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(statisticLogic.GetNumberOfTeachers());
         }
 
+        [HttpGet("TeachersStatistic")]
+        public IActionResult GetTeachersStatisticByCourseId(int courseId)
+        {
+            var statisticLogic = new StatisticLogicManager();
+            return Ok(statisticLogic.GetNumberOfTeachersByCourseId());
+        }
+
         [HttpGet("Roles")]
         public IActionResult GetGroupInfoById()
         {

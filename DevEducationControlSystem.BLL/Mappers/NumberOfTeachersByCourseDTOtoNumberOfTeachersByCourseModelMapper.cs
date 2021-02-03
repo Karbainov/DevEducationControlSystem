@@ -10,40 +10,17 @@ namespace DevEducationControlSystem.BLL.Mappers
     {
         public ListOfTeachersByCourseModel Map(List<NumberOfTeachersByCourseDTO> numberOfTeachers)
         {
-            var listOfTeachers = new ListOfTeachersByCourseModel(){ teachersByCourseList = new List<NumberOfTeachersByCourseModel>() };
-            
+            var listOfTeachers = new ListOfTeachersByCourseModel() { 
+                teachersByCourseList = new List<NumberOfTeachersByCourseModel>(),
+                
+            };
 
-            foreach(var n in numberOfTeachers)
+
+            foreach (var n in numberOfTeachers)
             {
                 listOfTeachers.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(n));
             }
             return listOfTeachers;
         }
-
-        //public ListOfTeachersByCourseModel Map(List<NumberOfTeachersByCourseModel> numberOfTeachersList)
-        //{
-        //    ListOfTeachersByCourseModel numberOfTeachers = new ListOfTeachersByCourseModel()
-        //    {
-
-        //    };
-        //    foreach (var r in numberOfTeachersList)
-        //    {
-        //        if (r != null)
-        //        {
-        //            numberOfTeachers.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(r));
-        //        }
-        //    }
-
-        //var numberOfTeachersModel = new NumberOfTeachersByCourseModel()
-        //{
-        //    CourseId = numberOfTeachers.CourseId,
-        //    CourseName = numberOfTeachers.CourseName,
-        //    CityId = numberOfTeachers.CityId,
-        //    CityName = numberOfTeachers.CityName,
-        //    Amount = numberOfTeachers.Amount
-        //};
-
-
-    
     }
 }
