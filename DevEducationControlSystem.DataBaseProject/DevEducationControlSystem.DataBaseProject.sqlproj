@@ -382,5 +382,6 @@
     <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
     <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectHomeWorksAndAnswersByUserId.sql" />
   </ItemGroup>
 </Project>
