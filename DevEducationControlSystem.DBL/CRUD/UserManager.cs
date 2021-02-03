@@ -67,36 +67,40 @@ namespace DevEducationControlSystem.DBL.CRUD
             return users;
         }
 
-        public List<LoginPassRoleDTO> GetLoginPassRole()
+        public List<LoginPassRoleDTO> GetLoginPassRole(string login)
         {
             string expr = "GetLoginPassRole";
             var listUserAuthtorisInfo = new List<LoginPassRoleDTO>();
-
+            var value = new { login };
             using(var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query<LoginPassRoleDTO, RoleDTO, LoginPassRoleDTO>(expr,
-                (user,role) =>
+                (user, role) =>
                 {
                     LoginPassRoleDTO tmpLoginPassRole = null;
 
-                    foreach(var r in listUserAuthtorisInfo)
+                    foreach (var r in listUserAuthtorisInfo)
                     {
-                        if(r.UserId == user.UserId)
+                        if (r.UserId == user.UserId)
                         {
                             tmpLoginPassRole = r;
                             break;
                         }
                     }
-                    if(tmpLoginPassRole == null)
+                    if (tmpLoginPassRole == null)
                     {
                         tmpLoginPassRole = user;
                         listUserAuthtorisInfo.Add(tmpLoginPassRole);
                     }
+                    if (tmpLoginPassRole.Roles == null)
+                    {
+                        tmpLoginPassRole.Roles = new List<RoleDTO>();
+                    }
                     tmpLoginPassRole.Roles.Add(role);
                     return tmpLoginPassRole;
                 },
-                splitOn: "Id",
-                commandType: CommandType.StoredProcedure);
+                value,
+                commandType: CommandType.StoredProcedure, splitOn: "Id");
             }
             return listUserAuthtorisInfo;
         }

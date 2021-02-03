@@ -13,14 +13,14 @@ namespace DevEducationControlSystem.API.Controllers
     [Route("[controller]")]
     public class AuthenticationController : Controller
     {
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{login}")]
+        public IActionResult Get(string login)
         {
             var logicManager = new AuthorizationLogicManager();
-            return Ok(logicManager.GetLoginPassworlRole());
+            return Ok(logicManager.GetLoginPassworlRole(login));
         }
 
-        //[HttpPut("{login/{pass}")]
+        //[HttpPut("{login}/{pass}")]
         //public IActionResult Get(string login, string pass)
         //{
         //    var identity = GetIdentity(login, pass);

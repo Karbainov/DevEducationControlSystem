@@ -9,13 +9,13 @@ namespace DevEducationControlSystem.DBL.DTO.Base
         public int? Id { get; set; }
         public string Name { get; set;}
 
-        //public RoleDTO()
-        //{}
+        public RoleDTO()
+        { }
 
-        //public RoleDTO(RoleDTO dto)
-        //{
-        //    Id = dto.Id;
-        //    Name = dto.Name;
-        //}
+        public RoleDTO(RoleDTO dto)
+        {
+            Id = dto.Id;
+            Name = dto.Name;
+        }
     }
 }
