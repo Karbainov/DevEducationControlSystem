@@ -35,6 +35,12 @@ namespace DevEducationControlSystem.BLL
             manager.UpdateIsDeleted(materialId);
         }
 
+        public void HardDelete(int materialId)
+        {
+            var manager = new MaterialManager();
+            manager.Delete(materialId);
+        }
+
         public void RecoverCourseById(int courseId)
         {
             var manager = new CourseManager();
