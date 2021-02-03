@@ -11,8 +11,42 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class UserManager
     {
+        public List<CourseDurationOfCurrentStudentDTO> GetCourseDurationOfCurrentStudentById(int id)
+        {
+            var CourseDurationOfCurrentStudent = new List<CourseDurationOfCurrentStudentDTO>();
+            string expr = "[GetCourseDurationOfCurrentStudentById]";
+            var value = new { id };
 
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                CourseDurationOfCurrentStudent = connection.Query<CourseDurationOfCurrentStudentDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseDurationOfCurrentStudentDTO>(); ;
+            }
+            return CourseDurationOfCurrentStudent;
+        }
+        public List<CourseOfCurrentUserDTO> GetAllCoursesOfCurrentUserById(int id)
+        {
+            var AllCoursesOfCurrentUser = new List<CourseOfCurrentUserDTO>();
+            string expr = "[GetAllCoursesOfCurrentUserById]";
+            var value = new { id };
 
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                AllCoursesOfCurrentUser = connection.Query<CourseOfCurrentUserDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseOfCurrentUserDTO>(); ;
+            }
+            return AllCoursesOfCurrentUser;
+        }
+        public List<UserOfCurrentCourseDTO> GetAllUsersOfCurrentCourseById(int id)
+        {
+            var usersOfCurrentCourse = new List<UserOfCurrentCourseDTO>();
+            string expr = "[GetAllUsersOfCurrentCourseById]";
+            var value = new { id };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                usersOfCurrentCourse = connection.Query<UserOfCurrentCourseDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<UserOfCurrentCourseDTO>(); ;
+            }
+            return usersOfCurrentCourse;
+        }
         public List<LessonAndFeedbackDTO> SelectLessonsAndFeedbackByUserId(int id)
         {
             var lessonsAndFeedbacks = new List<LessonAndFeedbackDTO>();

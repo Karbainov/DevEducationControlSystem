@@ -7,6 +7,7 @@ using DevEducationControlSystem.BLL;
 using DevEducationControlSystem.BLL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using DevEducationControlSystem.API.InputModels;
 
 namespace DevEducationControlSystem.API.Controllers
 {
@@ -34,6 +35,12 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+        }
+        [HttpPut("Student/{userId}/private")]
+        public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
+        {
+            var groupAPIManager = new GroupAPIManager();
+            return Ok(groupAPIManager.AddAndCheckNewFeedback(feedback, userId));
         }
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
@@ -64,7 +71,7 @@ namespace DevEducationControlSystem.API.Controllers
             }
             catch (ArgumentException e)
             {
-                return StatusCode(415, "Group is not exist");
+                return StatusCode(404, e.Message);
             }
         }
 
