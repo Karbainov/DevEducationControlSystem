@@ -5,22 +5,28 @@ using System.Data.SqlClient;
 using System.Text;
 using Dapper;
 using System.Data;
+using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class CityManager
     {
-
-        public SqlConnection ConnectToDB()
+        public List<CityByCurrentCourseDTO> GetAllCitiesByCurrentCourseById(int id)
         {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            SqlConnection connection = new SqlConnection(connectionString);
-            return connection;
+            var GetAllCitiesByCurrentCourse = new List<CityByCurrentCourseDTO>();
+            string expr = "[GetAllCoursesInCurrentCityById]";
+            var value = new { id };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                GetAllCitiesByCurrentCourse = connection.Query<CityByCurrentCourseDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CityByCurrentCourseDTO>(); ;
+            }
+            return GetAllCitiesByCurrentCourse;
         }
         public List<CityDTO> Select()
         {
             List<CityDTO> cities = new List<CityDTO>();
-            SqlConnection connection = ConnectToDB();
+            SqlConnection connection = SqlServerConnection.GetConnection();
             try
             {
                 connection.Open();
@@ -59,7 +65,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         public CityDTO SelectById(int id)
         {
             CityDTO city = new CityDTO();
-            SqlConnection connection = ConnectToDB();
+            SqlConnection connection = SqlServerConnection.GetConnection();
             try
             {
                 connection.Open();
@@ -103,7 +109,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             string expr = "[City_Add]";
             var value = new { Name = name };
 
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -114,7 +120,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             string expr = "[City_Delete]";
             var value = new { Id = id };
 
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
@@ -125,7 +131,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             string expr = "[City_Update]";
             var value = new {Id = id, Name = name };
 
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
