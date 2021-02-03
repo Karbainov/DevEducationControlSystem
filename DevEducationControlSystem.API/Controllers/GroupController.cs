@@ -72,7 +72,7 @@ namespace DevEducationControlSystem.API.Controllers
             }
             catch (ArgumentException e)
             {
-                return StatusCode(415, "Group is not exist");
+                return StatusCode(404, e.Message);
             }
         }
 
