@@ -17,12 +17,12 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(statisticManager.SelectNumberOfTeachersByCourse());
         }
 
-        public ListOfCountOfStudentsOnCourseByGroupsModel NumberOfStudentsOnCourseByGroups()
+        public ListOfCountOfStudentsOnCourseByGroupsModel NumberOfStudentsOnCourseByGroups(int CourseId)
         { 
             var statisticManager = new StatisticManager();
             var mapper = new CountStudentsOnCourseByGroupsDTOtoCountStudentsOnCourseByGroupModel();
 
-            return mapper.Map(statisticManager.GetCountStudentsOnCourseByGroups(2)); //???
+            return mapper.Map(statisticManager.GetCountStudentsOnCourseByGroups(CourseId)); //???
          
         }
     }
