@@ -64,8 +64,26 @@ namespace DevEducationControlSystem.BLL
     {
       var groupManager = new GroupManager();
       var students = groupManager.SelectStudentsByGroupId(groupId);
-      var mapper = new StudentDTOGroupDTOtoStudentsByGroupId();
+      var mapper = new StudentDTOGroupDTOtoStudentsByGroupIdMapper();
       return mapper.Map(students);
     }
+
+    public List<PassedThemesAndHomeworksAndAnswerModel> GetPassedThemesAndHomeworksAndAnswerModelByGroupId(int studentId)
+    {
+      var groupManager = new GroupManager();
+      var ThemesHomeworksAnswer = groupManager.SelectPassedThemesAndHomeworksAndAnswerByStudentId(studentId);
+      var mapper = new HomeworkDTOThemeDTOAnswerDTOtoPassedHomeworkThemeAnswerByStudentIdMapper();
+      return mapper.Map(ThemesHomeworksAnswer);
+    }
+    public List<StudentAnswerStoryAndCommentModel> GetStudentAnswerStoryAndCommentById(int userid, int homeworkId)
+    {
+      var commentManager = new CommentManager();
+      var answerManager = new AnswerManager();
+      var answer = answerManager.SelectAnswerByUserIdAndHomeworkId(userid, homeworkId);
+      var homeworkManager = new HomeworkManager();
+      var mapper = new UserDTOHomeworkDTOAnswerDTOCommentDTOtoStudentAnswerStoryAndCommentMapper();
+      return mapper.Map(commentManager.SelectСommentByAnswerIdOrderByTime(answer.AnswerId), homeworkManager.SelectById(homeworkId), answer);
+    }
+    
   }
 }

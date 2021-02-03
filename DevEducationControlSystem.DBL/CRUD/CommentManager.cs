@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -82,6 +83,15 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
-
+    public List<СommentByAnswerIdDTO> SelectСommentByAnswerIdOrderByTime(int answerId )
+    {
+      string expr = "[SelectСommentByAnswerIdOrderByTime]";
+      var value = new { AnswerId = answerId};
+      using (var connection = SqlServerConnection.GetConnection())
+      {
+        return connection.Query<СommentByAnswerIdDTO>(expr, value, commandType: CommandType.StoredProcedure).ToList<СommentByAnswerIdDTO>();
+      }
     }
+
+  }
 }

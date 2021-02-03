@@ -166,5 +166,15 @@ namespace DevEducationControlSystem.DBL.CRUD
         return connection.Query<StudentDTO>(expr, value, commandType: CommandType.StoredProcedure).ToList<StudentDTO>();
       }
     }
+    public List<PassedThemesAndHomeworksAndAnswerByStudentIdDTO> SelectPassedThemesAndHomeworksAndAnswerByStudentId(int studentId)
+    {
+      string expr = "[SelectPassedThemesAndHomeworksByStudentId]";
+      var value = new { StudentID = studentId };
+      using (var connection = SqlServerConnection.GetConnection())
+      {
+        return connection.Query<PassedThemesAndHomeworksAndAnswerByStudentIdDTO>(expr, value, commandType: CommandType.StoredProcedure).ToList<PassedThemesAndHomeworksAndAnswerByStudentIdDTO>();
+      }
+    }
+    
   }
 }

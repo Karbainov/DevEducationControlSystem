@@ -6,7 +6,7 @@ using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.BLL.Mappers
 {
-  public class StudentDTOGroupDTOtoStudentsByGroupId
+  public class StudentDTOGroupDTOtoStudentsByGroupIdMapper
   {
     public List<StudentModel> Map(List<StudentDTO> students)
     {

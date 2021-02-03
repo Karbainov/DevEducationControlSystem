@@ -4,6 +4,9 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using DevEducationControlSystem.DBL.DTO.Base;
+using DevEducationControlSystem.DBL.DTO;
+using System.Linq;
+
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -130,5 +133,15 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
+
+    public AnswerByUserIdAndHomeworkIdDTO SelectAnswerByUserIdAndHomeworkId(int userId,int homeworkId )
+    {
+      string expr = "[SelectAnswerByUserIdAndHomeworkId]";
+      var value = new { UserId = userId, HomeworkId= homeworkId };
+      using (var connection = SqlServerConnection.GetConnection())
+      {
+        return connection.QuerySingle<AnswerByUserIdAndHomeworkIdDTO>(expr, value, commandType: CommandType.StoredProcedure);
+      }
     }
+  }
 }

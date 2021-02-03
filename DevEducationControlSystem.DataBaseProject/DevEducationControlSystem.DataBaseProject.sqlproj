@@ -374,7 +374,9 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Update.sql" />
-    <Build Include="dbo\Stored Procedures\CRUD\SelectPassedThemesAndHomeworksByStudentId.sql" />
-    <Build Include="dbo\Stored Procedures\CRUD\SelectStudentsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPassedThemesAndHomeworksByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAnswerByUserIdAndHomeworkId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectСommentByAnswerIdOrderByTime.sql" />
   </ItemGroup>
 </Project>
