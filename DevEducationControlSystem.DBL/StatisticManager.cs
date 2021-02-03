@@ -152,6 +152,8 @@ namespace DevEducationControlSystem.DBL
                 NumberOfStudentsList = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
             }
             return NumberOfStudentsList;
+
+
         }
 
     }

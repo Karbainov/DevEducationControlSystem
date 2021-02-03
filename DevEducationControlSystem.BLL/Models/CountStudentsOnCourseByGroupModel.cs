@@ -17,9 +17,9 @@ namespace DevEducationControlSystem.BLL.Models
 
         public CountStudentsOnCourseByGroupModel(CountStudentsOnCourseByGroupsDTO dto)
         {
-            GroupId = dto.GroupId;
-            GroupName = dto.GroupName;
-            CountOfStudents = dto.CountOfStudents;
+            GroupId = dto.Id;
+            GroupName = dto.Name;
+            CountOfStudents = dto.CountOfStudentsInGroup;
 
         }
     }
