@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.BLL.Models
 {
-    class CountStudentsOnCourseByGroupModel
+    public class CountStudentsOnCourseByGroupModel
     {
         public int GroupId { get; set; }
         public string GroupName { get; set; }
@@ -22,5 +22,6 @@ namespace DevEducationControlSystem.BLL.Models
             CountOfStudents = dto.CountOfStudents;
 
         }
+    }
         
 }

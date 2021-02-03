@@ -10,7 +10,7 @@ namespace DevEducationControlSystem.BLL.Mappers
     {
         public ListOfCountOfStudentsOnCourseByGroupsModel Map(List<CountStudentsOnCourseByGroupsDTO> countStudentsOnCourseByGroups)
         {
-            var listOfStudentsOnCourseByGroup = new ListOfCountOfStudentsOnCourseByGroupsModel(); //{ studentsOnCourseByGroupsList = new List<CountStudentsOnCourseByGroupModel>() };
+            var listOfStudentsOnCourseByGroup = new ListOfCountOfStudentsOnCourseByGroupsModel(){ studentsOnCourseByGroupsList = new List<CountStudentsOnCourseByGroupModel>() };
 
 
             foreach (var n in countStudentsOnCourseByGroups)

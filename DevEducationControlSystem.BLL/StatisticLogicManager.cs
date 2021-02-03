@@ -22,7 +22,7 @@ namespace DevEducationControlSystem.BLL
             var statisticManager = new StatisticManager();
             var mapper = new CountStudentsOnCourseByGroupsDTOtoCountStudentsOnCourseByGroupModel();
 
-            return mapper.Map(statisticManager.GetCountStudentsOnCourseByGroups());
+            return mapper.Map(statisticManager.GetCountStudentsOnCourseByGroups(2)); //???
          
         }
     }
