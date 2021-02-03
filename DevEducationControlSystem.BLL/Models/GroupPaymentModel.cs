@@ -7,7 +7,8 @@ namespace DevEducationControlSystem.BLL.Models
 {
     public class GroupPaymentModel
     {
-        List<GroupPaymentDTO> GroupPayment { get; set; }
-        public List<StudentPaymentModel> StudentPayment { get; set; }
+        public int CountPeriods { get; set; }
+        public GroupPaymentDTO Group { get; set; }
+       
     }
 }

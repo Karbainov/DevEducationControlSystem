@@ -11,7 +11,7 @@ namespace DevEducationControlSystem.BLL
     {
         public GroupPaymentModel GetGroupPaymentInfo()
         {
-            var mapper = new GroupDTOUsersDTOPaymentDTOtoPaymentInfoModelMapper();
+            var mapper = new GroupPaymentDTOtoGroupPaymentModelMapper();
             return mapper.Map();
         }
     }
