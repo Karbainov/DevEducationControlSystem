@@ -10,7 +10,7 @@ namespace DevEducationControlSystem.BLL.Mappers
     {
         public ListOfCountOfStudentsOnCourseByGroupsModel Map(List<CountStudentsOnCourseByGroupsDTO> countStudentsOnCourseByGroups)
         {
-            var listOfStudentsOnCourseByGroup = new ListOfCountOfStudentsOnCourseByGroupsModel(){ studentsOnCourseByGroupsList = new List<CountStudentsOnCourseByGroupModel>() };
+            var listOfStudentsOnCourseByGroup = new ListOfCountOfStudentsOnCourseByGroupsModel() { studentsOnCourseByGroupsList = new List<CountStudentsOnCourseByGroupModel>() };
 
 
             foreach (var n in countStudentsOnCourseByGroups)
@@ -19,14 +19,5 @@ namespace DevEducationControlSystem.BLL.Mappers
             }
             return listOfStudentsOnCourseByGroup;
         }
-
-        //public GroupAttendanceModel Map(List<UserPercentOfPresentsDTO> userPercents, List<LessonAttendanceDTO> lessonAttendances)
-        //{
-        //    var groupAttendance = new GroupAttendanceModel();
-        //    groupAttendance.UsersPercentOfPresent = userPercents;
-        //    groupAttendance.LessonsAttendances = new List<LessonAttendanceModel>();
-        //    lessonAttendances.ForEach((r) => { groupAttendance.LessonsAttendances.Add(new LessonAttendanceModel(r)); });
-        //    return groupAttendance;
-        //}
     }
 }

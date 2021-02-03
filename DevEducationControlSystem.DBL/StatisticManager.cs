@@ -143,15 +143,15 @@ namespace DevEducationControlSystem.DBL
 
         public List<CountStudentsOnCourseByGroupsDTO> GetCountStudentsOnCourseByGroups(int id)
         {
-            List<CountStudentsOnCourseByGroupsDTO> NumberOfStudents = null;
+            var NumberOfStudentsList = new List<CountStudentsOnCourseByGroupsDTO>();
             string expression = "[CountStudentsOnCourseByGroups]";
             var value = new { CourseId = id };
 
-            using (var connection = ConnectToDB())
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                NumberOfStudents = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
+                NumberOfStudentsList = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
             }
-            return NumberOfStudents;
+            return NumberOfStudentsList;
         }
 
     }
