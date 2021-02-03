@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.DBL.DTO;
+using DevEducationControlSystem.DBL.DTO.Base;
+using System.Linq;
 
 namespace DevEducationControlSystem.BLL.Mappers
 {
