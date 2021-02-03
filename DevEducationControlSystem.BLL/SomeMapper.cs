@@ -14,24 +14,9 @@ namespace DevEducationControlSystem.BLL.Mappers
         public AllInfoUserOnTheCourseModel Map(List<AllInfoUserOnTheCourseDTO> course, List<NumberOfStudentsOnTheCourseDTO> numberStudents)
         {
             AllInfoUserOnTheCourseModel allInfoUserOnTheCourseModel = new AllInfoUserOnTheCourseModel()
-            {
-                //Id = course.Id,
-                //StatusId = course.StatusId,
-                //FirstName = course.FirstName,
-                //LastName = course.LastName,
-                //BirthDate = course.BirthDate,
-                //Login = course.Login,
-                //Password = course.Password,
-                //email = course.email,
-                //Phone = course.Phone,
-                //ContractNumber = course.ContractNumber,
-                //ProfileImage = course.ProfileImage,
-                //Status = course.ProfileImage,
-                //GroupName = course.GroupName,
+            {          
                 Course = new List<NumberOfStudentsOnTheCourseModel>(),
                 Info = new List<AllInfoUserOnTheCourseModel>()
-
-
             };
 
 

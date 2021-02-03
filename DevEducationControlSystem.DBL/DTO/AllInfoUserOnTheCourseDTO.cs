@@ -6,8 +6,8 @@ namespace DevEducationControlSystem.DBL.DTO
 {
     public class AllInfoUserOnTheCourseDTO 
     {
-        public int Id { get; set; }
-        public int StatusId { get; set; }
+        public int UserId { get; set; }
+        public string Position { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

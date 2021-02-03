@@ -12,7 +12,7 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class AllInfoUserOnTheCourseController : Controller
     {
-        [HttpGet("admin/{courseId}")]
+        [HttpGet("manager/{courseId}")]
         public IActionResult GetAllInfoUserOnTheCourseById(int courseId)
         {
             var allInfoUserOnTheCourseLogicManager = new AllInfoUserOnTheCourseLogicManager();

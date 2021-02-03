@@ -27,8 +27,6 @@ namespace DevEducationControlSystem.BLL.Models
             GroupName = dto.GroupName;
             FirstName = dto.FirstName;
             LastName = dto.LastName;
-
-
         }
     }
 }
