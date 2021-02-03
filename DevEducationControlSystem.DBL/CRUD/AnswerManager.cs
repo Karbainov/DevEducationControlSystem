@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using DevEducationControlSystem.DBL.DTO;
+using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.DTO.Base;
+using DevEducationControlSystem.DBL.DTO;
+using System.Linq;
+
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -132,15 +135,25 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public List<AnswerExpandedDTO> SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
-        {
+        public List<AnswerExpandedDTO> SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
+        {
             string expr = "[SelectAllAnswersByHomeworkIdAndGroupId]";
             var value = new { HomeworkId = homeworkId, GroupId = groupId };
 
             using (var connection = SqlServerConnection.GetConnection())
             {
                return connection.Query<AnswerExpandedDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<AnswerExpandedDTO>();
-            }
+            }
         }
+
+    public AnswerByUserIdAndHomeworkIdDTO SelectAnswerByUserIdAndHomeworkId(int userId,int homeworkId )
+    {
+      string expr = "[SelectAnswerByUserIdAndHomeworkId]";
+      var value = new { UserId = userId, HomeworkId= homeworkId };
+      using (var connection = SqlServerConnection.GetConnection())
+      {
+        return connection.QuerySingle<AnswerByUserIdAndHomeworkIdDTO>(expr, value, commandType: CommandType.StoredProcedure);
+      }
     }
+  }
 }
