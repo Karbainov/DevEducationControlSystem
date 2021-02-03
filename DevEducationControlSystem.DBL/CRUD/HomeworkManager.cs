@@ -39,6 +39,11 @@ namespace DevEducationControlSystem.DBL.CRUD
             SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
         }
 
+        public List<HomeworkDTO> SelectAdd()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             SqlServerConnection.GetConnection().Query("[Homework_Delete]", new { id }, commandType: CommandType.StoredProcedure);
