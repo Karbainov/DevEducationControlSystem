@@ -1,4 +1,6 @@
-﻿using DevEducationControlSystem.BLL;
+﻿using DevEducationControlSystem.API.InputModels;
+using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.DBL.CRUD;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +19,21 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var userLogicManager = new UserLogicManager();
             return Ok(userLogicManager.GetHomeworksWithStatus(userId));
+        }
+
+        [HttpGet("{userId}")]
+        public IActionResult GetUserProfile(int userId)
+        {
+            var userMansger = new UserManager();
+            return Ok(userMansger.SelectById(userId));
+        }
+
+        [HttpPut("{userId}/Update")]
+        public IActionResult GetUserPrivateInfo(UserProfileInputModel userProfile)
+        {
+            var usermanager = new UserManager();
+            usermanager.UpdateUserProfile(userProfile.UserId, userProfile.Password, userProfile.Phone, userProfile.Email, userProfile.ProfileImage);       
+            return Ok(usermanager.SelectById(userProfile.UserId));
         }
     }
 }
