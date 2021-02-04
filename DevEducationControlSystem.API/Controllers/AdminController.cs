@@ -34,9 +34,18 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpDelete("RecycleBin/Homework")]
         public IActionResult HardDeleteHomeworkById(int homeworkId)
         {
-            var adminLogicManager = new AdminLogicManager();
-            adminLogicManager.HardDelHomeworkById(homeworkId);
-            return Ok("Homework completly deleted");
+           try
+           {
+             var adminLogicManager = new AdminLogicManager();
+             adminLogicManager.HardDelHomeworkById(homeworkId);
+             return Ok("Homework completly deleted");
+           }
+           
+            catch (UnauthorizedAccessException exception)
+           {
+                return StatusCode(403, exception.Message);
+           }
+
         }
 
         [Authorize(Roles = "Администратор")]
@@ -52,9 +61,17 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpDelete("RecycleBin/Material")]
         public IActionResult HardDeleteMaterialById(int materialId)
         {
-            var adminLogicManager = new AdminLogicManager();
-            adminLogicManager.HardDelMaterialById(materialId);
-            return Ok("Material completly deleted");
+            try
+            {
+                var adminLogicManager = new AdminLogicManager();
+                adminLogicManager.HardDelMaterialById(materialId);
+                return Ok("Material completly deleted");
+            }
+            
+            catch (UnauthorizedAccessException exception)
+            {
+                return StatusCode(403, exception.Message);
+            }
         }
 
         [Authorize(Roles = "Администратор")]
@@ -70,9 +87,18 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpDelete("RecycleBin/Course")]
         public IActionResult HardDeleteCourseById(int courseId)
         {
-            var adminLogicManager = new AdminLogicManager();
-            adminLogicManager.HardDelCourseById(courseId);
-            return Ok("Course completly deleted");
+            try
+            {
+                var adminLogicManager = new AdminLogicManager();
+                adminLogicManager.HardDelCourseById(courseId);
+                return Ok("Course completly deleted");
+            }
+            
+            catch (UnauthorizedAccessException exception)
+            {
+                return StatusCode(403, exception.Message);
+            }
+
         }
     }
 }
