@@ -49,16 +49,14 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var logicManager = new AuthorizationLogicManager();
             string role = "";
-            List<LoginPassRoleModel> list = logicManager.GetLoginPassworlRole(login);
+            var loginPasswordRole = logicManager.GetLoginPassworlRole(login);
 
-            foreach (var r in list)
+            if (login == loginPasswordRole.UserLog && pass == loginPasswordRole.UserPas)
             {
-                if (login == r.UserLog && pass == r.UserPas)
-                {
-                    role = r.Roles[0].Name;
-                }
+                role = loginPasswordRole.Roles[0].Name;
             }
-            
+
+
             if (role == "")
             {
                 return null;
@@ -69,7 +67,7 @@ namespace DevEducationControlSystem.API.Controllers
                 new Claim(ClaimsIdentity.DefaultNameClaimType, login),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, role)
             };
-            
+
             return new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
         }
     }

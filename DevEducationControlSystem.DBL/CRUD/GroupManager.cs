@@ -6,6 +6,7 @@ using System.Text;
 using Dapper;
 using System.Data;
 using DevEducationControlSystem.DBL.DTO;
+using System.Linq;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -154,6 +155,24 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 return connection.QuerySingle<GroupWithCityAndStatusAndCourseDTO>(expr, value, commandType: CommandType.StoredProcedure);
             }
+        }
+        public List<PassedThemesAndHomeworksAndAnswerByStudentIdDTO> SelectPassedThemesAndHomeworksAndAnswerByStudentId(int studentId)
+        {
+          string expr = "[SelectPassedThemesAndHomeworksByStudentId]";
+          var value = new { StudentID = studentId };
+          using (var connection = SqlServerConnection.GetConnection())
+          {
+            return connection.Query<PassedThemesAndHomeworksAndAnswerByStudentIdDTO>(expr, value, commandType: CommandType.StoredProcedure).ToList<PassedThemesAndHomeworksAndAnswerByStudentIdDTO>();
+          }
+        }
+        public List<StudentDTO> SelectStudentsByGroupId(int groupId)
+        {
+          string expr = "[SelectStudentsByGroupId]";
+          var value = new { GroupId = groupId };
+          using (var connection = SqlServerConnection.GetConnection())
+          {
+            return connection.Query<StudentDTO>(expr, value, commandType: CommandType.StoredProcedure).ToList<StudentDTO>();
+          }
         }
     }
 }
