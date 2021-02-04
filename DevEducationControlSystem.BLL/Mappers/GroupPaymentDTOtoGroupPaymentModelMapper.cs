@@ -30,7 +30,7 @@ namespace DevEducationControlSystem.BLL.Mappers
 
             foreach (var m in modelsList )
             {
-                m.CountPeriods = m.Group.DurationInWeeks / 4;
+                m.CountPeriods = m.Group.DurationInWeeks / 4; // делим на 4 недели в месяце, получаем кол-во периодов
 
 
                 foreach (var s in m.Group.StudentList)

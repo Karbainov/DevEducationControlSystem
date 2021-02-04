@@ -12,6 +12,7 @@ namespace DevEducationControlSystem.BLL
     {
         public List<GroupPaymentModel> GetGroupPaymentInfo()
         {
+          
             var mapper = new GroupPaymentDTOtoGroupPaymentModelMapper();
             return mapper.Map(new PaymentManager().GetPaymentDTOs());
         }

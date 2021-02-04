@@ -14,7 +14,7 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        [HttpGet] public IActionResult GetPayment()
+        [HttpGet()] public IActionResult GetPayment()
         {
             var manager = new PaymentLogicManager();
             return Ok(manager.GetGroupPaymentInfo());
