@@ -382,6 +382,8 @@
     <Build Include="dbo\Stored Procedures\GetCourseDurationOfCurrentStudentById.sql" />
     <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
     <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\GetTeachersStatistic.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAmountOfGroupsStudentsGradStudentsRateForTeachers.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Material\Material_RecoverSoftDeleted.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Material\Material_SelectSoftDeleted.sql" />

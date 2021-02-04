@@ -90,6 +90,43 @@ namespace DevEducationControlSystem.DBL
             return teachersByCourseList;
         }
 
+        public List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO> SelectGroupsStudentsRateForTeacher()
+        {
+            var teachersByCourseList = new List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO>();
+            string expr = "[SelectAmountOfGroupsStudentsGradStudentsRateForTeachers]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                teachersByCourseList = connection.Query<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return teachersByCourseList;
+        }
+
+        public NumberOfTeachersByCourseIdDTO SelectNumberOfTeachersByCourseId(int id)
+        {
+            var teachersByCourse = new NumberOfTeachersByCourseIdDTO();
+            string expr = "[SelectNumberOfTeachersByCourseId]";
+            var value = new { id };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                teachersByCourse = connection.QuerySingle<NumberOfTeachersByCourseIdDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
+
+            return teachersByCourse;
+        }
+
+        public List<TeacherOnCourseDTO> SelectTeachersOnCourseStatisctic()
+        {
+            var teachersByCourseList = new List<TeacherOnCourseDTO>();
+            string expr = "[GetTeachersStatistic]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                teachersByCourseList = connection.Query<TeacherOnCourseDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return teachersByCourseList;
+        }
+
         public List<NumberOfUsersWithStatusInCourseInCityDTO> SelectNumberOfUsersWithStatusInCourseInCity()
         {
             string expr = "[SelectNumberOfUsersWithStatusInCourseInCity]";

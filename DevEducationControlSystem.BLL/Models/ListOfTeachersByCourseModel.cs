@@ -7,7 +7,9 @@ namespace DevEducationControlSystem.BLL.Models
     public class ListOfTeachersByCourseModel
     {
         public List<NumberOfTeachersByCourseModel> teachersByCourseList { get; set; }
+        public List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel> TeachersStat { get; set; }
 
-         
+
+
     }
 }
