@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using Dapper;
+using DevEducationControlSystem.DBL.DTO.StatisticsForMethodist;
 using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.DBL
@@ -108,81 +109,121 @@ namespace DevEducationControlSystem.DBL
             string expression = "[SelectStudentsStudyingAfterBase]";
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query<StudentsStudyingAfterBaseDTO, UsersInGroupCountDTO, StudentsStudyingAfterBaseDTO>(expression,  (City,Group)=>
-                {
-                    StudentsStudyingAfterBaseDTO city = null;
+                connection.Query<StudentsStudyingAfterBaseDTO, UsersInGroupCountDTO, StudentsStudyingAfterBaseDTO>(expression, (City, Group) =>
+               {
+                   StudentsStudyingAfterBaseDTO city = null;
 
-                    foreach (var c in cityList)
+                   foreach (var c in cityList)
+                   {
+                       if (City.Cityname == c.Cityname)
+                       {
+                           city = c;
+                           break;
+                       }
+
+                   }
+
+                   if (city == null)
+                   {
+                       city = City;
+                       cityList.Add(city);
+                   }
+                   if (city.groupList == null) city.groupList = new List<UsersInGroupCountDTO>();
+
+
+                   city.groupList.Add(Group);
+                   return city;
+               },
+
+                  commandType: CommandType.StoredProcedure, splitOn: "Groupname");
+            }
+
+            return cityList;
+
+        }
+
+        public List<SelectCityCourseHomeworkThemeStatusDTO> SelectCityCourseHomeworkThemeStatus()
+        {
+            var statisticList = new List<SelectCityCourseHomeworkThemeStatusDTO>();
+            string expression = "[SelectCityCourseHomeworkThemeStatus]";
+            using (var connection = SqlServerConnection.GetConnection())
+                connection.Query<SelectCityCourseHomeworkThemeStatusDTO, HomeworkStatusbyThemeInCourseDTO, HomeworkStatusbyThemeDTO, SelectStudentsHomeworkStatusDTO,
+                SelectCityCourseHomeworkThemeStatusDTO>(expression, (City, Course, Status, Homework) =>
+                {
+                    SelectCityCourseHomeworkThemeStatusDTO city = null;
+
+                    foreach (var S in statisticList)
                     {
-                        if (City.Cityname == c.Cityname)
+                        if (S.CityName == city.CityName)
                         {
-                            city = c;
+                            city = S;
                             break;
                         }
-
                     }
 
                     if (city == null)
                     {
                         city = City;
-                        cityList.Add(city);
+                        city.HomeworkStatusbyThemeInCourse = new List<HomeworkStatusbyThemeInCourseDTO>();
+                        statisticList.Add(city);
                     }
-                    if (city.groupList == null) city.groupList = new List<UsersInGroupCountDTO>();
+
+                    HomeworkStatusbyThemeInCourseDTO course = null;
+
+                    foreach (var S in city.HomeworkStatusbyThemeInCourse)
+                    {
+                        if (S.CourseName == course.CourseName)
+                        {
+                            course = S;
+                            break;
+                        }
+                    }
+
+                    if (course == null)
+                    {
+                        course = Course;
+                        course.SelectStudentsHomeworkStatus = new List<SelectStudentsHomeworkStatusDTO>();
+                        city.HomeworkStatusbyThemeInCourse.Add(course);
+                    }
+                    //course.HomeworkStatusbyTheme.Add(Status);
+
+                    SelectCityCourseHomeworkThemeStatusDTO homework = null;
+
+                    foreach (var S in course.SelectStudentsHomeworkStatus)
+                    {
+                        if (S.ThemeName == homework.ThemeName)
+                        {
+                            homework = S;
+                            break;
+                        }
+                    }
 
 
-                    city.groupList.Add(Group);
+                    if (homework == null)
+                    {
+                        homework = Homework;
+                        homework.SelectStudentsHomeworkStatus = new List<SelectStudentsHomeworkStatusDTO>();
+                        homework.SelectStudentsHomeworkStatus.Add(homework);
+                    }
+
                     return city;
                 },
 
-                  commandType: CommandType.StoredProcedure,splitOn: "Groupname");
-            }
 
-            return cityList;
-            
+             commandType: CommandType.StoredProcedure, splitOn: "CityName, CourseName, ThemeName").AsList<SelectCityCourseHomeworkThemeStatusDTO>();
+
+            return statisticList;
         }
+    }
+}
+              
+           
+        
 
-        //public List<SelectCityCourseHomeworkThemeStatusDTO> SelectCityCourseHomeworkThemeStatus()
-        //{
-        //    var statisticList = new List<SelectCityCourseHomeworkThemeStatusDTO>();
-        //    string expression = "[SelectCityCourseHomeworkThemeStatus]";
-        //    using (var connection = SqlServerConnection.GetConnection())
-        //        connection.Query<SelectCityCourseHomeworkThemeStatusDTO, SelectStudentsHomeworkStatusDTO, SelectCityCourseHomeworkThemeStatusDTO>(expression, (City, Course, Theme) =>
-        //        {
-        //            SelectCityCourseHomeworkThemeStatusDTO city = null;
-        //            SelectCityCourseHomeworkThemeStatusDTO course = null;
+    
+    
 
-        //            foreach (var S in statisticList)
-        //            {
-        //                if (City.CityName == S.CityName)
-        //                {
-        //                    city = S;
-        //                    break;
-        //                }
-        //            }
-
-        //            if (city == null)
-        //            {
-        //                city = City;
-        //                statisticList.Add(city);
-        //            }
-        //            if (city.courseList == null) city.courseList = new List<CourseDTO>();
-
-        //            city.courseList.Add(Course);
-
-
-
-
-
-
-        //            return city;
-        //        },
-
-        //          commandType: CommandType.StoredProcedure, splitOn: "Groupname");
-        //}
-        //        return cityList;
-        }
-
-     }
+    
 
     
 

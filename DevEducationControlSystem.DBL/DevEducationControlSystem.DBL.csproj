@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTO\StatisticsForMethodist\NewFolder\**" />
+    <EmbeddedResource Remove="DTO\StatisticsForMethodist\NewFolder\**" />
+    <None Remove="DTO\StatisticsForMethodist\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="CRUD\PaymentInfoModel.cs" />
     <Compile Remove="CRUD\UdaliMeniaManager.cs" />
     <Compile Remove="DTO\Base\UdaliMeniaDTO.cs" />
@@ -14,6 +20,7 @@
     <Compile Remove="AdminManager.cs" />
     <Compile Remove="AllGroupMaterialsByTagAndUserId_Manager.cs" />
     <Compile Remove="DTO\Base\Course_ThemelDTO.cs" />
+    <Compile Remove="DTO\StatisticsForMethodist\HomeworkStatusbyThemeIn.cs" />
     <Compile Remove="DTO\TagListDTO.cs" />
     <Compile Remove="DTO\WholeCourseFeedback\FeedbackAuthorDTO.cs" />
     <Compile Remove="ManagerManager.cs" />
@@ -28,10 +35,6 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DTO\StatisticsForMethodist\" />
   </ItemGroup>
 
 </Project>

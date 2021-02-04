@@ -4,8 +4,8 @@ AS
 BEGIN 
 DECLARE @var table (HomeworkName nvarchar (100), ThemeName nvarchar (300) ,DoneHomework int, NotDoneHomework int, HomeworkDoneOnTime int,LateDoneHomework int )
 INSERT @var EXEC SelectStudentsHomeworkStatus
-SELECT City.[Name] as CityName, Course.[Name] as CourseName, GroupStatus.[Name] as GroupStatus, 
-ThemeName,HomeworkName, DoneHomework,NotDoneHomework,HomeworkDoneOnTime,LateDoneHomework
+SELECT City.[Name] as CityName, Course.[Name] as CourseName,[Group].[Name] as GroupName, GroupStatus.[Name] as GroupStatus, 
+ThemeName, HomeworkName, DoneHomework,NotDoneHomework,HomeworkDoneOnTime,LateDoneHomework
 FROM
 (SELECT * FROM @var) as APO
 JOIN

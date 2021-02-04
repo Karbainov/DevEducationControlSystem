@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DevEducationControlSystem.DBL.DTO
+namespace DevEducationControlSystem.DBL.DTO.StatisticsForMethodist
 {
     public class SelectStudentsHomeworkStatusDTO
     {
