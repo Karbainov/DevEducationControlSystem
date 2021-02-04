@@ -45,20 +45,57 @@ namespace DevEducationControlSystem.BLL
                                 lessonManager.SelectLessonAttendanceByGroupId(groupId));
         }
 
-        public PrivateStudentMainPageModel GetPrivateStudentMainPageModel(int studentId)
-        {
-            var courseManager = new CourseManager();
-            var lessonManager = new LessonManager();
-
-            var mapper = new CourseOverlookDTOGroupmatesDTOPassedLessonByStudentIdDTOtoPrivateStudentMainPageModelMapper();
-
-            var privatePage = new PrivateStudentMainPageModel();
-
-            privatePage = mapper.Map(
-                courseManager.SelectCourseGeneralInfoByStudentId(studentId),
-                lessonManager.SelectPassedLessonByStudentId(studentId));
-
-            return privatePage;
+        public StudentPrivateModel GetPrivateStudentMainPageModel(int studentId)
+        {
+            var courseManager = new CourseManager();
+            var lessonManager = new LessonManager();
+            var materialManager = new MaterialManager();
+            var feedbackManager = new FeedbackManager();            var feedbackMapper = new FeedbackDTOtoFeedbackModelMapper();            var baseInfoMapper = new CourseOverlookDTOGroupmatesDTOPassedLessonByStudentIdDTOtoPrivateStudentMainPageModelMapper();
+            var materialDTOs = materialManager.SelectUnlockedMaterialByUserIdDTOs(studentId);
+            var materialModels = new List<UnlockedMaterialByUserIdModel>();
+            
+            foreach (var m in materialDTOs)
+            {
+                materialModels.Add(new UnlockedMaterialByUserIdModel()
+                {
+                    MaterialId = m.MaterialId,
+                    LessonId = m.LessonId,
+                    ResourceId= m.ResourceId,
+                    MaterialName=m.MaterialName,
+                    Message=m.Message,
+                    Links =m.Links,
+                    Images =m.Images,
+                    MaterialThemeId = m.MaterialThemeId,
+                    MaterialThemeName = m.MaterialThemeName
+                });
+            }
+
+            var baseInfo = baseInfoMapper.Map(
+                courseManager.SelectCourseGeneralInfoByStudentId(studentId),
+                lessonManager.SelectPassedLessonByStudentId(studentId));
+
+            var feedbackList = feedbackMapper.Map(feedbackManager.SelectByUserId(studentId));
+
+            var hwDTOs = new HomeworkManager().SelectHomeWorksAndAnswersByUserId(studentId);
+            var hwModels = new List<HomeworkWithAnswerModel>();
+
+            foreach(var hw in hwDTOs)
+            {
+                hwModels.Add(new HomeworkWithAnswerModel()
+                {
+                    HomeworkId = hw.HomeworkId,
+                    AnswerId = hw.AnswerId,
+                    HWResourceId =hw.HWResourceId,
+                    HWName = hw.HWName,
+                    HWDescript = hw.HWDescript,
+                    AnswerResourceId = hw.AnswerResourceId,
+                    AnswerMessage = hw.AnswerMessage,
+                    AnswerStatus =hw.AnswerStatus
+                });
+            }
+
+            var mainMapper = new PrivateStudentMainPageModelFeedbackModelHomeworkWithAnswerModelMaterialModelToStudentPrivateModelMapper();
+            return mainMapper.Map(baseInfo, feedbackList, materialModels,hwModels) ;
         }
 
         public int AddAttendance(int userId, int lessonId, bool isPresent)
@@ -91,14 +128,6 @@ namespace DevEducationControlSystem.BLL
         {
             var manager = new AttendanceManager();
             manager.UpdateIsPresent(attendanceId, isPresent);
-        }
-        public List<FeedbackModel> GetFeedbackByUserId(int userId)
-        {
-            var feedbackManager = new FeedbackManager();
-
-            var mapper = new FeedbackDTOtoFeedbackModelMapper();
-
-            return mapper.Map(feedbackManager.SelectByUserId(userId));
         }
     }
 }
