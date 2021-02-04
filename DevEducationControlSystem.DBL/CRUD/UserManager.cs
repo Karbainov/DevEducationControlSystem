@@ -103,6 +103,108 @@ namespace DevEducationControlSystem.DBL.CRUD
                 commandType: CommandType.StoredProcedure);
             }
             return users;
+        }
+        public List<AllInfoOfUserDTO> GetInfoOfAllUsers()
+        {
+            string expr = "[GetInfoOfAllUsers]";
+
+            List<AllInfoOfUserDTO> users = new List<AllInfoOfUserDTO>();
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+
+                connection.Query<AllInfoOfUserDTO, RoleInfoForUserDTO, CourseInfoForUserDTO, GroupInfoForUserDTO, AllInfoOfUserDTO>(expr,
+                (user, role, course, group) =>
+                {
+                    AllInfoOfUserDTO tmpAllInfoOfUserDTO = null;
+
+                    foreach (var r in users)
+                    {
+                        if (r.Id == user.Id)
+                        {
+                            tmpAllInfoOfUserDTO = r;
+                            break;
+                        }
+                    }
+                    if (tmpAllInfoOfUserDTO == null)
+                    {
+                        tmpAllInfoOfUserDTO = user;
+                        users.Add(tmpAllInfoOfUserDTO);
+                    }
+                    if (tmpAllInfoOfUserDTO.Roles == null)
+                    {
+                        tmpAllInfoOfUserDTO.Roles = new List<RoleInfoForUserDTO>();
+                    }
+
+                    tmpAllInfoOfUserDTO.Roles.Add(role);
+
+                    if (tmpAllInfoOfUserDTO.Courses == null)
+                    {
+                        tmpAllInfoOfUserDTO.Courses = new List<CourseInfoForUserDTO>();
+                    }
+
+                    tmpAllInfoOfUserDTO.Courses.Add(course);
+
+                    if (tmpAllInfoOfUserDTO.Groups == null)
+                    {
+                        tmpAllInfoOfUserDTO.Groups = new List<GroupInfoForUserDTO>();
+                    }
+
+                    tmpAllInfoOfUserDTO.Groups.Add(group);
+
+                    return tmpAllInfoOfUserDTO;
+                },
+                splitOn: "RoleId, CourseId, GroupId",
+                commandType: CommandType.StoredProcedure);
+            }
+
+            return users;
+        }
+        public AllInfoOfUserDTO GetAllInfoOfUserById(int userId)
+        {
+            string expr = "[GetAllInfoOfUserById]";
+            var value = new { userId };
+
+            AllInfoOfUserDTO allInfoOfUser = null;
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<AllInfoOfUserDTO, RoleInfoForUserDTO, CourseInfoForUserDTO, GroupInfoForUserDTO, AllInfoOfUserDTO>(expr,
+                (user, role, course, group) =>
+                {
+                    if (allInfoOfUser == null)
+                    {
+                        allInfoOfUser = user;
+                    }
+                    if (allInfoOfUser.Roles == null)
+                    {
+                        allInfoOfUser.Roles = new List<RoleInfoForUserDTO>();
+                    }
+
+                    allInfoOfUser.Roles.Add(role);
+
+                    if (allInfoOfUser.Courses == null)
+                    {
+                        allInfoOfUser.Courses = new List<CourseInfoForUserDTO>();
+                    }
+
+                    allInfoOfUser.Courses.Add(course);
+
+                    if (allInfoOfUser.Groups == null)
+                    {
+                        allInfoOfUser.Groups = new List<GroupInfoForUserDTO>();
+                    }
+
+                    allInfoOfUser.Groups.Add(group);
+
+                    return allInfoOfUser;
+                },
+                value,
+                splitOn: "RoleId, CourseId, GroupId",
+                commandType: CommandType.StoredProcedure);
+            }
+
+            return allInfoOfUser;
         }
 
         public LoginPassRoleDTO GetLoginPassRole(string login)

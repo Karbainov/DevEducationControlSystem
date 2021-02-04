@@ -18,5 +18,19 @@ namespace DevEducationControlSystem.API.Controllers
             var userLogicManager = new UserLogicManager();
             return Ok(userLogicManager.GetHomeworksWithStatus(userId));
         }
+
+        [HttpGet("Manager/Users")]
+        public IActionResult GetAllUserInfo(int userId)
+        {
+            var userLogicManager = new UserLogicManager();
+            return Ok(userLogicManager.GetAllUserInfo());
+        }
+
+        [HttpGet("Manager/User/{userId}")]
+        public IActionResult GetAllUserInfoById(int userId)
+        {
+            var userLogicManager = new UserLogicManager();
+            return Ok(userLogicManager.GetAllUserInfoById(userId));
+        }
     }
 }
