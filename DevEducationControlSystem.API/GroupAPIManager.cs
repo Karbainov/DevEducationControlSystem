@@ -7,7 +7,6 @@ using DevEducationControlSystem.DBL.DTO.Base;
 using DevEducationControlSystem.DBL.CRUD;
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.BLL;
-using System.Linq;
 
 namespace DevEducationControlSystem.API
 {

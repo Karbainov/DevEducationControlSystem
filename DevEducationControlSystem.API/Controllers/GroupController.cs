@@ -7,7 +7,6 @@ using DevEducationControlSystem.BLL;
 using DevEducationControlSystem.BLL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using DevEducationControlSystem.API.InputModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace DevEducationControlSystem.API.Controllers

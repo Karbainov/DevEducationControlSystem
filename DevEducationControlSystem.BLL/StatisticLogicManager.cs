@@ -1,6 +1,7 @@
 ﻿using DevEducationControlSystem.BLL.Mappers;
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.DBL;
+using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.CRUD;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,14 @@ namespace DevEducationControlSystem.BLL
             var mapper = new NumberOfTeachersByCourseDTOtoNumberOfTeachersByCourseModelMapper();
 
             return mapper.Map(statisticManager.SelectNumberOfTeachersByCourse());
+        }
+
+        public List<NumberOfUsersWithStatusInCourseInCityDTO> GetNumberOfUsersWithStatusInCourseInCity()
+        {
+            var statisticManager = new StatisticManager();
+
+            var mapper = new NumberOfUsersWithStatusInCourseInCityDTOMapper();
+            return statisticManager.SelectNumberOfUsersWithStatusInCourseInCity();
         }
         public List<RoleStatisticModel> GetRoleStatistic()
         {
