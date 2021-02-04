@@ -129,10 +129,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public void Add(int groupId, int homeworkId, DateTime startDate, DateTime dealLine)
+        public void Add(int groupId, int homeworkId, DateTime startDate, DateTime deadLine)
         {
             string expr = "[Group_Homework_Add]";
-            var value = new {GroupId = groupId, HomeworkId = homeworkId, StartDate = startDate, DealLine = dealLine };
+            var value = new {GroupId = groupId, HomeworkId = homeworkId, StartDate = startDate, DeaDLine = deadLine };
             using (var connection = ConnectToBD())
             {
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
