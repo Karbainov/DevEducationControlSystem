@@ -9,7 +9,7 @@ namespace DevEducationControlSystem.BLL
 {
     public class AllInfoUserOnTheCourseLogicManager
     {
-        public AllInfoUserOnTheCourseModel GetNumberOfStudentsOnTheCourseById(int courseId)
+        public AllInfoUserOnTheCourseModel GetInfoOfStudentsOnTheCourseById(int courseId)
         {
             var numberOfStudentsOnTheCourseManager = new NumberOfStudentsOnTheCourseManager();
             var allInfoUserOnTheCourseManager = new AllInfoUserOnTheCourseManager();
@@ -18,6 +18,13 @@ namespace DevEducationControlSystem.BLL
                 allInfoUserOnTheCourseManager.SelectCourseInfoById(courseId), 
                 numberOfStudentsOnTheCourseManager.SelectCourseInfoById(courseId)
                 );           
+        }
+
+        public SelectGroupsOnCoursesInfoModel GetGroupInfoById(int groupId)
+        {
+            var GroupManager = new SelectGroupsOnCoursesInfoModelManager();
+            var mapper = new SomeMapper();
+            return mapper.Mapp(GroupManager.SelectGroupInfoById(groupId));
         }
     }
 }

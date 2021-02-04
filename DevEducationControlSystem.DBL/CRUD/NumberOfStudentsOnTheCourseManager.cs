@@ -13,7 +13,7 @@ namespace DevEducationControlSystem.DBL.CRUD
     {        
         public List <NumberOfStudentsOnTheCourseDTO> SelectCourseInfoById (int courseId)
         {
-            string sqlExpression = "[GetAllUsersOfCurrentCourse]";
+            string sqlExpression = "[GetAllInformationAboutUserOnCourseById]";
             var value = new { courseId };
             using (var connection = SqlServerConnection.GetConnection())
             {

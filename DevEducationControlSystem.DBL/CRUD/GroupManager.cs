@@ -154,17 +154,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 return connection.QuerySingle<GroupWithCityAndStatusAndCourseDTO>(expr, value, commandType: CommandType.StoredProcedure);
             }
-        }
-
-        //public GroupDTO SelectGroupInfoById(int groupId)
-        //{
-        //    string expr = "[SelectGroupWithCityAndStatusAndCourseById]";
-        //    var value = new { groupId };
-
-        //    using (var connection = SqlServerConnection.GetConnection())
-        //    {
-        //        return connection.QuerySingle<GroupWithCityAndStatusAndCourseDTO>(expr, value, commandType: CommandType.StoredProcedure);
-        //    }
-        //}
+        }       
     }
 }

@@ -15,4 +15,4 @@ SELECT [Course].Id as CourseId, [Course].Name as CourseName,
   inner join [UserStatus] as US on [US].Id = [U].StatusId 
   inner join [User_Role] as UR on [UR].UserId = [U].Id
   inner join [Role] as R on [R].Id = [UR].RoleId
-  where Course.Id = CourseId
+  where Course.Id = @CourseId

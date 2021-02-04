@@ -16,10 +16,15 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult GetAllInfoUserOnTheCourseById(int courseId)
         {
             var allInfoUserOnTheCourseLogicManager = new AllInfoUserOnTheCourseLogicManager();
-            return Ok(allInfoUserOnTheCourseLogicManager.GetNumberOfStudentsOnTheCourseById(courseId));
+            return Ok(allInfoUserOnTheCourseLogicManager.GetInfoOfStudentsOnTheCourseById(courseId));
         }
 
-        //[HttpGet("courseId/gruopinfo")]
+        [HttpGet("groupinfo/{groupId}")]
+        public IActionResult GetAllInfoGroupOnTheCourseById(int groupId)
+        {
+            var allInfoUserOnTheCourseLogicManager = new AllInfoUserOnTheCourseLogicManager();
+            return Ok(allInfoUserOnTheCourseLogicManager.GetGroupInfoById(groupId));
+        }
     }       
    
 }
