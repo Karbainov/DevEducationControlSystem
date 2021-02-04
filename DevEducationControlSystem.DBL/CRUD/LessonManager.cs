@@ -195,7 +195,36 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             using (var connection = SqlServerConnection.GetConnection())
             {
-                passedLesson = connection.Query<PassedLessonByStudentIdDTO>(expression, parameter, commandType: CommandType.StoredProcedure).ToList<PassedLessonByStudentIdDTO>();
+                connection.Query<PassedLessonByStudentIdDTO, string, PassedLessonByStudentIdDTO>(expression, (Lesson, Theme) => {
+                    PassedLessonByStudentIdDTO lesson = null;
+
+                    foreach(var l in passedLesson)
+                    {
+                        if (l.LessonId==Lesson.LessonId)
+                        {
+                            lesson = l;
+                            break;
+                        }
+                    }
+                    
+                    if (lesson==null)
+                    {
+                        lesson = Lesson;
+                        passedLesson.Add(lesson);
+                    }
+
+                    if (lesson.ThemeName==null)
+                    {
+                        lesson.ThemeName = new List<string>();
+                    }
+
+                    lesson.ThemeName.Add(Theme);
+                    
+                    return null;
+                },
+                    
+                    
+                    parameter, commandType: CommandType.StoredProcedure, splitOn: "ThemeName");
             }
             return passedLesson;
         }
