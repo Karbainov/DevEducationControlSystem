@@ -30,12 +30,15 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetGroupInfoById(groupId));
         }
 
+        [Authorize(Roles = "Студент")]
         [HttpGet("Student/{userId}/private")]
         public IActionResult GetStudentUnlockedData(int userId)
         {
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
         }
+
+        [Authorize(Roles = "Студент")]
         [HttpPut("Student/{userId}/private")]
         public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
         {
@@ -44,6 +47,7 @@ namespace DevEducationControlSystem.API.Controllers
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
         }
+        [Authorize(Roles = "Студент")]
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
         {
