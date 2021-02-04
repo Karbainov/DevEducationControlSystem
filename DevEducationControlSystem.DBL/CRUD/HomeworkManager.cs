@@ -39,6 +39,11 @@ namespace DevEducationControlSystem.DBL.CRUD
             SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
         }
 
+        public List<HomeworkDTO> SelectAdd()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             SqlServerConnection.GetConnection().Query("[Homework_Delete]", new { id }, commandType: CommandType.StoredProcedure);
@@ -191,6 +196,18 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void UpdateIsDeleted(int id)
         {
             var howeworkList = SqlServerConnection.GetConnection().Query("Homework_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<HomeWorkAndAnswerByUserIdDTO> SelectHomeWorksAndAnswersByUserId(int userId)
+        {
+            var hws = new List<HomeWorkAndAnswerByUserIdDTO>();
+            string expression = "[SelectHomeWorksAndAnswersByUserId]";
+            var parameter = new { UserId = userId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                hws = connection.Query<HomeWorkAndAnswerByUserIdDTO>(expression, parameter, commandType: CommandType.StoredProcedure).AsList<HomeWorkAndAnswerByUserIdDTO>();
+            }
+            return hws;
         }
 
 

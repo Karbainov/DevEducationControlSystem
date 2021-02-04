@@ -4,14 +4,17 @@ using System.Text;
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.BLL.Mappers;
 using DevEducationControlSystem.DBL.CRUD;
+using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.BLL
 {
     public class PaymentLogicManager
     {
-        public PaymentInfoModel GetPaymentInfo(int groupId)
+        public List<GroupPaymentModel> GetGroupPaymentInfo()
         {
-            return null;
+          
+            var mapper = new GroupPaymentDTOtoGroupPaymentModelMapper();
+            return mapper.Map(new PaymentManager().GetPaymentDTOs());
         }
     }
 }

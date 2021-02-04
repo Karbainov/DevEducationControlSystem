@@ -8,42 +8,33 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     public class NumberOfTeachersByCourseDTOtoNumberOfTeachersByCourseModelMapper
     {
-        public ListOfTeachersByCourseModel Map(List<NumberOfTeachersByCourseDTO> numberOfTeachers)
-        {
-            var listOfTeachers = new ListOfTeachersByCourseModel(){ teachersByCourseList = new List<NumberOfTeachersByCourseModel>() };
-            
+        public ListOfTeachersByCourseModel Map(
 
-            foreach(var n in numberOfTeachers)
+            List<NumberOfTeachersByCourseDTO> dto
+            ,List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO> teacherOnCourses
+            )
+        {
+            var model = new ListOfTeachersByCourseModel();
+            model.teachersByCourseList = new List<NumberOfTeachersByCourseModel>();
+            model.TeachersStat = new List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel>();
+
+
+            foreach (var n in dto)
             {
-                listOfTeachers.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(n));
+                model.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(n));
             }
-            return listOfTeachers;
+
+            foreach (var s in teacherOnCourses)
+            {
+                model.TeachersStat.Add(new SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel(s));
+            }
+
+            return model;
         }
 
-        //public ListOfTeachersByCourseModel Map(List<NumberOfTeachersByCourseModel> numberOfTeachersList)
-        //{
-        //    ListOfTeachersByCourseModel numberOfTeachers = new ListOfTeachersByCourseModel()
-        //    {
-
-        //    };
-        //    foreach (var r in numberOfTeachersList)
-        //    {
-        //        if (r != null)
-        //        {
-        //            numberOfTeachers.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(r));
-        //        }
-        //    }
-
-        //var numberOfTeachersModel = new NumberOfTeachersByCourseModel()
-        //{
-        //    CourseId = numberOfTeachers.CourseId,
-        //    CourseName = numberOfTeachers.CourseName,
-        //    CityId = numberOfTeachers.CityId,
-        //    CityName = numberOfTeachers.CityName,
-        //    Amount = numberOfTeachers.Amount
-        //};
 
 
-    
+
+
     }
 }

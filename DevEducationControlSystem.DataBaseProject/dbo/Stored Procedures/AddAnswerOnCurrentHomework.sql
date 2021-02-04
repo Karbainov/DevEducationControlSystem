@@ -20,4 +20,4 @@ UPDATE [dbo].[Resource]
 SET 
 Links = @Links,
 Images = @Images
-WHERE [dbo].[Resource].Id = [dbo].[Answer].ResourceId
+WHERE [dbo].[Resource].Id = @ResourceId
