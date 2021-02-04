@@ -315,21 +315,22 @@ namespace DevEducationControlSystem.DBL
 
             commandType: CommandType.StoredProcedure, splitOn: "CourseName, GroupName,ThemeName");
             return statisticList;
-        }
+        
     }
 
 
-    public List<CountStudentsOnCourseByGroupsDTO> GetCountStudentsOnCourseByGroups(int id)
-    {
-        var NumberOfStudentsList = new List<CountStudentsOnCourseByGroupsDTO>();
-        string expression = "[CountStudentsOnCourseByGroups]";
-        var value = new { CourseId = id };
-
-        using (var connection = SqlServerConnection.GetConnection())
+        public List<CountStudentsOnCourseByGroupsDTO> GetCountStudentsOnCourseByGroups(int id)
         {
-            NumberOfStudentsList = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
+            var NumberOfStudentsList = new List<CountStudentsOnCourseByGroupsDTO>();
+            string expression = "[CountStudentsOnCourseByGroups]";
+            var value = new { CourseId = id };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                NumberOfStudentsList = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
+            }
+            return NumberOfStudentsList;
         }
-        return NumberOfStudentsList;
 
 
     }
