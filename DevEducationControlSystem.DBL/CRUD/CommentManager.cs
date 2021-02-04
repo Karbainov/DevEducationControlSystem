@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.DTO.Base;
 using System.Collections.Generic;
 using System.Data;
@@ -82,6 +83,18 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
+        public List<СommentByAnswerIdDTO> SelectСommentByAnswerIdOrderByTime(int answerId)
+        {
+          var p = new List<СommentByAnswerIdDTO>();
+          string expr = "[SelectСommentByAnswerIdOrderByTime]";
+          var value = new { AnswerId = answerId };
+          using (var connection = SqlServerConnection.GetConnection())
+          {
+             p= connection.Query<СommentByAnswerIdDTO>(expr, value, commandType: CommandType.StoredProcedure).ToList<СommentByAnswerIdDTO>();
+        
+          }
+         return p;
+    }
 
     }
 }

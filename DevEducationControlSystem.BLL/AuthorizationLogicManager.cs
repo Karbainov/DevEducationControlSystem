@@ -9,7 +9,7 @@ namespace DevEducationControlSystem.BLL
 {
     public class AuthorizationLogicManager
     {
-        public List<LoginPassRoleModel> GetLoginPassworlRole(string login)
+        public LoginPassRoleModel GetLoginPassworlRole(string login)
         {
             var userManager = new UserManager();
             var mapper = new LoginPassRoleDTOMapper();

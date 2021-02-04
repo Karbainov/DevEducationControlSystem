@@ -34,7 +34,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok();
         }
 
-        [HttpGet("{homeworkId}/{groupId}")]
+        [HttpGet("Answers/{homeworkId}/{groupId}")]
         public IActionResult SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
         {
             var homeworkLogicManager = new HomeworkLogicManager();
@@ -47,5 +47,13 @@ namespace DevEducationControlSystem.API.Controllers
                 return StatusCode(404, e.Message);
             }
         }
-    }
+        
+        [HttpGet("Student/{userid}/Private/{answerId}")]
+        public IActionResult GetStudentAnswerStoryAndCommentByUserIdandByHomeworkid(int answerId)
+        {
+          var groupLogicManager = new HomeworkLogicManager();
+          return Ok(groupLogicManager.GetStudentAnswerStoryAndCommentById(answerId));
+        }
+
+  }
 }

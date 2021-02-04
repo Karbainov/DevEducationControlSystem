@@ -10,7 +10,8 @@ using DevEducationControlSystem.DBL.DTO.Base;
 namespace DevEducationControlSystem.DBL.CRUD
 {
     public class UserManager
-    {
+    {
+
         public List<CourseDurationOfCurrentStudentDTO> GetCourseDurationOfCurrentStudentById(int id)
         {
             var CourseDurationOfCurrentStudent = new List<CourseDurationOfCurrentStudentDTO>();
@@ -22,7 +23,8 @@ namespace DevEducationControlSystem.DBL.CRUD
                 CourseDurationOfCurrentStudent = connection.Query<CourseDurationOfCurrentStudentDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseDurationOfCurrentStudentDTO>(); ;
             }
             return CourseDurationOfCurrentStudent;
-        }
+        }
+
         public List<CourseOfCurrentUserDTO> GetAllCoursesOfCurrentUserById(int id)
         {
             var AllCoursesOfCurrentUser = new List<CourseOfCurrentUserDTO>();
@@ -34,7 +36,8 @@ namespace DevEducationControlSystem.DBL.CRUD
                 AllCoursesOfCurrentUser = connection.Query<CourseOfCurrentUserDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseOfCurrentUserDTO>(); ;
             }
             return AllCoursesOfCurrentUser;
-        }
+        }
+
         public List<UserOfCurrentCourseDTO> GetAllUsersOfCurrentCourseById(int id)
         {
             var usersOfCurrentCourse = new List<UserOfCurrentCourseDTO>();
@@ -102,9 +105,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             return users;
         }
 
-        public List<LoginPassRoleDTO> GetLoginPassRole(string login)
+        public LoginPassRoleDTO GetLoginPassRole(string login)
         {
             string expr = "GetLoginPassRole";
+            var userAuthtorisInfo = new LoginPassRoleDTO();
             var listUserAuthtorisInfo = new List<LoginPassRoleDTO>();
             var value = new { login };
             using(var connection = SqlServerConnection.GetConnection())
@@ -125,7 +129,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                     if (tmpLoginPassRole == null)
                     {
                         tmpLoginPassRole = user;
-                        listUserAuthtorisInfo.Add(tmpLoginPassRole);
+                        userAuthtorisInfo = tmpLoginPassRole;
                     }
                     if (tmpLoginPassRole.Roles == null)
                     {
@@ -137,48 +141,76 @@ namespace DevEducationControlSystem.DBL.CRUD
                 value,
                 commandType: CommandType.StoredProcedure, splitOn: "Id");
             }
-            return listUserAuthtorisInfo;
+            return userAuthtorisInfo;
         }
 
-        public void Add()
-        {
+        public void Add()
+
+        {
+
             using (var connection = SqlServerConnection.GetConnection())
-            {
-                connection.Query<UserDTO>("[User_Add]", commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void Delete()
-        {
+            {
+
+                connection.Query<UserDTO>("[User_Add]", commandType: CommandType.StoredProcedure);
+
+            }
+
+        }
+
+
+
+        public void Delete()
+
+        {
+
             using (var connection = SqlServerConnection.GetConnection())
-            {
-                connection.Query<UserDTO>("[User_Delete]", commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void Update()
-        {
+            {
+
+                connection.Query<UserDTO>("[User_Delete]", commandType: CommandType.StoredProcedure);
+
+            }
+
+        }
+
+
+
+        public void Update()
+
+        {
+
             using (var connection = SqlServerConnection.GetConnection())
-            {
-                connection.Query<UserDTO>("[User_Update]", commandType: CommandType.StoredProcedure);
-            }
-        }
-
+            {
+
+                connection.Query<UserDTO>("[User_Update]", commandType: CommandType.StoredProcedure);
+
+            }
+
+        }
+
+
+
         public List<UserDTO> Select()
-        {
+        {
+
             using (var connection = SqlServerConnection.GetConnection())
-            {
-                var UsersDTO = connection.Query<UserDTO>("[User_Select]", commandType: CommandType.StoredProcedure).AsList<UserDTO>();
-                return UsersDTO;
+            {
+
+                var UsersDTO = connection.Query<UserDTO>("[User_Select]", commandType: CommandType.StoredProcedure).AsList<UserDTO>();
+
+                return UsersDTO;
+
             }
         }
 
         public UserDTO SelectById(int id)
         {
-            using (var connection = SqlServerConnection.GetConnection())
-            {
+            using (var connection = SqlServerConnection.GetConnection())
+
+            {
+
                 var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", id, commandType: CommandType.StoredProcedure);
-                return UserDTO;
+                return UserDTO;
+
             }
         }
     }
