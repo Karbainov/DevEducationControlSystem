@@ -1,11 +1,8 @@
 ﻿using DevEducationControlSystem.DBL.DTO;
-using System;
+using DevEducationControlSystem.DBL.DTO.Base;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Text;
 using Dapper;
-using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -61,6 +58,51 @@ namespace DevEducationControlSystem.DBL.CRUD
                 lessonsAndFeedbacks = connection.Query<LessonAndFeedbackDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<LessonAndFeedbackDTO>(); ;
             }
             return lessonsAndFeedbacks;
+        }
+
+        public Dictionary<int, SelectUserInfoByLoginDTO> SelectUserInfoByLogin( string login)
+        {
+            Dictionary<int, SelectUserInfoByLoginDTO> selectUserInfoByLogin = new Dictionary<int, SelectUserInfoByLoginDTO>();
+            string expr = "[SelectUserInfoByLogin]";
+            var value = new { Login = login };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<SelectUserInfoByLoginDTO, RoleNameDTO, SelectUserInfoByLoginDTO>(expr, (userinfo, role) =>
+                {
+                    SelectUserInfoByLoginDTO selectUserInfoByLoginDTO;
+
+                    if (!selectUserInfoByLogin.TryGetValue(userinfo.Id, out selectUserInfoByLoginDTO))
+                    {
+                        selectUserInfoByLoginDTO = userinfo;
+                        selectUserInfoByLogin.Add(userinfo.Id, selectUserInfoByLoginDTO);
+                    }
+
+                    if (selectUserInfoByLoginDTO.Roles == null)
+                    {
+                        selectUserInfoByLoginDTO.Roles = new List<RoleNameDTO>();
+                    }
+                    if (role != null)
+                    {
+                        selectUserInfoByLoginDTO.Roles.Add(role);
+                    }
+
+                   return selectUserInfoByLoginDTO;
+                },
+            value, commandType: CommandType.StoredProcedure, splitOn: "RoleName");
+            }
+                return selectUserInfoByLogin;
+            
+        }
+
+        public void UpdateUserProfile(int userId, string password, string phone, string email, string profileImage)
+        {
+            string expr = "[UpdateUserProfile]";
+            var values = new { UserId = userId, NewPassword = password, NewPhone = phone, NewEmail = email, NewProfileImage = profileImage };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expr, values, commandType: CommandType.StoredProcedure);
+            }
         }
 
         public List<UserWithRoleDTO> SelectUsersByGroupId (int groupId)
@@ -208,7 +250,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             {
 
-                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", id, commandType: CommandType.StoredProcedure);
+                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", new { id }, commandType: CommandType.StoredProcedure);
                 return UserDTO;
 
             }
