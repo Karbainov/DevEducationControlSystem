@@ -385,4 +385,7 @@
     <Build Include="dbo\Stored Procedures\SelectHomeWorksAndAnswersByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectInlockedMaterialByUserId.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Stored Procedures\CountStudentsOnCourseByGroups.sql" />
+  </ItemGroup>
 </Project>
