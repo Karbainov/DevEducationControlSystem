@@ -112,7 +112,7 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(feedbackManager.SelectByUserId(userId));
         }        private bool isInGroup(string login, int groupId)
         {
-            var executor = new UserManager().GetLoginPassRole(login)[0];            var userGroupsForExecutor = new User_GroupManager().SelectByUserId(executor.UserId);            bool isInGroup = false;            userGroupsForExecutor.ForEach((u) =>
+            var executor = new UserManager().GetLoginPassRole(login);            var userGroupsForExecutor = new User_GroupManager().SelectByUserId(executor.UserId);            bool isInGroup = false;            userGroupsForExecutor.ForEach((u) =>
             {
                 if (u.GroupId == groupId)
                 {
