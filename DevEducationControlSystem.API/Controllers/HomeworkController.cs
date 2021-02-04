@@ -34,7 +34,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok();
         }
 
-        [HttpGet("{homeworkId}/{groupId}")]
+        [HttpGet("Answers/{homeworkId}/{groupId}")]
         public IActionResult SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
         {
             var homeworkLogicManager = new HomeworkLogicManager();

@@ -8,6 +8,7 @@ using DevEducationControlSystem.BLL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DevEducationControlSystem.API.InputModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DevEducationControlSystem.API.Controllers
 {
@@ -39,9 +40,10 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpPut("Student/{userId}/private")]
         public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
         {
-            var groupAPIManager = new GroupAPIManager();
+            new GroupAPIManager().AddAndCheckNewFeedback(feedback, userId);
+
             var groupLogicManager = new GroupLogicManager();
-            return Ok(new { AllLessons = groupLogicManager.GetPrivateStudentMainPageModel(userId), AllFedbacks = groupAPIManager.AddAndCheckNewFeedback(feedback, userId)});
+            return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
         }
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
@@ -50,13 +52,27 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetStudentUnlockedMaterialsByTag(userId, tag));
         }
 
+        [Authorize(Roles = "Преподаватель")]
         [HttpGet("Attendance/{groupId}")]
         public IActionResult GetGroupAttendanceById(int groupId)
         {
             var groupLogicManager = new GroupLogicManager();
-            return Ok(groupLogicManager.GetGroupAttendanceById(groupId));
+            try
+            {
+                return Ok(groupLogicManager.GetGroupAttendanceById(User.Identity.Name ,groupId));
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(404, e.Message);
+            }
+            catch(UnauthorizedAccessException e)
+            {
+                return StatusCode(403, e.Message);
+            }
         }
 
+
+        [Authorize(Roles = "Преподаватель")]
         [HttpPut("Lesson/{groupId}")]
         public IActionResult AddLessonWithAttendances(LessonInputModel lesson, int groupId)
         {
@@ -68,14 +84,19 @@ namespace DevEducationControlSystem.API.Controllers
             var lessonModel = new LessonModel() { GroupId = lesson.GroupId, Name = lesson.Name, LessonDate = lesson.LessonDate, Comments = lesson.Comments };
             try
             {
-                return Ok(groupLogicManager.AddLessonWithAttendances(lessonModel));
+                return Ok(groupLogicManager.AddLessonWithAttendances(User.Identity.Name, lessonModel));
             }
             catch (ArgumentException e)
             {
                 return StatusCode(404, e.Message);
             }
+            catch (UnauthorizedAccessException e)
+            {
+                return StatusCode(403, e.Message);
+            }
         }
 
+        [Authorize(Roles = "Преподаватель")]
         [HttpPost("Attendance")]
         public IActionResult UpdateAttendance(int attendanceId, bool isPresent)
         {
