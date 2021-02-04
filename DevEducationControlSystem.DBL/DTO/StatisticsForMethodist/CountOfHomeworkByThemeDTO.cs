@@ -6,6 +6,7 @@ namespace DevEducationControlSystem.DBL.DTO.StatisticsForMethodist
 {
     public class CountOfHomeworkByThemeDTO
     {
+     
         public string HomeworkName { get; set; }
         public string ThemeName { get; set; }
         public int DoneHomework { get; set; }

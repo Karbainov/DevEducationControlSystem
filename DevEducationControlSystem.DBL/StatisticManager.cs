@@ -145,7 +145,7 @@ namespace DevEducationControlSystem.DBL
         public List<CountHomeworkByThemeInCityCourseGroupDTO> CountHomeworkByThemeInCityCourseGroup()
         {
             var statisticList = new List<CountHomeworkByThemeInCityCourseGroupDTO>();
-            string expression = "[CountHomeworkByThemeInCityCourseGroup]";
+            string expression = "[SelectCityCourseHomeworkThemeStatus]";
             using (var connection = SqlServerConnection.GetConnection())
                 connection.Query<CountHomeworkByThemeInCityCourseGroupDTO, GroupInCourseDTO, ThemeInGroupDTO, CountOfHomeworkByThemeDTO,
                 CountHomeworkByThemeInCityCourseGroupDTO>(expression, (City, Course, Group, Homework) =>
@@ -154,7 +154,7 @@ namespace DevEducationControlSystem.DBL
 
                     foreach (var S in statisticList)
                     {
-                        if (S.CityName == city.CityName)
+                        if (S.CityName == City.CityName)
                         {
                             city = S;
                             break;
@@ -170,11 +170,11 @@ namespace DevEducationControlSystem.DBL
 
                     GroupInCourseDTO course = null;
 
-                    foreach (var S in city.HomeworkStatusbyThemeInCourse)
+                    foreach (var C in city.GroupInCourse)
                     {
-                        if (S.CourseName == course.CourseName)
+                        if (C.CourseName == Course.CourseName)
                         {
-                            course = S;
+                            course = C;
                             break;
                         }
                     }
@@ -182,52 +182,33 @@ namespace DevEducationControlSystem.DBL
                     if (course == null)
                     {
                         course = Course;
-                        course.SelectStudentsHomeworkStatus = new List<CountOfHomeworkByThemeDTO>();
-                        city.HomeworkStatusbyThemeInCourse.Add(course);
+                        course.ThemeInGroup = new List<ThemeInGroupDTO>();
+                        city.GroupInCourse.Add(course);
                     }
 
-                    ThemeInGroupDTO course = null;
+                    ThemeInGroupDTO group = null;
 
-                    foreach (var S in city.HomeworkStatusbyThemeInCourse)
+                    foreach (var G in course.ThemeInGroup)
                     {
-                        if (S.CourseName == course.CourseName)
+                        if (G.GroupName == Group.GroupName)
                         {
-                            course = S;
+                            group = G;
                             break;
                         }
                     }
 
-                    if (course == null)
+                    if (group == null)
                     {
-                        course = Course;
-                        course.SelectStudentsHomeworkStatus = new List<CountOfHomeworkByThemeDTO>();
-                        city.HomeworkStatusbyThemeInCourse.Add(course);
+                        group = Group;
+                        group.CountOfHomeworkByTheme = new List<CountOfHomeworkByThemeDTO>();
+                        group.CountOfHomeworkByTheme.Add(Homework);
                     }
 
-                    CountHomeworkByThemeInCityCourseGroupDTO homework = null;
-
-                    foreach (var S in course.SelectStudentsHomeworkStatus)
-                    {
-                        if (S.ThemeName == homework.ThemeName)
-                        {
-                            homework = S;
-                            break;
-                        }
-                    }
-
-
-                    if (homework == null)
-                    {
-                        homework = Homework;
-                        homework.SelectStudentsHomeworkStatus = new List<CountOfHomeworkByThemeDTO>();
-                        homework.SelectStudentsHomeworkStatus.Add(homework);
-                    }
-
-                    return city;
+                   return city;
                 },
 
 
-             commandType: CommandType.StoredProcedure, splitOn: "CityName, CourseName, ThemeName").AsList<CountHomeworkByThemeInCityCourseGroupDTO>();
+             commandType: CommandType.StoredProcedure, splitOn: "CourseName, GroupName,ThemeName");
 
             return statisticList;
         }

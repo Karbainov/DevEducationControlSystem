@@ -10,7 +10,7 @@ namespace DevEducationControlSystem.DBL.DTO.StatisticsForMethodist
         public string CityName { get; set; }
         
 
-        public List<GroupInCourseDTO> HomeworkStatusbyThemeInCourse { get; set; }
+        public List<GroupInCourseDTO> GroupInCourse { get; set; }
    
 
     }
