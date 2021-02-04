@@ -45,7 +45,7 @@ namespace DevEducationControlSystem.BLL.Mappers
 
                         foreach (var p in s.Periods)
                         {
-                            if ((DateTime.Now > m.Group.StartDate.AddDays(m.Group.DurationInWeeks * 7 * p.PeriodNumber)
+                            if ((DateTime.Now > m.Group.StartDate.AddDays(30 * p.PeriodNumber)
                                   && p.isPaid == false))
                             {
                                 p.IsDebt = true;
