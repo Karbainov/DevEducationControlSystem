@@ -15,22 +15,45 @@ namespace DevEducationControlSystem.DBL.CRUD
         public List<SelectPaymentInfoDTO> SelectPaymentInfo(int userId)
         {
 
-            List<SelectPaymentInfoDTO> selectPaymentInfoDTOs;
+            List<SelectPaymentInfoDTO> paymentInfoDTOs = new List<SelectPaymentInfoDTO>();
             string expr = "[SelectPaymentInfo]";
             var value = new { UserId = userId };
-            using (var connection = GetConnection())
+            using (var connection = SqlServerConnection.GetConnection())
             {
-                selectPaymentInfoDTOs = connection.Query<SelectPaymentInfoDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<SelectPaymentInfoDTO>();
+                 connection.Query<SelectPaymentInfoDTO, StudentPayDTO, SelectPaymentInfoDTO>(expr,
+                   (info, period) =>
+                   {
+                       SelectPaymentInfoDTO paymentInfos = null;
+                       foreach (var r in paymentInfoDTOs)
+                       {
+                           if (r.Id == info.Id)
+                           {
+                               paymentInfos = r;
+                               break;
+                           }
+                       }
+                       if (paymentInfos == null)
+                       {
+                           paymentInfos = info;
+                           paymentInfoDTOs.Add(paymentInfos);
+                       }
+                       if (paymentInfos.Periods == null)
+                       {
+                           paymentInfos.Periods = new List<StudentPayDTO>();
+                       }
+                       foreach (var p in paymentInfoDTOs)
+                       { 
+                           paymentInfos.Periods.Add(period);
+                       }
+
+                       return paymentInfos;
+                   },    
+                    value,
+                    commandType: CommandType.StoredProcedure,
+                    splitOn: "Period"
+                     );
             }
-            return selectPaymentInfoDTOs;
-        }
-
-
-        private static SqlConnection GetConnection()
-        {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            SqlConnection connection = new SqlConnection(connectionString);
-            return connection;
+            return paymentInfoDTOs;
         }
 
         public List<GroupPaymentDTO> GetPaymentDTOs()
@@ -105,5 +128,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
             return groupList;
         } 
+   
+    
     }
 }
