@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.DBL.DTO;
+using DevEducationControlSystem.BLL;
 
 
 namespace DevEducationControlSystem.BLL.Mappers
@@ -38,15 +39,18 @@ namespace DevEducationControlSystem.BLL.Mappers
 
                     if (s.Periods != null)
                     {
-                        var lastFactPeriod = s.Periods.Count;
-                        var diff = m.CountPeriods - lastFactPeriod;  
+                        var lastFactPeriod = s.Periods.Count; // последний период за который есть оплата
+                        var diff = m.CountPeriods - lastFactPeriod;  //
+                       
 
 
 
                         foreach (var p in s.Periods)
                         {
-                            if ((DateTime.Now > m.Group.StartDate.AddDays(30 * p.PeriodNumber)
-                                  && p.isPaid == false))
+                            var sum = p.Sum;
+
+                            if ((DateTime.Now > m.Group.StartDate.AddDays(m.Group.DurationInWeeks/m.CountPeriods *7 * p.PeriodNumber)
+                                  && p.isPaid == false && sum < Parameters.PaymentForOnePeriod))
                             {
                                 p.IsDebt = true;
                             }
@@ -56,7 +60,7 @@ namespace DevEducationControlSystem.BLL.Mappers
                             }
                         }
 
-                        for (int i = 0; i < diff; i++ )
+                        for (int i = 0; i < diff; i++ ) // добавляем пустые периоды
                         {
                             s.Periods.Add(new PeriodDTO()
                             {
@@ -74,7 +78,7 @@ namespace DevEducationControlSystem.BLL.Mappers
                     }
                     else
                     {
-                        for (int i = 0; i < m.CountPeriods; i++)
+                        for (int i = 0; i < m.CountPeriods; i++) // если не было оплат вообще, то создаем все 4 периода
                         {
                             s.Periods.Add(new PeriodDTO()
                             {
