@@ -22,5 +22,7 @@ namespace DevEducationControlSystem.BLL.Models
         public List<HomeworkInfoModel> Homeworks { get; set; }
 
         public List<MaterialInfoModel> Materials { get; set; }
+
+        public List<UserWithRoleModel> UserWithRoles { get; set; }
     }
 }
