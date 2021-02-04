@@ -36,7 +36,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(usermanager.SelectById(userProfile.UserId));
         }
 
-        [HttpGet("Student/{userId}/Info")]
+        [HttpGet("Student/{userId}/Paymentnfo")]
         public IActionResult GetPaymentInfo (int userId)
         {
             var userLogicManager = new UserLogicManager();

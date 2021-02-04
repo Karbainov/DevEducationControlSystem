@@ -20,7 +20,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             var value = new { UserId = userId };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                paymentInfoDTOs = connection.Query<SelectPaymentInfoDTO, StudentPayDTO, SelectPaymentInfoDTO>(expr,
+                 connection.Query<SelectPaymentInfoDTO, StudentPayDTO, SelectPaymentInfoDTO>(expr,
                    (info, period) =>
                    {
                        SelectPaymentInfoDTO paymentInfos = null;
@@ -51,7 +51,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                     value,
                     commandType: CommandType.StoredProcedure,
                     splitOn: "Period"
-                     ).AsList();
+                     );
             }
             return paymentInfoDTOs;
         }
