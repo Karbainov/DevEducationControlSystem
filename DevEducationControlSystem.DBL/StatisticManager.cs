@@ -141,14 +141,48 @@ namespace DevEducationControlSystem.DBL
             
         }
 
-        public List<SelectCityCourseHomeworkThemeStatusDTO> SelectCityCourseHomeworkThemeStatus()
-        {
+        //public List<SelectCityCourseHomeworkThemeStatusDTO> SelectCityCourseHomeworkThemeStatus()
+        //{
+        //    var statisticList = new List<SelectCityCourseHomeworkThemeStatusDTO>();
+        //    string expression = "[SelectCityCourseHomeworkThemeStatus]";
+        //    using (var connection = SqlServerConnection.GetConnection())
+        //        connection.Query<SelectCityCourseHomeworkThemeStatusDTO, SelectStudentsHomeworkStatusDTO, SelectCityCourseHomeworkThemeStatusDTO>(expression, (City, Course, Theme) =>
+        //        {
+        //            SelectCityCourseHomeworkThemeStatusDTO city = null;
+        //            SelectCityCourseHomeworkThemeStatusDTO course = null;
+
+        //            foreach (var S in statisticList)
+        //            {
+        //                if (City.CityName == S.CityName)
+        //                {
+        //                    city = S;
+        //                    break;
+        //                }
+        //            }
+
+        //            if (city == null)
+        //            {
+        //                city = City;
+        //                statisticList.Add(city);
+        //            }
+        //            if (city.courseList == null) city.courseList = new List<CourseDTO>();
+
+        //            city.courseList.Add(Course);
 
 
-            return cityList;
+
+
+
+
+        //            return city;
+        //        },
+
+        //          commandType: CommandType.StoredProcedure, splitOn: "Groupname");
+        //}
+        //        return cityList;
         }
 
      }
 
-    }
+    
 
