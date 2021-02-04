@@ -9,31 +9,26 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     public class LoginPassRoleDTOMapper
     {
-        public List<LoginPassRoleModel> Map(List<LoginPassRoleDTO> dto)
+        public LoginPassRoleModel Map(LoginPassRoleDTO dto)
         {
-            var loginPassRoleModels = new List<LoginPassRoleModel>();
 
-            foreach (var log in dto)
+            var logPasRolMod = new LoginPassRoleModel()
             {
-                var logPasRolMod = new LoginPassRoleModel()
-                {
-                    UserId = log.UserId,
-                    UserLog = log.UserLog,
-                    UserPas = log.UserPas,
-                    Roles = new List<RoleModel>()
-                };
-                foreach(var r in log.Roles)
-                {
-                    if (r != null)
-                    {
-                        logPasRolMod.Roles.Add(new RoleModel(r));
-                    }
-                }
-                
-                loginPassRoleModels.Add(logPasRolMod);
+                UserId = dto.UserId,
+                UserLog = dto.UserLog,
+                UserPas = dto.UserPas,
+                Roles = new List<RoleModel>()
             };
+            foreach (var r in dto.Roles)
+            {
+                if (r != null)
+                {
+                    logPasRolMod.Roles.Add(new RoleModel(r));
+                }
+            }
 
-            return loginPassRoleModels;
+
+            return logPasRolMod;
 
         }
     }
