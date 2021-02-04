@@ -1,4 +1,5 @@
 ﻿using DevEducationControlSystem.BLL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class AdminController : Controller
     {
+        [Authorize(Roles = "Администратор")]
         [HttpGet("RecycleBin")]
         public IActionResult GetAllSoftDeletedItems()
         {
@@ -19,6 +21,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(adminLogic.GetSoftDeletedItems());
         }
 
+        [Authorize(Roles = "Администратор")]
         [HttpPut("RecycleBin/Homework")]
         public IActionResult RecoverHomeworkById(int homeworkId)
         {
@@ -27,6 +30,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Homework recovered");
         }
 
+        [Authorize(Roles = "Администратор")]
         [HttpDelete("RecycleBin/Homework")]
         public IActionResult HardDeleteHomeworkById(int homeworkId)
         {
@@ -35,6 +39,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Homework completly deleted");
         }
 
+        [Authorize(Roles = "Администратор")]
         [HttpPut("RecycleBin/Material")]
         public IActionResult RecoverMaterialById(int materialId)
         {
@@ -43,6 +48,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Material recovered");
         }
 
+        [Authorize(Roles = "Администратор")]
         [HttpDelete("RecycleBin/Material")]
         public IActionResult HardDeleteMaterialById(int materialId)
         {
@@ -51,6 +57,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Material completly deleted");
         }
 
+        [Authorize(Roles = "Администратор")]
         [HttpPut("RecycleBin/Course")]
         public IActionResult RecoverCourseById(int courseId)
         {
@@ -59,6 +66,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Course recovered");
         }
 
+        [Authorize(Roles = "Администратор")]
         [HttpDelete("RecycleBin/Course")]
         public IActionResult HardDeleteCourseById(int courseId)
         {
