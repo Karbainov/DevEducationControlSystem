@@ -12,9 +12,10 @@ namespace DevEducationControlSystem.BLL.Mappers
         {
             var themeInfoModel = new ThemeInfoModel()
             {
-                Id = themeDTO.Id;
-                Materials = new List<MaterialInfoModel>();
-            }
+                Id = themeDTO.Id,
+                Materials = new List<MaterialInfoModel>()
+            };
+            return themeInfoModel;
         }
     }
 }

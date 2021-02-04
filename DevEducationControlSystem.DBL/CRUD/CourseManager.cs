@@ -153,5 +153,53 @@ namespace DevEducationControlSystem.DBL.CRUD
             var CourseList = SqlServerConnection.GetConnection().Query("Course_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
         }
 
+        public string AddReturnResult(string name, string description, int durationInWeeks)
+        {
+            string expression = "[Course_Add]";
+            var parameter = new
+            {
+                Name = name,
+                Description = description,
+                DurationInWeeks = durationInWeeks
+            };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+            }
+
+            var resultProcedure = $"Вы успешно создали новый курс {name}";
+            return resultProcedure;
+        }
+
+        public string UpdateReturnResult(int id, string name, string description, int durationInWeeks, bool isDeleted)
+        {
+            string expression = "[Course_Update]";
+            var parameter = new
+            {
+                Id = id,
+                Name = name,
+                Description = description,
+                DurationInWeeks = durationInWeeks,
+                IsDeleted = isDeleted
+            };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+            }
+            var resultProcedure = $"Вы успешно обновили курс {name}";
+            return resultProcedure;
+        }
+        public string DeleteReturnResult(int id, string courseName)
+        {
+            string expression = "[Course_Delete]";
+            var parameter = new { id };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+            }
+            var resultProcedure = $"Вы успешно удалили курс {courseName}";
+            return resultProcedure;
+        }
+
     }
 }
