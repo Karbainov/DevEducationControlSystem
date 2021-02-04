@@ -85,7 +85,7 @@ namespace DevEducationControlSystem.BLL
           var commentManager = new CommentManager();
           var answerManager = new AnswerManager();
           var mapper = new UserDTOHomeworkDTOAnswerDTOCommentDTOtoStudentAnswerStoryAndCommentMapper();
-          return mapper.Map(commentManager.SelectСommentByAnswerIdOrderByTime(answerId), answerManager.SelectById(answerId));
+          return mapper.Map(commentManager.SelectСommentByAnswerIdOrderByTime(answerId), answerManager.SelectAnswerAndStatusAnswerById(answerId));
         }
     }
 }

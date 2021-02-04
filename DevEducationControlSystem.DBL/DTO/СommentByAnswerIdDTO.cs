@@ -7,7 +7,8 @@ namespace DevEducationControlSystem.DBL.DTO
   public class СommentByAnswerIdDTO
   {
     public int id { get; set; }
-    public string FullName { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public string Message { get; set; }
     public DateTime Date { get; set; }
 

@@ -10,18 +10,21 @@ namespace DevEducationControlSystem.BLL.Mappers
   public class UserDTOHomeworkDTOAnswerDTOCommentDTOtoStudentAnswerStoryAndCommentMapper
   {
     public StudentAnswerModel Map(List<СommentByAnswerIdDTO> commentByAnswer,
-     AnswerDTO answerInfo)
+     AnswerAndStatusAnswerDTO answerInfo)
     {
       
           var studentAnswer = new StudentAnswerModel()
           {
             Id = answerInfo.Id,
             UserId = answerInfo.UserId,
-             ResourceId = answerInfo.ResourceId,
+            ResourceId = answerInfo.ResourceId,
+            Images = answerInfo.Images,
+            Links = answerInfo.Links,
             HomeworkId = answerInfo.HomeworkId,
             Date = answerInfo.Date,
             Message = answerInfo.Message,
             StatusId = answerInfo.StatusId,
+            Name = answerInfo.Name,
 
             Comments = new List<TeacherCommentModel>()
           };
@@ -31,7 +34,8 @@ namespace DevEducationControlSystem.BLL.Mappers
           studentAnswer.Comments.Add( new TeacherCommentModel()
           {
             CommentId = comment.id,
-            FullName = comment.FullName,
+            FirstName = comment.FirstName,
+            LastName = comment.LastName,
             CommentMessage = comment.Message,
             MessageDate = comment.Date
           });    

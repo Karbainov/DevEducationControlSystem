@@ -151,5 +151,14 @@ namespace DevEducationControlSystem.DBL.CRUD
             return connection.QuerySingle<AnswerByUserIdAndHomeworkIdDTO>(expr, value, commandType: CommandType.StoredProcedure);
           }
         }
+        public AnswerAndStatusAnswerDTO SelectAnswerAndStatusAnswerById(int answerId)
+        {
+          string expr = "[SelectAnswerAndStatusAnswerById]";
+          var value = new { AnswerId = answerId };
+          using (var connection = SqlServerConnection.GetConnection())
+          {
+            return connection.QuerySingle<AnswerAndStatusAnswerDTO>(expr, value, commandType: CommandType.StoredProcedure);
+          }
+        }
     }
 }
