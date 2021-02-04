@@ -183,7 +183,7 @@ namespace DevEducationControlSystem.DBL
                     commandType: CommandType.StoredProcedure).AsList<NumberOfUsersWithStatusInCourseInCityDTO>();
                 return cities;
             }
-            
+
         }
 
         public List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO> SelectAllGroupsAndAmountPeopleInGroupByCity()
@@ -291,7 +291,7 @@ namespace DevEducationControlSystem.DBL
                             break;
                         }
                     }
-                    
+
                     if (group == null)
                     {
                         group = Group;
@@ -317,27 +317,25 @@ namespace DevEducationControlSystem.DBL
             return statisticList;
         }
     }
-}
-              
-           
-        
 
-        public List<CountStudentsOnCourseByGroupsDTO> GetCountStudentsOnCourseByGroups(int id)
+
+    public List<CountStudentsOnCourseByGroupsDTO> GetCountStudentsOnCourseByGroups(int id)
+    {
+        var NumberOfStudentsList = new List<CountStudentsOnCourseByGroupsDTO>();
+        string expression = "[CountStudentsOnCourseByGroups]";
+        var value = new { CourseId = id };
+
+        using (var connection = SqlServerConnection.GetConnection())
         {
-            var NumberOfStudentsList = new List<CountStudentsOnCourseByGroupsDTO>();
-            string expression = "[CountStudentsOnCourseByGroups]";
-            var value = new { CourseId = id };
-
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-                NumberOfStudentsList = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
-            }
-            return NumberOfStudentsList;
-
-
+            NumberOfStudentsList = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
         }
+        return NumberOfStudentsList;
+
 
     }
+}
 
-    }
+
+    
+    
 
