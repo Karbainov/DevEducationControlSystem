@@ -16,12 +16,16 @@ namespace DevEducationControlSystem.BLL.Models
         {
 
         }
-        //public NumberOfUsersByStatusInCourseModel(NumberOfUsersByStatusInCourseDTO dto)
-        //{
-        //    CourseId = dto.CourseId;
-        //    CourseName = dto.CourseName;
-
-        //    NumberOfUsersByStatus = dto.NumberOfUsersByStatus;
-        //}
+        public NumberOfUsersByStatusInCourseModel(NumberOfUsersByStatusInCourseDTO dto)
+        {
+            CourseId = dto.CourseId;
+            CourseName = dto.CourseName;
+            NumberOfUsersByStatus = new List<NumberOfUsersByStatusModel>();
+            dto.NumberOfUsersByStatus.ForEach((r) =>
+            {
+                NumberOfUsersByStatus.Add(r != null ? new NumberOfUsersByStatusModel(r) : null);
+            }
+            );
+        }
     }
 }

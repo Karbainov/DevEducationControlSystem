@@ -18,12 +18,18 @@ namespace DevEducationControlSystem.BLL.Models
 
         }
 
-        //public NumberOfUsersWithStatusInCourseInCityModel(NumberOfUsersWithStatusInCourseInCityDTO dto)
-        //{
-        //    CityId = dto.CityId;
-        //    CityName = dto.CityName;
-        //    // ??? List<NumberOfUsersByStatusInCourseModel> NumberOfUsersByStatusInCourse 
+        public NumberOfUsersWithStatusInCourseInCityModel(NumberOfUsersWithStatusInCourseInCityDTO dto)
+        {
+            CityId = dto.CityId;
+            CityName = dto.CityName;
+            NumberOfUsersByStatusInCourse = new List<NumberOfUsersByStatusInCourseModel>();
+            dto.NumberOfUsersByStatusInCourse.ForEach((r) =>
+                {
+                    NumberOfUsersByStatusInCourse.Add(r != null ? new NumberOfUsersByStatusInCourseModel(r) : null);
+                });
 
-        //}
+        }
+
+        
     }
 }

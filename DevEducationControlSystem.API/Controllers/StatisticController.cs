@@ -22,7 +22,8 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult GetNumberOfUsersWithStatusInCourseInCity()
         {
             var statisticLogic = new StatisticLogicManager();
-            return Ok(statisticLogic.GetNumberOfUsersWithStatusInCourseInCity());
+            var nn = statisticLogic.GetNumberOfUsersWithStatusInCourseInCity();
+            return Ok(nn);
         }
     }
 }

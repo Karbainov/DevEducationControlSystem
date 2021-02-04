@@ -92,12 +92,12 @@ namespace DevEducationControlSystem.DBL
 
         public List<NumberOfUsersWithStatusInCourseInCityDTO> SelectNumberOfUsersWithStatusInCourseInCity()
         {
-            List<NumberOfUsersWithStatusInCourseInCityDTO> CountUser = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
+            //List<NumberOfUsersWithStatusInCourseInCityDTO> CountUser = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
             string expr = "[SelectNumberOfUsersWithStatusInCourseInCity]";
             using (var connection = SqlServerConnection.GetConnection())
             {
                 List<NumberOfUsersWithStatusInCourseInCityDTO> cities = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
-                CountUser = connection.Query<NumberOfUsersWithStatusInCourseInCityDTO,
+                connection.Query<NumberOfUsersWithStatusInCourseInCityDTO,
                     NumberOfUsersByStatusInCourseDTO,
                     NumberOfUsersByStatusDTO,
                     NumberOfUsersWithStatusInCourseInCityDTO>(expr,
@@ -144,8 +144,9 @@ namespace DevEducationControlSystem.DBL
                     },
                     splitOn: "CourseId, StatusId",
                     commandType: CommandType.StoredProcedure).AsList<NumberOfUsersWithStatusInCourseInCityDTO>();
+                return cities;
             }
-            return CountUser;
+            
         }
     }
 }
