@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO.StatisticsForMethodist
 {
-    public class SelectStudentsHomeworkStatusDTO
+    public class CountOfHomeworkByThemeDTO
     {
         public string HomeworkName { get; set; }
         public string ThemeName { get; set; }
@@ -13,12 +13,12 @@ namespace DevEducationControlSystem.DBL.DTO.StatisticsForMethodist
         public int HomeworkDoneOnTime { get; set; }
         public int LateDoneHomework { get; set; }
 
-        public SelectStudentsHomeworkStatusDTO()
+        public CountOfHomeworkByThemeDTO()
         {
 
         }
 
-        public SelectStudentsHomeworkStatusDTO(SelectStudentsHomeworkStatusDTO dto)
+        public CountOfHomeworkByThemeDTO(CountOfHomeworkByThemeDTO dto)
         {
             HomeworkName = dto.HomeworkName;
             ThemeName = dto.ThemeName;

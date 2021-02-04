@@ -4,13 +4,13 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO.StatisticsForMethodist
 {
-   public class SelectCityCourseHomeworkThemeStatusDTO
+   public class CountHomeworkByThemeInCityCourseGroupDTO
     {
         
         public string CityName { get; set; }
         
 
-        public List<HomeworkStatusbyThemeInCourseDTO> HomeworkStatusbyThemeInCourse { get; set; }
+        public List<GroupInCourseDTO> HomeworkStatusbyThemeInCourse { get; set; }
    
 
     }

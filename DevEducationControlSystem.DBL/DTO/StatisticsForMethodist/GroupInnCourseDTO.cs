@@ -4,11 +4,12 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.DTO.StatisticsForMethodist
 {
-   public class HomeworkStatusbyThemeInCourseDTO
+   public class GroupInCourseDTO
+
     {
         public string CourseName { get; set; }
        
-        public List<SelectStudentsHomeworkStatusDTO> SelectStudentsHomeworkStatus { get; set; }
+        public List<ThemeInGroupDTO> HomeworkStatusbyTheme { get; set; }
         
 
     }
