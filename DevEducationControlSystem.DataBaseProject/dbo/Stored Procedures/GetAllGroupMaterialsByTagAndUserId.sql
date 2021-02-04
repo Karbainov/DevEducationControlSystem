@@ -6,7 +6,7 @@
 AS
 BEGIN
 
-DECLARE @var table (ResourceId int, MaterialId int, Links nvarchar(1000), Images nvarchar(1000))
+DECLARE @var table (MaterialName nvarchar(100), [Message] nvarchar(1000), ResourceId int, MaterialId int, Links nvarchar(1000), Images nvarchar(1000))
 INSERT @var EXEC GetAllGroupMaterialsByUserId @UserId
 
 SELECT Tag.[Name] AS Tag, [Resource].Links, [Resource].Images, AllGroupMaterials.MaterialId

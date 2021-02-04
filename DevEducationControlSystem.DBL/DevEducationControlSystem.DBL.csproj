@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CRUD\PaymentInfoModel.cs" />
     <Compile Remove="CRUD\UdaliMeniaManager.cs" />
     <Compile Remove="DTO\Base\UdaliMeniaDTO.cs" />
   </ItemGroup>

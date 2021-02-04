@@ -1,15 +1,19 @@
 ﻿using System;
 using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.CRUD;
+using DevEducationControlSystem.DBL;
 
 namespace TConsole
 {
-    class Program
+  class Program
     {
         static void Main(string[] args)
         {
             var manager = new LessonManager();
-            manager.SelectPassedLessonByStudentId(40);
+            manager.SelectPassedLessonByStudentId(38);
+
+
+
         }
     }
 }

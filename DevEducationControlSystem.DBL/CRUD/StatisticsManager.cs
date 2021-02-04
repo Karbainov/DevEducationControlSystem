@@ -86,5 +86,16 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
             return CountUser;
         }
+
+        List<CountStudentsOnCourseByGroupsDTO> CountStudentsOnCourseByGroupsDTO()
+        {
+            List<CountStudentsOnCourseByGroupsDTO> Count = null;
+            string expression = "[CountStudentsOnCourseByGroupsDTO]";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                Count = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, commandType: CommandType.StoredProcedure).AsList<CountStudentsOnCourseByGroupsDTO>();
+            }
+            return Count;
+        }
     }
 }

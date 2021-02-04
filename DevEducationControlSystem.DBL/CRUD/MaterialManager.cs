@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-
+using System.Linq;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -25,6 +25,8 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             _connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
         }
+
+
         public List<MaterialDTO> Select()
         {
             List<MaterialDTO> materials = new List<MaterialDTO>();
@@ -197,6 +199,20 @@ namespace DevEducationControlSystem.DBL.CRUD
             return materialsByTag;
         }
 
+        public List<UnlockedMaterialByUserIdDTO> SelectUnlockedMaterialByUserIdDTOs(int userId)
+        {
+            var materials = new List<UnlockedMaterialByUserIdDTO>();
+            string expr = "[SelectUnlockedMaterialByUserId]";
+            var parameter = new { UserId = userId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                materials = connection.Query<UnlockedMaterialByUserIdDTO>(expr, parameter, commandType: CommandType.StoredProcedure).AsList<UnlockedMaterialByUserIdDTO>();
+            }
+
+            return materials;
+        }
+
         public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
         {
             string expr = "[SelectAllMaterialsByGroupId]";
@@ -205,6 +221,17 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 return connection.Query<MaterialsInfoForGroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<MaterialsInfoForGroupDTO>();
             }
+        }
+        public List<MaterialDTO> SelectSoftDeleted()
+        {
+            string expr = "[Material_SelectSoftDeleted]";
+            var materialList = SqlServerConnection.GetConnection().Query<MaterialDTO>(expr, commandType: CommandType.StoredProcedure).ToList<MaterialDTO>();
+            return materialList;
+        }
+
+        public void UpdateIsDeleted(int id)
+        {
+            var materialList = SqlServerConnection.GetConnection().Query("Material_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
         }
 
 

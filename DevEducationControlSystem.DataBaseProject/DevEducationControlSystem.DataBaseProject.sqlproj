@@ -96,6 +96,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Resource" />
     <Folder Include="dbo\Stored Procedures\CRUD\Theme" />
     <Folder Include="dbo\Stored Procedures\CRUD\Course" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Homework_Course" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Lesson_Theme.sql" />
@@ -367,6 +368,35 @@
     <Build Include="dbo\Stored Procedures\SelectUsersByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectLessonAttendanceByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialsWithTagsByUserIdAndTag.sql" />
-    <Build Include="dbo\Stored Procedures\SelectCourseGeneralInfoByStudentId_1.sql" />
+    <Build Include="dbo\Stored Procedures\SelectCourseGeneralInfoByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\CountStudentsPayment.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsHomeworkStatus.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsStudyingAfterBase.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateAttendanceIsPresent.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_RecoverSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllUsersOfCurrentCourseById.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCoursesOfCurrentUserById.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCoursesInCurrentCityById.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCitiesByCurrentCourseById.sql" />
+    <Build Include="dbo\Stored Procedures\AddAnswerOnCurrentHomework.sql" />
+    <Build Include="dbo\Stored Procedures\GetCourseDurationOfCurrentStudentById.sql" />
+    <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectHomeWorksAndAnswersByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserGroupByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPassedThemesAndHomeworksByStudentId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectStudentsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAnswerByUserIdAndHomeworkId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectСommentByAnswerIdOrderByTime.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Add.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Select.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_SelectById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Stored Procedures\CountStudentsOnCourseByGroups.sql" />
   </ItemGroup>
 </Project>

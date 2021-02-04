@@ -57,6 +57,19 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             return User_GroupDTOs;
         }
+
+        public List<User_GroupDTO> SelectByUserId(int userId)
+        {
+            List<User_GroupDTO> User_GroupDTOs;
+            string expr = "[SelectUserGroupByUserId]";
+            var value = new { UserId = userId };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                User_GroupDTOs = connection.Query<User_GroupDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return User_GroupDTOs;
+        }
         public User_GroupDTO SelectById(int id)
         {
             var User_GroupDTO = new User_GroupDTO();
