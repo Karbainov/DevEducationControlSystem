@@ -9,8 +9,18 @@ namespace DevEducationControlSystem.BLL.Mappers
     {
         public StudentPrivateModel Map(
             PrivateStudentMainPageModel overlook,
-            FeedbackModel feedback,
-            MaterialModel)
-        mapper = new CourseOverlookDTOGroupmatesDTOPassedLessonByStudentIdDTOtoPrivateStudentMainPageModelMapper
-    }
+            List<FeedbackModel> feedback,
+            List<UnlockedMaterialByUserIdModel> materials,
+            List<HomeworkWithAnswerModel> hwWithAnswer)
+        {
+
+            return new StudentPrivateModel()
+            {
+                BaseInfo = overlook,
+                Feedbacks = feedback,
+                UnlockedMaterials = materials,
+                HomeworksWithAnswers = hwWithAnswer
+            };
+        }
+        }
 }

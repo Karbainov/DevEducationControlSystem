@@ -199,7 +199,19 @@ namespace DevEducationControlSystem.DBL.CRUD
             return materialsByTag;
         }
 
-        public 
+        public List<UnlockedMaterialByUserIdDTO> SelectUnlockedMaterialByUserIdDTOs(int userId)
+        {
+            var materials = new List<UnlockedMaterialByUserIdDTO>();
+            string expr = "[SelectUnlockedMaterialByUserId]";
+            var parameter = new { UserId = userId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                materials = connection.Query<UnlockedMaterialByUserIdDTO>(expr, parameter, commandType: CommandType.StoredProcedure).AsList<UnlockedMaterialByUserIdDTO>();
+            }
+
+            return materials;
+        }
 
         public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
         {
