@@ -250,7 +250,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             {
 
-                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", id, commandType: CommandType.StoredProcedure);
+                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", new { id }, commandType: CommandType.StoredProcedure);
                 return UserDTO;
 
             }
