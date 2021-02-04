@@ -9,8 +9,10 @@
     <ProjectReference Include="..\DevEducationControlSystem.DBL\DevEducationControlSystem.DBL.csproj" />
   </ItemGroup>
 
+
   <ItemGroup>
-    <Folder Include="InputModels\" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.11" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 
 
