@@ -15,14 +15,14 @@ namespace DevEducationControlSystem.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class CourseController : Controller
     {
-        [Authorize]
-        [HttpPost("CreateCourse")]
-        public IActionResult CreateCourse(NewCourseInputModel inputModel)
+        //[Authorize]
+        [HttpPost("CreateCourse/{Name}/{Description}/{DurationInWeeks}")]
+        public IActionResult CreateCourse(string name, string Description, int DurationInWeeks)
         {
             var courseManager = new CourseManager();
-            string result = courseManager.AddReturnResult(inputModel.Name, inputModel.Description, inputModel.DurationInWeeks);
+            string result = courseManager.AddReturnResult(name, Description, DurationInWeeks);
 
             return Ok(result);
         }
@@ -45,15 +45,14 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost("CreateHomeworkByCourse/{courseId}")]
-        public IActionResult CreateHomeworkCourse(int courseId, NewHomeworkCourseInputModel inputModel, ResourceInputModel resource)
+/*        [HttpPost("CreateHomeworkByCourse/{courseId}")]
+        public IActionResult CreateHomeworkCourse(int courseId, NewHomeworkCourseInputModel inputModel)
         {
             var homeworkManager = new HomeworkManager();
-            var resourceManager = new ResourceManager();
             var result = homeworkManager.AddReturnResult(inputModel.ResourceId, inputModel.Name, inputModel.Description, inputModel.IsSolutionRequired);
 
             return Ok(result);
-        }
+        }*/
 
         [HttpPost("DeleteHomeworkByCourse/{homeworkId}")]
         public IActionResult DeleteHomeworkCourse(int homeworkId, string name)

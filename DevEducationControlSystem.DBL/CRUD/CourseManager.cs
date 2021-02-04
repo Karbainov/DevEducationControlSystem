@@ -153,7 +153,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             var CourseList = SqlServerConnection.GetConnection().Query("Course_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
         }
 
-        public string AddReturnResult(string name, string description, int durationInWeeks)
+        public void AddReturnResult(string name, string description, int durationInWeeks)
         {
             string expression = "[Course_Add]";
             var parameter = new
@@ -166,9 +166,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             {
                 connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
             }
-
-            var resultProcedure = $"Вы успешно создали новый курс {name}";
-            return resultProcedure;
         }
 
         public string UpdateReturnResult(int id, string name, string description, int durationInWeeks, bool isDeleted)

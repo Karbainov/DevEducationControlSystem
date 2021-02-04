@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DevEducationControlSystem.DBL.CRUD;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DevEducationControlSystem.API.Controllers
 {
@@ -13,6 +14,7 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class ThemeController : ControllerBase
     {
+        [Authorize(Roles="")]
         [HttpGet("CreateTheme/{themeId}")]
         public IActionResult GetMaterialsByTheme(int themeId)
         {
