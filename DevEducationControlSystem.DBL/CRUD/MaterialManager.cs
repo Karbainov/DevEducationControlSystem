@@ -132,12 +132,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public void Delete(int id)
         {
-            string expr = "[Material_Delete]";
-            var value = new { Id = id };
-            using (var connection = GetConnection())
-            {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
-            }
+            SqlServerConnection.GetConnection().Query("Material_Delete", new { id }, commandType: CommandType.StoredProcedure);
         }
 
         public void SoftDelete(int id)

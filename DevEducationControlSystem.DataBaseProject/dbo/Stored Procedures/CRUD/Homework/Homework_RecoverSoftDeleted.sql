@@ -2,6 +2,7 @@
 	@Id int
 		
 AS
-	UPDATE dbo.Homework SET
-		IsDeleted = 0
+	UPDATE 
+	dbo.Homework SET IsDeleted = 0
+
 WHERE Id = @Id

@@ -5,4 +5,3 @@
 	UPDATE dbo.Course
 	set IsDeleted = 0
 	Where Id=@Id
-	
