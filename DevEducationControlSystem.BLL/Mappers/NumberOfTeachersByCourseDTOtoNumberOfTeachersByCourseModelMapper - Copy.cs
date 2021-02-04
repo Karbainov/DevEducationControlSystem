@@ -9,9 +9,8 @@ namespace DevEducationControlSystem.BLL.Mappers
     public class NumberOfTeachersByCourseDTOtoNumberOfTeachersByCourseModelSecondMapper
     {
         public NumberOfTeachersByCourseModel Map(
-            //List<NumberOfTeachersByCourseDTO> dtoList,
             NumberOfTeachersByCourseIdDTO dto,
-            List<TeacherOnCourseDTO> teacherOnCourses
+            List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO> teacherOnCourses
             )
         {
             var listOfTeachers = new NumberOfTeachersByCourseModel();
@@ -24,12 +23,12 @@ namespace DevEducationControlSystem.BLL.Mappers
                 CityId = dto.CityId,
                 CityName = dto.CityName,
                 Amount = dto.Amount,
-                Teachers = new List<TeacherOnCourseModel>()
+                TeachersStat = new List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel>()
             };
             
             foreach (var n in teacherOnCourses)
             {
-                numberModel.Teachers.Add(new TeacherOnCourseModel(n));
+                numberModel.TeachersStat.Add(new SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel(n));
             }
 
 

@@ -12,7 +12,7 @@ namespace DevEducationControlSystem.BLL.Models
         public int CityId { get; set; }
         public string CityName { get; set; }
         public int Amount { get; set; }
-        public List<TeacherOnCourseModel> Teachers { get; set; }
+        public List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel> TeachersStat { get; set; }
 
         public NumberOfTeachersByCourseModel()
         {
