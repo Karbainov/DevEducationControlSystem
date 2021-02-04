@@ -32,17 +32,24 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(materialManager.GetUnlockedMaterialsWithTagsByUserIdAndTag(userId, tag));
         }
 
-        public GroupAttendanceModel GetGroupAttendanceById(int groupId)
-        {
-            var statisticManager = new StatisticManager();
-            var lessonManager = new LessonManager();
+        public GroupAttendanceModel GetGroupAttendanceById(string login, int groupId)
+        {            var groupManager = new GroupManager();
+            var group = groupManager.SelectById(groupId);
+            if (group == null)
+            {
+                throw new ArgumentException("Group is not exist");
+            }                        if (!isInGroup(login,groupId))
+            {
+                throw new UnauthorizedAccessException("Teacher is not in this group");
+            }
+            var statisticManager = new StatisticManager();
+            var lessonManager = new LessonManager();
             var mapper = new UserPercentOfPresentDTOsLessonAttendanceDTOsToGroupAttendanceMapper();
-
-            statisticManager.SelectPercentOfPresentsByGroupId(groupId);
-            lessonManager.SelectLessonAttendanceByGroupId(groupId);
-
-            return mapper.Map(statisticManager.SelectPercentOfPresentsByGroupId(groupId),
-                                lessonManager.SelectLessonAttendanceByGroupId(groupId));
+            statisticManager.SelectPercentOfPresentsByGroupId(groupId);
+            lessonManager.SelectLessonAttendanceByGroupId(groupId);
+
+            return mapper.Map(statisticManager.SelectPercentOfPresentsByGroupId(groupId),
+                                lessonManager.SelectLessonAttendanceByGroupId(groupId));
         }
 
         public PrivateStudentMainPageModel GetPrivateStudentMainPageModel(int studentId)
@@ -66,25 +73,29 @@ namespace DevEducationControlSystem.BLL
             return new AttendanceManager().Add(userId, lessonId, isPresent);
         }
 
-        public int AddLessonWithAttendances(LessonModel lesson)
-        {
-            var groupManager = new GroupManager();
-            var group = groupManager.SelectById(lesson.GroupId);
-            if(group == null)
-            {
-                throw new ArgumentException("Group is not exist");
+        public int AddLessonWithAttendances(string login, LessonModel lesson)
+        {
+            var groupManager = new GroupManager();
+            var group = groupManager.SelectById(lesson.GroupId);
+            if(group == null)
+            {
+                throw new ArgumentException("Group is not exist");
+            }            if (!isInGroup(login, lesson.GroupId))
+            {
+                throw new UnauthorizedAccessException("Teacher is not in this group");
             }
-            int lessonId = new LessonManager().Add(lesson.GroupId, lesson.Name, lesson.LessonDate, lesson.Comments);
-            var users = new UserManager().SelectUsersByGroupId(lesson.GroupId);
-            var manager = new AttendanceManager();
-            users.ForEach((u) =>
-            {
-                if (u.StatusId == Parameters.BaseStudentStatusId || u.StatusId == Parameters.SpecialtyStudentStatusId)
-                {
-                    manager.Add(u.Id, lessonId, false);
-                }
-            });
-            return lessonId;
+            int lessonId = new LessonManager().Add(lesson.GroupId, lesson.Name, lesson.LessonDate, lesson.Comments);
+            var users = new UserManager().SelectUsersByGroupId(lesson.GroupId);
+            var manager = new AttendanceManager();
+            users.ForEach((u) =>
+            {
+                if (u.StatusId == Parameters.BaseStudentStatusId || u.StatusId == Parameters.SpecialtyStudentStatusId)
+                {
+                    manager.Add(u.Id, lessonId, false);
+                }
+            });
+
+            return lessonId;
         }
 
         public void UpdateAttendance(int attendanceId, bool isPresent)
@@ -99,6 +110,16 @@ namespace DevEducationControlSystem.BLL
             var mapper = new FeedbackDTOtoFeedbackModelMapper();
 
             return mapper.Map(feedbackManager.SelectByUserId(userId));
+        }        private bool isInGroup(string login, int groupId)
+        {
+            var executor = new UserManager().GetLoginPassRole(login)[0];            var userGroupsForExecutor = new User_GroupManager().SelectByUserId(executor.UserId);            bool isInGroup = false;            userGroupsForExecutor.ForEach((u) =>
+            {
+                if (u.GroupId == groupId)
+                {
+                    isInGroup = true;
+                }
+            });
+            return isInGroup;
         }
     }
 }
