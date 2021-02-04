@@ -35,5 +35,12 @@ namespace DevEducationControlSystem.API.Controllers
             usermanager.UpdateUserProfile(userProfile.UserId, userProfile.Password, userProfile.Phone, userProfile.Email, userProfile.ProfileImage);       
             return Ok(usermanager.SelectById(userProfile.UserId));
         }
+
+        [HttpGet("Student/{userId}/Info")]
+        public IActionResult GetPaymentInfo (int userId)
+        {
+            var userLogicManager = new UserLogicManager();
+            return Ok(userLogicManager.GetStudentPaymentInfo(userId));
+        }
     }
 }

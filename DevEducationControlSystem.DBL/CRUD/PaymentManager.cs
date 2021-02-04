@@ -26,7 +26,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                        SelectPaymentInfoDTO paymentInfos = null;
                        foreach (var r in paymentInfoDTOs)
                        {
-                          if (r.Id == info.Id)
+                           if (r.Id == info.Id)
                            {
                                paymentInfos = r;
                                break;
@@ -41,7 +41,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                        {
                            paymentInfos.Periods = new List<StudentPayDTO>();
                        }
-                       paymentInfos.Periods.Add(period);
+                       foreach (var p in paymentInfoDTOs)
+                       { 
+                           paymentInfos.Periods.Add(period);
+                       }
 
                        return paymentInfos;
                    },    
