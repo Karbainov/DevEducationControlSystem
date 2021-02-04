@@ -24,5 +24,7 @@ namespace DevEducationControlSystem.API.Controllers
             var StatisticLogicManager = new StatisticLogicManager();
             return Ok(StatisticLogicManager.GetRoleStatistic());
         }
+
+
     }
 }

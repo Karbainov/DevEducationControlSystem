@@ -196,20 +196,29 @@ namespace DevEducationControlSystem.DBL
                             break;
                         }
                     }
-
+                    
                     if (group == null)
                     {
                         group = Group;
                         group.CountOfHomeworkByTheme = new List<CountOfHomeworkByThemeDTO>();
-                        group.CountOfHomeworkByTheme.Add(Homework);
+                        course.ThemeInGroup.Add(group);
                     }
 
-                   return city;
+                    CountOfHomeworkByThemeDTO homework = null;
+
+                    foreach (var H in group.CountOfHomeworkByTheme)
+                    {
+                        if (H.HomeworkName == Homework.HomeworkName)
+                        {
+                            homework = H;
+                            break;
+                        }
+                    }
+
+                    return city;
                 },
 
-
-             commandType: CommandType.StoredProcedure, splitOn: "CourseName, GroupName,ThemeName");
-
+            commandType: CommandType.StoredProcedure, splitOn: "CourseName, GroupName,ThemeName");
             return statisticList;
         }
     }

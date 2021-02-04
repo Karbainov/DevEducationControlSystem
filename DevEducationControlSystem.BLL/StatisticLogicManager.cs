@@ -23,5 +23,7 @@ namespace DevEducationControlSystem.BLL
             var mapper = new RoleStatisticMapper();
             return mapper.Map(roleManager.GetNumberOfPeoplePerRole());
         }
+
+
     }
 }
