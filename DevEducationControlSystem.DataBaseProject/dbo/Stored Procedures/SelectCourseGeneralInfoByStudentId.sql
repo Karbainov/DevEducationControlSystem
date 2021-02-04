@@ -3,7 +3,7 @@
 AS
 BEGIN
 DECLARE @GroupId INT;
-SET @GroupId=(SELECT GroupId FROM User_Group WHERE UserId=@UserId);
+SET @GroupId=(SELECT GroupId FROM User_Group JOIN [Group] ON User_Group.GroupId = [Group].Id WHERE UserId=@UserId AND StatusId>2 AND StatusId<6);
 
 SELECT 
 Course.Id AS CourseId, Course.[Name] AS CourseName, [Group].StartDate AS CourseStartDate, Course.DurationInWeeks AS DurationInWeeks,
