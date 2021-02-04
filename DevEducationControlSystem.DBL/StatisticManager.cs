@@ -90,6 +90,101 @@ namespace DevEducationControlSystem.DBL
             return teachersByCourseList;
         }
 
+        public List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO> SelectGroupsStudentsRateForTeacher()
+        {
+            var teachersByCourseList = new List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO>();
+            string expr = "[SelectAmountOfGroupsStudentsGradStudentsRateForTeachers]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                teachersByCourseList = connection.Query<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return teachersByCourseList;
+        }
+
+        public NumberOfTeachersByCourseIdDTO SelectNumberOfTeachersByCourseId(int id)
+        {
+            var teachersByCourse = new NumberOfTeachersByCourseIdDTO();
+            string expr = "[SelectNumberOfTeachersByCourseId]";
+            var value = new { id };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                teachersByCourse = connection.QuerySingle<NumberOfTeachersByCourseIdDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
+
+            return teachersByCourse;
+        }
+
+        public List<TeacherOnCourseDTO> SelectTeachersOnCourseStatisctic()
+        {
+            var teachersByCourseList = new List<TeacherOnCourseDTO>();
+            string expr = "[GetTeachersStatistic]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                teachersByCourseList = connection.Query<TeacherOnCourseDTO>(expr, commandType: CommandType.StoredProcedure).AsList();
+            }
+
+            return teachersByCourseList;
+        }
+
+        public List<NumberOfUsersWithStatusInCourseInCityDTO> SelectNumberOfUsersWithStatusInCourseInCity()
+        {
+            string expr = "[SelectNumberOfUsersWithStatusInCourseInCity]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                List<NumberOfUsersWithStatusInCourseInCityDTO> cities = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
+                connection.Query<NumberOfUsersWithStatusInCourseInCityDTO,
+                    NumberOfUsersByStatusInCourseDTO,
+                    NumberOfUsersByStatusDTO,
+                    NumberOfUsersWithStatusInCourseInCityDTO>(expr,
+                    (city, course, status) =>
+                    {
+                        NumberOfUsersWithStatusInCourseInCityDTO tmpCity = null;
+
+                        foreach (var r in cities)
+                        {
+                            if (r.CityId == city.CityId)
+                            {
+                                tmpCity = r;
+                                break;
+                            }
+                        }
+                        if (tmpCity == null)
+                        {
+                            tmpCity = city;
+                            tmpCity.NumberOfUsersByStatusInCourse = new List<NumberOfUsersByStatusInCourseDTO>();
+                            cities.Add(tmpCity);
+                        }
+
+
+                        NumberOfUsersByStatusInCourseDTO tmpCourse = null;
+
+                        foreach (var r in tmpCity.NumberOfUsersByStatusInCourse)
+                        {
+                            if (r.CourseId == course.CourseId)
+                            {
+                                tmpCourse = r;
+                                break;
+                            }
+                        }
+                        if (tmpCourse == null)
+                        {
+                            tmpCourse = course;
+                            tmpCourse.NumberOfUsersByStatus = new List<NumberOfUsersByStatusDTO>();
+                            tmpCity.NumberOfUsersByStatusInCourse.Add(tmpCourse);
+                        }
+
+                        tmpCourse.NumberOfUsersByStatus.Add(status);
+
+                        return tmpCity;
+                    },
+                    splitOn: "CourseId, StatusId",
+                    commandType: CommandType.StoredProcedure).AsList<NumberOfUsersWithStatusInCourseInCityDTO>();
+                return cities;
+            }
+            
+        }
+
         public List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO> SelectAllGroupsAndAmountPeopleInGroupByCity()
         {
             var allGroupssAndAmountPeopleInGroupByCity = new List<SelectAllGroupsAndAmountPeopleInGroupByCityDTO>();
@@ -141,7 +236,22 @@ namespace DevEducationControlSystem.DBL
             
         }
 
-     }
+        public List<CountStudentsOnCourseByGroupsDTO> GetCountStudentsOnCourseByGroups(int id)
+        {
+            var NumberOfStudentsList = new List<CountStudentsOnCourseByGroupsDTO>();
+            string expression = "[CountStudentsOnCourseByGroups]";
+            var value = new { CourseId = id };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                NumberOfStudentsList = connection.Query<CountStudentsOnCourseByGroupsDTO>(expression, value, commandType: CommandType.StoredProcedure).AsList();
+            }
+            return NumberOfStudentsList;
+
+
+        }
+
+    }
 
     }
 

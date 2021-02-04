@@ -10,7 +10,7 @@ namespace TConsole
         static void Main(string[] args)
         {
             var manager = new PaymentManager();
-            manager.SelectPaymentInfo(16);
+            manager.GetPaymentDTOs();
 
 
 

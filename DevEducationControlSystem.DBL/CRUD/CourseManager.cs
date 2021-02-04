@@ -12,19 +12,24 @@ namespace DevEducationControlSystem.DBL.CRUD
 {
     public class CourseManager
     {
-        public SqlConnection GetConnection()
+        public List<CourseInCurrentCityDTO> GetAllCoursesInCurrentCityById(int id)
         {
-            string connectionString = @"Data Source=80.78.240.16; Initial Catalog=DevEdControl.Test;User Id=devEd; Password=qqq!11";
-            SqlConnection connection = new SqlConnection(connectionString);
-            return connection;
-        }
+            var AllCoursesInCurrentCity = new List<CourseInCurrentCityDTO>();
+            string expr = "[GetAllCoursesInCurrentCityById]";
+            var value = new { id };
 
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                AllCoursesInCurrentCity = connection.Query<CourseInCurrentCityDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseInCurrentCityDTO>(); ;
+            }
+            return AllCoursesInCurrentCity;
+        }
         public List<CourseByTagNameDTO> SelectCourseByTagName(string name)
         {
             var courseByTag = new List<CourseByTagNameDTO>();
             string expr = "[SelectCourseByTagName]";
             var value = new { name };
-            using (var connection = GetConnection())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 return connection.Query<CourseByTagNameDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
             }
@@ -35,7 +40,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             var courseByTag = new List<CourseByTagIdDTO>();
             string expr = "[SelectCourseByTagId]";
             var value = new { id };
-            using (var connection = GetConnection())
+            using (var connection = SqlServerConnection.GetConnection())
             {
                 return connection.Query<CourseByTagIdDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList();
             }
@@ -134,12 +139,8 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public List<CourseDTO> SelectSoftDeleted()
         {
-            var courseDTOs = new List<CourseDTO>();
             string expression = "[Course_SelectSoftDeleted]";
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-                courseDTOs = connection.Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
-            }
+            var courseDTOs = SqlServerConnection.GetConnection().Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
             return courseDTOs;
         }
 

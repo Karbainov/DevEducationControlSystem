@@ -132,12 +132,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public void Delete(int id)
         {
-            string expr = "[Material_Delete]";
-            var value = new { Id = id };
-            using (var connection = GetConnection())
-            {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
-            }
+            SqlServerConnection.GetConnection().Query("Material_Delete", new { id }, commandType: CommandType.StoredProcedure);
         }
 
         public void SoftDelete(int id)
@@ -197,6 +192,20 @@ namespace DevEducationControlSystem.DBL.CRUD
                     values, commandType: CommandType.StoredProcedure, splitOn: "TagName" );
             }
             return materialsByTag;
+        }
+
+        public List<UnlockedMaterialByUserIdDTO> SelectUnlockedMaterialByUserIdDTOs(int userId)
+        {
+            var materials = new List<UnlockedMaterialByUserIdDTO>();
+            string expr = "[SelectUnlockedMaterialByUserId]";
+            var parameter = new { UserId = userId };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                materials = connection.Query<UnlockedMaterialByUserIdDTO>(expr, parameter, commandType: CommandType.StoredProcedure).AsList<UnlockedMaterialByUserIdDTO>();
+            }
+
+            return materials;
         }
 
         public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)

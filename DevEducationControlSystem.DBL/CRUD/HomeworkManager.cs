@@ -24,14 +24,24 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public HomeworkDTO SelectById(int id)
         {
-            var homework = SqlServerConnection.GetConnection().QuerySingleOrDefault<HomeworkDTO>("Homework_SelectById", new { id }, commandType: CommandType.StoredProcedure);
-            return homework;
+            string expr = "[Homework_SelectById]";
+            var value = new { Id = id };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                return connection.QuerySingleOrDefault<HomeworkDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
         }
 
         public void Add(int resourceId, string name, string description, string isSolutionRequired)
         {
             var values = new { ResourceId = resourceId, Name = name, Description = description, IsSolutionRequired = isSolutionRequired };
             SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<HomeworkDTO> SelectAdd()
+        {
+            throw new NotImplementedException();
         }
 
         public void Delete(int id)
@@ -186,6 +196,18 @@ namespace DevEducationControlSystem.DBL.CRUD
         public void UpdateIsDeleted(int id)
         {
             var howeworkList = SqlServerConnection.GetConnection().Query("Homework_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
+        }
+
+        public List<HomeWorkAndAnswerByUserIdDTO> SelectHomeWorksAndAnswersByUserId(int userId)
+        {
+            var hws = new List<HomeWorkAndAnswerByUserIdDTO>();
+            string expression = "[SelectHomeWorksAndAnswersByUserId]";
+            var parameter = new { UserId = userId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                hws = connection.Query<HomeWorkAndAnswerByUserIdDTO>(expression, parameter, commandType: CommandType.StoredProcedure).AsList<HomeWorkAndAnswerByUserIdDTO>();
+            }
+            return hws;
         }
 
 

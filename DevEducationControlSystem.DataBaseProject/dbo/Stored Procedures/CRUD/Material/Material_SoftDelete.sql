@@ -2,5 +2,5 @@
 @Id int
 as
 update dbo.Material
-set IsDeleted = '1'
+set IsDeleted = 1
 where Id = @Id
