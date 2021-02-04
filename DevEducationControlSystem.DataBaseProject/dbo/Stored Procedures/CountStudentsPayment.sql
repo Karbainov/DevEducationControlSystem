@@ -4,7 +4,7 @@
   SELECT
   [Group].[Name] AS GroupName, [Group].StartDate,
   Course.DurationInWeeks,
-  FirstName, LastName, email, Phone, ContractNumber,
+  [User].Id AS UserId, FirstName, LastName, email, Phone, ContractNumber,
   Payment.Id AS PaymentId, UserId, [Period] AS PeriodNumber,  isPaid, [Sum], PayDate
   FROM  Payment
   JOIN
