@@ -40,9 +40,10 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpPut("Student/{userId}/private")]
         public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
         {
-            var groupAPIManager = new GroupAPIManager();
+            new GroupAPIManager().AddAndCheckNewFeedback(feedback, userId);
+
             var groupLogicManager = new GroupLogicManager();
-            return Ok(new { AllLessons = groupLogicManager.GetPrivateStudentMainPageModel(userId), AllFedbacks = groupAPIManager.AddAndCheckNewFeedback(feedback, userId)});
+            return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
         }
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
