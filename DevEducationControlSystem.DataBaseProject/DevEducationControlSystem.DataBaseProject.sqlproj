@@ -384,6 +384,7 @@
     <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
     <Build Include="dbo\Stored Procedures\SelectHomeWorksAndAnswersByUserId.sql" />
     <Build Include="dbo\Stored Procedures\SelectUnlockedMaterialByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\SelectUserGroupByUserId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Stored Procedures\CountStudentsOnCourseByGroups.sql" />
