@@ -1,12 +1,8 @@
 ﻿using DevEducationControlSystem.DBL.DTO;
 using DevEducationControlSystem.DBL.DTO.Base;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Text;
 using Dapper;
-using DevEducationControlSystem.DBL.DTO.Base;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -154,7 +150,7 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             using (var connection = SqlServerConnection.GetConnection())
             {
-                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", id, commandType: CommandType.StoredProcedure);
+                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]",new { id }, commandType: CommandType.StoredProcedure);
                 return UserDTO;
             }
         }
