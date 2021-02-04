@@ -11,11 +11,5 @@ namespace DevEducationControlSystem.DBL.DTO
 
         public List<NumberOfUsersByStatusInCourseDTO> NumberOfUsersByStatusInCourse { get; set; }
 
-        //public int CourseId {get; set;} 
-        //public string CourseName {get; set;}
-        //List<NumberOfUsersByStatusDTO> NumberOfUsersByStatus;
-        //public int StatusId {get; set;} 
-        //public string Status {get; set;} 
-        //public int UserCount {get; set;}
     }
 }

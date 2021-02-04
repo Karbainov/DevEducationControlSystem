@@ -92,7 +92,6 @@ namespace DevEducationControlSystem.DBL
 
         public List<NumberOfUsersWithStatusInCourseInCityDTO> SelectNumberOfUsersWithStatusInCourseInCity()
         {
-            //List<NumberOfUsersWithStatusInCourseInCityDTO> CountUser = new List<NumberOfUsersWithStatusInCourseInCityDTO>();
             string expr = "[SelectNumberOfUsersWithStatusInCourseInCity]";
             using (var connection = SqlServerConnection.GetConnection())
             {

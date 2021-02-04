@@ -22,8 +22,8 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult GetNumberOfUsersWithStatusInCourseInCity()
         {
             var statisticLogic = new StatisticLogicManager();
-            var nn = statisticLogic.GetNumberOfUsersWithStatusInCourseInCity();
-            return Ok(nn);
+            var getNumberOfUsersWithStatusInCourseInCityResult = statisticLogic.GetNumberOfUsersWithStatusInCourseInCity();
+            return Ok(getNumberOfUsersWithStatusInCourseInCityResult);
         }
 
         [HttpGet("Roles")]

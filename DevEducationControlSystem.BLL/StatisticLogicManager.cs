@@ -21,7 +21,6 @@ namespace DevEducationControlSystem.BLL
 
         public List<NumberOfUsersWithStatusInCourseInCityDTO> GetNumberOfUsersWithStatusInCourseInCity()
         {
-            //public List<NumberOfUsersWithStatusInGroupInCityDTO> SelectNumberOfUsersWithStatusInGroupInCity()
             var statisticManager = new StatisticManager();
 
             var mapper = new NumberOfUsersWithStatusInCourseInCityDTOMapper();
