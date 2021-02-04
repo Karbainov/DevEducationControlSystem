@@ -141,7 +141,7 @@ namespace DevEducationControlSystem.BLL
 
                 {
 
-                    manager.Add(u.Id, lessonId, false);
+                    manager.Add(u.UserId, lessonId, false);
 
                 }
 

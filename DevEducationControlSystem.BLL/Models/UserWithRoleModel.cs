@@ -29,7 +29,7 @@ namespace DevEducationControlSystem.BLL.Models
 
         public UserWithRoleModel(UserWithRoleDTO dto)
         {
-            Id = dto.Id;
+            Id = dto.UserId;
             FirstName = dto.FirstName;
             LastName = dto.LastName;
             BirthDate = dto.BirthDate;

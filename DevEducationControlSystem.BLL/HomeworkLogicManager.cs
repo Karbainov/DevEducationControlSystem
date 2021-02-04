@@ -37,7 +37,7 @@ namespace DevEducationControlSystem.BLL
             {
                 if (u.StatusId == Parameters.BaseStudentStatusId || u.StatusId == Parameters.SpecialtyStudentStatusId)
                 {
-                    answerManager.Add(u.Id,
+                    answerManager.Add(u.UserId,
                         null,
                         homeworkAppointmentModel.HomeworkId,
                         homeworkAppointmentModel.StartDate,

@@ -76,10 +76,9 @@ namespace DevEducationControlSystem.DBL.CRUD
                 (user, role) =>
                 {
                     UserWithRoleDTO tmpUserWithRole = null;
-
                     foreach (var r in users)
                     {
-                        if (r.Id == user.Id)
+                        if (r.UserId == user.UserId)
                         {
                             tmpUserWithRole = r;
                             break;
@@ -99,7 +98,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                     return tmpUserWithRole;
                 },
                 value,
-                splitOn: "RoleId",
+                splitOn: "Id",
                 commandType: CommandType.StoredProcedure);
             }
             return users;
