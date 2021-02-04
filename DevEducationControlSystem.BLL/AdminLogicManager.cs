@@ -29,13 +29,19 @@ namespace DevEducationControlSystem.BLL
             manager.UpdateIsDeleted(homeworkId);
         }
 
+        public void HardDelHomeworkById(int homeworkId)
+        {
+            var manager = new HomeworkManager();
+            manager.Delete(homeworkId);
+        }
+
         public void RecoverMaterialById(int materialId)
         {
             var manager = new MaterialManager();
             manager.UpdateIsDeleted(materialId);
         }
 
-        public void HardDeleteMaterial(int materialId)
+        public void HardDelMaterialById(int materialId)
         {
             var manager = new MaterialManager();
             manager.Delete(materialId);
@@ -46,5 +52,12 @@ namespace DevEducationControlSystem.BLL
             var manager = new CourseManager();
             manager.UpdateIsDeleted(courseId);
         }
+
+        public void HardDelCourseById(int courseId)
+        {
+            var manager = new CourseManager();
+            manager.Delete(courseId);
+        }
+
     }
 }

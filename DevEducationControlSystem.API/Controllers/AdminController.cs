@@ -27,6 +27,14 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Homework recovered");
         }
 
+        [HttpDelete("RecycleBin/Homework")]
+        public IActionResult HardDeleteHomeworkById(int homeworkId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.HardDelHomeworkById(homeworkId);
+            return Ok("Homework completly deleted");
+        }
+
         [HttpPut("RecycleBin/Material")]
         public IActionResult RecoverMaterialById(int materialId)
         {
@@ -39,7 +47,7 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult HardDeleteMaterialById(int materialId)
         {
             var adminLogicManager = new AdminLogicManager();
-            adminLogicManager.HardDeleteMaterial(materialId);
+            adminLogicManager.HardDelMaterialById(materialId);
             return Ok("Material completly deleted");
         }
 
@@ -51,6 +59,12 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Course recovered");
         }
 
-
+        [HttpDelete("RecycleBin/Course")]
+        public IActionResult HardDeleteCourseById(int courseId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.HardDelCourseById(courseId);
+            return Ok("Course completly deleted");
+        }
     }
 }
