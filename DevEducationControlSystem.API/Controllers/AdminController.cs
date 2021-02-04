@@ -19,7 +19,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(adminLogic.GetSoftDeletedItems());
         }
 
-        [HttpPost("RecycleBin/Homework")]
+        [HttpPut("RecycleBin/Homework")]
         public IActionResult RecoverHomeworkById(int homeworkId)
         {
             var adminLogicManager = new AdminLogicManager();
@@ -27,7 +27,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Homework recovered");
         }
 
-        [HttpPost("RecycleBin/Material")]
+        [HttpPut("RecycleBin/Material")]
         public IActionResult RecoverMaterialById(int materialId)
         {
             var adminLogicManager = new AdminLogicManager();
@@ -39,11 +39,11 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult HardDeleteMaterialById(int materialId)
         {
             var adminLogicManager = new AdminLogicManager();
-            adminLogicManager.HardDelete(materialId);
-            return Ok("Material recovered");
+            adminLogicManager.HardDeleteMaterial(materialId);
+            return Ok("Material completly deleted");
         }
 
-        [HttpPost("RecycleBin/Course")]
+        [HttpPut("RecycleBin/Course")]
         public IActionResult RecoverCourseById(int courseId)
         {
             var adminLogicManager = new AdminLogicManager();

@@ -35,7 +35,7 @@ namespace DevEducationControlSystem.BLL
             manager.UpdateIsDeleted(materialId);
         }
 
-        public void HardDelete(int materialId)
+        public void HardDeleteMaterial(int materialId)
         {
             var manager = new MaterialManager();
             manager.Delete(materialId);

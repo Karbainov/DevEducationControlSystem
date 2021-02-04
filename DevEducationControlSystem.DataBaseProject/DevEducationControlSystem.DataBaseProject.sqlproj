@@ -382,5 +382,11 @@
     <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
     <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_RecoverSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Material\Material_SelectSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SelectSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_RecoverSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SelectSoftDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Course\Course_SoftDelete.sql" />
   </ItemGroup>
 </Project>
