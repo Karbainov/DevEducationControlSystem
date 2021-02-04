@@ -376,5 +376,6 @@
     <Build Include="dbo\Stored Procedures\SelectFeedbackByUserIdAndLessonId.sql" />
     <Build Include="dbo\Stored Procedures\SelectPassedLessonByStudentId.sql" />
     <Build Include="dbo\Stored Procedures\GetTeachersStatistic.sql" />
+    <Build Include="dbo\Stored Procedures\SelectAmountOfGroupsStudentsGradStudentsRateForTeachers.sql" />
   </ItemGroup>
 </Project>
