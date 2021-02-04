@@ -153,9 +153,9 @@ namespace DevEducationControlSystem.DBL.CRUD
             var CourseList = SqlServerConnection.GetConnection().Query("Course_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
         }
 
-        public void AddReturnResult(string name, string description, int durationInWeeks)
+        public int AddReturnId(string name, string description, int durationInWeeks)
         {
-            string expression = "[Course_Add]";
+            string expression = "[Course_Add_ReturnId]";
             var parameter = new
             {
                 Name = name,
@@ -164,11 +164,12 @@ namespace DevEducationControlSystem.DBL.CRUD
             };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+                var id = connection.QueryFirst<int>(expression, parameter, commandType: CommandType.StoredProcedure);
+                return id;
             }
         }
 
-        public string UpdateReturnResult(int id, string name, string description, int durationInWeeks, bool isDeleted)
+/*        public int UpdateReturnId(int id, string name, string description, int durationInWeeks, bool isDeleted)
         {
             string expression = "[Course_Update]";
             var parameter = new
@@ -181,22 +182,20 @@ namespace DevEducationControlSystem.DBL.CRUD
             };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+                var id = connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+                return id;
             }
-            var resultProcedure = $"Вы успешно обновили курс {name}";
-            return resultProcedure;
         }
-        public string DeleteReturnResult(int id, string courseName)
+        public int DeleteReturnId(int id, string courseName)
         {
-            string expression = "[Course_Delete]";
+            string expression = "[Course_SoftDelete]";
             var parameter = new { id };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+                var id = connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+                return id;
             }
-            var resultProcedure = $"Вы успешно удалили курс {courseName}";
-            return resultProcedure;
-        }
+        }*/
 
     }
 }

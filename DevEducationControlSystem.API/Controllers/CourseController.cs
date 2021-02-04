@@ -18,32 +18,32 @@ namespace DevEducationControlSystem.API.Controllers
     public class CourseController : Controller
     {
         //[Authorize]
-        [HttpPost("CreateCourse/{Name}/{Description}/{DurationInWeeks}")]
-        public IActionResult CreateCourse(string name, string Description, int DurationInWeeks)
+        [HttpPost("CreateCourse/")]
+        public IActionResult CreateCourse([FromBody]NewCourseInputModel inputModel)
         {
             var courseManager = new CourseManager();
-            string result = courseManager.AddReturnResult(name, Description, DurationInWeeks);
+            var id = courseManager.AddReturnId(inputModel.Name, inputModel.Description, inputModel.DurationInWeeks);
 
-            return Ok(result);
+            return Ok(id);
         }
 
-        [HttpPut("UpdateCourse/{courseId}/{isDeleted}")]
+/*        [HttpPut("UpdateCourse/{courseId}/{isDeleted}")]
         public IActionResult UpdateCourse(NewCourseInputModel inputModel, int courseId, int isDeleted)
         {
             var courseManager = new CourseManager();
-            var result = courseManager.UpdateReturnResult(courseId, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks, Convert.ToBoolean(isDeleted));
+            var id = courseManager.UpdateCourse(courseId, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks, Convert.ToBoolean(isDeleted));
 
-            return Ok(result);
+            return Ok(id);
         }
 
-        [HttpPost("DeleteCourse/{courseId}")]
-        public IActionResult DeleteCourse(int courseId, string courseName)
+        [HttpPost("DeleteCourse/{courseId}/{courseName}")]
+        public IActionResult DeleteCourse(int courseId)
         {
             var courseManager = new CourseManager();
-            var result = courseManager.DeleteReturnResult(courseId, courseName);
+            var id = courseManager.DeleteReturnId(courseId);
 
-            return Ok(result);
-        }
+            return Ok(courseManager);
+        }*/
 
 /*        [HttpPost("CreateHomeworkByCourse/{courseId}")]
         public IActionResult CreateHomeworkCourse(int courseId, NewHomeworkCourseInputModel inputModel)
