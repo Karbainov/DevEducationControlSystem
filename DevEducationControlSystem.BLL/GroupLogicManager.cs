@@ -159,7 +159,7 @@ namespace DevEducationControlSystem.BLL
             {
                 if (u.StatusId == Parameters.BaseStudentStatusId || u.StatusId == Parameters.SpecialtyStudentStatusId)
                 {
-                    manager.Add(u.Id, lessonId, false);
+                    manager.Add(u.UserId, lessonId, false);
                 }
             });
 
