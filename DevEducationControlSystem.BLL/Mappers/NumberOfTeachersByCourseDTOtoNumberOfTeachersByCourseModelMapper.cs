@@ -8,19 +8,33 @@ namespace DevEducationControlSystem.BLL.Mappers
 {
     public class NumberOfTeachersByCourseDTOtoNumberOfTeachersByCourseModelMapper
     {
-        public ListOfTeachersByCourseModel Map(List<NumberOfTeachersByCourseDTO> numberOfTeachers)
+        public ListOfTeachersByCourseModel Map(
+
+            List<NumberOfTeachersByCourseDTO> dto
+            ,List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersDTO> teacherOnCourses
+            )
         {
-            var listOfTeachers = new ListOfTeachersByCourseModel() { 
-                teachersByCourseList = new List<NumberOfTeachersByCourseModel>(),
-                
-            };
+            var model = new ListOfTeachersByCourseModel();
+            model.teachersByCourseList = new List<NumberOfTeachersByCourseModel>();
+            model.TeachersStat = new List<SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel>();
 
 
-            foreach (var n in numberOfTeachers)
+            foreach (var n in dto)
             {
-                listOfTeachers.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(n));
+                model.teachersByCourseList.Add(new NumberOfTeachersByCourseModel(n));
             }
-            return listOfTeachers;
+
+            foreach (var s in teacherOnCourses)
+            {
+                model.TeachersStat.Add(new SelectAmountOfGroupsStudentsGradStudentsRateForTeachersModel(s));
+            }
+
+            return model;
         }
+
+
+
+
+
     }
 }
