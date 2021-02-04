@@ -199,6 +199,8 @@ namespace DevEducationControlSystem.DBL.CRUD
             return materialsByTag;
         }
 
+        public 
+
         public List<MaterialsInfoForGroupDTO> SelectMaterialsInfoForGroup(int groupId)
         {
             string expr = "[SelectAllMaterialsByGroupId]";
