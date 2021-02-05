@@ -44,12 +44,12 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(statisticManager.GetCountStudentsOnCourseByGroups(CourseId));
          
         }
-        //public List<CountHomeworkByThemeInCityCourseGroupDTO> CountHomeworkByThemeInCityCourseGroup()
-        //{
-        //    //var statisticManager = new StatisticManager();
-        //    ////var mapper = new CountHomeworkByThemeInCityCourseGroupDTOMapper();
-        //    //return statisticManager.CountHomeworkByThemeInCityCourseGroup();
-        //}
-        
+        public List<CountHomeworkByThemeInCityCourseGroupDTO> CountHomeworkByThemeInCityCourseGroup()
+        {
+            var statisticManager = new StatisticManager();
+            var mapper = new CountHomeworkByThemeInCityCourseGroupDTOMapper();
+            return statisticManager.CountHomeworkByThemeInCityCourseGroup();
+        }
+
     }
 }
