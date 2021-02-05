@@ -201,7 +201,7 @@ namespace DevEducationControlSystem.DBL
         public List<StudentsStudyingAfterBaseDTO> StudentsStudyingAfterBase()
         {
             var cityList = new List<StudentsStudyingAfterBaseDTO>();
-            string expression = "[StudentsStudyingAfterBase]";
+            string expression = "[SelectStudentsStudyingAfterBase]";
             using (var connection = SqlServerConnection.GetConnection())
             {
                 connection.Query<StudentsStudyingAfterBaseDTO, CorsesinCityDTO, GroupkandStatusInCourseDTO,
