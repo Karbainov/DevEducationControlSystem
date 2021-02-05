@@ -24,5 +24,15 @@ namespace DevEducationControlSystem.API.Controllers
             var StatisticLogicManager = new StatisticLogicManager();
             return Ok(StatisticLogicManager.GetRoleStatistic());
         }
+
+        [HttpGet("Roles")]
+        public IActionResult GetGroupInfoById()
+        {
+            var statisticLogic = new StatisticLogicManager();
+            List<countHomeworkByThemeInCityCourseGroup> countHomeworkByThemeInCityCourseGroup = new List<countHomeworkByThemeInCityCourseGroup>;
+            countHomeworkByThemeInCityCourseGroup = statisticLogic.CountHomeworkByThemeInCityCourseGroup();
+            return Ok(countHomeworkByThemeInCityCourseGroup);
+        }
+    
     }
 }

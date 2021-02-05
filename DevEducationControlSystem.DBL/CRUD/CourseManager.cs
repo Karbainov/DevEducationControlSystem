@@ -169,7 +169,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-/*        public int UpdateReturnId(int id, string name, string description, int durationInWeeks, bool isDeleted)
+        public int UpdateReturnId(int id, string name, string description, int durationInWeeks, bool isDeleted)
         {
             string expression = "[Course_Update]";
             var parameter = new
@@ -186,7 +186,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                 return id;
             }
         }
-        public int DeleteReturnId(int id, string courseName)
+/*        public int DeleteReturnId(int id, string courseName)
         {
             string expression = "[Course_SoftDelete]";
             var parameter = new { id };

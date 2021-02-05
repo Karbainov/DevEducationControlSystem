@@ -27,32 +27,32 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(id);
         }
 
-/*        [HttpPut("UpdateCourse/{courseId}/{isDeleted}")]
-        public IActionResult UpdateCourse(NewCourseInputModel inputModel, int courseId, int isDeleted)
+       [HttpPut("UpdateCourse/")]
+        public IActionResult UpdateCourseReturnId([FromBody]NewCourseInputModel inputModel, int courseId, int isDeleted)
         {
             var courseManager = new CourseManager();
-            var id = courseManager.UpdateCourse(courseId, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks, Convert.ToBoolean(isDeleted));
+            var id = courseManager.UpdateReturnId(courseId, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks, Convert.ToBoolean(isDeleted));
 
             return Ok(id);
         }
+        /* 
+                [HttpPost("DeleteCourse/{courseId}/{courseName}")]
+                public IActionResult DeleteCourse(int courseId)
+                {
+                    var courseManager = new CourseManager();
+                    var id = courseManager.DeleteReturnId(courseId);
 
-        [HttpPost("DeleteCourse/{courseId}/{courseName}")]
-        public IActionResult DeleteCourse(int courseId)
-        {
-            var courseManager = new CourseManager();
-            var id = courseManager.DeleteReturnId(courseId);
+                    return Ok(courseManager);
+                }
 
-            return Ok(courseManager);
-        }*/
+               [HttpPost("CreateHomeworkByCourse/{courseId}")]
+                public IActionResult CreateHomeworkCourse(int courseId, NewHomeworkCourseInputModel inputModel)
+                {
+                    var homeworkManager = new HomeworkManager();
+                    var result = homeworkManager.AddReturnResult(inputModel.ResourceId, inputModel.Name, inputModel.Description, inputModel.IsSolutionRequired);
 
-/*        [HttpPost("CreateHomeworkByCourse/{courseId}")]
-        public IActionResult CreateHomeworkCourse(int courseId, NewHomeworkCourseInputModel inputModel)
-        {
-            var homeworkManager = new HomeworkManager();
-            var result = homeworkManager.AddReturnResult(inputModel.ResourceId, inputModel.Name, inputModel.Description, inputModel.IsSolutionRequired);
-
-            return Ok(result);
-        }*/
+                    return Ok(result);
+                }*/
 
         [HttpPost("DeleteHomeworkByCourse/{homeworkId}")]
         public IActionResult DeleteHomeworkCourse(int homeworkId, string name)
