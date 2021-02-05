@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DevEducationControlSystem.API.InputModels;
 using DevEducationControlSystem.BLL;
 using DevEducationControlSystem.BLL.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class HomeworkController : Controller
     {
+        [Authorize(Roles = "Преподаватель")]
         [HttpPost("Appoint")]
         public IActionResult AppointHomeworkToGroup(HomeworkAppointmentInputModel inputModel)
         {
@@ -34,6 +36,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok();
         }
 
+        [Authorize(Roles = "Преподаватель")]
         [HttpGet("Answers/{homeworkId}/{groupId}")]
         public IActionResult SelectAllAnswersByHomeworkIdAndGroupId(int homeworkId, int groupId)
         {

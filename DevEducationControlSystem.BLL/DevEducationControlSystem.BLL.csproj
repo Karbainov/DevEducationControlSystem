@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mappers\CountHomeworkByThemeInCityCourseGroupDTOMapper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Models\MaterialInfoModel.cs~dev" />
   </ItemGroup>
 

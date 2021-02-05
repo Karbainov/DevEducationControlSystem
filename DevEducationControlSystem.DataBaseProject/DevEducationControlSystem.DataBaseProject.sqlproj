@@ -386,6 +386,8 @@
     <Build Include="dbo\Stored Procedures\GetTeachersStatistic.sql" />
     <Build Include="dbo\Stored Procedures\SelectAmountOfGroupsStudentsGradStudentsRateForTeachers.sql" />
     <Build Include="dbo\Stored Procedures\SelectAllAnswersByHomeworkIdAndGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllInfoOfUserById.sql" />
+    <Build Include="dbo\Stored Procedures\GetInfoOfAllUsers.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Material\Material_RecoverSoftDeleted.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Material\Material_SelectSoftDeleted.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework\Homework_SelectSoftDeleted.sql" />
@@ -406,6 +408,8 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Update.sql" />
     <Build Include="dbo\Stored Procedures\SelectCityCourseHomeworkThemeStatus.sql" />
     <Build Include="dbo\Stored Procedures\RevieseId.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateAllInfoOfUserById.sql" />
+    <Build Include="dbo\Stored Procedures\AddNewUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Stored Procedures\CountStudentsOnCourseByGroups.sql" />

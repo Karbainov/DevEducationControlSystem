@@ -6,7 +6,7 @@ select
 City.[Name] as CityName,
 Course.[Name] as CourseName,
 [Group].[Name] as GroupName,
-count( [User].id) as Usercount
+count( [User].id) as UserStudyAfterBase
 from [Group]
 
 left join  City on ([Group].CityId=City.id)
