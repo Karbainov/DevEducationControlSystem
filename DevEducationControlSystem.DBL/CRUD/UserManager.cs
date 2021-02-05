@@ -250,12 +250,14 @@ namespace DevEducationControlSystem.DBL.CRUD
                         allInfoOfUser.Roles = new List<RoleInfoForUserDTO>();
                         allInfoOfUser.Roles.Add(role);
                     }
+                    if(role != null) { 
                     foreach (var r in allInfoOfUser.Roles)
                     {
                         if (r.RoleId != role.RoleId)
                         {
                             allInfoOfUser.Roles.Add(role);
                         }
+                    }
                     }
 
                     if (allInfoOfUser.Courses == null)
