@@ -103,7 +103,7 @@ namespace DevEducationControlSystem.API.Controllers
 
         }
 
-       // [Authorize(Roles = "Администратор")]
+       [Authorize(Roles = "Администратор")]
         [HttpGet("Users")]
         public IActionResult GetNoStudentUsers()
         {
@@ -111,7 +111,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(userManager.SelectNoStudentUsersWithRoleAndStatus());
         }
 
-        // [Authorize(Roles = "Администратор")]
+        [Authorize(Roles = "Администратор")]
         [HttpPut("Users")]
         public IActionResult UpdateUserRole(int userId, int roleId)
         {
