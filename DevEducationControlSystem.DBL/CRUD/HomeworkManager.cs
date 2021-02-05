@@ -185,6 +185,17 @@ namespace DevEducationControlSystem.DBL.CRUD
             var howeworkList = SqlServerConnection.GetConnection().Query("Homework_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
         }
 
+        public List<HomeWorkAndAnswerByUserIdDTO> SelectHomeWorksAndAnswersByUserId(int userId)
+        {
+            var hws = new List<HomeWorkAndAnswerByUserIdDTO>();
+            string expression = "[SelectHomeWorksAndAnswersByUserId]";
+            var parameter = new { UserId = userId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                hws = connection.Query<HomeWorkAndAnswerByUserIdDTO>(expression, parameter, commandType: CommandType.StoredProcedure).AsList<HomeWorkAndAnswerByUserIdDTO>();
+            }
+            return hws;
+        }
         public string UpdateReturnResult(int id, int resourceId, string name, string description, bool isDeleted, bool isSolutionRequired)
         {
             var values = new { id, resourceId, name, description, isDeleted, isSolutionRequired };
@@ -216,5 +227,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             var resultReturn = $"Вы успешно удалили домашнюю работу: {name}";
             return resultReturn;
         }
+
     }
 }

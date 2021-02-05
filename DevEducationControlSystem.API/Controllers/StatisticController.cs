@@ -1,4 +1,4 @@
-﻿using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.BLL;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,6 +18,15 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(statisticLogic.GetNumberOfTeachers());
         }
 
+
+        [HttpGet("Cities")]
+        public IActionResult GetNumberOfUsersWithStatusInCourseInCity()
+        {
+            var statisticLogic = new StatisticLogicManager();
+            var getNumberOfUsersWithStatusInCourseInCityResult = statisticLogic.GetNumberOfUsersWithStatusInCourseInCity();
+            return Ok(getNumberOfUsersWithStatusInCourseInCityResult);
+        }
+
         [HttpGet("Roles")]
         public IActionResult GetGroupInfoById()
         {
@@ -33,6 +42,12 @@ namespace DevEducationControlSystem.API.Controllers
             countHomeworkByThemeInCityCourseGroup = statisticLogic.CountHomeworkByThemeInCityCourseGroup();
             return Ok(countHomeworkByThemeInCityCourseGroup);
         }
-    
+
+        [HttpGet("StudentsOnCourseByGroups/{CourseId}")]
+        public IActionResult CountStudentsOnCourseByGroup(int CourseId)
+        {
+            var statisticLogic = new StatisticLogicManager();
+            return Ok(statisticLogic.NumberOfStudentsOnCourseByGroups(CourseId));
+        }
     }
 }

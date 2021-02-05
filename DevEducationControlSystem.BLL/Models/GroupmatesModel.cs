@@ -13,9 +13,12 @@ namespace DevEducationControlSystem.BLL.Models
 
         public GroupmatesModel(GroupmatesDTO dto)
         {
-            StudentId = dto.StudentId;
-            StudentFirstName = dto.StudentFirstName;
-            StudentLastName = dto.StudentLastName;
+            if (dto != null)
+            {
+                StudentId = dto.StudentId;
+                StudentFirstName = dto.StudentFirstName;
+                StudentLastName = dto.StudentLastName;
+            }
         }
     }
 }

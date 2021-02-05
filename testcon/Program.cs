@@ -12,7 +12,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
             //var manager = new GroupStatusManager();
-            var manager = new HomeworkManager();
+           // var manager = new HomeworkManager();
 
             manager.GetAllHomeworkByCourse(2);
 

@@ -1,9 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[User_Role_Update]
-	@Id int,
+
 	@UserId int,
 	@RoleId int
 AS
 	UPDATE [dbo].[User_Role] 
-	SET UserId=@UserId, 
-	RoleId=@RoleId 
-	WHERE Id=@Id
+
+	SET RoleId=@RoleId 
+
+	WHERE dbo.[User_Role].UserId=@UserId

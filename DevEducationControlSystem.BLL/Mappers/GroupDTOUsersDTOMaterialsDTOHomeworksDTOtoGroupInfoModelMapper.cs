@@ -10,7 +10,8 @@ namespace DevEducationControlSystem.BLL.Mappers
     {
         public GroupInfoModel Map(GroupWithCityAndStatusAndCourseDTO group,
             List<HomeworkAllInfoDTO> homeworksInfo,
-            List<MaterialsInfoForGroupDTO> materialsInfo)
+            List<MaterialsInfoForGroupDTO> materialsInfo,
+            List<UserWithRoleDTO> userWithRoles)
         {
             GroupInfoModel groupInfoModel = new GroupInfoModel()
             {
@@ -24,7 +25,8 @@ namespace DevEducationControlSystem.BLL.Mappers
                 CourseId = group.CourseId,
                 Course = group.Course,
                 Homeworks = new List<HomeworkInfoModel>(),
-                Materials = new List<MaterialInfoModel>()
+                Materials = new List<MaterialInfoModel>(),
+                UserWithRoles = new List<UserWithRoleModel>()
             };
 
             foreach(var r in homeworksInfo)
@@ -40,6 +42,14 @@ namespace DevEducationControlSystem.BLL.Mappers
                 if (r != null)
                 {
                     groupInfoModel.Materials.Add(new MaterialInfoModel(r));
+                }
+            }
+
+            foreach(var r in userWithRoles)
+            {
+                if(r != null)
+                {
+                    groupInfoModel.UserWithRoles.Add(new UserWithRoleModel(r));
                 }
             }
 

@@ -128,7 +128,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                         courseGeneralInfo.GroupmatesDTOs = new List<GroupmatesDTO>();
                     }
 
-                    courseGeneralInfo.GroupmatesDTOs.Add(PublicStudenInfo);
+                    if (PublicStudenInfo != null)
+                    {
+                        courseGeneralInfo.GroupmatesDTOs.Add(PublicStudenInfo);
+                    }
                     
                     return courseGeneralInfo;
                 },
@@ -139,12 +142,8 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         public List<CourseDTO> SelectSoftDeleted()
         {
-            var courseDTOs = new List<CourseDTO>();
             string expression = "[Course_SelectSoftDeleted]";
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-                courseDTOs = connection.Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
-            }
+            var courseDTOs = SqlServerConnection.GetConnection().Query<CourseDTO>(expression, commandType: CommandType.StoredProcedure).ToList<CourseDTO>();
             return courseDTOs;
         }
 
