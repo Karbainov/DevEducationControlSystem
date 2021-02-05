@@ -144,6 +144,17 @@ namespace DevEducationControlSystem.DBL.CRUD
             return userAuthtorisInfo;
         }
 
+        public List<UserWithRoleAndStatusDTO> SelectNoStudentUsersWithRoleAndStatus()
+        {
+            var noStudentUserRoles = new List<UserWithRoleAndStatusDTO>();
+            string expr = "[SelectNoStudentUsersWithRoleAndStatus]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                noStudentUserRoles = connection.Query<UserWithRoleAndStatusDTO>(expr, commandType: CommandType.StoredProcedure).AsList<UserWithRoleAndStatusDTO>(); ;
+            }
+            return noStudentUserRoles;
+        }
+
         public void Add()
 
         {
