@@ -405,6 +405,8 @@
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Select.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_SelectById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Homework_Course\Homework_Course_Update.sql" />
+    <Build Include="dbo\Stored Procedures\SelectCityCourseHomeworkThemeStatus.sql" />
+    <Build Include="dbo\Stored Procedures\RevieseId.sql" />
     <Build Include="dbo\Stored Procedures\UpdateAllInfoOfUserById.sql" />
     <Build Include="dbo\Stored Procedures\AddNewUser.sql" />
   </ItemGroup>

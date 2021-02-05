@@ -24,19 +24,22 @@ namespace DevEducationControlSystem.BLL.Models
 
         public CourseOverlookModel(CourseOverlookDTO dto)
         {
-            CourseId = dto.CourseId;
-            CourseName = dto.CourseName;
-            CourseStartDate = dto.CourseStartDate;
-            DurationInWeeks = dto.DurationInWeeks;
-            CourseEndDate = CourseStartDate.AddDays(DurationInWeeks * 7);
-            GroupId = dto.GroupId;
-            GroupName = dto.GroupName;
-            TeacherId = dto.TeacherId;
-            TeacherFirstName = dto.TeacherFirstName;
-            TeacherLastName = dto.TeacherLastName;
-            TutorId = dto.TutorId;
-            TutorFirstName = dto.TutorFirstName;
-            TutorLastName = dto.TutorLastName;
+            if (dto != null)
+            {
+                CourseId = dto.CourseId;
+                CourseName = dto.CourseName;
+                CourseStartDate = dto.CourseStartDate;
+                DurationInWeeks = dto.DurationInWeeks;
+                CourseEndDate = CourseStartDate.AddDays(DurationInWeeks * 7);
+                GroupId = dto.GroupId;
+                GroupName = dto.GroupName;
+                TeacherId = dto.TeacherId;
+                TeacherFirstName = dto.TeacherFirstName;
+                TeacherLastName = dto.TeacherLastName;
+                TutorId = dto.TutorId;
+                TutorFirstName = dto.TutorFirstName;
+                TutorLastName = dto.TutorLastName;
+            }
         }
     }
 }

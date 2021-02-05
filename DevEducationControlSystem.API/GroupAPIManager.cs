@@ -12,7 +12,7 @@ namespace DevEducationControlSystem.API
 {
     public class GroupAPIManager
     {
-        public void AddAndCheckNewFeedback(List<NewFeedbackInputModel> feedbackModelsList, int userId)
+        public void AddAndCheckNewFeedback(List<FeedbackInputModel> feedbackModelsList, int userId)
         {
             var dalManager = new FeedbackManager();
 
@@ -34,6 +34,15 @@ namespace DevEducationControlSystem.API
             var bllManager = new GroupLogicManager();
 
             return;
+        }
+
+        internal void DeleteAndCheckFeedback(List<FeedbackInputModel> feedbackModelsList, int userId)
+        {
+            var dalManager = new FeedbackManager();
+            foreach (var f in feedbackModelsList)
+            {
+                if (f.Id != null) dalManager.Delete((int)f.Id);
+            }
         }
     }
 }

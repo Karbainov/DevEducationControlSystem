@@ -1,5 +1,8 @@
 ﻿using DevEducationControlSystem.API.InputModels;
 using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.DBL.CRUD;
+﻿using DevEducationControlSystem.API.InputModels;
+using DevEducationControlSystem.BLL;
 using DevEducationControlSystem.DBL.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +23,28 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var userLogicManager = new UserLogicManager();
             return Ok(userLogicManager.GetHomeworksWithStatus(userId));
+        }
+
+        [HttpGet("{userId}")]
+        public IActionResult GetUserProfile(int userId)
+        {
+            var userMansger = new UserManager();
+            return Ok(userMansger.SelectById(userId));
+        }
+
+        [HttpPut("{userId}/Update")]
+        public IActionResult GetUserPrivateInfo(UserProfileInputModel userProfile)
+        {
+            var usermanager = new UserManager();
+            usermanager.UpdateUserProfile(userProfile.UserId, userProfile.Password, userProfile.Phone, userProfile.Email, userProfile.ProfileImage);       
+            return Ok(usermanager.SelectById(userProfile.UserId));
+        }
+
+        [HttpGet("Student/{userId}/Paymentinfo")]
+        public IActionResult GetPaymentInfo (int userId)
+        {
+            var userLogicManager = new UserLogicManager();
+            return Ok(userLogicManager.GetStudentPaymentInfo(userId));
         }
         [Authorize(Roles = "Менеджер")]
         [HttpGet("Manager/Users")]

@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mappers\CountHomeworkByThemeInCityCourseGroupDTOMapper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Models\MaterialInfoModel.cs~dev" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
   </ItemGroup>
 
   <ItemGroup>
