@@ -10,8 +10,21 @@ namespace DevEducationControlSystem.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class CourseController : Controller
     {
-        
-    }
+        [HttpGet("{courseId}/userinfo")]
+        public IActionResult GetAllInfoUserOnTheCourseById(int courseId)
+        {
+            var allInfoUserOnTheCourseLogicManager = new AllInfoUserOnTheCourseLogicManager();
+            return Ok(allInfoUserOnTheCourseLogicManager.GetInfoOfStudentsOnTheCourseById(courseId));
+        }
+
+        [HttpGet("groupinfo/{groupId}")]
+        public IActionResult GetAllInfoGroupOnTheCourseById(int groupId)
+        {
+            var allInfoUserOnTheCourseLogicManager = new AllInfoUserOnTheCourseLogicManager();
+            return Ok(allInfoUserOnTheCourseLogicManager.GetGroupInfoById(groupId));
+        }
+    }       
+   
 }

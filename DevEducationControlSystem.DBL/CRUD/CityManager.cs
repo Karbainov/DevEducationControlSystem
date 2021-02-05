@@ -104,16 +104,19 @@ namespace DevEducationControlSystem.DBL.CRUD
             return city;
         }
 
-        public void Add(string name)
+        public string Add(string name)
         {
+          
             string expr = "[City_Add]";
-            var value = new { Name = name };
+            var value = new { name };
 
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+               return connection.QuerySingleOrDefault(expr, value, commandType: CommandType.StoredProcedure);
             }
+            
         }
+
 
         public void Delete(int id)
         {
