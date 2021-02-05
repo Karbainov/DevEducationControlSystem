@@ -13,7 +13,6 @@ namespace TConsole
             manager.GetPaymentDTOs();
 
 
-
         }
     }
 }

@@ -16,12 +16,14 @@ namespace DevEducationControlSystem.BLL
             var homeworkManager = new HomeworkManager();
             var groupManager = new GroupManager();
             var materialManager = new MaterialManager();
+            var userManager = new UserManager();
             var mapper = new GroupDTOUsersDTOMaterialsDTOHomeworksDTOtoGroupInfoModelMapper();
 
             return mapper.Map(
                 groupManager.SelectGroupWithCityAndStatusAndCourseById(groupId),
                 homeworkManager.SelectAllHomeworkByGroupId(groupId),
-                materialManager.SelectMaterialsInfoForGroup(groupId)
+                materialManager.SelectMaterialsInfoForGroup(groupId),
+                userManager.SelectUsersByGroupId(groupId)
                 );
         }
 
@@ -157,7 +159,7 @@ namespace DevEducationControlSystem.BLL
             {
                 if (u.StatusId == Parameters.BaseStudentStatusId || u.StatusId == Parameters.SpecialtyStudentStatusId)
                 {
-                    manager.Add(u.Id, lessonId, false);
+                    manager.Add(u.UserId, lessonId, false);
                 }
             });
 
