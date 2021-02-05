@@ -93,7 +93,8 @@ namespace DevEducationControlSystem.BLL
                     Links =m.Links,
                     Images =m.Images,
                     MaterialThemeId = m.MaterialThemeId,
-                    MaterialThemeName = m.MaterialThemeName
+                    MaterialThemeName = m.MaterialThemeName,
+                    TagList = m.TagList
                 });
             }
 
