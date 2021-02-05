@@ -1,4 +1,5 @@
 ﻿using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.DBL.CRUD;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,14 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var adminLogic = new AdminLogicManager();
             return Ok(adminLogic.GetSoftDeletedItems());
+        }
+
+        [Authorize(Roles = "Администратор")]
+        [HttpGet("Users")]
+        public IActionResult GetUser()
+        {
+            var userManager = new UserManager();
+            return Ok(userManager.SelectNoStudentUsersWithRoleAndStatus());
         }
 
         [Authorize(Roles = "Администратор")]
