@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 public class CityInputModel
-{
-    public int Id { get; set; }
+{  
     public string Name { get; set; }
 }

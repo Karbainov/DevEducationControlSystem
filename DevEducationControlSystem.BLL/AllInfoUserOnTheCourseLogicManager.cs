@@ -9,21 +9,21 @@ namespace DevEducationControlSystem.BLL
 {
     public class AllInfoUserOnTheCourseLogicManager
     {
-        public AllInfoUserOnTheCourseModel GetInfoOfStudentsOnTheCourseById(int courseId)
+        public ListOfAllInfoUserOnTheCourseModel GetInfoOfStudentsOnTheCourseById(int courseId)
         {
-            var numberOfStudentsOnTheCourseManager = new NumberOfStudentsOnTheCourseManager();
+            var numberOfStudentsOnTheCourseManager = new InfoStudentsOnTheCourseManager();
             var allInfoUserOnTheCourseManager = new AllInfoUserOnTheCourseManager();
-            var mapper = new SomeMapper();
+            var mapper = new InfoAboutUsersOnThecourseMapper();
             return mapper.Map(
                 allInfoUserOnTheCourseManager.SelectCourseInfoById(courseId), 
                 numberOfStudentsOnTheCourseManager.SelectCourseInfoById(courseId)
                 );           
         }
 
-        public SelectGroupsOnCoursesInfoModel GetGroupInfoById(int groupId)
+        public GetGroupInfoByIdModel GetGroupInfoById(int groupId)
         {
-            var GroupManager = new SelectGroupsOnCoursesInfoModelManager();
-            var mapper = new SomeMapper();
+            var GroupManager = new GetGroupInfoByIdManager();
+            var mapper = new GetGroupInfoByIdMapper();
             return mapper.Mapp(GroupManager.SelectGroupInfoById(groupId));
         }
     }

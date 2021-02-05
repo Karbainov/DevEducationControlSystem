@@ -9,15 +9,15 @@ using DevEducationControlSystem.DBL.DTO;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    public class SelectGroupsOnCoursesInfoModelManager
+    public class GetGroupInfoByIdManager
     {
-        public SelectGroupsOnCoursesInfoDTO SelectGroupInfoById(int groupId)
+        public GetGroupInfoByIdDTO SelectGroupInfoById(int groupId)
         {
-            string sqlExpression = "[SelectGroupsOnCoursesInfo]";
+            string sqlExpression = "[GetGroupInfoById]";
             var value = new { groupId };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                return connection.QuerySingle<SelectGroupsOnCoursesInfoDTO>(sqlExpression, value, commandType: CommandType.StoredProcedure);
+                return connection.QuerySingle<GetGroupInfoByIdDTO>(sqlExpression, value, commandType: CommandType.StoredProcedure);
             }
         }
     }

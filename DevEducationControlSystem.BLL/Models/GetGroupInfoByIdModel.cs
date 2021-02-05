@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.BLL.Models
 {
-    public class SelectGroupsOnCoursesInfoModel
+    public class GetGroupInfoByIdModel
     {
         public int CourseId { get; set; }
         public string CourseName { get; set; }
@@ -16,12 +16,12 @@ namespace DevEducationControlSystem.BLL.Models
         public int CityId { get; set; }
         public string CityName { get; set; }
 
-        public SelectGroupsOnCoursesInfoModel()
+        public GetGroupInfoByIdModel()
         {
 
         }
 
-        public SelectGroupsOnCoursesInfoModel(SelectGroupsOnCoursesInfoDTO dto)
+        public GetGroupInfoByIdModel(GetGroupInfoByIdDTO dto)
         {
             CourseId = dto.CourseId;
             CourseName = dto.CourseName;

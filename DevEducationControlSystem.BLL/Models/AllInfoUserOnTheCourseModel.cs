@@ -20,14 +20,10 @@ namespace DevEducationControlSystem.BLL.Models
         public string ProfileImage { get; set; }
         public string Status { get; set; }
         public string GroupName { get; set; }
-        public List<NumberOfStudentsOnTheCourseModel> Course { get; set; }
-        public List<AllInfoUserOnTheCourseModel> Info { get; set; }
-
         public AllInfoUserOnTheCourseModel()
         {
 
         }
-
         public AllInfoUserOnTheCourseModel(AllInfoUserOnTheCourseDTO dto)
         {
             UserId = dto.UserId;
