@@ -3,6 +3,7 @@ using DevEducationControlSystem.DBL.DTO.Base;
 using System.Collections.Generic;
 using System.Data;
 using Dapper;
+using System;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -20,6 +21,26 @@ namespace DevEducationControlSystem.DBL.CRUD
                 CourseDurationOfCurrentStudent = connection.Query<CourseDurationOfCurrentStudentDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseDurationOfCurrentStudentDTO>(); ;
             }
             return CourseDurationOfCurrentStudent;
+        }
+
+        public bool RevieseId(string login, int userId)
+        {
+            UserDTO result;
+            string expr = "[RevieseId]";
+            var value = new { Login=login };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                result = connection.QuerySingleOrDefault<UserDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
+            if (result.Id==userId)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<CourseOfCurrentUserDTO> GetAllCoursesOfCurrentUserById(int id)
@@ -185,6 +206,26 @@ namespace DevEducationControlSystem.DBL.CRUD
             return userAuthtorisInfo;
         }
 
+        public List<UserWithRoleAndStatusDTO> SelectNoStudentUsersWithRoleAndStatus()
+        {
+            var noStudentUserRoles = new List<UserWithRoleAndStatusDTO>();
+            string expr = "[SelectNoStudentUsersWithRoleAndStatus]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                noStudentUserRoles = connection.Query<UserWithRoleAndStatusDTO>(expr, commandType: CommandType.StoredProcedure).AsList<UserWithRoleAndStatusDTO>(); ;
+            }
+            return noStudentUserRoles;
+        }
+
+        public void UpdateUserRole(int userId, int roleId)
+        {
+            var values = new { UserId = userId, RoleId = roleId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<UserDTO>("[User_Role_Update]", values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public void Add()
 
         {
@@ -212,23 +253,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
 
         }
-
-
-
-        public void Update()
-
-        {
-
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-
-                connection.Query<UserDTO>("[User_Update]", commandType: CommandType.StoredProcedure);
-
-            }
-
-        }
-
-
 
         public List<UserDTO> Select()
         {

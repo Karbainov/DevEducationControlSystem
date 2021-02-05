@@ -128,7 +128,10 @@ namespace DevEducationControlSystem.DBL.CRUD
                         courseGeneralInfo.GroupmatesDTOs = new List<GroupmatesDTO>();
                     }
 
-                    courseGeneralInfo.GroupmatesDTOs.Add(PublicStudenInfo);
+                    if (PublicStudenInfo != null)
+                    {
+                        courseGeneralInfo.GroupmatesDTOs.Add(PublicStudenInfo);
+                    }
                     
                     return courseGeneralInfo;
                 },
