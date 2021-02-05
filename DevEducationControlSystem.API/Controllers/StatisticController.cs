@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevEducationControlSystem.DBL;
 
 namespace DevEducationControlSystem.API.Controllers
 {
@@ -47,9 +48,9 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpGet("CountHomeworkByThemeInCityCourseGroup")]
         public IActionResult CountHomeworkByThemeInCityCourseGroup()
         {
-            var statisticLogic = new StatisticLogicManager();
+            var statisticManager = new StatisticManager();
             List<CountHomeworkByThemeInCityCourseGroupDTO> countHomeworkByThemeInCityCourseGroup = new List<CountHomeworkByThemeInCityCourseGroupDTO>();
-            countHomeworkByThemeInCityCourseGroup = statisticLogic.CountHomeworkByThemeInCityCourseGroup();
+            countHomeworkByThemeInCityCourseGroup = statisticManager.CountHomeworkByThemeInCityCourseGroup();
             return Ok(countHomeworkByThemeInCityCourseGroup);
 
         }
