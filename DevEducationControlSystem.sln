@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevEducationControlSystem.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevEducationControlSystem.API", "DevEducationControlSystem.API\DevEducationControlSystem.API.csproj", "{6F12EA09-64B3-4B78-AC1A-FC3FFCC78F3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{B1276140-0E85-4BC5-96AA-E55E524C0B9B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,10 +38,6 @@ Global
 		{6F12EA09-64B3-4B78-AC1A-FC3FFCC78F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F12EA09-64B3-4B78-AC1A-FC3FFCC78F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F12EA09-64B3-4B78-AC1A-FC3FFCC78F3C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1276140-0E85-4BC5-96AA-E55E524C0B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1276140-0E85-4BC5-96AA-E55E524C0B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1276140-0E85-4BC5-96AA-E55E524C0B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1276140-0E85-4BC5-96AA-E55E524C0B9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
