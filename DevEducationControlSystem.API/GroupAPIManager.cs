@@ -41,13 +41,7 @@ namespace DevEducationControlSystem.API
             var dalManager = new FeedbackManager();
             foreach (var f in feedbackModelsList)
             {
-                var pfDTO = dalManager.SelectFeedbackByUserIdAndLessonId(userId, f.LessonId);
-
-                if (pfDTO != null)
-                {
-
-                    dalManager.Delete(pfDTO.Id);
-                }
+                if (f.Id!=null) dalManager.Delete((int)f.Id);
             }
         }
     }
