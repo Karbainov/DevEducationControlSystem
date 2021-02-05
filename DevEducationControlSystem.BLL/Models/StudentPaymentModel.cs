@@ -14,6 +14,9 @@ namespace DevEducationControlSystem.BLL.Models
 
         public List<PaymentPeriodModel> PaymentPeriod { get; set; }
 
+        public StudentPaymentModel()
+        { }
+
 
     }
 }

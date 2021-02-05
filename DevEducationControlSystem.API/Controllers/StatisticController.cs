@@ -1,4 +1,4 @@
-﻿using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.BLL;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,15 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var statisticLogic = new StatisticLogicManager();
             return Ok(statisticLogic.GetNumberOfTeachers());
+        }
+
+
+        [HttpGet("Cities")]
+        public IActionResult GetNumberOfUsersWithStatusInCourseInCity()
+        {
+            var statisticLogic = new StatisticLogicManager();
+            var getNumberOfUsersWithStatusInCourseInCityResult = statisticLogic.GetNumberOfUsersWithStatusInCourseInCity();
+            return Ok(getNumberOfUsersWithStatusInCourseInCityResult);
         }
 
         [HttpGet("Roles")]

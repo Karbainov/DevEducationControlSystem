@@ -1,11 +1,9 @@
 ﻿using DevEducationControlSystem.DBL.DTO;
-using System;
+using DevEducationControlSystem.DBL.DTO.Base;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Text;
 using Dapper;
-using DevEducationControlSystem.DBL.DTO.Base;
+using System;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -23,6 +21,26 @@ namespace DevEducationControlSystem.DBL.CRUD
                 CourseDurationOfCurrentStudent = connection.Query<CourseDurationOfCurrentStudentDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseDurationOfCurrentStudentDTO>(); ;
             }
             return CourseDurationOfCurrentStudent;
+        }
+
+        public bool RevieseId(string login, int userId)
+        {
+            UserDTO result;
+            string expr = "[RevieseId]";
+            var value = new { Login=login };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                result = connection.QuerySingleOrDefault<UserDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
+            if (result.Id==userId)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<CourseOfCurrentUserDTO> GetAllCoursesOfCurrentUserById(int id)
@@ -63,6 +81,51 @@ namespace DevEducationControlSystem.DBL.CRUD
             return lessonsAndFeedbacks;
         }
 
+        public Dictionary<int, SelectUserInfoByLoginDTO> SelectUserInfoByLogin( string login)
+        {
+            Dictionary<int, SelectUserInfoByLoginDTO> selectUserInfoByLogin = new Dictionary<int, SelectUserInfoByLoginDTO>();
+            string expr = "[SelectUserInfoByLogin]";
+            var value = new { Login = login };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<SelectUserInfoByLoginDTO, RoleNameDTO, SelectUserInfoByLoginDTO>(expr, (userinfo, role) =>
+                {
+                    SelectUserInfoByLoginDTO selectUserInfoByLoginDTO;
+
+                    if (!selectUserInfoByLogin.TryGetValue(userinfo.Id, out selectUserInfoByLoginDTO))
+                    {
+                        selectUserInfoByLoginDTO = userinfo;
+                        selectUserInfoByLogin.Add(userinfo.Id, selectUserInfoByLoginDTO);
+                    }
+
+                    if (selectUserInfoByLoginDTO.Roles == null)
+                    {
+                        selectUserInfoByLoginDTO.Roles = new List<RoleNameDTO>();
+                    }
+                    if (role != null)
+                    {
+                        selectUserInfoByLoginDTO.Roles.Add(role);
+                    }
+
+                   return selectUserInfoByLoginDTO;
+                },
+            value, commandType: CommandType.StoredProcedure, splitOn: "RoleName");
+            }
+                return selectUserInfoByLogin;
+            
+        }
+
+        public void UpdateUserProfile(int userId, string password, string phone, string email, string profileImage)
+        {
+            string expr = "[UpdateUserProfile]";
+            var values = new { UserId = userId, NewPassword = password, NewPhone = phone, NewEmail = email, NewProfileImage = profileImage };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expr, values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public List<UserWithRoleDTO> SelectUsersByGroupId (int groupId)
         {
             string expr = "[SelectUsersByGroupId]";
@@ -76,10 +139,9 @@ namespace DevEducationControlSystem.DBL.CRUD
                 (user, role) =>
                 {
                     UserWithRoleDTO tmpUserWithRole = null;
-
                     foreach (var r in users)
                     {
-                        if (r.Id == user.Id)
+                        if (r.UserId == user.UserId)
                         {
                             tmpUserWithRole = r;
                             break;
@@ -99,7 +161,7 @@ namespace DevEducationControlSystem.DBL.CRUD
                     return tmpUserWithRole;
                 },
                 value,
-                splitOn: "RoleId",
+                splitOn: "Id",
                 commandType: CommandType.StoredProcedure);
             }
             return users;
@@ -144,6 +206,26 @@ namespace DevEducationControlSystem.DBL.CRUD
             return userAuthtorisInfo;
         }
 
+        public List<UserWithRoleAndStatusDTO> SelectNoStudentUsersWithRoleAndStatus()
+        {
+            var noStudentUserRoles = new List<UserWithRoleAndStatusDTO>();
+            string expr = "[SelectNoStudentUsersWithRoleAndStatus]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                noStudentUserRoles = connection.Query<UserWithRoleAndStatusDTO>(expr, commandType: CommandType.StoredProcedure).AsList<UserWithRoleAndStatusDTO>(); ;
+            }
+            return noStudentUserRoles;
+        }
+
+        public void UpdateUserRole(int userId, int roleId)
+        {
+            var values = new { UserId = userId, RoleId = roleId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<UserDTO>("[User_Role_Update]", values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public void Add()
 
         {
@@ -172,23 +254,6 @@ namespace DevEducationControlSystem.DBL.CRUD
 
         }
 
-
-
-        public void Update()
-
-        {
-
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-
-                connection.Query<UserDTO>("[User_Update]", commandType: CommandType.StoredProcedure);
-
-            }
-
-        }
-
-
-
         public List<UserDTO> Select()
         {
 
@@ -208,7 +273,7 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             {
 
-                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", id, commandType: CommandType.StoredProcedure);
+                var UserDTO = connection.QuerySingle<UserDTO>("[User_SelectById]", new { id }, commandType: CommandType.StoredProcedure);
                 return UserDTO;
 
             }
