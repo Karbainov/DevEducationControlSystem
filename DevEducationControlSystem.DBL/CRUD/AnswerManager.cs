@@ -142,5 +142,14 @@ namespace DevEducationControlSystem.DBL.CRUD
                return connection.Query<AnswerExpandedDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<AnswerExpandedDTO>();
             }
         }
+        public AnswerByUserIdAndHomeworkIdDTO SelectAnswerByUserIdAndHomeworkId(int userId, int homeworkId)
+        {
+          string expr = "[SelectAnswerByUserIdAndHomeworkId]";
+          var value = new { UserId = userId, HomeworkId = homeworkId };
+          using (var connection = SqlServerConnection.GetConnection())
+          {
+            return connection.QuerySingle<AnswerByUserIdAndHomeworkIdDTO>(expr, value, commandType: CommandType.StoredProcedure);
+          }
+        }
     }
 }

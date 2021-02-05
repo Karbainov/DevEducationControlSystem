@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SelectNumberOfUsersWithStatusInGroupInCity]
+﻿CREATE PROCEDURE [dbo].[SelectNumberOfUsersWithStatusInCourseInCity]
 	
 AS
 	select c.Id as CityId, 

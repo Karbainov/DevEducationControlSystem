@@ -20,5 +20,5 @@ Lesson_Theme ON Theme.Id=Lesson_Theme.ThemeId
 LEFT JOIN
 Lesson ON Lesson.Id=Lesson_Theme.LessonId
 WHERE
-Lesson.LessonDate < GETDATE()
+Lesson.LessonDate < GETDATE() AND Lesson.GroupId=(SELECT GroupId FROM User_Group WHERE UserId=@UserId)
 END

@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using DevEducationControlSystem.API.InputModels;
 using Microsoft.AspNetCore.Authorization;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace DevEducationControlSystem.API.Controllers
 {
     [Route("[controller]")]
@@ -31,12 +33,23 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(groupLogicManager.GetGroupInfoById(groupId));
         }
 
+        [Authorize(Roles = "Студент")]
         [HttpGet("Student/{userId}/private")]
         public IActionResult GetStudentUnlockedData(int userId)
         {
-            var groupLogicManager = new GroupLogicManager();
-            return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+            if (IdRevieser.RevieseId(User.Identity.Name, userId) == true)
+            {
+                var groupLogicManager = new GroupLogicManager();
+                return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+            }
+            else
+            {
+                return BadRequest("Доступ ограничен");
+            }
+            
         }
+
+        [Authorize(Roles = "Студент")]
         [HttpPut("Student/{userId}/private")]
         public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
         {
@@ -45,6 +58,7 @@ namespace DevEducationControlSystem.API.Controllers
             var groupLogicManager = new GroupLogicManager();
             return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
         }
+        [Authorize(Roles = "Студент")]
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
         {

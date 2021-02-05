@@ -1,4 +1,6 @@
 ﻿using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.DBL.CRUD;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +14,7 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class AdminController : Controller
     {
+        [Authorize(Roles = "Администратор")]
         [HttpGet("RecycleBin")]
         public IActionResult GetAllSoftDeletedItems()
         {
@@ -19,7 +22,16 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(adminLogic.GetSoftDeletedItems());
         }
 
-        [HttpPost("RecycleBin/Homework")]
+        [Authorize(Roles = "Администратор")]
+        [HttpGet("Users")]
+        public IActionResult GetUser()
+        {
+            var userManager = new UserManager();
+            return Ok(userManager.SelectNoStudentUsersWithRoleAndStatus());
+        }
+
+        [Authorize(Roles = "Администратор")]
+        [HttpPut("RecycleBin/Homework")]
         public IActionResult RecoverHomeworkById(int homeworkId)
         {
             var adminLogicManager = new AdminLogicManager();
@@ -27,7 +39,26 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Homework recovered");
         }
 
-        [HttpPost("RecycleBin/Material")]
+        [Authorize(Roles = "Администратор")]
+        [HttpDelete("RecycleBin/Homework")]
+        public IActionResult HardDeleteHomeworkById(int homeworkId)
+        {
+           try
+           {
+             var adminLogicManager = new AdminLogicManager();
+             adminLogicManager.HardDelHomeworkById(homeworkId);
+             return Ok("Homework completly deleted");
+           }
+           
+            catch (UnauthorizedAccessException exception)
+           {
+                return StatusCode(403, exception.Message);
+           }
+
+        }
+
+        [Authorize(Roles = "Администратор")]
+        [HttpPut("RecycleBin/Material")]
         public IActionResult RecoverMaterialById(int materialId)
         {
             var adminLogicManager = new AdminLogicManager();
@@ -35,7 +66,25 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Material recovered");
         }
 
-        [HttpPost("RecycleBin/Course")]
+        [Authorize(Roles = "Администратор")]
+        [HttpDelete("RecycleBin/Material")]
+        public IActionResult HardDeleteMaterialById(int materialId)
+        {
+            try
+            {
+                var adminLogicManager = new AdminLogicManager();
+                adminLogicManager.HardDelMaterialById(materialId);
+                return Ok("Material completly deleted");
+            }
+            
+            catch (UnauthorizedAccessException exception)
+            {
+                return StatusCode(403, exception.Message);
+            }
+        }
+
+        [Authorize(Roles = "Администратор")]
+        [HttpPut("RecycleBin/Course")]
         public IActionResult RecoverCourseById(int courseId)
         {
             var adminLogicManager = new AdminLogicManager();
@@ -43,6 +92,22 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok("Course recovered");
         }
 
+        [Authorize(Roles = "Администратор")]
+        [HttpDelete("RecycleBin/Course")]
+        public IActionResult HardDeleteCourseById(int courseId)
+        {
+            try
+            {
+                var adminLogicManager = new AdminLogicManager();
+                adminLogicManager.HardDelCourseById(courseId);
+                return Ok("Course completly deleted");
+            }
+            
+            catch (UnauthorizedAccessException exception)
+            {
+                return StatusCode(403, exception.Message);
+            }
 
+        }
     }
 }

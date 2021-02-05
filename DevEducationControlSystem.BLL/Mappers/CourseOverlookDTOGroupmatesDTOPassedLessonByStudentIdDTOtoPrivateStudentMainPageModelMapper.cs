@@ -21,10 +21,12 @@ namespace DevEducationControlSystem.BLL.Mappers
             
             model.CourseOverlook.Groupmates = new List<GroupmatesModel>();
             model.passedLessonByStudentId = new List<PassedLessonByStudentIdModel>();
-
-            foreach(var GroupmatesDTO in courseOverlookDTO.GroupmatesDTOs)
+            if (courseOverlookDTO != null)
             {
-                model.CourseOverlook.Groupmates.Add(new GroupmatesModel(GroupmatesDTO));
+                foreach (var GroupmatesDTO in courseOverlookDTO.GroupmatesDTOs)
+                {
+                    model.CourseOverlook.Groupmates.Add(new GroupmatesModel(GroupmatesDTO));
+                }
             }
 
             foreach(var passedLessonDTO in passedLessonDTOs)

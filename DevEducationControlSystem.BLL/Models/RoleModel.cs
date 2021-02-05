@@ -20,5 +20,6 @@ namespace DevEducationControlSystem.BLL.Models
             Name = dto.Name;
         }
 
+
     }
 }
