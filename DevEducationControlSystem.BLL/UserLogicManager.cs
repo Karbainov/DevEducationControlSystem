@@ -2,9 +2,7 @@
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.DBL.CRUD;
 using DevEducationControlSystem.DBL.DTO;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DevEducationControlSystem.BLL
 {
@@ -25,6 +23,17 @@ namespace DevEducationControlSystem.BLL
         {
             var userManager = new UserManager();
             return userManager.GetAllInfoOfUserById(userId);
+        }
+
+        public void EditAllUserInfoById(AllInfoOfUserDTO allInfoOfUserDTO)
+        {
+            var userManager = new UserManager();
+            userManager.UpdateAllInfoOfUserById(allInfoOfUserDTO);
+        }
+        public void CreateNewUser(AllInfoOfUserDTO allInfoOfUserDTO)
+        {
+            var userManager = new UserManager();
+            userManager.AddNewUser(allInfoOfUserDTO);
         }
     }
 }
