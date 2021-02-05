@@ -335,7 +335,11 @@ namespace DevEducationControlSystem.DBL.CRUD
                 allInfoOfUserDTO.ProfileImage,
                 allInfoOfUserDTO.StatusId
             };
-
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
+            }
+        }
         public List<UserWithRoleAndStatusDTO> SelectNoStudentUsersWithRoleAndStatus()
         {
             var noStudentUserRoles = new List<UserWithRoleAndStatusDTO>();
@@ -345,11 +349,6 @@ namespace DevEducationControlSystem.DBL.CRUD
                 noStudentUserRoles = connection.Query<UserWithRoleAndStatusDTO>(expr, commandType: CommandType.StoredProcedure).AsList<UserWithRoleAndStatusDTO>(); ;
             }
             return noStudentUserRoles;
-        }
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-                connection.Query(expr, value, commandType: CommandType.StoredProcedure);
-            }
         }
         public void AddNewUser(AllInfoOfUserDTO allInfoOfUserDTO)
         {
@@ -373,7 +372,6 @@ namespace DevEducationControlSystem.DBL.CRUD
                 connection.Query(expr, value, commandType: CommandType.StoredProcedure);
             }
         }
-        public void Add()
 
         public void UpdateUserRole(int userId, int roleId)
         {
