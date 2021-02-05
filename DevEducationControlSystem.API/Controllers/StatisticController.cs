@@ -1,5 +1,7 @@
 using DevEducationControlSystem.BLL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using DevEducationControlSystem.DBL.DTO.StatisticsForMethodist;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,5 +42,17 @@ namespace DevEducationControlSystem.API.Controllers
             var statisticLogic = new StatisticLogicManager();
             return Ok(statisticLogic.NumberOfStudentsOnCourseByGroups(CourseId));
         }
-    }
+
+        [Authorize(Roles = "Методист")]
+        [HttpGet("CountHomeworkByThemeInCityCourseGroup")]
+        public IActionResult CountHomeworkByThemeInCityCourseGroup()
+        {
+            var statisticLogic = new StatisticLogicManager();
+            List<CountHomeworkByThemeInCityCourseGroupDTO> countHomeworkByThemeInCityCourseGroup = new List<CountHomeworkByThemeInCityCourseGroupDTO>();
+            countHomeworkByThemeInCityCourseGroup = statisticLogic.CountHomeworkByThemeInCityCourseGroup();
+            return Ok(countHomeworkByThemeInCityCourseGroup);
+
+        }
+    } 
+
 }
