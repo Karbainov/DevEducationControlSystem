@@ -144,6 +144,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok();
         }
 
+        [Authorize(Roles = "Преподаватель")]
         [HttpPut("Attendance")]
         public IActionResult AddAttendance(int userId,int lessonId, bool isPresent)
         {
