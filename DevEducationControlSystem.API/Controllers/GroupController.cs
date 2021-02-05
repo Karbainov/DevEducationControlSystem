@@ -48,19 +48,47 @@ namespace DevEducationControlSystem.API.Controllers
 
         [Authorize(Roles = "Студент")]
         [HttpPut("Student/{userId}/private")]
-        public IActionResult AddFeedback(List<NewFeedbackInputModel> feedback, int userId)
-        {
-            new GroupAPIManager().AddAndCheckNewFeedback(feedback, userId);
-
-            var groupLogicManager = new GroupLogicManager();
-            return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+        public IActionResult AddFeedback(List<FeedbackInputModel> feedback, int userId)
+        {            if (IdRevieser.RevieseId(User.Identity.Name, userId) == true)
+            {
+                new GroupAPIManager().AddAndCheckNewFeedback(feedback, userId);
+                var groupLogicManager = new GroupLogicManager();
+                return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+            }
+            else
+            {
+                return BadRequest("Доступ ограничен");
+            }
         }
+        [Authorize(Roles = "Студент")]
+        [HttpDelete("Student/{userId}/private")]
+        public IActionResult DeleteFeedback(List<FeedbackInputModel> feedback, int userId)
+        {
+            if (IdRevieser.RevieseId(User.Identity.Name, userId) == true)
+            {
+                new GroupAPIManager().DeleteAndCheckFeedback(feedback, userId);
+                var groupLogicManager = new GroupLogicManager();
+                return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+            }
+            else
+            {
+                return BadRequest("Доступ ограничен");
+            }
+        }
+
         [Authorize(Roles = "Студент")]
         [HttpGet("User/{userId}/Materials/{tag}")]
         public IActionResult GetStudentUnlockedDataByTag(int userId, string tag)
         {
-            var groupLogicManager = new GroupLogicManager();
-            return Ok(groupLogicManager.GetStudentUnlockedMaterialsByTag(userId, tag));
+            if (IdRevieser.RevieseId(User.Identity.Name, userId) == true)
+            {
+                var groupLogicManager = new GroupLogicManager();
+                return Ok(groupLogicManager.GetStudentUnlockedMaterialsByTag(userId, tag));
+            }
+            else
+            {
+                return BadRequest("Доступ ограничен");
+            }
         }
 
         [Authorize(Roles = "Преподаватель")]
