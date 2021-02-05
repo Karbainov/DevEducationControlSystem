@@ -61,5 +61,12 @@ namespace DevEducationControlSystem.BLL
             manager.Delete(courseId);
         }
 
+        public void UpdateUserRole(int userId, int roleId)
+        {
+            var manager = new UserManager();
+            manager.UpdateUserRole(userId, roleId);
+        }
+
+
     }
 }
