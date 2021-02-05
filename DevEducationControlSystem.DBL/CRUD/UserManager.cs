@@ -206,6 +206,26 @@ namespace DevEducationControlSystem.DBL.CRUD
             return userAuthtorisInfo;
         }
 
+        public List<UserWithRoleAndStatusDTO> SelectNoStudentUsersWithRoleAndStatus()
+        {
+            var noStudentUserRoles = new List<UserWithRoleAndStatusDTO>();
+            string expr = "[SelectNoStudentUsersWithRoleAndStatus]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                noStudentUserRoles = connection.Query<UserWithRoleAndStatusDTO>(expr, commandType: CommandType.StoredProcedure).AsList<UserWithRoleAndStatusDTO>(); ;
+            }
+            return noStudentUserRoles;
+        }
+
+        public void UpdateUserRole(int userId, int roleId)
+        {
+            var values = new { UserId = userId, RoleId = roleId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<UserDTO>("[User_Role_Update]", values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public void Add()
 
         {
@@ -233,23 +253,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
 
         }
-
-
-
-        public void Update()
-
-        {
-
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-
-                connection.Query<UserDTO>("[User_Update]", commandType: CommandType.StoredProcedure);
-
-            }
-
-        }
-
-
 
         public List<UserDTO> Select()
         {

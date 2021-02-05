@@ -1,4 +1,5 @@
 ﻿using DevEducationControlSystem.BLL;
+using DevEducationControlSystem.DBL.CRUD;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace DevEducationControlSystem.API.Controllers
             var adminLogic = new AdminLogicManager();
             return Ok(adminLogic.GetSoftDeletedItems());
         }
+
 
         [Authorize(Roles = "Администратор")]
         [HttpPut("RecycleBin/Homework")]
@@ -99,6 +101,23 @@ namespace DevEducationControlSystem.API.Controllers
                 return StatusCode(403, exception.Message);
             }
 
+        }
+
+       // [Authorize(Roles = "Администратор")]
+        [HttpGet("Users")]
+        public IActionResult GetNoStudentUsers()
+        {
+            var userManager = new UserManager();
+            return Ok(userManager.SelectNoStudentUsersWithRoleAndStatus());
+        }
+
+        // [Authorize(Roles = "Администратор")]
+        [HttpPut("Users")]
+        public IActionResult UpdateUserRole(int userId, int roleId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.UpdateUserRole(userId, roleId);
+            return Ok("User Role Updated");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DevEducationControlSystem.BLL.Mappers;
+using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.BLL.Models.RecycledBin;
 using DevEducationControlSystem.DBL.CRUD;
 using System;
@@ -22,6 +23,7 @@ namespace DevEducationControlSystem.BLL
                 courseManager.SelectSoftDeleted()
                 );
         }
+
 
         public void RecoverHomeworkById(int homeworkId)
         {
@@ -58,6 +60,13 @@ namespace DevEducationControlSystem.BLL
             var manager = new CourseManager();
             manager.Delete(courseId);
         }
+
+        public void UpdateUserRole(int userId, int roleId)
+        {
+            var manager = new UserManager();
+            manager.UpdateUserRole(userId, roleId);
+        }
+
 
     }
 }
