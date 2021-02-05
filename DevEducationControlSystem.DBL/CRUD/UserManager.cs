@@ -217,6 +217,15 @@ namespace DevEducationControlSystem.DBL.CRUD
             return noStudentUserRoles;
         }
 
+        public void UpdateUserRole(int userId, int roleId)
+        {
+            var values = new { UserId = userId, RoleId = roleId };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query<UserDTO>("[User_Role_Update]", values, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public void Add()
 
         {
@@ -244,23 +253,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
 
         }
-
-
-
-        public void Update()
-
-        {
-
-            using (var connection = SqlServerConnection.GetConnection())
-            {
-
-                connection.Query<UserDTO>("[User_Update]", commandType: CommandType.StoredProcedure);
-
-            }
-
-        }
-
-
 
         public List<UserDTO> Select()
         {

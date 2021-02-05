@@ -22,13 +22,6 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(adminLogic.GetSoftDeletedItems());
         }
 
-        [Authorize(Roles = "Администратор")]
-        [HttpGet("Users")]
-        public IActionResult GetUser()
-        {
-            var userManager = new UserManager();
-            return Ok(userManager.SelectNoStudentUsersWithRoleAndStatus());
-        }
 
         [Authorize(Roles = "Администратор")]
         [HttpPut("RecycleBin/Homework")]
@@ -108,6 +101,23 @@ namespace DevEducationControlSystem.API.Controllers
                 return StatusCode(403, exception.Message);
             }
 
+        }
+
+       // [Authorize(Roles = "Администратор")]
+        [HttpGet("Users")]
+        public IActionResult GetNoStudentUsers()
+        {
+            var userManager = new UserManager();
+            return Ok(userManager.SelectNoStudentUsersWithRoleAndStatus());
+        }
+
+        // [Authorize(Roles = "Администратор")]
+        [HttpPut("Users")]
+        public IActionResult UpdateUserRole(int userId, int roleId)
+        {
+            var adminLogicManager = new AdminLogicManager();
+            adminLogicManager.UpdateUserRole(userId, roleId);
+            return Ok("User role Updated");
         }
     }
 }
