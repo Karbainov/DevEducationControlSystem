@@ -2,9 +2,8 @@
 using DevEducationControlSystem.BLL.Mappers;
 using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.DBL.CRUD;
-using System;
+using DevEducationControlSystem.DBL.DTO;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DevEducationControlSystem.BLL
 {
@@ -23,6 +22,27 @@ namespace DevEducationControlSystem.BLL
             var paymentManager = new PaymentManager();
             var mapper = new StudentPaymentInfoMapper();
             return mapper.Map(userManager.SelectById(userId), paymentManager.SelectPaymentInfo(userId));
+        }
+        public List<AllInfoOfUserDTO> GetAllUserInfo()
+        {
+            var userManager = new UserManager();
+            return userManager.GetInfoOfAllUsers();
+        }
+        public AllInfoOfUserDTO GetAllUserInfoById(int userId)
+        {
+            var userManager = new UserManager();
+            return userManager.GetAllInfoOfUserById(userId);
+        }
+
+        public void EditAllUserInfoById(AllInfoOfUserDTO allInfoOfUserDTO)
+        {
+            var userManager = new UserManager();
+            userManager.UpdateAllInfoOfUserById(allInfoOfUserDTO);
+        }
+        public void CreateNewUser(AllInfoOfUserDTO allInfoOfUserDTO)
+        {
+            var userManager = new UserManager();
+            userManager.AddNewUser(allInfoOfUserDTO);
         }
     }
 }
