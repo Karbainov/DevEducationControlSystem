@@ -21,7 +21,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(statisticLogic.GetNumberOfTeachers());
         }
 
-
+        [Authorize(Roles = "Методист")]
         [HttpGet("Cities")]
         public IActionResult GetNumberOfUsersWithStatusInCourseInCity()
         {
