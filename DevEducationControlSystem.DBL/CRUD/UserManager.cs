@@ -3,6 +3,7 @@ using DevEducationControlSystem.DBL.DTO.Base;
 using System.Collections.Generic;
 using System.Data;
 using Dapper;
+using System;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
@@ -20,6 +21,26 @@ namespace DevEducationControlSystem.DBL.CRUD
                 CourseDurationOfCurrentStudent = connection.Query<CourseDurationOfCurrentStudentDTO>(expr, value, commandType: CommandType.StoredProcedure).AsList<CourseDurationOfCurrentStudentDTO>(); ;
             }
             return CourseDurationOfCurrentStudent;
+        }
+
+        public bool RevieseId(string login, int userId)
+        {
+            UserDTO result;
+            string expr = "[RevieseId]";
+            var value = new { Login=login };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                result = connection.QuerySingleOrDefault<UserDTO>(expr, value, commandType: CommandType.StoredProcedure);
+            }
+            if (result.Id==userId)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<CourseOfCurrentUserDTO> GetAllCoursesOfCurrentUserById(int id)

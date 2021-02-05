@@ -34,8 +34,16 @@ namespace DevEducationControlSystem.API.Controllers
         [HttpGet("Student/{userId}/private")]
         public IActionResult GetStudentUnlockedData(int userId)
         {
-            var groupLogicManager = new GroupLogicManager();
-            return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+            if (IdRevieser.RevieseId(User.Identity.Name, userId) == true)
+            {
+                var groupLogicManager = new GroupLogicManager();
+                return Ok(groupLogicManager.GetPrivateStudentMainPageModel(userId));
+            }
+            else
+            {
+                return BadRequest("Доступ ограничен");
+            }
+            
         }
 
         [Authorize(Roles = "Студент")]
