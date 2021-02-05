@@ -117,7 +117,7 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var adminLogicManager = new AdminLogicManager();
             adminLogicManager.UpdateUserRole(userId, roleId);
-            return Ok("User role Updated");
+            return Ok("User Role Updated");
         }
     }
 }
