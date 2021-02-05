@@ -54,6 +54,16 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(countHomeworkByThemeInCityCourseGroup);
 
         }
+
+        [Authorize(Roles = "Методист")]
+        [HttpGet("StudentsStudyingAfterBase")]
+        public IActionResult StudentsStudyingAfterBase()
+        {
+            var statisticManager = new StatisticManager();
+            List<StudentsStudyingAfterBaseDTO> studentsStudyingAfterBase = new List<StudentsStudyingAfterBaseDTO>();
+            studentsStudyingAfterBase = statisticManager.StudentsStudyingAfterBase();
+            return Ok(studentsStudyingAfterBase);
+        }
     } 
 
 }
