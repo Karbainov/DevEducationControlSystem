@@ -3,6 +3,7 @@ using DevEducationControlSystem.BLL.Models;
 using DevEducationControlSystem.DBL;
 using DevEducationControlSystem.DBL.CRUD;
 using DevEducationControlSystem.DBL.DTO;
+using DevEducationControlSystem.DBL.DTO.StatisticsForMethodist;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -43,5 +44,7 @@ namespace DevEducationControlSystem.BLL
             return mapper.Map(statisticManager.GetCountStudentsOnCourseByGroups(CourseId));
          
         }
+       
+
     }
 }
