@@ -27,11 +27,11 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(id);
         }
 
-       [HttpPut("UpdateCourse/{courseId/isDeleted}")]
-        public IActionResult UpdateCourseReturnId([FromBody]NewCourseInputModel inputModel, int courseId, int isDeleted)
+       [HttpPut("UpdateCourse/{courseId}")]
+        public IActionResult UpdateCourseReturnId([FromBody]NewCourseInputModel inputModel, int courseId)
         {
             var courseManager = new CourseManager();
-            var id = courseManager.UpdateReturnId(courseId, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks, Convert.ToBoolean(isDeleted));
+            var id = courseManager.UpdateReturnId(courseId, inputModel.Name, inputModel.Description, inputModel.DurationInWeeks);
 
             return Ok(id);
         }
@@ -44,5 +44,20 @@ namespace DevEducationControlSystem.API.Controllers
 
             return Ok(courseManager);
         }
-    }
+ 
+        [HttpGet("{courseId}/userinfo")]
+        public IActionResult GetAllInfoUserOnTheCourseById(int courseId)
+        {
+            var allInfoUserOnTheCourseLogicManager = new AllInfoUserOnTheCourseLogicManager();
+            return Ok(allInfoUserOnTheCourseLogicManager.GetInfoOfStudentsOnTheCourseById(courseId));
+        }
+
+        [HttpGet("groupinfo/{groupId}")]
+        public IActionResult GetAllInfoGroupOnTheCourseById(int groupId)
+        {
+            var allInfoUserOnTheCourseLogicManager = new AllInfoUserOnTheCourseLogicManager();
+            return Ok(allInfoUserOnTheCourseLogicManager.GetGroupInfoById(groupId));
+        }
+    }      
+   
 }

@@ -168,7 +168,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public int UpdateReturnId(int id, string name, string description, int durationInWeeks, bool isDeleted)
+        public int UpdateReturnId(int id, string name, string description, int durationInWeeks)
         {
             string expression = "[Course_Update_ReturnId]";
             var parameter = new
@@ -177,7 +177,6 @@ namespace DevEducationControlSystem.DBL.CRUD
                 Name = name,
                 Description = description,
                 DurationInWeeks = durationInWeeks,
-                IsDeleted = isDeleted
             };
             using (var connection = SqlServerConnection.GetConnection())
             {
@@ -191,7 +190,7 @@ namespace DevEducationControlSystem.DBL.CRUD
             var parameter = new { id };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                connection.QueryFirst<int>(expression, parameter, commandType: CommandType.StoredProcedure);
+                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
             }
         }
     }

@@ -15,6 +15,7 @@ namespace DevEducationControlSystem.DBL.DTO
         public string Images { get; set; }
         public string MaterialThemeId { get; set; }
         public string MaterialThemeName { get; set; }
+        public List<string> TagList { get; set; }
 
     }
 }

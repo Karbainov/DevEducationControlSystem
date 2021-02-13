@@ -1,9 +1,12 @@
 using DevEducationControlSystem.BLL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using DevEducationControlSystem.DBL.DTO.StatisticsForMethodist;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevEducationControlSystem.DBL;
 
 namespace DevEducationControlSystem.API.Controllers
 {
@@ -18,7 +21,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(statisticLogic.GetNumberOfTeachers());
         }
 
-
+        [Authorize(Roles = "Методист")]
         [HttpGet("Cities")]
         public IActionResult GetNumberOfUsersWithStatusInCourseInCity()
         {
@@ -40,5 +43,27 @@ namespace DevEducationControlSystem.API.Controllers
             var statisticLogic = new StatisticLogicManager();
             return Ok(statisticLogic.NumberOfStudentsOnCourseByGroups(CourseId));
         }
-    }
+
+        [Authorize(Roles = "Методист")]
+        [HttpGet("CountHomeworkByThemeInCityCourseGroup")]
+        public IActionResult CountHomeworkByThemeInCityCourseGroup()
+        {
+            var statisticManager = new StatisticManager();
+            List<CountHomeworkByThemeInCityCourseGroupDTO> countHomeworkByThemeInCityCourseGroup = new List<CountHomeworkByThemeInCityCourseGroupDTO>();
+            countHomeworkByThemeInCityCourseGroup = statisticManager.CountHomeworkByThemeInCityCourseGroup();
+            return Ok(countHomeworkByThemeInCityCourseGroup);
+
+        }
+
+        [Authorize(Roles = "Методист")]
+        [HttpGet("StudentsStudyingAfterBase")]
+        public IActionResult StudentsStudyingAfterBase()
+        {
+            var statisticManager = new StatisticManager();
+            List<StudentsStudyingAfterBaseDTO> studentsStudyingAfterBase = new List<StudentsStudyingAfterBaseDTO>();
+            studentsStudyingAfterBase = statisticManager.StudentsStudyingAfterBase();
+            return Ok(studentsStudyingAfterBase);
+        }
+    } 
+
 }

@@ -202,7 +202,35 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             using (var connection = SqlServerConnection.GetConnection())
             {
-                materials = connection.Query<UnlockedMaterialByUserIdDTO>(expr, parameter, commandType: CommandType.StoredProcedure).AsList<UnlockedMaterialByUserIdDTO>();
+                connection.Query<UnlockedMaterialByUserIdDTO, string, UnlockedMaterialByUserIdDTO>(expr, (Material, Tag) => {
+
+                    UnlockedMaterialByUserIdDTO material = null;
+
+                    foreach (var m in materials)
+                    {
+                        if (m.MaterialId == Material.MaterialId)
+                        {
+                            material = m;
+                        }
+                    }
+
+                    if (material==null)
+                    {
+                        material = Material;
+                        materials.Add(material);
+                    }
+
+                    if (material.TagList==null)
+                    {
+                        material.TagList = new List<string>();
+                    }
+
+                    material.TagList.Add(Tag);
+                    
+                    return null; },
+                    
+                    
+                    parameter, commandType: CommandType.StoredProcedure, splitOn:"TagList");
             }
 
             return materials;

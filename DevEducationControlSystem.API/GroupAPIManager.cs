@@ -41,7 +41,7 @@ namespace DevEducationControlSystem.API
             var dalManager = new FeedbackManager();
             foreach (var f in feedbackModelsList)
             {
-                if (f.Id!=null) dalManager.Delete((int)f.Id);
+                if (f.Id != null) dalManager.Delete((int)f.Id);
             }
         }
     }
