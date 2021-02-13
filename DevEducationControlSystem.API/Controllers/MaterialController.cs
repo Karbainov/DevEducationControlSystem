@@ -47,8 +47,8 @@ namespace DevEducationControlSystem.API.Controllers
             var resourceManager = new ResourceManager();
 
             materialManager.SoftDelete(materialId);
-            courseThemeManager.SoftDelete(courseId);
-            resourceManager.SoftDelete(resourceId);
+            //courseThemeManager.SoftDelete(courseId);
+            //resourceManager.SoftDelete(resourceId);
 
             return Ok();
         }

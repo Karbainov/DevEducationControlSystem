@@ -27,7 +27,7 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(id);
         }
 
-       [HttpPut("UpdateCourse/{courseId}/{isDeleted}")]
+       [HttpPut("UpdateCourse/{courseId/isDeleted}")]
         public IActionResult UpdateCourseReturnId([FromBody]NewCourseInputModel inputModel, int courseId, int isDeleted)
         {
             var courseManager = new CourseManager();
@@ -36,13 +36,13 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(id);
         }
 
-        [HttpPut("DeleteCourse/{courseId}")]
-        public IActionResult DeleteCourse([FromBody]int courseId)
+        [HttpDelete("DeleteCourse/{courseId}")]
+        public IActionResult DeleteCourse(int courseId)
         {
             var courseManager = new CourseManager();
-            var id = courseManager.DeleteReturnId(courseId);
+            courseManager.DeleteReturnId(courseId);
 
-            return Ok(id);
+            return Ok(courseManager);
         }
     }
 }

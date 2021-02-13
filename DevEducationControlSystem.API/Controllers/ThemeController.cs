@@ -14,17 +14,10 @@ namespace DevEducationControlSystem.API.Controllers
     [ApiController]
     public class ThemeController : ControllerBase
     {
-        [Authorize(Roles="")]
         [HttpGet("CreateTheme/{themeId}")]
-        public IActionResult GetMaterialsByTheme(int themeId)
-        {
-            return Ok();
-        }
-
         public IActionResult CreateTheme(NewThemeInputModel themeInputModel)
         {
             var themeManager = new ThemeManager();
-
             themeManager.Add(themeInputModel.Name);
 
             return Ok(themeManager);
@@ -34,17 +27,17 @@ namespace DevEducationControlSystem.API.Controllers
         public IActionResult UpdateTheme(int themeId, string name)
         {
             var themeManager = new ThemeManager();
-
             themeManager.Update(themeId, name);
 
             return Ok(themeManager);
         }
 
-        [HttpPost("DeleteTheme/{themeId}")]
+        [HttpDelete("DeleteTheme/{themeId}")]
         public IActionResult DeleteTheme(int themeId)
         {
             var themeManager = new ThemeManager();
             themeManager.Delete(themeId);
+
             return Ok(themeManager);
         }
 

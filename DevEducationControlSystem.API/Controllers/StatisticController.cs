@@ -9,7 +9,7 @@ namespace DevEducationControlSystem.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StatisticController: Controller
+    public class StatisticController : Controller
     {
         [HttpGet("Teachers")]
         public IActionResult GetNumberOfTeachersByCourseId()
@@ -32,15 +32,6 @@ namespace DevEducationControlSystem.API.Controllers
         {
             var StatisticLogicManager = new StatisticLogicManager();
             return Ok(StatisticLogicManager.GetRoleStatistic());
-        }
-
-        [HttpGet("Roles")]
-        public IActionResult GetGroupInfoById()
-        {
-            var statisticLogic = new StatisticLogicManager();
-            List<countHomeworkByThemeInCityCourseGroup> countHomeworkByThemeInCityCourseGroup = new List<countHomeworkByThemeInCityCourseGroup>;
-            countHomeworkByThemeInCityCourseGroup = statisticLogic.CountHomeworkByThemeInCityCourseGroup();
-            return Ok(countHomeworkByThemeInCityCourseGroup);
         }
 
         [HttpGet("StudentsOnCourseByGroups/{CourseId}")]

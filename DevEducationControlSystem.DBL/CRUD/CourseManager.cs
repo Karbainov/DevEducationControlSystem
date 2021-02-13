@@ -185,16 +185,14 @@ namespace DevEducationControlSystem.DBL.CRUD
                 return Id;
             }
         }
-        public int DeleteReturnId(int id)
+        public void DeleteReturnId(int id)
         {
-            string expression = "[Course_SoftDelete_ReturnId]";
+            string expression = "[Course_SoftDelete]";
             var parameter = new { id };
             using (var connection = SqlServerConnection.GetConnection())
             {
-                var Id = connection.QueryFirst<int>(expression, parameter, commandType: CommandType.StoredProcedure);
-                return Id;
+                connection.QueryFirst<int>(expression, parameter, commandType: CommandType.StoredProcedure);
             }
         }
-
     }
 }
