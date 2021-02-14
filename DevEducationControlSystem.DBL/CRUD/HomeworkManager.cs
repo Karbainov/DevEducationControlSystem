@@ -20,8 +20,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             return howeworkList;
         } 
 
-       
-
         public HomeworkDTO SelectById(int id)
         {
             string expr = "[Homework_SelectById]";
@@ -33,15 +31,10 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
         }
 
-        public void Add(int resourceId, string name, string description, string isSolutionRequired)
+        public void Add(int resourceId, string name, string description, bool isSolutionRequired)
         {
             var values = new { ResourceId = resourceId, Name = name, Description = description, IsSolutionRequired = isSolutionRequired };
             SqlServerConnection.GetConnection().Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
-        }
-
-        public List<HomeworkDTO> SelectAdd()
-        {
-            throw new NotImplementedException();
         }
 
         public void Delete(int id)
@@ -59,8 +52,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             var values = new { id, resourceId, name, description, isDeleted, isSolutionRequired };
             SqlServerConnection.GetConnection().Query("[Homework_Update]", values, commandType: CommandType.StoredProcedure);
         }
-
-
 
         public List<SelectAllHomeworkByThemeDTO> GetAllHomeworkByThemeId(int ThemeId)
         {
@@ -94,8 +85,6 @@ namespace DevEducationControlSystem.DBL.CRUD
 
             return homeworksByTheme;
         }
-
-
 
         public List<SelectAllHomeworkByGroupDTO> GetAllHomeworkByGroupId(int GroupId)
 
@@ -163,7 +152,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             return homeworksByCourse;
         }
 
-
         public List<HomeworkAllInfoDTO> SelectAllHomeworkByGroupId(int groupId)
         {
             string expr = "[SelectAllHomeworkByGroupId]";
@@ -192,7 +180,6 @@ namespace DevEducationControlSystem.DBL.CRUD
             return howeworkList;
         }
 
-
         public void UpdateIsDeleted(int id)
         {
             var howeworkList = SqlServerConnection.GetConnection().Query("Homework_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
@@ -209,7 +196,37 @@ namespace DevEducationControlSystem.DBL.CRUD
             }
             return hws;
         }
+        public string UpdateReturnResult(int id, int resourceId, string name, string description, bool isDeleted, bool isSolutionRequired)
+        {
+            var values = new { id, resourceId, name, description, isDeleted, isSolutionRequired };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query("[Homework_Update]", values, commandType: CommandType.StoredProcedure);
+            }
+            var resultReturn = $"Вы успешно обновили домашнюю работу: {name}";
+            return resultReturn;
+        }
 
+        public string AddReturnResult(int resourceId, string name, string description, bool isSolutionRequired)
+        {
+            var values = new { ResourceId = resourceId, Name = name, Description = description, IsSolutionRequired = isSolutionRequired };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query("[Homework_Add]", values, commandType: CommandType.StoredProcedure);
+            }
+            var resultResult = $"Вы успешно добавили домашнюю работу: {name}";
+            return resultResult;
+        }
+
+        public string DeleteReturnResult(int id, string name)
+        {
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query("[Homework_Delete]", new { id }, commandType: CommandType.StoredProcedure);
+            }
+            var resultReturn = $"Вы успешно удалили домашнюю работу: {name}";
+            return resultReturn;
+        }
 
     }
 }

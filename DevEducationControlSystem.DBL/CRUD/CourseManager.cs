@@ -152,5 +152,46 @@ namespace DevEducationControlSystem.DBL.CRUD
             var CourseList = SqlServerConnection.GetConnection().Query("Course_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
         }
 
+        public int AddReturnId(string name, string description, int durationInWeeks)
+        {
+            string expression = "[Course_Add_ReturnId]";
+            var parameter = new
+            {
+                Name = name,
+                Description = description,
+                DurationInWeeks = durationInWeeks
+            };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                var id = connection.QueryFirst<int>(expression, parameter, commandType: CommandType.StoredProcedure);
+                return id;
+            }
+        }
+
+        public int UpdateReturnId(int id, string name, string description, int durationInWeeks)
+        {
+            string expression = "[Course_Update_ReturnId]";
+            var parameter = new
+            {
+                Id = id,
+                Name = name,
+                Description = description,
+                DurationInWeeks = durationInWeeks,
+            };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                var Id = connection.QueryFirst<int>(expression, parameter, commandType: CommandType.StoredProcedure);
+                return Id;
+            }
+        }
+        public void DeleteReturnId(int id)
+        {
+            string expression = "[Course_SoftDelete]";
+            var parameter = new { id };
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

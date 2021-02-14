@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DevEducationControlSystem.DBL.CRUD
 {
-    class ThemeManager
+    public class ThemeManager
     {
         public SqlConnection ConnectToDB()
         {
@@ -126,5 +126,36 @@ namespace DevEducationControlSystem.DBL.CRUD
             return themesByTagName;
         }
 
+        public void Add(string name)
+        {
+            string expression = "[Theme_Add]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expression, name, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void Delete(int themeId)
+        {
+            string expression = "[Theme_Delete]";
+            using (var connection = SqlServerConnection.GetConnection())
+            {
+                connection.Query(expression, themeId, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void Update(int themeId, string name)
+        {
+            string expression = "[Theme_Delete]";
+
+            var parameter = new  
+            {
+                themeId,
+                name
+            };
+
+            using (var connection = SqlServerConnection.GetConnection())
+            { 
+                connection.Query(expression, parameter, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

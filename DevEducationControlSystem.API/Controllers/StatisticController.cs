@@ -12,7 +12,7 @@ namespace DevEducationControlSystem.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StatisticController: Controller
+    public class StatisticController : Controller
     {
         [HttpGet("Teachers")]
         public IActionResult GetNumberOfTeachersByCourseId()

@@ -256,8 +256,5 @@ namespace DevEducationControlSystem.DBL.CRUD
         {
             var materialList = SqlServerConnection.GetConnection().Query("Material_RecoverSoftDeleted", new { id }, commandType: CommandType.StoredProcedure);
         }
-
-
-
     }
 }
