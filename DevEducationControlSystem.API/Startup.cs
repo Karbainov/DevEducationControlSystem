@@ -54,6 +54,7 @@ namespace DevEducationControlSystem.API
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "DevEducationControlSystem" });
+                swagger.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
             });
 
             services.AddSwaggerGenNewtonsoftSupport();
@@ -71,6 +72,7 @@ namespace DevEducationControlSystem.API
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "DevEducationControlSystem");
+
             });
 
             app.UseDefaultFiles();
