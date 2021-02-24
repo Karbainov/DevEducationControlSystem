@@ -23,9 +23,10 @@ namespace DevEducationControlSystem.API.Controllers
             return Ok(logicManager.GetLoginPassworlRole(login));
         }
 
-        [HttpPut("{login}/{pass}")]
+        [HttpPost("{login}/{pass}")]
         public IActionResult Get(string login, string pass)
         {
+            throw new Exception("Здесь что-то упало, но на фронте мы это не покажем");
             var identity = GetIdentity(login, pass);
             if(identity == null)
             {
